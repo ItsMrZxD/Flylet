@@ -162,5 +162,79 @@ namespace ModernFlyouts.Core.Tests
             controller.Dispose();
             Assert.False(controller.IsTicking);
         }
+
+        // The sequences below replay what Firefox reported through NPSM and GSMTC (captured 2026-09-11)
+
+        [Fact]
+        public void EmptyTimelineWhilePlaying_KeepsCountingFromTheLastRealOne()
+        {
+            // Paused at 0:44.711 of 3:16, resumed 12 s later, then 14 s after that Firefox
+            // reported position 0 and length 0 while still playing
+            var controller = new TimelineController(clock);
+            var length = TimeSpan.FromMilliseconds(196_001);
+            controller.Update(new TimelineSnapshot { EndTime = length, Position = TimeSpan.FromMilliseconds(44_711), LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 0, IsPlaying = false });
+            clock.Advance(TimeSpan.FromSeconds(12));
+            controller.Update(new TimelineSnapshot { EndTime = length, Position = TimeSpan.FromMilliseconds(44_711), LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 1, IsPlaying = true });
+            clock.Advance(TimeSpan.FromSeconds(14));
+
+            controller.Update(new TimelineSnapshot { LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 1, IsPlaying = true });
+            clock.Advance(TimeSpan.FromSeconds(5));
+
+            Assert.True(controller.HasTimeline);
+            Assert.True(controller.IsTicking);
+            Assert.Equal(length, controller.EndTime);
+            Assert.Equal(TimeSpan.FromMilliseconds(44_711 + 19_000), controller.Position);
+        }
+
+        [Fact]
+        public void NewTrack_ShowsNothingUntilARealTimelineArrives_ThenKeepsIt()
+        {
+            // A new video first reported 0/0, then its real start and length (3:52), then 0/0 again 0.3 s later
+            var controller = new TimelineController(clock);
+            controller.Update(new TimelineSnapshot { LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 1, IsPlaying = true });
+            Assert.False(controller.HasTimeline);
+            Assert.False(controller.IsTicking);
+
+            clock.Advance(TimeSpan.FromMilliseconds(500));
+            controller.Update(new TimelineSnapshot { EndTime = TimeSpan.FromSeconds(232), Position = TimeSpan.FromMilliseconds(177), LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 1, IsPlaying = true });
+            clock.Advance(TimeSpan.FromMilliseconds(300));
+            controller.Update(new TimelineSnapshot { LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 1, IsPlaying = true });
+            clock.Advance(TimeSpan.FromSeconds(10));
+
+            Assert.True(controller.HasTimeline);
+            Assert.Equal(TimeSpan.FromSeconds(232), controller.EndTime);
+            Assert.Equal(TimeSpan.FromMilliseconds(177 + 300 + 10_000), controller.Position);
+        }
+
+        [Fact]
+        public void Pause_ReportsTheRealPositionAfterEmptyTimelines()
+        {
+            // While playing, only 0/0 arrived; the pause brought the real position 0:30.992 of 3:52
+            var controller = new TimelineController(clock);
+            controller.Update(Playing(5, endSeconds: 232));
+            clock.Advance(TimeSpan.FromSeconds(1));
+            controller.Update(new TimelineSnapshot { LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 1, IsPlaying = true });
+            clock.Advance(TimeSpan.FromSeconds(24));
+
+            controller.Update(new TimelineSnapshot { EndTime = TimeSpan.FromSeconds(232), Position = TimeSpan.FromMilliseconds(30_992), LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 0, IsPlaying = false });
+            clock.Advance(TimeSpan.FromSeconds(10));
+
+            Assert.False(controller.IsTicking);
+            Assert.Equal(TimeSpan.FromMilliseconds(30_992), controller.Position);
+        }
+
+        [Fact]
+        public void Clear_ForgetsTheOldTrack()
+        {
+            var controller = new TimelineController(clock);
+            controller.Update(Playing(100));
+
+            controller.Clear();
+            controller.Update(new TimelineSnapshot { LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 1, IsPlaying = true });
+
+            Assert.False(controller.HasTimeline);
+            Assert.False(controller.IsTicking);
+            Assert.Equal(TimeSpan.Zero, controller.Position);
+        }
     }
 }

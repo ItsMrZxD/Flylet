@@ -26,11 +26,12 @@ namespace ModernFlyouts.Core.Media.Control
     }
 
     /// <summary>
-    /// Estimates the live playback position from the last reported timeline.
+    /// Estimates the live playback position from the last real timeline a source reported.
     /// </summary>
     /// <remarks>
-    /// Many sources, browsers in particular, only report the position when playback starts, pauses or seeks,
-    /// so the reported position goes stale while playing. This advances it locally and ticks while playing.
+    /// Sources rarely report the position while playing. Firefox, for example, resets the timeline to
+    /// position 0 and length 0 shortly after a video starts or seeks, and only reports the real position
+    /// again on pause. This keeps counting from the last real report and ticks while playing.
     /// </remarks>
     public sealed class TimelineController : IDisposable
     {
@@ -52,38 +53,61 @@ namespace ModernFlyouts.Core.Media.Control
         }
 
         /// <summary>
-        /// Raised when a new timeline arrives and on every tick while playing.
+        /// Raised on every tick while playing.
         /// </summary>
         public event EventHandler PositionChanged;
 
-        public TimeSpan Position => snapshot == null ? TimeSpan.Zero : Estimate(timeProvider.GetUtcNow());
+        public TimeSpan Position => HasTimeline ? Estimate(timeProvider.GetUtcNow()) : TimeSpan.Zero;
+
+        /// <summary>
+        /// Whether a real timeline is known for the current track.
+        /// </summary>
+        public bool HasTimeline => snapshot != null && !IsEmpty(snapshot);
+
+        public TimeSpan StartTime => HasTimeline ? snapshot.StartTime : TimeSpan.Zero;
+
+        public TimeSpan EndTime => HasTimeline ? snapshot.EndTime : TimeSpan.Zero;
 
         public bool IsTicking => timer.IsEnabled;
 
         public void Update(TimelineSnapshot newSnapshot)
         {
             var now = timeProvider.GetUtcNow();
-            bool isFresh = snapshot == null
-                || newSnapshot.Position != snapshot.Position
-                || newSnapshot.LastUpdatedTime != snapshot.LastUpdatedTime;
 
-            if (isFresh)
+            if (IsEmpty(newSnapshot) && HasTimeline)
             {
-                basePosition = newSnapshot.Position;
-                baseTime = newSnapshot.LastUpdatedTime.Year > 2000 ? newSnapshot.LastUpdatedTime : now;
+                // No new information: keep the last real timeline and only take the new play state
+                basePosition = Estimate(now);
+                baseTime = now;
+                snapshot = snapshot with { IsPlaying = newSnapshot.IsPlaying, PlaybackRate = newSnapshot.PlaybackRate };
             }
             else
             {
-                // The same position read again, e.g. on play/pause: carry on from the current estimate
-                basePosition = Estimate(now);
-                baseTime = now;
+                bool isFresh = snapshot == null
+                    || newSnapshot.Position != snapshot.Position
+                    || newSnapshot.LastUpdatedTime != snapshot.LastUpdatedTime;
+
+                if (isFresh)
+                {
+                    basePosition = newSnapshot.Position;
+                    baseTime = newSnapshot.LastUpdatedTime.Year > 2000 ? newSnapshot.LastUpdatedTime : now;
+                }
+                else
+                {
+                    // The same position read again, e.g. on play/pause: carry on from the current estimate
+                    basePosition = Estimate(now);
+                    baseTime = now;
+                }
+
+                snapshot = newSnapshot;
             }
 
-            snapshot = newSnapshot;
-            timer.IsEnabled = newSnapshot.IsPlaying;
-            PositionChanged?.Invoke(this, EventArgs.Empty);
+            timer.IsEnabled = snapshot.IsPlaying && HasTimeline;
         }
 
+        /// <summary>
+        /// Forgets the current timeline, e.g. when the track changes.
+        /// </summary>
         public void Clear()
         {
             snapshot = null;
@@ -95,6 +119,10 @@ namespace ModernFlyouts.Core.Media.Control
             timer.Stop();
             timer.Tick -= Timer_Tick;
         }
+
+        // Position 0 with no length is what sources send when they have no timeline
+        private static bool IsEmpty(TimelineSnapshot timeline) =>
+            timeline.Position == TimeSpan.Zero && timeline.EndTime <= timeline.StartTime;
 
         private TimeSpan Estimate(DateTimeOffset now)
         {

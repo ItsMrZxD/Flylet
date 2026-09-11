@@ -356,6 +356,14 @@ namespace ModernFlyouts.Core.Media.Control
             StopCommand = new RelayCommand(Stop, () => IsStopEnabled);
 
             timelineController.PositionChanged += (_, _) => SetPlaybackPosition(timelineController.Position);
+            PropertyChanged += (_, e) =>
+            {
+                // The last known timeline belongs to the previous track
+                if (e.PropertyName == nameof(Title))
+                {
+                    timelineController.Clear();
+                }
+            };
         }
 
         #region Timeline
@@ -367,10 +375,21 @@ namespace ModernFlyouts.Core.Media.Control
         /// </summary>
         protected void UpdateTimeline(TimelineSnapshot snapshot)
         {
-            TimelineStartTime = snapshot.StartTime;
-            TimelineEndTime = snapshot.EndTime;
-            IsTimelinePropertiesEnabled = true;
             timelineController.Update(snapshot);
+            var position = timelineController.Position;
+
+            // The timeline slider binds two-way to PlaybackPosition, and a value it has to clamp to its
+            // range is written back as a seek. Move the position first when it fits the current range,
+            // so neither the value nor the range ever falls outside the other.
+            if (position <= TimelineEndTime)
+            {
+                SetPlaybackPosition(position);
+            }
+
+            TimelineStartTime = timelineController.StartTime;
+            TimelineEndTime = timelineController.EndTime;
+            IsTimelinePropertiesEnabled = timelineController.HasTimeline;
+            SetPlaybackPosition(position);
         }
 
         /// <summary>
@@ -379,9 +398,9 @@ namespace ModernFlyouts.Core.Media.Control
         protected void ClearTimeline()
         {
             timelineController.Clear();
+            SetPlaybackPosition(TimeSpan.Zero);
             TimelineStartTime = TimeSpan.Zero;
             TimelineEndTime = TimeSpan.Zero;
-            SetPlaybackPosition(TimeSpan.Zero);
             IsTimelinePropertiesEnabled = false;
         }
 
