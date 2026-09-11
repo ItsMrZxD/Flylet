@@ -10,6 +10,8 @@
     <PublishSingleFile>false</PublishSingleFile>
     <UseWPF>true</UseWPF>
     <OutputType>WinExe</OutputType>
+    <!-- The exe's description, which Windows shows in taskbar settings and Task Manager; the file keeps its ModernFlyouts.exe name -->
+    <AssemblyTitle>Flylet</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
     <ApplicationManifest>app.manifest</ApplicationManifest>
