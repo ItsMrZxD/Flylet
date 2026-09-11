@@ -49,6 +49,9 @@ namespace ModernFlyouts.UI
 
             TaskbarIcon = new TaskbarIcon()
             {
+                // Windows names the icon by this text (e.g. in taskbar settings); if it's
+                // empty, H.NotifyIcon substitutes the placeholder "ToolTip".
+                ToolTipText = Program.AppName,
                 TrayToolTip = TaskbarIconToolTip,
                 ContextMenu = TaskbarIconContextMenu,
                 DoubleClickCommand = CommonCommands.OpenSettingsWindowCommand
