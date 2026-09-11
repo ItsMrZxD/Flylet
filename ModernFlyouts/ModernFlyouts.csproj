@@ -6,6 +6,8 @@
     <RuntimeIdentifiers>win-x64;win-x86;win-arm64</RuntimeIdentifiers>
     <!-- Set here, not only in the publish profiles, so restore fetches the ReadyToRun compiler packs -->
     <PublishReadyToRun>true</PublishReadyToRun>
+    <!-- The package build doesn't reliably take this from the publish profiles; keep the layout multi-file -->
+    <PublishSingleFile>false</PublishSingleFile>
     <UseWPF>true</UseWPF>
     <OutputType>WinExe</OutputType>
     <NeutralLanguage>en-US</NeutralLanguage>
