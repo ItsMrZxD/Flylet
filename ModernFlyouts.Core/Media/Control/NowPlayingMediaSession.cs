@@ -74,6 +74,7 @@ namespace ModernFlyouts.Core.Media.Control
 
                     case MediaPlaybackDataChangedEvent.PlaybackInfoChanged:
                         UpdatePlaybackInfo();
+                        UpdateTimelineInfo();
                         break;
 
                     case MediaPlaybackDataChangedEvent.TimelinePropertiesChanged:
@@ -98,6 +99,7 @@ namespace ModernFlyouts.Core.Media.Control
             }
             mediaPlaybackDataSource = null;
             NPSession = null;
+            StopTimeline();
 
             sourceAppInfo.Dispose();
             sourceAppInfo = null;
@@ -142,23 +144,26 @@ namespace ModernFlyouts.Core.Media.Control
         {
             if (mediaPlaybackDataSource != null)
             {
-                var timeline = mediaPlaybackDataSource.GetMediaTimelineProperties();
-
                 if (IsPlaybackPositionEnabled)
                 {
-                    TimelineStartTime = timeline.StartTime;
-                    TimelineEndTime = timeline.EndTime;
-                    SetPlaybackPosition(timeline.Position);
+                    var timeline = mediaPlaybackDataSource.GetMediaTimelineProperties();
+                    var playback = mediaPlaybackDataSource.GetMediaPlaybackInfo();
+                    var positionSetTime = timeline.PositionSetFileTime;
 
-                    IsTimelinePropertiesEnabled = true;
+                    UpdateTimeline(new TimelineSnapshot
+                    {
+                        StartTime = timeline.StartTime,
+                        EndTime = timeline.EndTime,
+                        Position = timeline.Position,
+                        // Unset times come back as DateTime.MinValue, which can't be converted with a positive UTC offset
+                        LastUpdatedTime = positionSetTime.Year > 2000 ? new DateTimeOffset(positionSetTime) : default,
+                        PlaybackRate = playback.PlaybackRate,
+                        IsPlaying = playback.PlaybackState == MediaPlaybackState.Playing
+                    });
                 }
                 else
                 {
-                    TimelineStartTime = TimeSpan.Zero;
-                    TimelineEndTime = TimeSpan.Zero;
-                    PlaybackPosition = TimeSpan.Zero;
-
-                    IsTimelinePropertiesEnabled = false;
+                    ClearTimeline();
                 }
             }
         }

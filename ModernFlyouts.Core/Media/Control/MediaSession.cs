@@ -354,7 +354,40 @@ namespace ModernFlyouts.Core.Media.Control
             ChangeShuffleActiveCommand = new RelayCommand(ChangeShuffleActive, () => IsShuffleEnabled);
             ChangeAutoRepeatModeCommand = new RelayCommand(ChangeAutoRepeatMode, () => IsRepeatEnabled);
             StopCommand = new RelayCommand(Stop, () => IsStopEnabled);
+
+            timelineController.PositionChanged += (_, _) => SetPlaybackPosition(timelineController.Position);
         }
+
+        #region Timeline
+
+        private readonly TimelineController timelineController = new();
+
+        /// <summary>
+        /// Shows the reported timeline and keeps the position moving between reports while playing.
+        /// </summary>
+        protected void UpdateTimeline(TimelineSnapshot snapshot)
+        {
+            TimelineStartTime = snapshot.StartTime;
+            TimelineEndTime = snapshot.EndTime;
+            IsTimelinePropertiesEnabled = true;
+            timelineController.Update(snapshot);
+        }
+
+        /// <summary>
+        /// Hides the timeline. Unlike setting <see cref="PlaybackPosition"/>, this doesn't ask the source to seek.
+        /// </summary>
+        protected void ClearTimeline()
+        {
+            timelineController.Clear();
+            TimelineStartTime = TimeSpan.Zero;
+            TimelineEndTime = TimeSpan.Zero;
+            SetPlaybackPosition(TimeSpan.Zero);
+            IsTimelinePropertiesEnabled = false;
+        }
+
+        protected void StopTimeline() => timelineController.Dispose();
+
+        #endregion
 
         #region Private Methods
 

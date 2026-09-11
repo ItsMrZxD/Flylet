@@ -51,6 +51,7 @@ namespace ModernFlyouts.Core.Media.Control
                 GSMTCSession.TimelinePropertiesChanged -= GSMTCSession_TimelinePropertiesChanged;
             }
             GSMTCSession = null;
+            StopTimeline();
 
             sourceAppInfo.Dispose();
             sourceAppInfo = null;
@@ -71,6 +72,7 @@ namespace ModernFlyouts.Core.Media.Control
             Application.Current.Dispatcher.Invoke(() =>
             {
                 UpdatePlaybackInfo(session);
+                UpdateTimelineInfo(session);
             });
         }
 
@@ -126,22 +128,23 @@ namespace ModernFlyouts.Core.Media.Control
             try
             {
                 var timeline = session.GetTimelineProperties();
+                var playback = session.GetPlaybackInfo();
 
-                if (session.GetPlaybackInfo().Controls.IsPlaybackPositionEnabled && timeline != null)
+                if (playback.Controls.IsPlaybackPositionEnabled && timeline != null)
                 {
-                    TimelineStartTime = timeline.StartTime;
-                    TimelineEndTime = timeline.EndTime;
-                    SetPlaybackPosition(timeline.Position);
-
-                    IsTimelinePropertiesEnabled = true;
+                    UpdateTimeline(new TimelineSnapshot
+                    {
+                        StartTime = timeline.StartTime,
+                        EndTime = timeline.EndTime,
+                        Position = timeline.Position,
+                        LastUpdatedTime = timeline.LastUpdatedTime,
+                        PlaybackRate = playback.PlaybackRate,
+                        IsPlaying = playback.PlaybackStatus == GlobalSystemMediaTransportControlsSessionPlaybackStatus.Playing
+                    });
                 }
                 else
                 {
-                    TimelineStartTime = TimeSpan.Zero;
-                    TimelineEndTime = TimeSpan.Zero;
-                    PlaybackPosition = TimeSpan.Zero;
-
-                    IsTimelinePropertiesEnabled = false;
+                    ClearTimeline();
                 }
             }
             catch { }
