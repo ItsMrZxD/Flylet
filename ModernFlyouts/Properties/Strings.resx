@@ -177,11 +177,14 @@
   <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
     <value>Use media's thumbnail as media control's background</value>
   </data>
+  <data name="About_BasedOn" xml:space="preserve">
+    <value>Based on ModernFlyouts (MIT License)</value>
+  </data>
   <data name="Close" xml:space="preserve">
     <value>Close</value>
   </data>
   <data name="Enums.DefaultFlyout.ModernFlyouts" xml:space="preserve">
-    <value>ModernFlyouts</value>
+    <value>Flylet</value>
   </data>
   <data name="Enums.DefaultFlyout.None" xml:space="preserve">
     <value>None</value>

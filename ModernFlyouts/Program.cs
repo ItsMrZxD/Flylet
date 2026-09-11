@@ -9,7 +9,7 @@ namespace ModernFlyouts
 {
     public class Program
     {
-        public const string AppName = "ModernFlyouts";
+        public const string AppName = "Flylet";
         public const string AppHostName = "ModernFlyouts";
 
         [STAThread]

@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ApplicationDescription" xml:space="preserve">
-    <value>ModernFlyouts is an open source, modern, and Fluent Design-based replacement for the old Metro-themed flyouts present in Windows 10.</value>
+    <value>Flylet is an open source, modern, Fluent Design-based replacement for the built-in volume, brightness, media and lock-key flyouts in Windows.</value>
   </data>
   <data name="ApplicationDisplayName" xml:space="preserve">
-    <value>ModernFlyouts (Preview)</value>
+    <value>Flylet</value>
   </data>
   <data name="PackageDisplayName" xml:space="preserve">
-    <value>ModernFlyouts (Preview)</value>
+    <value>Flylet</value>
   </data>
   <data name="PublisherDisplayName" xml:space="preserve">
-    <value>Sam G</value>
+    <value>MrzxD</value>
   </data>
   <data name="TileShortName" xml:space="preserve">
-    <value>ModernFlyouts</value>
+    <value>Flylet</value>
   </data>
 </root>
