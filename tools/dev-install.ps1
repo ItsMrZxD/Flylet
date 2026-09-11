@@ -23,6 +23,9 @@ $repo = Split-Path $PSScriptRoot -Parent
 $layout = Join-Path $repo 'ModernFlyouts.Package\bin\x64\Release'
 $devName = 'MrzxD.Flylet.Dev'
 
+# The dev build runs straight from the build output, so a running copy locks its files
+Get-Process ModernFlyouts -ErrorAction SilentlyContinue | Where-Object { $_.Path -like "$layout\*" } | Stop-Process -Force
+
 if (-not $NoBuild) {
     $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
     $msbuild = & $vswhere -latest -prerelease -requires Microsoft.Component.MSBuild -find 'MSBuild\**\Bin\amd64\MSBuild.exe' | Select-Object -First 1
