@@ -1,12 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0-windows10.0.19041.0</TargetFramework>
+    <TargetFramework>net10.0-windows10.0.19041.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <!-- The app ships its own .NET 9; let the tests run on whatever newer runtime is installed -->
-    <RollForward>Major</RollForward>
   </PropertyGroup>
 
   <ItemGroup>

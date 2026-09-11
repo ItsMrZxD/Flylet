@@ -121,7 +121,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="System.Management" Version="9.0.0-rc.2.24473.5" />
+    <PackageReference Include="System.Management" Version="10.0.12" />
   </ItemGroup>
   <Target Name="FlattenPackage" BeforeTargets="_ConvertItems">
     <ItemGroup>
