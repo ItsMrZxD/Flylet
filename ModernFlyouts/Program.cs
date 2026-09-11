@@ -18,10 +18,6 @@ namespace ModernFlyouts
             Thread thread = new(() => {
                 AppLifecycleManager.StartApplication(args, () =>
                 {
-#if RELEASE
-                    Microsoft.AppCenter.AppCenter.Start("26393d67-ab03-4e26-a6db-aa76bf989c21",
-                        typeof(Microsoft.AppCenter.Analytics.Analytics), typeof(Microsoft.AppCenter.Crashes.Crashes));
-#endif
                     InitializePrivateUseClasses();
 
                     AppDataMigration.Perform();

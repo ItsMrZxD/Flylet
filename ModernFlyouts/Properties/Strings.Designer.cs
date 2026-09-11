@@ -113,6 +113,15 @@ namespace ModernFlyouts.Properties {
                 return ResourceManager.GetString("About.GitHub", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Based on ModernFlyouts (MIT License).
+        /// </summary>
+        public static string About_BasedOn {
+            get {
+                return ResourceManager.GetString("About.BasedOn", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Open a new issue.

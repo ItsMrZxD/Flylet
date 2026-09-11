@@ -177,7 +177,7 @@
   <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
     <value>Use media's thumbnail as media control's background</value>
   </data>
-  <data name="About_BasedOn" xml:space="preserve">
+  <data name="About.BasedOn" xml:space="preserve">
     <value>Based on ModernFlyouts (MIT License)</value>
   </data>
   <data name="Close" xml:space="preserve">
