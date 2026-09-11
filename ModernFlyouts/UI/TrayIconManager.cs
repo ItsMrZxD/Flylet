@@ -1,4 +1,4 @@
-﻿using Hardcodet.Wpf.TaskbarNotification;
+using H.NotifyIcon;
 using ModernFlyouts.Helpers;
 using ModernFlyouts.Utilities;
 using ModernWpf;
@@ -53,6 +53,10 @@ namespace ModernFlyouts.UI
                 ContextMenu = TaskbarIconContextMenu,
                 DoubleClickCommand = CommonCommands.OpenSettingsWindowCommand
             };
+
+            // Created in code rather than XAML, so it must be created explicitly.
+            // false = no Efficiency Mode, which would throttle the flyouts.
+            TaskbarIcon.ForceCreate(false);
         }
 
         public static void UpdateTrayIconVisibility(bool isVisible)
