@@ -225,7 +225,7 @@ namespace ModernFlyouts.Core.Interop
 
             if (!_hasNativeFlyoutCreated && (eventType == EVENT_OBJECT_CREATE || eventType == EVENT_OBJECT_SHOW))
             {
-                if (GetWindowClassName(hWnd) == "NativeHWNDHost")
+                if (GetWindowClassName(hWnd) == FlyoutHostClassName)
                 {
                     _hasNativeFlyoutCreated = GetAllInfos();
                     if (_hasNativeFlyoutCreated && hWnd == HWndHost)
@@ -340,29 +340,22 @@ namespace ModernFlyouts.Core.Interop
             return id == pid;
         }
 
+        // Build 22620 (Windows 11 22H2) moved the flyout into a XAML island host. WinEventProc and
+        // GetAllInfos must use the same class name, or a host that explorer creates after startup
+        // (which Windows 11 does on the first volume press) is never found.
+        private static readonly bool HasXamlFlyoutHost = Environment.OSVersion.Version.Build >= 22620;
+
+        private static readonly string FlyoutHostClassName = HasXamlFlyoutHost ? "XamlExplorerHostIslandWindow" : "NativeHWNDHost";
+
         private bool GetAllInfos()
         {
             IntPtr hWndHost = IntPtr.Zero;
             IntPtr hWndDUI = IntPtr.Zero;
 
-            String build = RuntimeInformation.OSDescription.Substring(RuntimeInformation.OSDescription.LastIndexOf('.') + 1);
-            int buildNumber = int.Parse(build);
-
-            String outerClass = "";
+            String outerClass = FlyoutHostClassName;
             String outerName = "";
-            String innerClass = "";
-            String innerName = "";
-            if (buildNumber >= 22620) // 22H2 changes the OSD
-            {
-                outerClass = "XamlExplorerHostIslandWindow";
-                innerClass = "Windows.UI.Composition.DesktopWindowContentBridge";
-                innerName = "DesktopWindowXamlSource";
-            }
-            else
-            {
-                outerClass = "NativeHWNDHost";
-                innerClass = "DirectUIHWND";
-            }
+            String innerClass = HasXamlFlyoutHost ? "Windows.UI.Composition.DesktopWindowContentBridge" : "DirectUIHWND";
+            String innerName = HasXamlFlyoutHost ? "DesktopWindowXamlSource" : "";
 
             while ((hWndHost = FindWindowEx(IntPtr.Zero, hWndHost, outerClass, outerName)) != IntPtr.Zero)
             {
