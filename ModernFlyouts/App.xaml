@@ -33,8 +33,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <converters:IndexToVisibilityConverter x:Key="IndexToVisibilityConverter" />
-            <converters:TextToTooltipEnabledConverter x:Key="TextToTooltipEnabledConverter" />
-            <converters:ScrollButtonVisibilityConverter x:Key="ScrollButtonVisibilityConverter" />
+            <converters:TextToTooltipEnabledConverter x:Key="TextToTooltipEnabledConverter" />            <converters:ScrollButtonVisibilityConverter x:Key="ScrollButtonVisibilityConverter" />
             <converters:EnumToLocalizedStringConverter x:Key="EnumToLocalizedStringConverter" />
             <converters:InvertBooleanToVisibilityConverter x:Key="InvertBooleanToVisibilityConverter" />
             <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />

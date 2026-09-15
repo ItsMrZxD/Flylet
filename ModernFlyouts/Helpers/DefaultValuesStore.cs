@@ -84,7 +84,7 @@ namespace ModernFlyouts.Helpers
 
         public const bool FlyoutAnimationEnabled = true;
 
-        public const bool AlignGSMTCThumbnailToRight = true;
+        public const bool AlignGSMTCThumbnailToRight = false;
 
         public const bool UseGSMTCThumbnailAsBackground = true;
 

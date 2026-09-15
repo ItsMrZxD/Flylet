@@ -1,4 +1,5 @@
-﻿using ModernFlyouts.Core.Media.Control;
+using ModernFlyouts.Core.Helpers;
+using ModernFlyouts.Core.Media.Control;
 using ModernWpf.Media.Animation;
 using System;
 using System.Windows;
@@ -11,6 +12,8 @@ namespace ModernFlyouts.Controls
 {
     public partial class SessionControl : UserControl
     {
+        private static readonly Brush AccentForegroundBrush = CreateBrush(Color.FromRgb(0x1A, 0x1A, 0x1A));
+
         private MediaSession _mediaSession;
 
         #region Properties
@@ -20,7 +23,7 @@ namespace ModernFlyouts.Controls
                 nameof(AlignThumbnailToRight),
                 typeof(bool),
                 typeof(SessionControl),
-                new PropertyMetadata(true, OnAlignThumbnailToRightChanged));
+                new PropertyMetadata(false, OnAlignThumbnailToRightChanged));
 
         public bool AlignThumbnailToRight
         {
@@ -56,6 +59,8 @@ namespace ModernFlyouts.Controls
                 mediaSession.MediaPropertiesChanging += MediaSession_MediaPropertiesChanging;
                 mediaSession.MediaPropertiesChanged += MediaSession_MediaPropertiesChanged;
             }
+
+            UpdateAccentColor();
         }
 
         private void SessionControl_Loaded(object sender, RoutedEventArgs e)
@@ -89,18 +94,17 @@ namespace ModernFlyouts.Controls
             Dispatcher.Invoke(() =>
             {
                 EndTrackTransition();
+                UpdateAccentColor();
             });
         }
 
         private void BeginTrackTransition()
         {
-            ThumbnailBackgroundBrush.BeginAnimation(Brush.OpacityProperty, null);
             ThumbnailImageBrush.BeginAnimation(Brush.OpacityProperty, null);
             TextBlockGrid.BeginAnimation(OpacityProperty, null);
             mediaArtistBlockTranslateTransform.BeginAnimation(TranslateTransform.YProperty, null);
             mediaTitleBlockTranslateTransform.BeginAnimation(TranslateTransform.YProperty, null);
 
-            ThumbnailBackgroundBrush.Opacity = 0.0;
             ThumbnailImageBrush.Opacity = 0.0;
             TextBlockGrid.Opacity = 0.0;
             mediaArtistBlockTranslateTransform.Y = 0.0;
@@ -113,7 +117,6 @@ namespace ModernFlyouts.Controls
 
             var fadeAnim = new FadeInThemeAnimation() { Duration = TimeSpan.FromMilliseconds(367) };
 
-            ThumbnailBackgroundBrush.BeginAnimation(Brush.OpacityProperty, fadeAnim);
             ThumbnailImageBrush.BeginAnimation(Brush.OpacityProperty, fadeAnim);
             TextBlockGrid.BeginAnimation(OpacityProperty, fadeAnim);
 
@@ -154,6 +157,54 @@ namespace ModernFlyouts.Controls
             mediaArtistBlockTranslateTransform.BeginAnimation(property, anim2);
         }
 
+        /// <summary>
+        /// Colors the play button and timeline with an accent picked from the thumbnail,
+        /// or restores the default look when the thumbnail has no usable color.
+        /// </summary>
+        private void UpdateAccentColor()
+        {
+            var buttonResources = PlayPauseButton.Resources;
+            var timelineResources = TimelineGrid.Resources;
+
+            if (_mediaSession?.Thumbnail is not ImageSource thumbnail || !AccentColorHelper.TryGetAccentColor(thumbnail, out var accent))
+            {
+                buttonResources.Clear();
+                timelineResources.Clear();
+                TimelineProgressBar.ClearValue(ForegroundProperty);
+                return;
+            }
+
+            var normal = CreateBrush(accent);
+            var pointerOver = CreateBrush(AccentColorHelper.Shade(accent, 0.08));
+            var pressed = CreateBrush(AccentColorHelper.Shade(accent, -0.08));
+
+            buttonResources["ButtonBackground"] = normal;
+            buttonResources["ButtonBackgroundPointerOver"] = pointerOver;
+            buttonResources["ButtonBackgroundPressed"] = pressed;
+            buttonResources["ButtonForeground"] = AccentForegroundBrush;
+            buttonResources["ButtonForegroundPointerOver"] = AccentForegroundBrush;
+            buttonResources["ButtonForegroundPressed"] = AccentForegroundBrush;
+            buttonResources["ButtonBorderBrush"] = Brushes.Transparent;
+            buttonResources["ButtonBorderBrushPointerOver"] = Brushes.Transparent;
+            buttonResources["ButtonBorderBrushPressed"] = Brushes.Transparent;
+
+            timelineResources["SliderTrackValueFill"] = normal;
+            timelineResources["SliderTrackValueFillPointerOver"] = pointerOver;
+            timelineResources["SliderTrackValueFillPressed"] = pressed;
+            timelineResources["SliderThumbBackground"] = normal;
+            timelineResources["SliderThumbBackgroundPointerOver"] = pointerOver;
+            timelineResources["SliderThumbBackgroundPressed"] = pressed;
+
+            TimelineProgressBar.Foreground = normal;
+        }
+
+        private static SolidColorBrush CreateBrush(Color color)
+        {
+            var brush = new SolidColorBrush(color);
+            brush.Freeze();
+            return brush;
+        }
+
         private static void OnAlignThumbnailToRightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var sessionControl = d as SessionControl;
@@ -164,17 +215,17 @@ namespace ModernFlyouts.Controls
 
             if (alignThumbnailToRight)
             {
-                C0.Width = new GridLength(24, GridUnitType.Pixel);
+                C0.Width = new GridLength(16, GridUnitType.Pixel);
                 C2.Width = new GridLength(0, GridUnitType.Auto);
                 sessionControl.ThumbnailGrid.SetValue(Grid.ColumnProperty, 2);
-                sessionControl.thumbnailBGOpacityBrush.GradientOrigin = sessionControl.thumbnailBGOpacityBrush.Center = new Point(1, 0.5);
+                sessionControl.ThumbnailGrid.Margin = new Thickness(14, 16, 16, 0);
             }
             else
             {
                 C0.Width = new GridLength(0, GridUnitType.Auto);
-                C2.Width = new GridLength(24, GridUnitType.Pixel);
+                C2.Width = new GridLength(16, GridUnitType.Pixel);
                 sessionControl.ThumbnailGrid.SetValue(Grid.ColumnProperty, 0);
-                sessionControl.thumbnailBGOpacityBrush.GradientOrigin = sessionControl.thumbnailBGOpacityBrush.Center = new Point(0, 0.5);
+                sessionControl.ThumbnailGrid.Margin = new Thickness(16, 16, 14, 0);
             }
         }
     }
