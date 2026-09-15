@@ -31,6 +31,7 @@ namespace ModernFlyouts
         private List<FlyoutHelperBase> flyoutHelpers = new();
         private AirplaneModeWatcher airplaneModeWatcher = new();
         private FlyoutTriggerData prevTriggerData;
+        private volatile bool isSessionLocked;
 
         #region Properties
 
@@ -200,6 +201,16 @@ namespace ModernFlyouts
             DisplayManager.Instance.DisplayUpdated += Instance_DisplayUpdated;
             airplaneModeWatcher.Changed += AirplaneModeWatcher_Changed;
             airplaneModeWatcher.Start();
+
+            // Flylet's flyout window can't draw above the lock screen, so while the PC is locked
+            // the Windows flyout is left alone; hiding it there would leave no volume feedback.
+            Microsoft.Win32.SystemEvents.SessionSwitch += (_, e) =>
+            {
+                if (e.Reason == Microsoft.Win32.SessionSwitchReason.SessionLock)
+                    isSessionLocked = true;
+                else if (e.Reason == Microsoft.Win32.SessionSwitchReason.SessionUnlock)
+                    isSessionLocked = false;
+            };
         }
 
         private void AirplaneModeWatcher_Changed(object sender, AirplaneModeChangedEventArgs e)
@@ -325,6 +336,12 @@ namespace ModernFlyouts
 
         private void OnNativeFlyoutShown()
         {
+            if (isSessionLocked)
+            {
+                NativeFlyoutHandler.Instance.ShowNativeFlyout();
+                return;
+            }
+
             if (DefaultFlyout == DefaultFlyout.ModernFlyouts)
             {
                 if (Handled())
@@ -388,7 +405,7 @@ namespace ModernFlyouts
 
         private void ShowFlyout(FlyoutHelperBase helper)
         {
-            if (DefaultFlyout != DefaultFlyout.ModernFlyouts || !helper.IsEnabled)
+            if (DefaultFlyout != DefaultFlyout.ModernFlyouts || !helper.IsEnabled || isSessionLocked)
             {
                 return;
             }
