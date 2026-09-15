@@ -2,7 +2,7 @@
 
 This software incorporates material from third parties.
 
-## ModernFlyouts: Audio-flyout module
+## Flylet: Audio-flyout module
 
 ### ADeltaX's AudioFlyout
 
@@ -34,9 +34,9 @@ SOFTWARE.
 
 **Source :** https://github.com/TsudaKageyu/IconExtractor
 
-Used for extracting icons from libraries such as `*.exe` and `*.dll` in [SourceDesktopAppInfo](ModernFlyouts.Core/Media/Source/SourceDesktopAppInfo.cs).
+Used for extracting icons from libraries such as `*.exe` and `*.dll` in [SourceDesktopAppInfo](Flylet.Core/Media/Source/SourceDesktopAppInfo.cs).
 
-**Usage :** ModernFlyouts.Core/Utilities/IconExtractor.cs
+**Usage :** Flylet.Core/Utilities/IconExtractor.cs
 
 IconExtractor/IconUtil for .NET
 Copyright (C) 2014 Tsuda Kageyu. All rights reserved.
@@ -63,13 +63,13 @@ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-## ModernFlyouts: Flyout Positioning
+## Flylet: Flyout Positioning
 
 ### File-New-Project's EarTrumpet
 
 **Source :** https://github.com/File-New-Project/EarTrumpet
 
-**Usage :** ModernFlyouts.Core/Interop/WindowsTaskbar.cs
+**Usage :** Flylet.Core/Interop/WindowsTaskbar.cs
 
 The MIT License (MIT)
 

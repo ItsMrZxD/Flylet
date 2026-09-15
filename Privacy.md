@@ -1,6 +1,6 @@
 Privacy Policy
 
-Personal Information Collection: ModernFlyouts does not collect, store, share or publish any personal information.
+Personal Information Collection: Flylet does not collect, store, share or publish any personal information.
 
 Non-personal Information Collection:
 

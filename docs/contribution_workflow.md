@@ -1,6 +1,6 @@
 # Contribution Workflow
 
-You can contribute to ModernFlyouts with issues and PRs. Simply filing issues for problems you encounter is a great way to contribute. Contributing implementations is greatly appreciated.
+You can contribute to Flylet with issues and PRs. Simply filing issues for problems you encounter is a great way to contribute. Contributing implementations is greatly appreciated.
 
 Please make sure you have some basic knowledge in git and GitHub workflow.
 
@@ -33,7 +33,7 @@ Please do not:
 * **DON'T** commit code that you didn't write (stealing code = bad. Only we can do that LOL).
 * **DON'T** submit PRs that alter licensing related files or headers.
 * **DON'T** add or change APIs or UI without filing an issue and discussing it first.
-* **DON'T** commit un-necessary changes such as changes to the **ModernFlyouts.Package.wapproj** and the **Package.appxmanifest** files and changes that you did accidentally. Please stage, review and then commit changes.
+* **DON'T** commit un-necessary changes such as changes to the **Flylet.Package.wapproj** and the **Package.appxmanifest** files and changes that you did accidentally. Please stage, review and then commit changes.
 
 ## Commit Messages
 

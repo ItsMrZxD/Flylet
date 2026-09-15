@@ -20,11 +20,11 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot -Parent
-$layout = Join-Path $repo 'ModernFlyouts.Package\bin\x64\Release'
+$layout = Join-Path $repo 'Flylet.Package\bin\x64\Release'
 $devName = 'MrzxD.Flylet.Dev'
 
 # The dev build runs straight from the build output, so a running copy locks its files
-Get-Process ModernFlyouts -ErrorAction SilentlyContinue | Where-Object { $_.Path -like "$layout\*" } | Stop-Process -Force
+Get-Process Flylet -ErrorAction SilentlyContinue | Where-Object { $_.Path -like "$layout\*" } | Stop-Process -Force
 
 if (-not $NoBuild) {
     $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
@@ -36,7 +36,7 @@ if (-not $NoBuild) {
     if ($env:PATH -notlike "*$dotnet*") { $env:PATH = "$dotnet;$env:PATH" }
 
     # Bundling would also build x86 and ARM64, which a local install doesn't need
-    & $msbuild (Join-Path $repo 'ModernFlyouts.sln') /restore /m /nologo /v:minimal /p:Configuration=Release /p:Platform=x64 /p:AppxBundle=Never
+    & $msbuild (Join-Path $repo 'Flylet.sln') /restore /m /nologo /v:minimal /p:Configuration=Release /p:Platform=x64 /p:AppxBundle=Never
     if ($LASTEXITCODE -ne 0) { throw "Build failed (exit code $LASTEXITCODE)." }
 }
 
@@ -73,6 +73,6 @@ Get-Process ModernFlyoutsHost -ErrorAction SilentlyContinue | Where-Object Path 
 
 Start-Process explorer.exe "shell:AppsFolder\$familyName!App"
 $deadline = (Get-Date).AddSeconds(10)
-while ((Get-Date) -lt $deadline -and -not (Get-Process ModernFlyouts -ErrorAction SilentlyContinue)) { Start-Sleep -Milliseconds 250 }
-if (Get-Process ModernFlyouts -ErrorAction SilentlyContinue) { 'Flylet (Dev) is running.' }
+while ((Get-Date) -lt $deadline -and -not (Get-Process Flylet -ErrorAction SilentlyContinue)) { Start-Sleep -Milliseconds 250 }
+if (Get-Process Flylet -ErrorAction SilentlyContinue) { 'Flylet (Dev) is running.' }
 else { Write-Warning 'Flylet (Dev) did not start within 10 seconds.' }

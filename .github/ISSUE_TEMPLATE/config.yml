@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
-  - name: "\U0001F4DA ModernFlyouts user documentation"
+  - name: "\U0001F4DA Flylet user documentation"
     url: https://modernflyouts-community.github.io/docs/#/
-    about: Documentation for users of ModernFlyouts
-  - name: "\U0001F4DA ModernFlyouts dev documentation"
+    about: Documentation for users of Flylet
+  - name: "\U0001F4DA Flylet dev documentation"
     url: https://modernflyouts-community.github.io/docs/#/
-    about: Documentation for people interested in developing and contributing for ModernFlyouts
+    about: Documentation for people interested in developing and contributing for Flylet

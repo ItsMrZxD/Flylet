@@ -1,8 +1,8 @@
-# Contributing to ModernFlyouts
+# Contributing to Flylet
 
-Thank you for showing your interest in contributing to **ModernFlyouts**!
+Thank you for showing your interest in contributing to **Flylet**!
 
-You can contribute to **ModernFlyouts** by filing issues (which includes bug reports and feature requests) making pull requests (including code, docs and translations). Simply filing issues for the problems you encounter is a great way to contribute. Contributing code via PRs is greatly appreciated!
+You can contribute to **Flylet** by filing issues (which includes bug reports and feature requests) making pull requests (including code, docs and translations). Simply filing issues for the problems you encounter is a great way to contribute. Contributing code via PRs is greatly appreciated!
 
 Below is our guidance for how to file bug reports, propose new features, and submit contributions via Pull Requests (PRs).
 
@@ -26,20 +26,20 @@ If no existing item describes your issue/feature, great - please file a new issu
 
 ### File a new Issue
 
-* Experienced a bug or crash? [File a bug report](https://github.com/ModernFlyouts-Community/ModernFlyouts/issues/new?labels=bug&template=bug_report.md&title=Bug%3A)
-* Got a great idea for a new feature or have a suggestion? [File a feature request](https://github.com/ModernFlyouts-Community/ModernFlyouts/issues/new?labels=enhancement&template=feature_request.md&title=Feature+Request%3A)
-* Want ModernFlyouts to support your language of interest? (or) Update/Correct existing translations? [File a Language request/translation issue](https://github.com/ModernFlyouts-Community/ModernFlyouts/issues/new?assignees=Samuel12321&labels=translation&template=language-or-translation-issue-or-request-.md&title=)
-* Don't know whether you're reporting a bug or requesting a feature? [File an issue](https://github.com/ModernFlyouts-Community/ModernFlyouts/issues/new?assignees=&labels=&template=blank-issue.md&title=)
+* Experienced a bug or crash? [File a bug report](https://github.com/Flylet-Community/Flylet/issues/new?labels=bug&template=bug_report.md&title=Bug%3A)
+* Got a great idea for a new feature or have a suggestion? [File a feature request](https://github.com/Flylet-Community/Flylet/issues/new?labels=enhancement&template=feature_request.md&title=Feature+Request%3A)
+* Want Flylet to support your language of interest? (or) Update/Correct existing translations? [File a Language request/translation issue](https://github.com/Flylet-Community/Flylet/issues/new?assignees=Samuel12321&labels=translation&template=language-or-translation-issue-or-request-.md&title=)
+* Don't know whether you're reporting a bug or requesting a feature? [File an issue](https://github.com/Flylet-Community/Flylet/issues/new?assignees=&labels=&template=blank-issue.md&title=)
 * Found an existing issue that describes yours? Great - upvote and add additional commentary / info / repro-steps / etc.
-* Want to know if we're planning on building a particular feature? (or) Don't understand how to do something? (or) Have a question that you don't see answered in this repo? [Connect with us](https://github.com/ModernFlyouts-Community/ModernFlyouts#connect-with-us) and ask our team and the community to get your doubts cleared. (Please don't open issues just for questions or doubts)
+* Want to know if we're planning on building a particular feature? (or) Don't understand how to do something? (or) Have a question that you don't see answered in this repo? [Connect with us](https://github.com/Flylet-Community/Flylet#connect-with-us) and ask our team and the community to get your doubts cleared. (Please don't open issues just for questions or doubts)
 
 We provide some basic issue templates. If none of them suit your need, you can start from a blank issue.
 
 ## Code Contribution guidelines
 
-Before contributing any code via PRs to **ModernFlyouts**, please **file a new issue** regarding it and ask for the teams approval.
+Before contributing any code via PRs to **Flylet**, please **file a new issue** regarding it and ask for the teams approval.
 If you want to implement or fix any existing issues, please leave a comment on the issue notifying us about your will to contribute code.
-We'll then give you some guidelines regarding the project and source code structure and stuffs. Now, let's get back on how to contribute code to **ModernFlyouts**.
+We'll then give you some guidelines regarding the project and source code structure and stuffs. Now, let's get back on how to contribute code to **Flylet**.
 
 ### Code contribution process
 
@@ -64,7 +64,7 @@ We know how time consuming and hard it is to translate the text resources used b
 
 Please remember these points! We have suffered enough pain telling contributors to redo their work.
 
-- **(!!!Important!!!)** The files you need to translate are present in the [ModernFlyouts/MultilingualResources](ModernFlyouts/MultilingualResources) directory.
-- The **RESX files** (i.e. **Strings.(lang-code).resx** ) present inside the [ModernFlyouts/Properties](ModernFlyouts/Properties) directory are intended for internal use and are modified every time the project is built.
-- Only the **ModernFlyouts.(lang-code).xlf** files present inside the [ModernFlyouts/MultilingualResources](ModernFlyouts/MultilingualResources) directory are stable and intended to be translated by contributors.
-- Please don't modify any files other than file related to your target language! Which is **ModernFlyouts.(lang-code).xlf** for e.g. **ModernFlyouts.en-GB.xlf**.
+- **(!!!Important!!!)** The files you need to translate are present in the [Flylet/MultilingualResources](Flylet/MultilingualResources) directory.
+- The **RESX files** (i.e. **Strings.(lang-code).resx** ) present inside the [Flylet/Properties](Flylet/Properties) directory are intended for internal use and are modified every time the project is built.
+- Only the **Flylet.(lang-code).xlf** files present inside the [Flylet/MultilingualResources](Flylet/MultilingualResources) directory are stable and intended to be translated by contributors.
+- Please don't modify any files other than file related to your target language! Which is **Flylet.(lang-code).xlf** for e.g. **Flylet.en-GB.xlf**.

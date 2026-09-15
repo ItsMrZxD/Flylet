@@ -96,7 +96,7 @@ function Save-Ico([string]$path, [int[]]$sizes, [string]$mode) {
 
 $count = 0
 
-Get-ChildItem (Join-Path $Repo 'ModernFlyouts.Package\Images') -Filter *.png |
+Get-ChildItem (Join-Path $Repo 'Flylet.Package\Images') -Filter *.png |
     Where-Object Name -notlike '*backup*' | ForEach-Object {
         $img = [System.Drawing.Image]::FromFile($_.FullName)
         $w = $img.Width; $h = $img.Height
@@ -107,7 +107,7 @@ Get-ChildItem (Join-Path $Repo 'ModernFlyouts.Package\Images') -Filter *.png |
         $count++
     }
 
-Get-ChildItem (Join-Path $Repo 'ModernFlyouts\Assets\Images') -Filter 'ModernFlyouts_*.png' | ForEach-Object {
+Get-ChildItem (Join-Path $Repo 'Flylet\Assets\Images') -Filter 'Flylet_*.png' | ForEach-Object {
     $img = [System.Drawing.Image]::FromFile($_.FullName)
     $w = $img.Width; $h = $img.Height
     $img.Dispose()
@@ -117,9 +117,9 @@ Get-ChildItem (Join-Path $Repo 'ModernFlyouts\Assets\Images') -Filter 'ModernFly
     $count++
 }
 
-Save-Ico (Join-Path $Repo 'ModernFlyouts\Assets\Logo.ico') @(16, 24, 32, 48, 64, 128, 256) 'tile'
-Save-Ico (Join-Path $Repo 'ModernFlyouts\Assets\Logo_Tray_White.ico') @(16, 20, 24, 32, 48) 'white'
-Save-Ico (Join-Path $Repo 'ModernFlyouts\Assets\Logo_Tray_Black.ico') @(16, 20, 24, 32, 48) 'black'
+Save-Ico (Join-Path $Repo 'Flylet\Assets\Logo.ico') @(16, 24, 32, 48, 64, 128, 256) 'tile'
+Save-Ico (Join-Path $Repo 'Flylet\Assets\Logo_Tray_White.ico') @(16, 20, 24, 32, 48) 'white'
+Save-Ico (Join-Path $Repo 'Flylet\Assets\Logo_Tray_Black.ico') @(16, 20, 24, 32, 48) 'black'
 
 "redrew $count png files plus 3 ico files"
 

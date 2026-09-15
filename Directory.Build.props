@@ -1,6 +1,6 @@
 ﻿<Project>
   <PropertyGroup>
-    <Authors>ModernFlyouts Community</Authors>
+    <Authors>Flylet Community</Authors>
     <LangVersion>latest</LangVersion>
     <Version>0.10.0</Version>
   </PropertyGroup>

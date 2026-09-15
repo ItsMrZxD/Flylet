@@ -21,7 +21,7 @@ variables:
 - name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
   value: true
 - name: Solution
-  value: 'ModernFlyouts.sln'
+  value: 'Flylet.sln'
 - name: BuildConfiguration
   value: 'Release'
 - name: BuildPlatform
@@ -83,19 +83,19 @@ jobs:
     inputs:
       targetType: inline
       script: |
-        $cfg = Get-Content ".\ModernFlyouts\app.config"
+        $cfg = Get-Content ".\Flylet\app.config"
         $cfg | ForEach-Object { $_.Replace("{bugsnag.apikey}", "$(bugsnag.apikey)") } | Set-Content ".\EarTrumpet\app.config"
   - task: PowerShell@2
     displayName: 'Adjust manifest and store association'
     inputs:
       targetType: inline
       script: |
-        $manifestPath = ".\ModernFlyouts.Package\Package.appxmanifest"
-        $storeAssociationPath = ".\ModernFlyouts.Package\Package.StoreAssociation.xml"
+        $manifestPath = ".\Flylet.Package\Package.appxmanifest"
+        $storeAssociationPath = ".\Flylet.Package\Package.StoreAssociation.xml"
         $manifest = [xml](Get-Content $manifestPath)
         $manifest.Package.Identity.Publisher = "$(Publisher)"
         if("$(Channel)" -eq "AppInstaller") {
-          $manifest.Package.Properties.DisplayName = "ModernFlyouts ($(GitVersion.BranchName))"
+          $manifest.Package.Properties.DisplayName = "Flylet ($(GitVersion.BranchName))"
           $manifest.Package.Applications.Application.VisualElements.DisplayName = "EarTrumpet ($(GitVersion.BranchName))"
         }
         $manifest.Save($manifestPath)
@@ -106,9 +106,9 @@ jobs:
         }
         $storeAssociation.Save($storeAssociationPath)
   - task: MSBuild@1
-    displayName: 'Build ModernFlyouts appxupload package'
+    displayName: 'Build Flylet appxupload package'
     inputs:
-      solution: 'ModernFlyouts.Package/EarTrModernFlyouts.Package.wapproj'
+      solution: 'Flylet.Package/EarTrFlylet.Package.wapproj'
       platform: 'x86'
       configuration: '$(buildConfiguration)'
       msbuildArguments: '/p:AppxBundle=Always /p:Channel=$(Channel) /p:AppxPackageDir="$(Build.ArtifactStagingDirectory)/AppxUpload" /p:AppxPackageSigningEnabled=false /p:UapAppxPackageBuildMode=CI'
@@ -123,9 +123,9 @@ jobs:
     condition: and(succeeded(), eq(variables['Channel'], 'Store'))
 
   - task: MSBuild@1
-    displayName: 'Build ModernFlyouts appinstaller/sideload package'
+    displayName: 'Build Flylet appinstaller/sideload package'
     inputs:
-      solution: 'ModernFlyouts.Package/ModernFlyouts.Package.wapproj'
+      solution: 'Flylet.Package/Flylet.Package.wapproj'
       platform: 'x86'
       configuration: '$(buildConfiguration)'
       msbuildArguments: '/p:AppxBundle=Always /p:Channel=$(Channel) /p:AppxPackageDir="$(Build.ArtifactStagingDirectory)/Sideload" /p:AppxPackageSigningEnabled=false /p:UapAppxPackageBuildMode=SideloadOnly /p:GenerateAppInstallerFile=true /p:AppxPackageTestDir="$(Build.ArtifactStagingDirectory)/Sideload/" /p:AppInstallerUri=https://install.eartrumpet.app'
@@ -137,10 +137,10 @@ jobs:
     inputs:
       targetType: inline
       script: |
-        $manifestPath = "$(Build.ArtifactStagingDirectory)/Sideload/ModernFlyouts.Package.appinstaller"
+        $manifestPath = "$(Build.ArtifactStagingDirectory)/Sideload/Flylet.Package.appinstaller"
         $manifest = [xml](Get-Content $manifestPath)
-        $manifest.AppInstaller.Uri = "https://install.ModernFlyouts.app/$(GitVersion.BranchName)/ModernFlyouts.Package.appinstaller"
-        $manifest.AppInstaller.MainBundle.Uri = "https://install.ModernFlyouts.app/$(GitVersion.BranchName)/ModernFlyouts.Package_$(GitVersion.MajorMinorPatch).$(GitVersion.CommitsSinceVersionSource)_x86.appxbundle"
+        $manifest.AppInstaller.Uri = "https://install.Flylet.app/$(GitVersion.BranchName)/Flylet.Package.appinstaller"
+        $manifest.AppInstaller.MainBundle.Uri = "https://install.Flylet.app/$(GitVersion.BranchName)/Flylet.Package_$(GitVersion.MajorMinorPatch).$(GitVersion.CommitsSinceVersionSource)_x86.appxbundle"
         $manifest.AppInstaller.MainBundle.Publisher = "$(Publisher)"
         $manifest.Save($manifestPath)
       pwsh: true
