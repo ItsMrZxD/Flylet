@@ -1,6 +1,12 @@
 # Draws Flylet's icon (two stacked rounded cards, like the flyouts it shows) at every size
 # the app and package need. Run tools/make-icons.ps1 from the repo. Originals are in git history.
-param([string]$Repo = (Split-Path $PSScriptRoot -Parent))
+param(
+    [string]$Repo = (Split-Path $PSScriptRoot -Parent),
+    # Render one image to this path instead of regenerating the app's icons, e.g. a Store listing logo
+    [string]$SingleImage,
+    [int]$SingleSize = 300,
+    [ValidateSet('tile', 'white', 'black')][string]$SingleMode = 'tile'
+)
 
 Add-Type -AssemblyName System.Drawing
 $ErrorActionPreference = 'Stop'
@@ -92,6 +98,14 @@ function Save-Ico([string]$path, [int[]]$sizes, [string]$mode) {
     }
     foreach ($frame in $frames) { $bw.Write($frame) }
     $bw.Flush(); $bw.Dispose(); $fs.Dispose()
+}
+
+if ($SingleImage) {
+    $bmp = New-IconBitmap $SingleSize $SingleSize $SingleMode
+    $bmp.Save($SingleImage, [System.Drawing.Imaging.ImageFormat]::Png)
+    $bmp.Dispose()
+    "wrote $SingleImage ($SingleSize x $SingleSize, $SingleMode)"
+    return
 }
 
 $count = 0
