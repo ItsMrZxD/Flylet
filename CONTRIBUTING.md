@@ -26,12 +26,12 @@ If no existing item describes your issue/feature, great - please file a new issu
 
 ### File a new Issue
 
-* Experienced a bug or crash? [File a bug report](https://github.com/Flylet-Community/Flylet/issues/new?labels=bug&template=bug_report.md&title=Bug%3A)
-* Got a great idea for a new feature or have a suggestion? [File a feature request](https://github.com/Flylet-Community/Flylet/issues/new?labels=enhancement&template=feature_request.md&title=Feature+Request%3A)
-* Want Flylet to support your language of interest? (or) Update/Correct existing translations? [File a Language request/translation issue](https://github.com/Flylet-Community/Flylet/issues/new?assignees=Samuel12321&labels=translation&template=language-or-translation-issue-or-request-.md&title=)
-* Don't know whether you're reporting a bug or requesting a feature? [File an issue](https://github.com/Flylet-Community/Flylet/issues/new?assignees=&labels=&template=blank-issue.md&title=)
+* Experienced a bug or crash? [File a bug report](https://github.com/ItsMrZxD/Flylet/issues/new?template=bug-report.yml)
+* Got a great idea for a new feature or have a suggestion? [File a feature request](https://github.com/ItsMrZxD/Flylet/issues/new?template=feature-request.yml)
+* Want Flylet to support your language of interest? (or) Update/Correct existing translations? [File a translation issue](https://github.com/ItsMrZxD/Flylet/issues/new?template=localization-translation-issue.yml)
+* Don't know which one fits? [Pick from all issue types](https://github.com/ItsMrZxD/Flylet/issues/new/choose)
 * Found an existing issue that describes yours? Great - upvote and add additional commentary / info / repro-steps / etc.
-* Want to know if we're planning on building a particular feature? (or) Don't understand how to do something? (or) Have a question that you don't see answered in this repo? [Connect with us](https://github.com/Flylet-Community/Flylet#connect-with-us) and ask our team and the community to get your doubts cleared. (Please don't open issues just for questions or doubts)
+* Have a question, or want to know whether a feature is planned? Open an issue and ask, or email hello.flyletapp@gmail.com.
 
 We provide some basic issue templates. If none of them suit your need, you can start from a blank issue.
 
@@ -43,7 +43,7 @@ We'll then give you some guidelines regarding the project and source code struct
 
 ### Code contribution process
 
-- [Setup and build environment](docs/developer_guide.md)
+- [Building Flylet](README.md#building)
 - [Contribution Workflow](docs/contribution_workflow.md)
 
 ### Copying files from other projects
@@ -60,7 +60,7 @@ The following rules must be followed for PRs that include files from another pro
 First of all, we must thank you for stepping forward to contribute support a language!
 We know how time consuming and hard it is to translate the text resources used by this app. Unfortunately in the past we had to ask some contributors to redo all their work from scratch due to some technical difficulties on our side. That's why we want you to know these pre-cautions to be taken before contributing translations.
 
-**Read these docs first:** [Setup and build environment](docs/developer_guide.md) and [Contribution Workflow](docs/contribution_workflow.md).
+**Read these docs first:** [Building Flylet](README.md#building) and [Contribution Workflow](docs/contribution_workflow.md).
 
 Please remember these points! We have suffered enough pain telling contributors to redo their work.
 

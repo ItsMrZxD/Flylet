@@ -1,10 +1,10 @@
 # Global System Media Transport Controls (GSMTC) support and popular media apps
 
-Flylet' Media Session Controls will support every application that makes use of the [System Media Transport Controls **aka SMTC** API](https://docs.microsoft.com/en-us/uwp/api/windows.media.systemmediatransportcontrols) to manage their media playback.
+Flylet's Media Session Controls will support every application that makes use of the [System Media Transport Controls **aka SMTC** API](https://docs.microsoft.com/en-us/uwp/api/windows.media.systemmediatransportcontrols) to manage their media playback.
 
 The built-in Windows Media Flyout will also only support those apps.
 
-Users tend to know which functionalities are supported by Flylet' Media Sessions Controls for their apps of interest ([#230](https://github.com/Flylet-Community/Flylet/issues/230) for instance).
+Users tend to know which functionalities are supported by Flylet's Media Sessions Controls for their apps of interest ([#230](https://github.com/ModernFlyouts-Community/ModernFlyouts/issues/230) for instance).
 
 
 ### Legend
