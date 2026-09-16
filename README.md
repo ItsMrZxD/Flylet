@@ -1,6 +1,10 @@
-# Flylet
+<p align="center">
+  <img src="docs/images/flylet-icon.png" width="128" height="128" alt="Flylet icon">
+</p>
 
-Modern, Fluent-style replacements for the Windows volume, brightness, media and lock-key pop-ups.
+<h1 align="center">Flylet</h1>
+
+<p align="center">Modern, Fluent-style replacements for the Windows volume, brightness, media and lock-key pop-ups.</p>
 
 ![Flylet's volume and media flyouts](docs/images/flylet-flyouts.png)
 
