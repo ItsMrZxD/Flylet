@@ -25,6 +25,7 @@ moving while the music plays.
 | Media | Album art, title, artist, play/pause, previous/next and a seekable timeline |
 | Brightness | A brightness slider, on devices that support it |
 | Lock keys | Caps Lock, Num Lock and Scroll Lock state |
+| Airplane mode | Airplane mode on/off, on PCs with wireless radios |
 
 It runs from the system tray, can start with Windows, and gets out of the way when you don't
 need it.
@@ -40,6 +41,10 @@ need it.
   pop-up. Flylet recognizes both.
 - **A redesigned media flyout:** album art on the left, and the play button and timeline take an
   accent color picked from the album art.
+- **Your colors.** The flyouts follow your Windows accent color as it changes, and Settings >
+  Personalization > Colors lets you pick a custom accent and flyout background. Text switches
+  between light and dark to stay readable on the color you choose.
+- **Translated.** Every string is translated in all 31 languages, with no half-English screens.
 - **Up to date:** .NET 10, current dependencies, built with Visual Studio 2026.
 - **Its own name and icon.**
 
@@ -50,8 +55,13 @@ need it.
 
 ## Installing
 
-Flylet is heading to the Microsoft Store; this README will link to it once it's published.
-Until then, build it yourself.
+Get Flylet from the
+[Microsoft Store](https://apps.microsoft.com/detail/9NPSS6NW7T23). Updates arrive through the
+Store automatically.
+
+Store releases are signed by the Store, so the GitHub
+[releases](https://github.com/ItsMrZxD/Flylet/releases) hold release notes only, with no
+installer. To run it from source instead, see Building below.
 
 ## Building
 
