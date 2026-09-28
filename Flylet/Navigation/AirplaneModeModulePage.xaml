@@ -12,10 +12,18 @@
     <controls:ScrollViewerEx VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="20,10">
             <GroupBox>
-                <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_EnableModule_Airplane}"
-                                 IsOn="{Binding AirplaneModeFlyoutHelper.IsEnabled}"
-                                 OnContent="{x:Static resx:Strings.Settings_On}"
-                                 OffContent="{x:Static resx:Strings.Settings_Off}" />
+                <StackPanel>
+                    <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_EnableModule_Airplane}"
+                                     IsOn="{Binding AirplaneModeFlyoutHelper.IsEnabled}"
+                                     IsEnabled="{Binding AirplaneModeFlyoutHelper.HasRadios}"
+                                     OnContent="{x:Static resx:Strings.Settings_On}"
+                                     OffContent="{x:Static resx:Strings.Settings_Off}" />
+                    <TextBlock Text="{x:Static resx:Strings.Settings_Airplane_NoRadios}"
+                               Visibility="{Binding AirplaneModeFlyoutHelper.HasRadios, Converter={StaticResource InvertBooleanToVisibilityConverter}}"
+                               Style="{DynamicResource CaptionTextBlockStyle}"
+                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                               Margin="0,4,0,0" TextWrapping="Wrap" />
+                </StackPanel>
             </GroupBox>
         </StackPanel>
     </controls:ScrollViewerEx>

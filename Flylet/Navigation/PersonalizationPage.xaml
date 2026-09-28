@@ -55,6 +55,32 @@
                 </ui:SimpleStackPanel>
             </GroupBox>
 
+            <GroupBox Header="{x:Static resx:Strings.Settings_Colors}">
+                <ui:SimpleStackPanel Spacing="10">
+                    <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_UseCustomAccentColor}"
+                                     IsOn="{Binding UIManager.UseCustomAccentColor}"
+                                     OnContent="{x:Static resx:Strings.Settings_On}"
+                                     OffContent="{x:Static resx:Strings.Settings_Off}" />
+                    <controls:ColorSwatchPicker SelectedColor="{Binding UIManager.CustomAccentColor}"
+                                                 Visibility="{Binding UIManager.UseCustomAccentColor,
+                                                    Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                    <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_UseCustomFlyoutBackgroundColor}"
+                                     IsOn="{Binding UIManager.UseCustomFlyoutBackgroundColor}"
+                                     OnContent="{x:Static resx:Strings.Settings_On}"
+                                     OffContent="{x:Static resx:Strings.Settings_Off}" />
+                    <controls:ColorSwatchPicker SelectedColor="{Binding UIManager.CustomFlyoutBackgroundColor}"
+                                                 Visibility="{Binding UIManager.UseCustomFlyoutBackgroundColor,
+                                                    Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <TextBlock Text="{x:Static resx:Strings.Settings_CustomFlyoutBackgroundColor_Description}"
+                               Visibility="{Binding UIManager.UseCustomFlyoutBackgroundColor,
+                                  Converter={StaticResource BooleanToVisibilityConverter}}"
+                               Style="{DynamicResource CaptionTextBlockStyle}"
+                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                               TextWrapping="Wrap" />
+                </ui:SimpleStackPanel>
+            </GroupBox>
+
             <GroupBox Header="{x:Static resx:Strings.Settings_Behavior}">
                 <ui:SimpleStackPanel Spacing="10">
                     <ui:NumberBox Header="{x:Static resx:Strings.Settings_FlyoutTimeout}"

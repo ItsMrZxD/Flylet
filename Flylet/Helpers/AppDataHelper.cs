@@ -319,6 +319,30 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static bool UseCustomAccentColor
+        {
+            get => GetValue(DefaultValuesStore.UseCustomAccentColor);
+            set => SetValue(value);
+        }
+
+        public static string CustomAccentColor
+        {
+            get => GetValue(DefaultValuesStore.CustomAccentColor);
+            set => SetValue(value);
+        }
+
+        public static bool UseCustomFlyoutBackgroundColor
+        {
+            get => GetValue(DefaultValuesStore.UseCustomFlyoutBackgroundColor);
+            set => SetValue(value);
+        }
+
+        public static string CustomFlyoutBackgroundColor
+        {
+            get => GetValue(DefaultValuesStore.CustomFlyoutBackgroundColor);
+            set => SetValue(value);
+        }
+
         #endregion
 
         #endregion

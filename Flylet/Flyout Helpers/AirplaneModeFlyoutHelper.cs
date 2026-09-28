@@ -1,4 +1,5 @@
 ﻿using Flylet.Controls;
+using Flylet.Core.Utilities;
 using Flylet.Helpers;
 
 namespace Flylet
@@ -17,6 +18,12 @@ namespace Flylet
             private set => SetProperty(ref airplaneMode, value);
         }
 
+        /// <summary>
+        /// Whether this PC has any Wi-Fi or Bluetooth hardware. When false, the module has
+        /// nothing to control, so the settings page disables its toggle instead of leaving a dead one.
+        /// </summary>
+        public bool HasRadios { get; private set; } = true;
+
         #endregion
 
         public AirplaneModeFlyoutHelper()
@@ -27,6 +34,8 @@ namespace Flylet
         public void Initialize()
         {
             AlwaysHandleDefaultFlyout = true;
+
+            HasRadios = RadioAvailability.HasAnyRadios();
 
             airplaneModeControl = new AirplaneModeControl();
 

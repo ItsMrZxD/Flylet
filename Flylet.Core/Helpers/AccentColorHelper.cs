@@ -125,6 +125,25 @@ namespace Flylet.Core.Helpers
             return Color.FromArgb(color.A, ToByte(r), ToByte(g), ToByte(b));
         }
 
+        /// <summary>
+        /// Whether dark text has more contrast on this color than light text does.
+        /// </summary>
+        /// <remarks>
+        /// Uses WCAG relative luminance. At about 0.179 the contrast ratios against black and white are
+        /// equal, so above it black text reads better.
+        /// </remarks>
+        public static bool IsLight(Color color)
+        {
+            static double Linear(byte channel)
+            {
+                double c = channel / 255.0;
+                return c <= 0.04045 ? c / 12.92 : Math.Pow((c + 0.055) / 1.055, 2.4);
+            }
+
+            double luminance = 0.2126 * Linear(color.R) + 0.7152 * Linear(color.G) + 0.0722 * Linear(color.B);
+            return luminance > 0.179;
+        }
+
         public static (double Hue, double Saturation, double Lightness) RgbToHsl(double r, double g, double b)
         {
             double max = Math.Max(r, Math.Max(g, b));

@@ -308,6 +308,18 @@
   <data name="Settings.Behavior" xml:space="preserve">
     <value>Behavior</value>
   </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Colors</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Use a custom accent color</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Use a custom flyout background color</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Flyout text switches between light and dark to stay readable on this color, in place of the flyout theme.</value>
+  </data>
   <data name="Settings.DefaultFlyout" xml:space="preserve">
     <value>Default Flyout</value>
   </data>
@@ -325,6 +337,9 @@
   </data>
   <data name="Settings.EnableModule.Airplane" xml:space="preserve">
     <value>Enable Airplane mode Flyout</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>No wireless radios were found on this PC, so this flyout can't be enabled.</value>
   </data>
   <data name="Settings.EnableModule.Audio" xml:space="preserve">
     <value>Enable Audio Flyout</value>

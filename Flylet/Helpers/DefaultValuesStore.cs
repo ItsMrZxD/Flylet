@@ -92,6 +92,14 @@ namespace Flylet.Helpers
 
         public const Orientation SessionsPanelOrientation = Orientation.Horizontal;
 
+        public const bool UseCustomAccentColor = false;
+
+        public const string CustomAccentColor = "#0078D7";
+
+        public const bool UseCustomFlyoutBackgroundColor = false;
+
+        public const string CustomFlyoutBackgroundColor = "#222222";
+
         #endregion
     }
 }

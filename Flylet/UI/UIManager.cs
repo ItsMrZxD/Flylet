@@ -1,8 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Flylet.Controls;
+using Flylet.Core.Helpers;
+using Flylet.Core.Threading;
 using Flylet.Core.UI;
 using Flylet.Helpers;
 using ModernWpf;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +29,9 @@ namespace Flylet.UI
         private ThemeResources themeResources;
         private ResourceDictionary lightResources;
         private ResourceDictionary darkResources;
+        private Color defaultLightFlyoutBackgroundColor;
+        private Color defaultDarkFlyoutBackgroundColor;
+        private readonly DebounceDispatcher accentRefreshDebouncer = new();
 
         private bool _isThemeUpdated;
 
@@ -159,6 +165,72 @@ namespace Flylet.UI
                 if (SetProperty(ref flyoutAnimationEnabled, value))
                 {
                     OnFadeAnimationEnabledChanged();
+                }
+            }
+        }
+
+        private bool useCustomAccentColor = DefaultValuesStore.UseCustomAccentColor;
+
+        public bool UseCustomAccentColor
+        {
+            get => useCustomAccentColor;
+            set
+            {
+                if (SetProperty(ref useCustomAccentColor, value))
+                {
+                    ApplyAccentColor();
+                    AppDataHelper.UseCustomAccentColor = value;
+                }
+            }
+        }
+
+        private Color customAccentColor = (Color)ColorConverter.ConvertFromString(DefaultValuesStore.CustomAccentColor);
+
+        public Color CustomAccentColor
+        {
+            get => customAccentColor;
+            set
+            {
+                if (SetProperty(ref customAccentColor, value))
+                {
+                    if (useCustomAccentColor)
+                    {
+                        ApplyAccentColor();
+                    }
+                    AppDataHelper.CustomAccentColor = value.ToString();
+                }
+            }
+        }
+
+        private bool useCustomFlyoutBackgroundColor = DefaultValuesStore.UseCustomFlyoutBackgroundColor;
+
+        public bool UseCustomFlyoutBackgroundColor
+        {
+            get => useCustomFlyoutBackgroundColor;
+            set
+            {
+                if (SetProperty(ref useCustomFlyoutBackgroundColor, value))
+                {
+                    UpdateTheme();
+                    AppDataHelper.UseCustomFlyoutBackgroundColor = value;
+                }
+            }
+        }
+
+        private Color customFlyoutBackgroundColor = (Color)ColorConverter.ConvertFromString(DefaultValuesStore.CustomFlyoutBackgroundColor);
+
+        public Color CustomFlyoutBackgroundColor
+        {
+            get => customFlyoutBackgroundColor;
+            set
+            {
+                if (SetProperty(ref customFlyoutBackgroundColor, value))
+                {
+                    if (useCustomFlyoutBackgroundColor)
+                    {
+                        UpdateTheme();
+                    }
+                    AppDataHelper.CustomFlyoutBackgroundColor = value.ToString();
                 }
             }
         }
@@ -336,6 +408,8 @@ namespace Flylet.UI
                 .MergedDictionaries.FirstOrDefault(x => x is ThemeResources);
             lightResources = themeResources.ThemeDictionaries["Light"];
             darkResources = themeResources.ThemeDictionaries["Dark"];
+            defaultLightFlyoutBackgroundColor = ((SolidColorBrush)lightResources["FlyoutBackground"]).Color;
+            defaultDarkFlyoutBackgroundColor = ((SolidColorBrush)darkResources["FlyoutBackground"]).Color;
 
             FlyoutBackgroundOpacity = AppDataHelper.FlyoutBackgroundOpacity;
 
@@ -344,6 +418,17 @@ namespace Flylet.UI
             TrayIconEnabled = AppDataHelper.TrayIconEnabled;
             UseColoredTrayIcon = AppDataHelper.UseColoredTrayIcon;
             FlyoutAnimationEnabled = AppDataHelper.FlyoutAnimationEnabled;
+
+            // Straight into the fields: the setters would re-save what was just read and rebuild the accent
+            // more than once, and the background is applied by the theme update below, once the system theme is known
+            customAccentColor = ParseColorOrDefault(AppDataHelper.CustomAccentColor, DefaultValuesStore.CustomAccentColor);
+            useCustomAccentColor = AppDataHelper.UseCustomAccentColor;
+            customFlyoutBackgroundColor = ParseColorOrDefault(AppDataHelper.CustomFlyoutBackgroundColor, DefaultValuesStore.CustomFlyoutBackgroundColor);
+            useCustomFlyoutBackgroundColor = AppDataHelper.UseCustomFlyoutBackgroundColor;
+            if (useCustomAccentColor)
+            {
+                ApplyAccentColor();
+            }
 
             FlyoutTheme = AppDataHelper.FlyoutTheme;
             AppTheme = AppDataHelper.AppTheme;
@@ -354,7 +439,7 @@ namespace Flylet.UI
 
         private void OnFlyoutBackgroundOpacityChanged()
         {
-            UpdateFlyoutBackgroundOpacity();
+            UpdateFlyoutBackground();
             AppDataHelper.FlyoutBackgroundOpacity = flyoutBackgroundOpacity;
         }
 
@@ -381,6 +466,50 @@ namespace Flylet.UI
             UpdateTheme();
         }
 
+        /// <summary>
+        /// Picks up a changed system accent once a burst of colorization change messages settles.
+        /// </summary>
+        /// <remarks>
+        /// DWM sends WM_DWMCOLORIZATIONCOLORCHANGED several times per change, and a stream of them while the
+        /// color animates, sometimes before the new accent can be read. Each refresh rebuilds every accent resource.
+        /// </remarks>
+        public void QueueSystemAccentColorRefresh()
+        {
+            accentRefreshDebouncer.Debounce(TimeSpan.FromMilliseconds(250), () =>
+            {
+                if (!useCustomAccentColor)
+                {
+                    ApplyAccentColor();
+                }
+            });
+        }
+
+        private void ApplyAccentColor()
+        {
+            if (useCustomAccentColor)
+            {
+                themeResources.AccentColor = customAccentColor;
+                return;
+            }
+
+            // ModernWpf only detects the system accent when AccentColor becomes null, and assigning null
+            // again is a no-op, so a throwaway value forces the re-detection
+            themeResources.AccentColor = Colors.Transparent;
+            themeResources.AccentColor = null;
+        }
+
+        private static Color ParseColorOrDefault(string value, string defaultValue)
+        {
+            try
+            {
+                return (Color)ColorConverter.ConvertFromString(value);
+            }
+            catch
+            {
+                return (Color)ColorConverter.ConvertFromString(defaultValue);
+            }
+        }
+
         private void UpdateAppTheme()
         {
             ThemeManager.Current.ApplicationTheme = appTheme switch
@@ -394,26 +523,29 @@ namespace Flylet.UI
 
         private void UpdateTheme()
         {
-            ActualFlyoutTheme = flyoutTheme == ElementTheme.Default ? currentSystemTheme : flyoutTheme;
+            // The flyout's text and controls come from its theme, so a custom background picks the theme
+            // that stays readable on it instead of the flyout theme setting
+            ActualFlyoutTheme = useCustomFlyoutBackgroundColor
+                ? (AccentColorHelper.IsLight(customFlyoutBackgroundColor) ? ElementTheme.Light : ElementTheme.Dark)
+                : (flyoutTheme == ElementTheme.Default ? currentSystemTheme : flyoutTheme);
 
             if (!_isThemeUpdated)
             {
                 _isThemeUpdated = true;
             }
 
-            UpdateFlyoutBackgroundOpacity();
+            UpdateFlyoutBackground();
             UpdateTrayIcon();
         }
 
-        private void UpdateFlyoutBackgroundOpacity()
+        private void UpdateFlyoutBackground()
         {
             if (!_isThemeUpdated) return;
 
             var themeResource = actualFlyoutTheme == ElementTheme.Light ? lightResources : darkResources;
-            var brush = themeResource["FlyoutBackground"] as Brush;
-            brush = brush.Clone();
-            brush.Opacity = flyoutBackgroundOpacity * 0.01;
-            themeResource["FlyoutBackground"] = brush;
+            var defaultColor = actualFlyoutTheme == ElementTheme.Light ? defaultLightFlyoutBackgroundColor : defaultDarkFlyoutBackgroundColor;
+            var color = useCustomFlyoutBackgroundColor ? customFlyoutBackgroundColor : defaultColor;
+            themeResource["FlyoutBackground"] = new SolidColorBrush(color) { Opacity = flyoutBackgroundOpacity * 0.01 };
         }
 
         private void UpdateTrayIcon()

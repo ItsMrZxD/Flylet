@@ -84,5 +84,21 @@ namespace Flylet.Core.Tests
             Assert.True(lighter.R + lighter.G + lighter.B > color.R + color.G + color.B);
             Assert.True(darker.R + darker.G + darker.B < color.R + color.G + color.B);
         }
+
+        [Theory]
+        [InlineData("#FFFFFF", true)]
+        [InlineData("#EFEFEF", true)]  // default light flyout background
+        [InlineData("#FFB900", true)]  // gold swatch
+        [InlineData("#00B7C3", true)]  // teal swatch
+        [InlineData("#000000", false)]
+        [InlineData("#222222", false)] // default dark flyout background
+        [InlineData("#0B6A0B", false)] // green swatch
+        [InlineData("#3F3F3F", false)]
+        public void IsLight_FollowsContrast(string hex, bool expected)
+        {
+            var color = (Color)ColorConverter.ConvertFromString(hex);
+
+            Assert.Equal(expected, AccentColorHelper.IsLight(color));
+        }
     }
 }

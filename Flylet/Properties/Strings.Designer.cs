@@ -761,7 +761,43 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("Settings.Behavior", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Colors.
+        /// </summary>
+        public static string Settings_Colors {
+            get {
+                return ResourceManager.GetString("Settings.Colors", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Use a custom accent color.
+        /// </summary>
+        public static string Settings_UseCustomAccentColor {
+            get {
+                return ResourceManager.GetString("Settings.UseCustomAccentColor", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Use a custom flyout background color.
+        /// </summary>
+        public static string Settings_UseCustomFlyoutBackgroundColor {
+            get {
+                return ResourceManager.GetString("Settings.UseCustomFlyoutBackgroundColor", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Flyout text switches between light and dark to stay readable on this color, in place of the flyout theme..
+        /// </summary>
+        public static string Settings_CustomFlyoutBackgroundColor_Description {
+            get {
+                return ResourceManager.GetString("Settings.CustomFlyoutBackgroundColor.Description", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Default Flyout.
         /// </summary>
@@ -833,7 +869,16 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("Settings.EnableModule.Airplane", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to No wireless radios were found on this PC, so this flyout can't be enabled..
+        /// </summary>
+        public static string Settings_Airplane_NoRadios {
+            get {
+                return ResourceManager.GetString("Settings.Airplane.NoRadios", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Enable Audio Flyout.
         /// </summary>

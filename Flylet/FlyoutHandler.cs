@@ -403,9 +403,19 @@ namespace Flylet
             prevTriggerData = triggerData;
         }
 
+        /// <summary>
+        /// Whether a flyout helper is enabled and actually usable. Airplane mode's saved preference stays
+        /// untouched even with no radios present, so a driver that hasn't loaded yet at startup can't
+        /// permanently overwrite the user's choice; it's just not usable until radios are detected.
+        /// </summary>
+        private static bool IsEffectivelyEnabled(FlyoutHelperBase helper)
+        {
+            return helper.IsEnabled && (helper is not AirplaneModeFlyoutHelper airplaneModeHelper || airplaneModeHelper.HasRadios);
+        }
+
         private void ShowFlyout(FlyoutHelperBase helper)
         {
-            if (DefaultFlyout != DefaultFlyout.Flylet || !helper.IsEnabled || isSessionLocked)
+            if (DefaultFlyout != DefaultFlyout.Flylet || !IsEffectivelyEnabled(helper) || isSessionLocked)
             {
                 return;
             }
@@ -428,7 +438,7 @@ namespace Flylet
         {
             if (OnScreenFlyoutView.FlyoutHelper is FlyoutHelperBase helper)
             {
-                bool canHandle = helper.AlwaysHandleDefaultFlyout && helper.IsEnabled;
+                bool canHandle = helper.AlwaysHandleDefaultFlyout && IsEffectivelyEnabled(helper);
                 bool shouldHandle = OnScreenFlyoutWindow.IsOpen;
                 return canHandle && shouldHandle;
             }
@@ -476,6 +486,13 @@ namespace Flylet
                         RelaunchHelper.RestartFlags.RESTART_NO_REBOOT);
 
                     AppLifecycleManager.PrepareToDie();
+                    return IntPtr.Zero;
+                });
+
+            hookManager.RegisterCallbackForMessage((uint)WindowMessage.WM_DWMCOLORIZATIONCOLORCHANGED,
+                (_, _, _, _) =>
+                {
+                    UIManager.QueueSystemAccentColorRefresh();
                     return IntPtr.Zero;
                 });
         }
