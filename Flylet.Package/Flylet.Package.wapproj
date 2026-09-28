@@ -122,6 +122,16 @@
   <ItemGroup>
     <PackageReference Include="System.Management" Version="10.0.12" />
   </ItemGroup>
+  <!-- The packaging targets only put Content (the tile and taskbar images) into the .msix, not into the
+       build output that dev-install.ps1 and the VM flow register in place, so the manifest's icons resolved
+       to nothing there. Listing the copies in FileWrites lets IncrementalClean drop renamed or removed ones;
+       it reads FileWrites in _CleanGetCurrentAndPriorFileWrites, which runs before any BeforeTargets="IncrementalClean". -->
+  <Target Name="CopyContentToTargetDir" BeforeTargets="_CleanGetCurrentAndPriorFileWrites">
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(TargetDir)%(Identity)')" SkipUnchangedFiles="true" />
+    <ItemGroup>
+      <FileWrites Include="@(Content->'$(TargetDir)%(Identity)')" />
+    </ItemGroup>
+  </Target>
   <Target Name="FlattenPackage" BeforeTargets="_ConvertItems">
     <ItemGroup>
       <_TemporaryFilteredWapProjOutput Include="@(_FilteredNonWapProjProjectOutput)" />
