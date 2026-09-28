@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>&amp;Allineamento verticale:</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Usa la miniatura del contenuto multimediale come sfondo del controllo multimediale</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Basato su Flylet (licenza MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Colori</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Usa un colore di evidenziazione personalizzato</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Usa un colore di sfondo personalizzato per il riquadro a comparsa</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Il testo del riquadro a comparsa passa dal chiaro allo scuro per restare leggibile su questo colore, al posto del tema del riquadro a comparsa.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Nessuna radio wireless trovata su questo PC, quindi il riquadro a comparsa non può essere abilitato.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Animazione a dissolvenza</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Seleziona il monitor preferito su cui mostrare il riquadro a comparsa</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Allineamento del riquadro a comparsa</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Direzione di impilamento del contenuto del riquadro a comparsa</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Direzione di espansione del riquadro a comparsa</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Posizione del riquadro a comparsa</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Modalità di posizionamento</value>
+  </data>
 </root>

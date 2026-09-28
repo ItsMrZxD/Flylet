@@ -389,4 +389,25 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Dikey hizalama</value>
   </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Flylet tabanlıdır (MIT Lisansı)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Renkler</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Özel bir vurgu rengi kullan</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Açılır pencere için özel bir arka plan rengi kullan</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Açılır pencere metni, bu renk üzerinde okunabilir kalması için açılır pencere temasının yerine açık ve koyu arasında geçiş yapar.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Bu bilgisayarda kablosuz telsiz bulunamadı, bu nedenle bu açılır pencere etkinleştirilemez.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Solma animasyonu</value>
+  </data>
 </root>

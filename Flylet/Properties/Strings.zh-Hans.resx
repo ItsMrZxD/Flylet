@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>垂直对齐</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>使用媒体缩略图作为媒体控件的背景</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>基于 Flylet（MIT 许可证）</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>使用自定义强调色</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>为浮出控件使用自定义背景色</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>为在此颜色上保持清晰可读，浮出控件的文本会在浅色和深色之间切换，而不是跟随浮出控件主题。</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>在此电脑上未找到无线电设备，因此无法启用此浮出控件。</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>淡入淡出动画</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>选择用于显示浮出控件的首选显示器</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>浮出控件对齐方式</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>浮出控件内容堆叠方向</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>浮出控件展开方向</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>浮出控件位置</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>放置模式</value>
+  </data>
 </root>

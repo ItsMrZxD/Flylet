@@ -389,4 +389,25 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Függőleges igazítás</value>
   </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>A Flylet alapján (MIT licenc)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Színek</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Egyéni kiemelőszín használata</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Egyéni háttérszín használata a panelhez</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>A panel szövege világos és sötét között vált, hogy olvasható maradjon ezen a színen, a panel témája helyett.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Nem található vezeték nélküli rádió ezen a számítógépen, ezért ez a panel nem engedélyezhető.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Elhalványulási animáció</value>
+  </data>
 </root>

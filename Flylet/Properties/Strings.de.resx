@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Vertikale Ausrichtung</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Vorschaubild des Mediums als Hintergrund des Medien-Steuerelements verwenden</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Basiert auf Flylet (MIT-Lizenz)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Farben</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Benutzerdefinierte Akzentfarbe verwenden</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Benutzerdefinierte Hintergrundfarbe für das Flyout verwenden</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Der Flyout-Text wechselt zwischen hell und dunkel, damit er auf dieser Farbe lesbar bleibt, anstatt dem Flyout-Design zu folgen.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Auf diesem PC wurden keine Funkmodule gefunden, daher kann dieses Flyout nicht aktiviert werden.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Überblendanimation</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Bevorzugten Monitor für die Anzeige des Flyouts auswählen</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Flyout-Ausrichtung</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Stapelrichtung des Flyout-Inhalts</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Erweiterungsrichtung des Flyouts</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Flyout-Platzierung</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Platzierungsmodus</value>
+  </data>
 </root>

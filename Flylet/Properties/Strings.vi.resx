@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Căn dọc</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Dùng hình thu nhỏ của phương tiện làm nền cho điều khiển phương tiện</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Dựa trên Flylet (Giấy phép MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Màu sắc</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Dùng màu nhấn tùy chỉnh</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Dùng màu nền tùy chỉnh cho cửa sổ bật ra</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Văn bản của cửa sổ bật ra chuyển giữa sáng và tối để luôn dễ đọc trên màu này, thay cho giao diện của cửa sổ bật ra.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Không tìm thấy bộ phát vô tuyến không dây nào trên máy tính này, nên không thể bật cửa sổ bật ra này.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Hoạt ảnh mờ dần</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Chọn màn hình ưu tiên để hiển thị cửa sổ bật ra</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Căn chỉnh cửa sổ bật ra</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Hướng xếp chồng nội dung cửa sổ bật ra</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Hướng mở rộng của cửa sổ bật ra</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Vị trí cửa sổ bật ra</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Chế độ vị trí</value>
+  </data>
 </root>

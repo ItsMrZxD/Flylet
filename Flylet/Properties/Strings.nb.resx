@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Loddrett justering</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Bruk mediets miniatyrbilde som bakgrunn for mediekontrollen</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Basert på Flylet (MIT-lisens)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Farger</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Bruk en egendefinert aksentfarge</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Bruk en egendefinert bakgrunnsfarge for undermenyen</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Teksten i undermenyen bytter mellom lys og mørk for å være lesbar på denne fargen, i stedet for temaet til undermenyen.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Fant ingen trådløse radioer på denne PC-en, så denne undermenyen kan ikke aktiveres.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Toningsanimasjon</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Velg skjermen undermenyen skal vises på</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Justering av undermeny</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Stablingsretning for innhold i undermenyen</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Utvidelsesretning for undermenyen</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Plassering av undermenyen</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Plasseringsmodus</value>
+  </data>
 </root>

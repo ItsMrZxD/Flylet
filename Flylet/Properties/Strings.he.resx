@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>יישור אנכי</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>שימוש בתמונה הממוזערת של המדיה כרקע של פקד המדיה</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>מבוסס על Flylet (רישיון MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>צבעים</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>שימוש בצבע הדגשה מותאם אישית</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>שימוש בצבע רקע מותאם אישית לחלון הצף</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>הטקסט בחלון הצף מתחלף בין בהיר לכהה כדי להישאר קריא על הצבע הזה, במקום ערכת הנושא של החלון הצף.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>לא נמצאו רדיוסים אלחוטיים במחשב זה, ולכן לא ניתן להפעיל חלון צף זה.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>אנימציית דהייה</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>בחר את הצג המועדף להצגת החלון הצף</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>יישור החלון הצף</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>כיוון הערימה של תוכן החלון הצף</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>כיוון ההרחבה של החלון הצף</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>מיקום החלון הצף</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>מצב מיקום</value>
+  </data>
 </root>

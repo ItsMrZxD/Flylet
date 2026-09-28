@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>&amp;Wyrównanie w pionie</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Użyj miniatury multimediów jako tła kontrolki multimediów</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Oparte na Flylet (licencja MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Kolory</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Użyj niestandardowego koloru akcentu</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Użyj niestandardowego koloru tła nakładki</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Tekst nakładki przełącza się między jasnym a ciemnym, aby pozostać czytelnym na tym kolorze, zamiast używać motywu nakładki.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Na tym komputerze nie znaleziono radiowych modułów bezprzewodowych, więc nie można włączyć tej nakładki.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Animacja zanikania</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Wybierz preferowany monitor, na którym ma być wyświetlana nakładka</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Wyrównanie nakładki</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Kierunek układania zawartości nakładki</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Kierunek rozwijania nakładki</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Położenie nakładki</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Tryb położenia</value>
+  </data>
 </root>

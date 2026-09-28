@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>垂直對齊</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>使用媒體縮圖作為媒體控制項的背景</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>基於 Flylet (MIT 授權)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>色彩</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>使用自訂輔色</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>為浮動視窗使用自訂背景色彩</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>為了在此色彩上保持清晰易讀，浮動視窗的文字會在淺色與深色之間切換，而不是跟隨浮動視窗佈景主題。</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>在此電腦上找不到無線電裝置，因此無法啟用此浮動視窗。</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>淡入淡出動畫</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>選擇用於顯示浮動視窗的慣用顯示器</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>浮動視窗對齊方式</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>浮動視窗內容堆疊方向</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>浮動視窗展開方向</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>浮動視窗位置</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>放置模式</value>
+  </data>
 </root>

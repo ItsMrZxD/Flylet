@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Вертикальне вирівнювання</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Використовувати мініатюру медіа як тло елемента керування медіа</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Засновано на Flylet (ліцензія MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Кольори</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Використовувати власний акцентний колір</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Використовувати власний колір тла для спливаючого меню</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Текст спливаючого меню перемикається між світлим і темним, щоб залишатися читабельним на цьому кольорі, замість теми спливаючого меню.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>На цьому ПК не знайдено бездротових радіомодулів, тому це спливаюче меню не можна ввімкнути.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Анімація згасання</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Виберіть бажаний монітор для показу спливаючого меню</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Вирівнювання спливаючого меню</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Напрямок розташування вмісту спливаючого меню</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Напрямок розгортання спливаючого меню</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Розташування спливаючого меню</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Режим розташування</value>
+  </data>
 </root>

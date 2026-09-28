@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Penjajaran menegak</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Gunakan lakaran kecil media sebagai latar belakang kawalan media</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Berdasarkan Flylet (Lesen MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Warna</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Gunakan warna aksen tersuai</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Gunakan warna latar belakang tersuai untuk flyout</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Teks flyout bertukar antara cerah dan gelap supaya kekal boleh dibaca pada warna ini, sebagai ganti tema flyout.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Tiada radio wayarles ditemui pada PC ini, jadi flyout ini tidak dapat didayakan.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Animasi pudar</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Pilih monitor paparan pilihan untuk memaparkan flyout</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Penjajaran flyout</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Arah penyusunan kandungan flyout</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Arah pengembangan flyout</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Peletakan flyout</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Mod peletakan</value>
+  </data>
 </root>

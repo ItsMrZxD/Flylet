@@ -389,4 +389,25 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>수직 정렬</value>
   </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Flylet 기반 (MIT 라이선스)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>색</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>사용자 지정 강조 색 사용</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>플라이아웃에 사용자 지정 배경색 사용</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>이 색에서도 읽기 쉽도록 플라이아웃 테마 대신 플라이아웃 텍스트가 밝은 색과 어두운 색 사이에서 전환됩니다.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>이 PC에서 무선 라디오를 찾을 수 없어 이 플라이아웃을 사용할 수 없습니다.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>페이드 애니메이션</value>
+  </data>
 </root>

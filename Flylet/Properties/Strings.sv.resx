@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Lodrät justering</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Använd mediets miniatyrbild som bakgrund för mediekontrollen</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Baserad på Flylet (MIT-licens)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Färger</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Använd en anpassad accentfärg</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Använd en anpassad bakgrundsfärg för utfällningen</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Utfällningens text växlar mellan ljus och mörk för att vara läsbar mot den här färgen, i stället för utfällningens tema.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Inga trådlösa radioenheter hittades på den här datorn, så utfällningen kan inte aktiveras.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Toningsanimering</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Välj den bildskärm som utfällningen helst ska visas på</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Justering av utfällning</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Staplingsriktning för utfällningens innehåll</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Expansionsriktning för utfällning</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Placering av utfällning</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Placeringsläge</value>
+  </data>
 </root>

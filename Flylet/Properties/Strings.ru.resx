@@ -363,4 +363,52 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Выравнивание по вертикали</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Использовать миниатюру мультимедиа в качестве фона элемента управления</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Основано на Flylet (лицензия MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Цвета</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Использовать собственный цвет акцента</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Использовать собственный цвет фона всплывающего окна</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Текст всплывающего окна переключается между светлым и тёмным, чтобы оставаться читаемым на этом цвете, вместо темы всплывающего окна.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>На этом компьютере не найдено беспроводных радиомодулей, поэтому это всплывающее окно нельзя включить.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Анимация затухания</value>
+  </data>
+  <data name="Enums.StackingDirection.Ascending" xml:space="preserve">
+    <value>По возрастанию</value>
+  </data>
+  <data name="Enums.StackingDirection.Descending" xml:space="preserve">
+    <value>По убыванию</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Выберите предпочитаемый монитор для отображения всплывающего окна</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Выравнивание всплывающего окна</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Направление размещения содержимого всплывающего окна</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Направление раскрытия всплывающего окна</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Положение всплывающего окна</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Режим размещения</value>
+  </data>
 </root>

@@ -392,4 +392,22 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Animação fade</value>
   </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Baseado no Flylet (Licença MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Cores</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Usar uma cor de destaque personalizada</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Usar uma cor de fundo personalizada para o flyout</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>O texto do flyout alterna entre claro e escuro para continuar legível nesta cor, em vez de seguir o tema do flyout.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Nenhum rádio sem fio foi encontrado neste PC, por isso este flyout não pode ser ativado.</value>
+  </data>
 </root>

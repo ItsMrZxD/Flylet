@@ -389,4 +389,25 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>垂直方向の配置</value>
   </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Flylet をベースにしています (MIT ライセンス)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>カスタム アクセント カラーを使用する</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>フライアウトにカスタム背景色を使用する</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>この色の上でも読みやすいよう、フライアウトのテキストはフライアウトのテーマではなく、明るい色と暗い色を自動で切り替えます。</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>この PC にはワイヤレス無線が見つからないため、このフライアウトを有効にできません。</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>フェード アニメーション</value>
+  </data>
 </root>

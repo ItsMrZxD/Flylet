@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>&amp;تراز عمودی</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>از تصویر کوچک رسانه به‌عنوان پس‌زمینه کنترل رسانه استفاده شود</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>بر پایه Flylet (مجوز MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>رنگ‌ها</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>استفاده از رنگ تأکید سفارشی</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>استفاده از رنگ پس‌زمینه سفارشی برای فلای‌آوت</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>متن فلای‌آوت میان روشن و تیره تغییر می‌کند تا روی این رنگ خوانا بماند، به‌جای پیروی از زمینه فلای‌آوت.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>هیچ رادیوی بی‌سیمی روی این رایانه پیدا نشد، بنابراین این فلای‌آوت را نمی‌توان فعال کرد.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>انیمیشن محوشدن</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>نمایشگر ترجیحی برای نمایش فلای‌آوت را انتخاب کنید</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>چیدمان فلای‌آوت</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>جهت انباشتن محتوای فلای‌آوت</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>جهت گسترش فلای‌آوت</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>جایگاه فلای‌آوت</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>حالت جایگذاری</value>
+  </data>
 </root>

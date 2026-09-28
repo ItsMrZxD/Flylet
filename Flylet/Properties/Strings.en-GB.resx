@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Vertical alignment</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Use media&apos;s thumbnail as media control&apos;s background</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Based on Flylet (MIT License)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Colours</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Use a custom accent colour</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Use a custom flyout background colour</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Flyout text switches between light and dark to stay readable on this colour, in place of the flyout theme.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>No wireless radios were found on this PC, so this flyout can&apos;t be enabled.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Fade animation</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Select the preferred display monitor to show the flyout on</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Flyout alignment</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Flyout content stacking direction</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Flyout expand direction</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Flyout placement</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Placement mode</value>
+  </data>
 </root>

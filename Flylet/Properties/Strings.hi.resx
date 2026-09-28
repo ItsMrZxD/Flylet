@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>अनुलंब संरेखण</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>मीडिया के थंबनेल को मीडिया नियंत्रण की पृष्ठभूमि के रूप में उपयोग करें</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Flylet पर आधारित (MIT लाइसेंस)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>रंग</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>कस्टम एक्सेंट रंग का उपयोग करें</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>फ्लाईआउट के लिए कस्टम पृष्ठभूमि रंग का उपयोग करें</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>इस रंग पर पठनीय बने रहने के लिए फ्लाईआउट का टेक्स्ट फ्लाईआउट थीम के बजाय हल्के और गहरे के बीच बदलता है।</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>इस पीसी पर कोई वायरलेस रेडियो नहीं मिला, इसलिए यह फ्लाईआउट सक्षम नहीं किया जा सकता।</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>फ़ेड एनिमेशन</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>फ्लाईआउट दिखाने के लिए पसंदीदा डिस्प्ले मॉनिटर चुनें</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>फ्लाईआउट संरेखण</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>फ्लाईआउट सामग्री की स्टैकिंग दिशा</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>फ्लाईआउट के विस्तार की दिशा</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>फ्लाईआउट की स्थिति</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>स्थिति मोड</value>
+  </data>
 </root>

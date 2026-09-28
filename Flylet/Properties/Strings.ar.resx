@@ -389,4 +389,25 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>انحياز عمودي</value>
   </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>مبني على Flylet (رخصة MIT)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>الألوان</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>استخدام لون تمييز مخصص</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>استخدام لون خلفية مخصص للنافذة المنبثقة</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>يتبدل نص النافذة المنبثقة بين الفاتح والداكن ليبقى مقروءًا على هذا اللون، بدلًا من سمة النافذة المنبثقة.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>لم يتم العثور على أجهزة راديو لاسلكية على هذا الكمبيوتر، لذا لا يمكن تمكين هذه النافذة المنبثقة.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>حركة التلاشي</value>
+  </data>
 </root>

@@ -368,4 +368,46 @@
   <data name="Settings.VerticalAlignment" xml:space="preserve">
     <value>Lóðrétt jöfnun</value>
   </data>
+  <data name="AudioFlyoutHelper.UseThumbnailAsBackground" xml:space="preserve">
+    <value>Nota smámynd miðilsins sem bakgrunn miðlastýringarinnar</value>
+  </data>
+  <data name="About.BasedOn" xml:space="preserve">
+    <value>Byggt á Flylet (MIT-leyfi)</value>
+  </data>
+  <data name="Settings.Colors" xml:space="preserve">
+    <value>Litir</value>
+  </data>
+  <data name="Settings.UseCustomAccentColor" xml:space="preserve">
+    <value>Nota sérsniðinn áherslulit</value>
+  </data>
+  <data name="Settings.UseCustomFlyoutBackgroundColor" xml:space="preserve">
+    <value>Nota sérsniðinn bakgrunnslit fyrir sprettigluggann</value>
+  </data>
+  <data name="Settings.CustomFlyoutBackgroundColor.Description" xml:space="preserve">
+    <value>Texti sprettigluggans skiptir milli ljóss og dökks til að vera læsilegur á þessum lit, í stað þema sprettigluggans.</value>
+  </data>
+  <data name="Settings.Airplane.NoRadios" xml:space="preserve">
+    <value>Engin þráðlaus útvörp fundust í þessari tölvu, svo ekki er hægt að virkja þennan sprettiglugga.</value>
+  </data>
+  <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
+    <value>Deyfingarhreyfing</value>
+  </data>
+  <data name="Settings.DisplayDescription" xml:space="preserve">
+    <value>Veldu skjáinn sem þú vilt nota til að birta sprettigluggann</value>
+  </data>
+  <data name="Settings.FlyoutAlignment" xml:space="preserve">
+    <value>Röðun sprettigluggans</value>
+  </data>
+  <data name="Settings.FlyoutContentStackingDirection" xml:space="preserve">
+    <value>Staflaröð efnis í sprettiglugga</value>
+  </data>
+  <data name="Settings.FlyoutExpandDirection" xml:space="preserve">
+    <value>Stækkunarátt sprettigluggans</value>
+  </data>
+  <data name="Settings.FlyoutPlacement" xml:space="preserve">
+    <value>Staðsetning sprettigluggans</value>
+  </data>
+  <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
+    <value>Staðsetningarhamur</value>
+  </data>
 </root>
