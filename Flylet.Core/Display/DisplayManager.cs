@@ -176,7 +176,7 @@ namespace Flylet.Core.Display
 
             var displayDevice = GetDisplayDevice(deviceName);
             displayMonitor.DeviceId = displayDevice.DeviceID;
-            displayMonitor.DisplayName = displayDevice.DeviceString;
+            displayMonitor.DisplayName = LocalizedDeviceName.Get(displayDevice.DeviceID, displayDevice.DeviceString);
             displayMonitor.wmiId = GetWMIDeviceId(displayDevice.DeviceID);
             displayMonitor.IsInBuilt = GetIsDisplayInternal(displayMonitor.wmiId);
 
