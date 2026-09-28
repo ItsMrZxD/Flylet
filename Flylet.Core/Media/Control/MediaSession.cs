@@ -26,7 +26,14 @@ namespace Flylet.Core.Media.Control
         public bool IsPlayEnabled
         {
             get => isPlayEnabled;
-            protected set => SetProperty(ref isPlayEnabled, value);
+            protected set
+            {
+                if (SetProperty(ref isPlayEnabled, value))
+                {
+                    playCommand.NotifyCanExecuteChanged();
+                    playOrPauseCommand.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         private bool isPauseEnabled;
@@ -34,7 +41,14 @@ namespace Flylet.Core.Media.Control
         public bool IsPauseEnabled
         {
             get => isPauseEnabled;
-            protected set => SetProperty(ref isPauseEnabled, value);
+            protected set
+            {
+                if (SetProperty(ref isPauseEnabled, value))
+                {
+                    pauseCommand.NotifyCanExecuteChanged();
+                    playOrPauseCommand.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         private bool isPlayOrPauseEnabled;
@@ -42,7 +56,13 @@ namespace Flylet.Core.Media.Control
         public bool IsPlayOrPauseEnabled
         {
             get => isPlayOrPauseEnabled;
-            protected set => SetProperty(ref isPlayOrPauseEnabled, value);
+            protected set
+            {
+                if (SetProperty(ref isPlayOrPauseEnabled, value))
+                {
+                    playOrPauseCommand.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         private bool isPreviousEnabled;
@@ -50,7 +70,13 @@ namespace Flylet.Core.Media.Control
         public bool IsPreviousEnabled
         {
             get => isPreviousEnabled;
-            protected set => SetProperty(ref isPreviousEnabled, value);
+            protected set
+            {
+                if (SetProperty(ref isPreviousEnabled, value))
+                {
+                    previousTrackCommand.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         private bool isNextEnabled;
@@ -58,7 +84,13 @@ namespace Flylet.Core.Media.Control
         public bool IsNextEnabled
         {
             get => isNextEnabled;
-            protected set => SetProperty(ref isNextEnabled, value);
+            protected set
+            {
+                if (SetProperty(ref isNextEnabled, value))
+                {
+                    nextTrackCommand.NotifyCanExecuteChanged();
+                }
+            }
         }
 
         private bool isShuffleEnabled;
@@ -70,6 +102,7 @@ namespace Flylet.Core.Media.Control
             {
                 if (SetProperty(ref isShuffleEnabled, value))
                 {
+                    changeShuffleActiveCommand.NotifyCanExecuteChanged();
                     CalculateMoreControlsButtonVisibility();
                 }
             }
@@ -84,6 +117,7 @@ namespace Flylet.Core.Media.Control
             {
                 if (SetProperty(ref isRepeatEnabled, value))
                 {
+                    changeAutoRepeatModeCommand.NotifyCanExecuteChanged();
                     CalculateMoreControlsButtonVisibility();
                 }
             }
@@ -98,6 +132,7 @@ namespace Flylet.Core.Media.Control
             {
                 if (SetProperty(ref isStopEnabled, value))
                 {
+                    stopCommand.NotifyCanExecuteChanged();
                     CalculateMoreControlsButtonVisibility();
                 }
             }
@@ -159,69 +194,37 @@ namespace Flylet.Core.Media.Control
 
         #region Playback Control
 
-        private ICommand playCommand;
+        private readonly RelayCommand playCommand;
 
-        public ICommand PlayCommand
-        {
-            get => playCommand;
-            protected set => SetProperty(ref playCommand, value);
-        }
+        public ICommand PlayCommand => playCommand;
 
-        private ICommand pauseCommand;
+        private readonly RelayCommand pauseCommand;
 
-        public ICommand PauseCommand
-        {
-            get => pauseCommand;
-            protected set => SetProperty(ref pauseCommand, value);
-        }
+        public ICommand PauseCommand => pauseCommand;
 
-        private ICommand playOrPauseCommand;
+        private readonly RelayCommand playOrPauseCommand;
 
-        public ICommand PlayOrPauseCommand
-        {
-            get => playOrPauseCommand;
-            protected set => SetProperty(ref playOrPauseCommand, value);
-        }
+        public ICommand PlayOrPauseCommand => playOrPauseCommand;
 
-        private ICommand previousTrackCommand;
+        private readonly RelayCommand previousTrackCommand;
 
-        public ICommand PreviousTrackCommand
-        {
-            get => previousTrackCommand;
-            protected set => SetProperty(ref previousTrackCommand, value);
-        }
+        public ICommand PreviousTrackCommand => previousTrackCommand;
 
-        private ICommand nextTrackCommand;
+        private readonly RelayCommand nextTrackCommand;
 
-        public ICommand NextTrackCommand
-        {
-            get => nextTrackCommand;
-            protected set => SetProperty(ref nextTrackCommand, value);
-        }
+        public ICommand NextTrackCommand => nextTrackCommand;
 
-        private ICommand changeShuffleActiveCommand;
+        private readonly RelayCommand changeShuffleActiveCommand;
 
-        public ICommand ChangeShuffleActiveCommand
-        {
-            get => changeShuffleActiveCommand;
-            protected set => SetProperty(ref changeShuffleActiveCommand, value);
-        }
+        public ICommand ChangeShuffleActiveCommand => changeShuffleActiveCommand;
 
-        private ICommand changeAutoRepeatModeCommand;
+        private readonly RelayCommand changeAutoRepeatModeCommand;
 
-        public ICommand ChangeAutoRepeatModeCommand
-        {
-            get => changeAutoRepeatModeCommand;
-            protected set => SetProperty(ref changeAutoRepeatModeCommand, value);
-        }
+        public ICommand ChangeAutoRepeatModeCommand => changeAutoRepeatModeCommand;
 
-        private ICommand stopCommand;
+        private readonly RelayCommand stopCommand;
 
-        public ICommand StopCommand
-        {
-            get => stopCommand;
-            protected set => SetProperty(ref stopCommand, value);
-        }
+        public ICommand StopCommand => stopCommand;
 
         #endregion
 
@@ -346,14 +349,14 @@ namespace Flylet.Core.Media.Control
 
         public MediaSession()
         {
-            PlayCommand = new RelayCommand(Play, () => IsPlayEnabled);
-            PauseCommand = new RelayCommand(Pause, () => IsPauseEnabled);
-            PlayOrPauseCommand = new RelayCommand(PlayOrPause, () => IsPlayOrPauseEnabled);
-            PreviousTrackCommand = new RelayCommand(PreviousTrack, () => IsPreviousEnabled);
-            NextTrackCommand = new RelayCommand(NextTrack, () => IsNextEnabled);
-            ChangeShuffleActiveCommand = new RelayCommand(ChangeShuffleActive, () => IsShuffleEnabled);
-            ChangeAutoRepeatModeCommand = new RelayCommand(ChangeAutoRepeatMode, () => IsRepeatEnabled);
-            StopCommand = new RelayCommand(Stop, () => IsStopEnabled);
+            playCommand = new RelayCommand(Play, () => IsPlayEnabled);
+            pauseCommand = new RelayCommand(Pause, () => IsPauseEnabled);
+            playOrPauseCommand = new RelayCommand(PlayOrPause, () => IsPlayOrPauseEnabled);
+            previousTrackCommand = new RelayCommand(PreviousTrack, () => IsPreviousEnabled);
+            nextTrackCommand = new RelayCommand(NextTrack, () => IsNextEnabled);
+            changeShuffleActiveCommand = new RelayCommand(ChangeShuffleActive, () => IsShuffleEnabled);
+            changeAutoRepeatModeCommand = new RelayCommand(ChangeAutoRepeatMode, () => IsRepeatEnabled);
+            stopCommand = new RelayCommand(Stop, () => IsStopEnabled);
 
             timelineController.PositionChanged += (_, _) => SetPlaybackPosition(timelineController.Position);
             PropertyChanged += (_, e) =>

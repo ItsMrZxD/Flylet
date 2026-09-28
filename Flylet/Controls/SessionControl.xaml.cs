@@ -95,6 +95,13 @@ namespace Flylet.Controls
             {
                 EndTrackTransition();
                 UpdateAccentColor();
+
+                // The More button that opens this pane can collapse (e.g. the source dropped
+                // Shuffle/Repeat/Stop entirely), leaving nothing left to close it if it's still open
+                if (_mediaSession.CalculatedMoreControlsButtonVisibility != Visibility.Visible)
+                {
+                    ControlsSplitView.IsPaneOpen = false;
+                }
             });
         }
 

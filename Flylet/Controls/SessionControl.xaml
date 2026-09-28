@@ -102,17 +102,20 @@
                                 <ToggleButton x:Name="ShuffleButton" Command="{Binding ChangeShuffleActiveCommand}"
                                               IsChecked="{Binding IsShuffleActive, Mode=OneWay}"
                                               ToolTip="{Binding IsShuffleActive, Converter={StaticResource ShuffleButtonTooltipConverter}}"
+                                              Visibility="{Binding IsShuffleEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                                               Width="36" Height="36" Style="{DynamicResource MediaToggleButtonStyle}">
                                     <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Shuffle}" FontSize="16.0" />
                                 </ToggleButton>
                                 <ToggleButton x:Name="RepeatButton" Command="{Binding ChangeAutoRepeatModeCommand}"
                                               IsChecked="{Binding AutoRepeatMode, Mode=OneWay, Converter={StaticResource RepeatButtonIsCheckedConverter}}"
                                               ToolTip="{Binding AutoRepeatMode, Converter={StaticResource RepeatButtonTooltipConverter}}"
+                                              Visibility="{Binding IsRepeatEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                                               Width="36" Height="36" Margin="8,0" Style="{DynamicResource MediaToggleButtonStyle}">
                                     <ui:FontIcon Glyph="{Binding AutoRepeatMode, Converter={StaticResource RepeatButtonGlyphConverter}}" FontSize="16" />
                                 </ToggleButton>
                                 <Button x:Name="StopButton" Command="{Binding StopCommand}"
                                         ToolTip="{x:Static resx:Strings.SessionControl_Stop}"
+                                        Visibility="{Binding IsStopEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
                                         Width="36" Height="36" Style="{DynamicResource MediaButtonStyle}">
                                     <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Stop}" FontSize="16" />
                                 </Button>
