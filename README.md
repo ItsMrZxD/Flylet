@@ -6,6 +6,12 @@
 
 <p align="center">Modern, Fluent-style replacements for the Windows volume, brightness, media and lock-key pop-ups.</p>
 
+<p align="center">
+  <a href="docs/images/flylet-ad.mp4"><img src="docs/images/flylet-ad-poster.jpg" width="270" alt="Play the 30-second Flylet video: the stock Windows pop-ups next to Flylet's"></a>
+  <br>
+  <sub>▶ 30-second video. Music: "Funkorama" by Kevin MacLeod (incompetech.com), licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></sub>
+</p>
+
 ![Flylet's volume and media flyouts](docs/images/flylet-flyouts.png)
 
 Press a volume key and Windows shows its own small pop-up. Flylet hides that one and shows its
