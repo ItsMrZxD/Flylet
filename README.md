@@ -63,6 +63,12 @@ Get Flylet from the
 [Microsoft Store](https://apps.microsoft.com/detail/9NPSS6NW7T23). Updates arrive through the
 Store automatically.
 
+Or install it from the command line with winget:
+
+```powershell
+winget install 9NPSS6NW7T23 --source msstore
+```
+
 Store releases are signed by the Store, so the GitHub
 [releases](https://github.com/ItsMrZxD/Flylet/releases) hold release notes only, with no
 installer. To run it from source instead, see Building below.
