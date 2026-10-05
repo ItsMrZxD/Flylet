@@ -37,7 +37,9 @@ namespace Flylet
 
             HasRadios = RadioAvailability.HasAnyRadios();
 
-            airplaneModeControl = new AirplaneModeControl();
+            // Bound to this helper directly: FlyoutHandler.AirplaneModeFlyoutHelper isn't assigned
+            // until this constructor returns and doesn't notify, so binding through it stays null
+            airplaneModeControl = new AirplaneModeControl { DataContext = this };
 
             PrimaryContent = airplaneModeControl;
 

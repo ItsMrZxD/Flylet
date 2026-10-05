@@ -9,9 +9,9 @@
              xmlns:resx="clr-namespace:Flylet.Properties"
              xmlns:toolkit="http://schemas.modernwpf.com/toolkit"
              mc:Ignorable="d"
-             Height="64" d:DesignWidth="354" DataContext="{x:Static root:FlyoutHandler.Instance}">
+             Height="64" d:DesignWidth="354">
 
-    <StackPanel DataContext="{Binding AirplaneModeFlyoutHelper.AirplaneMode}"
+    <StackPanel DataContext="{Binding AirplaneMode}"
                 Orientation="Horizontal" HorizontalAlignment="Center">
         <ui:FontIcon d:Glyph="{x:Static utils:CommonGlyphs.Info}" FontSize="24">
             <ui:FontIcon.Glyph>
