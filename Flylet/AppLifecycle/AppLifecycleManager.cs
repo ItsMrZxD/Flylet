@@ -74,7 +74,9 @@ namespace Flylet.AppLifecycle
 
             if (arg == string.Empty)
             {
-                if (!isFirstInstance)
+                // A second launch always opens Settings. The first one does too when the user opened
+                // it; a sign-in launch from the startup task stays quiet in the tray
+                if (!isFirstInstance || Helpers.StartupHelper.IsUserLaunch())
                 {
                     Program.RunCommand(RunCommandType.ShowSettings);
                 }
