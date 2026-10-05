@@ -1,3 +1,4 @@
+using Flylet.Core.Helpers;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -91,7 +92,10 @@ namespace Flylet.Controls
                 return;
             }
 
-            SelectedColor = (Color)ColorConverter.ConvertFromString(HexBox.Text);
+            if (AccentColorHelper.TryParseColor(HexBox.Text, out var color))
+            {
+                SelectedColor = color;
+            }
         }
     }
 }

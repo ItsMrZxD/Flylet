@@ -116,6 +116,28 @@ namespace Flylet.Core.Helpers
         }
 
         /// <summary>
+        /// Parses a hex color such as #RRGGBB or #AARRGGBB, or a color name, without throwing.
+        /// </summary>
+        public static bool TryParseColor(string value, out Color color)
+        {
+            color = default;
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return false;
+            }
+
+            try
+            {
+                color = (Color)ColorConverter.ConvertFromString(value);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Returns the color made lighter (positive amount) or darker (negative amount).
         /// </summary>
         public static Color Shade(Color color, double amount)

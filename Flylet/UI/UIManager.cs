@@ -500,14 +500,9 @@ namespace Flylet.UI
 
         private static Color ParseColorOrDefault(string value, string defaultValue)
         {
-            try
-            {
-                return (Color)ColorConverter.ConvertFromString(value);
-            }
-            catch
-            {
-                return (Color)ColorConverter.ConvertFromString(defaultValue);
-            }
+            return AccentColorHelper.TryParseColor(value, out var color)
+                ? color
+                : (Color)ColorConverter.ConvertFromString(defaultValue);
         }
 
         private void UpdateAppTheme()

@@ -86,6 +86,33 @@ namespace Flylet.Core.Tests
         }
 
         [Theory]
+        [InlineData("#0078D7", 0xFF, 0x00, 0x78, 0xD7)]
+        [InlineData("#800078D7", 0x80, 0x00, 0x78, 0xD7)]
+        [InlineData("Red", 0xFF, 0xFF, 0x00, 0x00)]
+        public void TryParseColor_ReadsValidColors(string value, byte a, byte r, byte g, byte b)
+        {
+            Assert.True(AccentColorHelper.TryParseColor(value, out var color));
+            Assert.Equal(Color.FromArgb(a, r, g, b), color);
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("  ")]
+        [InlineData("##0078D7")]
+        [InlineData("#GGGGGG")]
+        [InlineData("not a color")]
+        [InlineData("#")]
+        [InlineData("#12345")]
+        [InlineData("#1234567890")]
+        [InlineData("sc#a,b,c")]
+        [InlineData("1234")]
+        public void TryParseColor_RejectsBadInputWithoutThrowing(string value)
+        {
+            Assert.False(AccentColorHelper.TryParseColor(value, out _));
+        }
+
+        [Theory]
         [InlineData("#FFFFFF", true)]
         [InlineData("#EFEFEF", true)]  // default light flyout background
         [InlineData("#FFB900", true)]  // gold swatch
