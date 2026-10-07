@@ -602,4 +602,7 @@
   <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
     <value>Custom</value>
   </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>Media card</value>
+  </data>
 </root>

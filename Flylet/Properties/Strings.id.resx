@@ -497,4 +497,7 @@
   <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
     <value>Kustom</value>
   </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>Kartu media</value>
+  </data>
 </root>

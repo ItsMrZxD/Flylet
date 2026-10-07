@@ -1508,5 +1508,14 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("Enums.MediaCardPreset.Custom", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Media card.
+        /// </summary>
+        public static string MediaCard_Header {
+            get {
+                return ResourceManager.GetString("MediaCard_Header", resourceCulture);
+            }
+        }
     }
 }

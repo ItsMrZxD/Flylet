@@ -498,4 +498,7 @@
   <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
     <value>Пользовательский</value>
   </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>Карточка мультимедиа</value>
+  </data>
 </root>

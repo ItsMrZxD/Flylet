@@ -497,4 +497,7 @@
   <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
     <value>사용자 지정</value>
   </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>미디어 카드</value>
+  </data>
 </root>

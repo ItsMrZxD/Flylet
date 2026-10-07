@@ -497,4 +497,7 @@
   <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
     <value>Tersuai</value>
   </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>Kad media</value>
+  </data>
 </root>

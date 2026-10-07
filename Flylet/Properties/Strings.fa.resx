@@ -497,4 +497,7 @@
   <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
     <value>سفارشی</value>
   </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>کارت رسانه</value>
+  </data>
 </root>

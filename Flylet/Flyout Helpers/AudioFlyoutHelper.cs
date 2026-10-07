@@ -309,19 +309,36 @@ namespace Flylet
             AllMediaSessions.Add(new CollectionContainer { Collection = npMediaSessionManager.MediaSessions });
 
             npMediaSessionManager.MediaSessionsChanged += MediaSessionManager_MediaSessionsChanged;
+            npMediaSessionManager.CurrentMediaSessionChanged += (_, e) => MediaSessionsUpdated?.Invoke(this, e);
         }
 
         private void MediaSessionManager_MediaSessionsChanged(object sender, EventArgs e)
         {
             ValidateSecondaryContentVisible();
+            MediaSessionsUpdated?.Invoke(this, e);
         }
 
         private bool AnyMediaSessionsAvailable() => mediaSessionManagers.Any(x => x.ContainsAnySession());
 
         /// <summary>
-        /// The first media session there is, for the media card preview in Settings.
+        /// The session the media card preview in Settings shows: the one Windows treats as current
+        /// (what the media keys control), else one that's playing, else any.
         /// </summary>
-        public MediaSession FirstMediaSession => mediaSessionManagers.SelectMany(x => x.MediaSessions).FirstOrDefault();
+        public MediaSession PreviewMediaSession
+        {
+            get
+            {
+                var sessions = mediaSessionManagers.SelectMany(x => x.MediaSessions).ToList();
+                return mediaSessionManagers.Select(x => x.CurrentMediaSession).FirstOrDefault(x => x != null && sessions.Contains(x))
+                    ?? sessions.FirstOrDefault(x => x.IsPlaying)
+                    ?? sessions.FirstOrDefault();
+            }
+        }
+
+        /// <summary>
+        /// Raised when sessions come or go, or the current one changes.
+        /// </summary>
+        public event EventHandler MediaSessionsUpdated;
 
         #endregion
 
