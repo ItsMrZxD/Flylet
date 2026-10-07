@@ -1,4 +1,5 @@
 ﻿using Flylet.Controls;
+using Flylet.Core.Media;
 using Flylet.Core.UI;
 using Flylet.UI;
 using Flylet.UI.Media;
@@ -295,15 +296,39 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
-        public static bool AlignGSMTCThumbnailToRight
+        public static MediaCardArt MediaCardArt
         {
-            get => GetValue(DefaultValuesStore.AlignGSMTCThumbnailToRight);
+            get => GetValue(DefaultValuesStore.MediaCardLayout.Art);
             set => SetValue(value);
         }
 
-        public static bool UseGSMTCThumbnailAsBackground
+        public static bool MediaCardShowSource
         {
-            get => GetValue(DefaultValuesStore.UseGSMTCThumbnailAsBackground);
+            get => GetValue(DefaultValuesStore.MediaCardLayout.ShowSource);
+            set => SetValue(value);
+        }
+
+        public static bool MediaCardShowArtist
+        {
+            get => GetValue(DefaultValuesStore.MediaCardLayout.ShowArtist);
+            set => SetValue(value);
+        }
+
+        public static MediaCardTimeline MediaCardTimeline
+        {
+            get => GetValue(DefaultValuesStore.MediaCardLayout.Timeline);
+            set => SetValue(value);
+        }
+
+        public static MediaCardControls MediaCardControls
+        {
+            get => GetValue(DefaultValuesStore.MediaCardLayout.Controls);
+            set => SetValue(value);
+        }
+
+        public static MediaCardShape MediaCardShape
+        {
+            get => GetValue(DefaultValuesStore.MediaCardLayout.Shape);
             set => SetValue(value);
         }
 

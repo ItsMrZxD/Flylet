@@ -1,4 +1,5 @@
 ﻿using Flylet.Controls;
+using Flylet.Core.Media;
 using Flylet.Core.UI;
 using Flylet.UI;
 using Flylet.UI.Media;
@@ -84,9 +85,7 @@ namespace Flylet.Helpers
 
         public const bool FlyoutAnimationEnabled = true;
 
-        public const bool AlignGSMTCThumbnailToRight = false;
-
-        public const bool UseGSMTCThumbnailAsBackground = true;
+        public static MediaCardLayout MediaCardLayout => MediaCardLayout.Classic;
 
         public const int MaxVerticalSessionControlsCount = 1;
 
