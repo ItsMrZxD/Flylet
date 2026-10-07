@@ -429,6 +429,11 @@ namespace Flylet
                 NativeFlyoutHandler.Instance.HideNativeFlyout();
             }
 
+            if (!OnScreenFlyoutWindow.IsOpen || OnScreenFlyoutView.FlyoutHelper != helper)
+            {
+                helper.OnFlyoutOpening();
+            }
+
             OnScreenFlyoutView.FlyoutHelper = helper;
             OnScreenFlyoutWindow.IsOpen = true;
             OnScreenFlyoutWindow.StartCloseTimer();

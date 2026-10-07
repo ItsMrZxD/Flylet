@@ -34,6 +34,11 @@ namespace Flylet
             return base.CanHandleNativeOnScreenFlyout(triggerData);
         }
 
+        public override void OnFlyoutOpening()
+        {
+            BrightnessManager.RefreshExternalBrightness();
+        }
+
         protected override void OnEnabled()
         {
             base.OnEnabled();

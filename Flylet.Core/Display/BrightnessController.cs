@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Management;
+using System.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Flylet.Core.Interop;
 
@@ -172,10 +173,42 @@ namespace Flylet.Core.Display
 
         internal override void SetBrightness(double value)
         {
+            Interlocked.Increment(ref setVersion);
+
             if (NativeMethods.SetMonitorBrightness(hPhysicalMonitor, (uint)Math.Truncate(value)))
             {
                 currentValue = value;
             }
+        }
+
+        // Bumped on every set, so a slow DDC/CI read that started before the user moved the
+        // slider doesn't snap the slider back to the old value.
+        private int setVersion;
+
+        /// <summary>
+        /// Reads the monitor's brightness over DDC/CI, so changes made outside Flylet (monitor buttons,
+        /// other apps) show up. Takes tens of milliseconds per monitor, so run it off the UI thread.
+        /// </summary>
+        internal bool TryReadBrightness(out double value, out int version)
+        {
+            version = Volatile.Read(ref setVersion);
+            value = 0;
+
+            uint minValue = 0, newValue = 0, maxValue = 0;
+            if (disposedValue || !NativeMethods.GetMonitorBrightness(hPhysicalMonitor, ref minValue, ref newValue, ref maxValue))
+                return false;
+
+            value = newValue;
+            return true;
+        }
+
+        internal void ApplyReadBrightness(double value, int version)
+        {
+            if (disposedValue || version != Volatile.Read(ref setVersion))
+                return;
+
+            currentValue = value;
+            UpdateBrightness(value);
         }
 
         private bool disposedValue;

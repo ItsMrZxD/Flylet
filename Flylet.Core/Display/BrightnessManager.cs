@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using static Flylet.Core.Interop.NativeMethods;
 
@@ -82,6 +84,41 @@ namespace Flylet.Core.Display
             }
 
             Instance.HasInitialized = false;
+        }
+
+        private int isRefreshing;
+
+        /// <summary>
+        /// External monitors don't report brightness changes, so re-read them (over DDC/CI, on a
+        /// background thread) when the flyout opens. The built-in display has its own WMI watcher.
+        /// </summary>
+        public static void RefreshExternalBrightness()
+        {
+            if (Instance == null || !Instance.HasInitialized)
+                return;
+
+            var controllers = Instance.BrightnessControllers.OfType<ExternalDisplayBrightnessController>().ToArray();
+            if (controllers.Length == 0 || Interlocked.Exchange(ref Instance.isRefreshing, 1) == 1)
+                return;
+
+            var dispatcher = Application.Current.Dispatcher;
+            Task.Run(() =>
+            {
+                try
+                {
+                    foreach (var controller in controllers)
+                    {
+                        if (controller.TryReadBrightness(out double value, out int version))
+                        {
+                            dispatcher.BeginInvoke(() => controller.ApplyReadBrightness(value, version));
+                        }
+                    }
+                }
+                finally
+                {
+                    Interlocked.Exchange(ref Instance.isRefreshing, 0);
+                }
+            });
         }
 
         private void MakeDefaultBrightnessController(DisplayMonitor displayMonitor)

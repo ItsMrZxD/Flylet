@@ -90,6 +90,13 @@ namespace Flylet
             return false;
         }
 
+        /// <summary>
+        /// Called when this helper's flyout opens (not when it's re-triggered while already open).
+        /// </summary>
+        public virtual void OnFlyoutOpening()
+        {
+        }
+
         protected void RequestShowFlyout()
         {
             ShowFlyoutRequested?.Invoke(this);
