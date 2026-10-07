@@ -410,4 +410,91 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>Mod peletakan</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>Pratonton</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>Menunjukkan lagu yang sedang dimainkan, atau contoh jika tiada yang dimainkan.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>Gaya</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>Seni album</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>Aplikasi sumber</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>Artis</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>Garis masa</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>Kawalan</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>Bentuk</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>Tajuk lagu</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>Nama artis</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>Kiri</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>Kanan</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>Latar belakang</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>Tersembunyi</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>Tersembunyi</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>Tersembunyi</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>Bar dengan masa</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>Bar nipis</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>Semua butang</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>Butang main sahaja</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>Bulat</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>Segi empat</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>Pil</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>Klasik</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>Minimal</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>Pil padat</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>Latar album</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>Tersuai</value>
+  </data>
 </root>

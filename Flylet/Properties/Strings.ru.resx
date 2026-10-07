@@ -411,4 +411,91 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>Режим размещения</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>Предпросмотр</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>Показывает текущую песню или пример, если ничего не играет.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>Стиль</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>Обложка альбома</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>Приложение-источник</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>Исполнитель</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>Шкала времени</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>Элементы управления</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>Форма</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>Название песни</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>Имя исполнителя</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>Слева</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>Справа</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>Фон</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>Скрыто</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>Скрыто</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>Скрыто</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>Полоса со временем</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>Тонкая полоса</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>Все кнопки</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>Только кнопка воспроизведения</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>Скруглённая</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>Квадратная</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>Таблетка</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>Классический</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>Минималистичный</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>Компактная таблетка</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>Фон из обложки</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>Пользовательский</value>
+  </data>
 </root>

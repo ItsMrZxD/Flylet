@@ -410,4 +410,91 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Elhalványulási animáció</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>Előnézet</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>A most szóló dalt mutatja, vagy egy mintát, ha semmi sem szól.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>Stílus</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>Albumborító</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>Forrásalkalmazás</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>Előadó</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>Idővonal</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>Vezérlők</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>Forma</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>Dal címe</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>Előadó neve</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>Bal</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>Jobb</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>Háttér</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>Rejtett</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>Rejtett</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>Rejtett</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>Sáv időkkel</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>Vékony sáv</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>Minden gomb</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>Csak a lejátszás gomb</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>Lekerekített</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>Szögletes</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>Kapszula</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>Klasszikus</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>Minimális</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>Kompakt kapszula</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>Album háttér</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>Egyéni</value>
+  </data>
 </root>

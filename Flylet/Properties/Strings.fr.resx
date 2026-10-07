@@ -410,4 +410,91 @@
   <data name="Settings.Airplane.NoRadios" xml:space="preserve">
     <value>Aucune radio sans fil n&apos;a été trouvée sur ce PC, ce menu volant ne peut donc pas être activé.</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>Aperçu</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>Affiche le morceau en cours de lecture, ou un exemple si rien ne joue.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>Pochette d&apos;album</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>Application source</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>Artiste</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>Chronologie</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>Commandes</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>Forme</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>Titre du morceau</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>Nom de l&apos;artiste</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>Gauche</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>Droite</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>Arrière-plan</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>Masqué</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>Masqué</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>Masqué</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>Barre avec durées</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>Barre fine</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>Tous les boutons</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>Bouton de lecture seul</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>Arrondi</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>Carré</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>Pilule</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>Classique</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>Minimal</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>Pilule compacte</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>Fond d&apos;album</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>Personnalisé</value>
+  </data>
 </root>

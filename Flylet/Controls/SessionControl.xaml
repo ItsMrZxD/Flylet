@@ -9,87 +9,104 @@
              xmlns:input="clr-namespace:Flylet.Input"
              xmlns:designTime="clr-namespace:Flylet.DesignTime"
              mc:Ignorable="d" d:DataContext="{d:DesignInstance designTime:MockMediaSession}"
-             Width="{DynamicResource FlyoutWidth}" Height="{DynamicResource DefaultSessionControlHeight}" VerticalAlignment="Top">
-    <Border CornerRadius="{DynamicResource FlyoutCornerRadius}">
+             Width="{DynamicResource FlyoutWidth}" VerticalAlignment="Top">
+    <!-- Sizes, positions and what's visible come from the media card layout (SessionControl.ApplyLayout) -->
+    <Grid x:Name="RootGrid" x:FieldModifier="private">
+        <!-- Album art as the card's background, blurred and darkened so the text stays readable -->
+        <Grid x:Name="BackgroundArtGrid" x:FieldModifier="private" Visibility="Collapsed" IsHitTestVisible="False">
+            <Border Margin="-48">
+                <Border.Background>
+                    <ImageBrush ImageSource="{Binding Thumbnail}" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" />
+                </Border.Background>
+                <Border.Effect>
+                    <BlurEffect Radius="48" KernelType="Gaussian" RenderingBias="Performance" />
+                </Border.Effect>
+            </Border>
+            <Border Background="#000000" Opacity="0.45" />
+        </Grid>
+
         <Grid x:Name="ContentGrid">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="16" />
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition x:Name="TimelineRow" x:FieldModifier="private" Height="66" />
             </Grid.RowDefinitions>
 
             <!-- Tapping an empty part of the flyout closes it -->
-            <Border Grid.ColumnSpan="3" Grid.RowSpan="2" Background="Transparent"
+            <Border Grid.RowSpan="2" Background="Transparent"
                     input:InputHelper.IsTapEnabled="True"
                     input:InputHelper.TappedCommand="{x:Static utils:CommonCommands.CloseFlyoutCommand}"
                     input:InputHelper.TappedCommandParameter="{x:Reference Name=ContentGrid}" />
 
-            <Grid x:Name="ThumbnailGrid" x:FieldModifier="private" Grid.Column="0"
-                  Width="96" Height="96" Margin="16,16,14,0" VerticalAlignment="Top" Cursor="Hand"
-                  input:InputHelper.IsTapEnabled="True" input:InputHelper.TappedCommand="{Binding ActivateMediaSourceCommand}">
-                <Border CornerRadius="{DynamicResource FlyoutCornerRadius}" Background="#333333" />
-                <Border CornerRadius="{DynamicResource FlyoutCornerRadius}">
-                    <Border.Background>
-                        <ImageBrush x:Name="ThumbnailImageBrush" ImageSource="{Binding Thumbnail}"
-                                    Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" />
-                    </Border.Background>
-                </Border>
-            </Grid>
-
-            <Grid Grid.Column="1" Height="96" Margin="0,16,0,0" VerticalAlignment="Top">
+            <Grid x:Name="TopGrid" x:FieldModifier="private" Margin="16,16,16,0" VerticalAlignment="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <Grid x:Name="AppInfoPanel" Cursor="Hand"
+                <Grid x:Name="ThumbnailGrid" x:FieldModifier="private" Grid.Column="0" Grid.RowSpan="2"
+                      Width="96" Height="96" Margin="0,0,14,0" VerticalAlignment="Center" Cursor="Hand"
                       input:InputHelper.IsTapEnabled="True" input:InputHelper.TappedCommand="{Binding ActivateMediaSourceCommand}">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Image Source="{Binding MediaSourceIcon}" Grid.Column="0"
-                           Width="16" Height="16" RenderOptions.BitmapScalingMode="Fant" />
-                    <TextBlock Text="{Binding MediaSourceName}"
-                               VerticalAlignment="Center" Margin="6,0,0,0" Grid.Column="1"
-                               TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
-                               Style="{DynamicResource CaptionTextBlockStyle}"
-                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
+                    <Border x:Name="ThumbnailPlaceholder" x:FieldModifier="private" CornerRadius="8" Background="#333333" />
+                    <Border x:Name="ThumbnailBorder" x:FieldModifier="private" CornerRadius="8">
+                        <Border.Background>
+                            <ImageBrush x:Name="ThumbnailImageBrush" ImageSource="{Binding Thumbnail}"
+                                        Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" />
+                        </Border.Background>
+                    </Border>
                 </Grid>
 
-                <Grid x:Name="TextBlockGrid" Grid.Row="1" Margin="0,4,0,0" Cursor="Hand" ClipToBounds="True"
-                      input:InputHelper.IsTapEnabled="True" input:InputHelper.TappedCommand="{Binding ActivateMediaSourceCommand}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Style="{DynamicResource BaseTextBlockStyle}" FontSize="15"
-                               Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
-                               Text="{Binding Title}" ToolTip="{Binding Title}"
-                               ToolTipService.IsEnabled="{Binding Title, Converter={StaticResource TextToTooltipEnabledConverter}}"
-                               TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform x:Name="mediaTitleBlockTranslateTransform" />
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock Grid.Row="1" Style="{DynamicResource CaptionTextBlockStyle}"
-                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
-                               Text="{Binding Artist}" ToolTip="{Binding Artist}"
-                               ToolTipService.IsEnabled="{Binding Artist, Converter={StaticResource TextToTooltipEnabledConverter}}"
-                               TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">
-                        <TextBlock.RenderTransform>
-                            <TranslateTransform x:Name="mediaArtistBlockTranslateTransform" />
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                </Grid>
+                <StackPanel x:Name="TextStack" x:FieldModifier="private" Grid.Column="1" VerticalAlignment="Top">
+                    <Grid x:Name="AppInfoPanel" x:FieldModifier="private" Height="16" Margin="0,0,0,4" Cursor="Hand"
+                          input:InputHelper.IsTapEnabled="True" input:InputHelper.TappedCommand="{Binding ActivateMediaSourceCommand}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding MediaSourceIcon}" Grid.Column="0"
+                               Width="16" Height="16" RenderOptions.BitmapScalingMode="Fant" />
+                        <TextBlock Text="{Binding MediaSourceName}"
+                                   VerticalAlignment="Center" Margin="6,0,0,0" Grid.Column="1"
+                                   TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
+                    </Grid>
 
-                <Grid Grid.Row="3">
+                    <Grid x:Name="TextBlockGrid" Cursor="Hand" ClipToBounds="True"
+                          input:InputHelper.IsTapEnabled="True" input:InputHelper.TappedCommand="{Binding ActivateMediaSourceCommand}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Style="{DynamicResource BaseTextBlockStyle}" FontSize="15"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                   Text="{Binding Title}" ToolTip="{Binding Title}"
+                                   ToolTipService.IsEnabled="{Binding Title, Converter={StaticResource TextToTooltipEnabledConverter}}"
+                                   TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform x:Name="mediaTitleBlockTranslateTransform" />
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                        <TextBlock x:Name="ArtistTextBlock" x:FieldModifier="private" Grid.Row="1" Height="16"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                   Text="{Binding Artist}" ToolTip="{Binding Artist}"
+                                   ToolTipService.IsEnabled="{Binding Artist, Converter={StaticResource TextToTooltipEnabledConverter}}"
+                                   TextWrapping="NoWrap" TextTrimming="CharacterEllipsis">
+                            <TextBlock.RenderTransform>
+                                <TranslateTransform x:Name="mediaArtistBlockTranslateTransform" />
+                            </TextBlock.RenderTransform>
+                        </TextBlock>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Under the text on a regular card with full controls, to the right of it otherwise -->
+                <Grid x:Name="ControlsGrid" x:FieldModifier="private" Grid.Column="1" Grid.Row="1" Margin="0,4,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
@@ -140,19 +157,23 @@
                         </StackPanel>
                     </ui:SplitView>
 
-                    <ToggleButton x:Name="MoreControlsButton" Grid.Column="1"
-                                  VerticalAlignment="Center" Width="36" Height="36"
-                                  ToolTip="{x:Static resx:Strings.SessionControl_MoreControls}"
-                                  Style="{DynamicResource MediaToggleButtonStyle}"
-                                  Visibility="{Binding CalculatedMoreControlsButtonVisibility}"
-                                  IsChecked="{Binding ElementName=ControlsSplitView, Path=IsPaneOpen}">
-                        <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.More}" FontSize="16" />
-                    </ToggleButton>
+                    <!-- The host hides the More button in layouts without room for its pane; the button itself
+                         keeps hiding when the source supports none of shuffle, repeat or stop -->
+                    <Border x:Name="MoreControlsHost" x:FieldModifier="private" Grid.Column="1">
+                        <ToggleButton x:Name="MoreControlsButton"
+                                      VerticalAlignment="Center" Width="36" Height="36"
+                                      ToolTip="{x:Static resx:Strings.SessionControl_MoreControls}"
+                                      Style="{DynamicResource MediaToggleButtonStyle}"
+                                      Visibility="{Binding CalculatedMoreControlsButtonVisibility}"
+                                      IsChecked="{Binding ElementName=ControlsSplitView, Path=IsPaneOpen}">
+                            <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.More}" FontSize="16" />
+                        </ToggleButton>
+                    </Border>
                 </Grid>
             </Grid>
 
             <!-- The play button and timeline colors come from the thumbnail (see SessionControl.UpdateAccentColor) -->
-            <Grid x:Name="TimelineGrid" Grid.Row="1" Grid.ColumnSpan="3" Margin="16,0,16,4" VerticalAlignment="Center">
+            <Grid x:Name="TimelineGrid" Grid.Row="1" Margin="16,0,16,4" VerticalAlignment="Center">
                 <!-- Firefox only reports a song's length after the first pause; until a real timeline is known, show an empty line -->
                 <Grid Visibility="{Binding IsPlaybackPositionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <Border Height="4" CornerRadius="2" VerticalAlignment="Center"
@@ -190,5 +211,22 @@
                 </Grid>
             </Grid>
         </Grid>
-    </Border>
+
+        <!-- The thin timeline runs along the card's bottom edge; RootGrid's clip rounds its ends with the corners -->
+        <Grid x:Name="ThinTimelineGrid" x:FieldModifier="private" Height="3" VerticalAlignment="Bottom"
+              IsHitTestVisible="False" Visibility="Collapsed">
+            <Border Background="{DynamicResource SystemControlForegroundBaseLowBrush}" />
+            <Border x:Name="ThinTimelineFill" x:FieldModifier="private" HorizontalAlignment="Left"
+                    Background="{DynamicResource SystemControlHighlightAccentBrush}">
+                <Border.Width>
+                    <MultiBinding Converter="{StaticResource TimelineFractionConverter}">
+                        <Binding Path="PlaybackPosition" />
+                        <Binding Path="TimelineStartTime" />
+                        <Binding Path="TimelineEndTime" />
+                        <Binding Path="ActualWidth" ElementName="ThinTimelineGrid" />
+                    </MultiBinding>
+                </Border.Width>
+            </Border>
+        </Grid>
+    </Grid>
 </UserControl>

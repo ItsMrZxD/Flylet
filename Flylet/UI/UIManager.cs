@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Flylet.Controls;
 using Flylet.Core.Helpers;
+using Flylet.Core.Media;
 using Flylet.Core.Threading;
 using Flylet.Core.UI;
 using Flylet.Helpers;
@@ -16,8 +17,6 @@ namespace Flylet.UI
     public class UIManager : ObservableObject
     {
         public const double FlyoutWidth = 360;
-
-        public const double DefaultSessionControlHeight = 178;
 
         public const double DefaultVerticalSpacing = 8;
 
@@ -313,32 +312,78 @@ namespace Flylet.UI
 
         #region Media Controls
 
-        private bool alignGSMTCThumbnailToRight = DefaultValuesStore.AlignGSMTCThumbnailToRight;
+        private MediaCardLayout mediaCardLayout = DefaultValuesStore.MediaCardLayout;
 
-        public bool AlignGSMTCThumbnailToRight
+        /// <summary>
+        /// How the media card looks. The single options below and the preset all read and write this.
+        /// </summary>
+        public MediaCardLayout MediaCardLayout
         {
-            get => alignGSMTCThumbnailToRight;
-            set
+            get => mediaCardLayout;
+            private set
             {
-                if (SetProperty(ref alignGSMTCThumbnailToRight, value))
+                if (SetProperty(ref mediaCardLayout, value))
                 {
-                    AppDataHelper.AlignGSMTCThumbnailToRight = value;
+                    OnMediaCardLayoutChanged();
                 }
             }
         }
 
-        private bool useGSMTCThumbnailAsBackground = DefaultValuesStore.UseGSMTCThumbnailAsBackground;
-
-        public bool UseGSMTCThumbnailAsBackground
+        public MediaCardPreset MediaCardPreset
         {
-            get => useGSMTCThumbnailAsBackground;
+            get => mediaCardLayout.Preset;
             set
             {
-                if (SetProperty(ref useGSMTCThumbnailAsBackground, value))
+                // Custom isn't a layout of its own, picking it keeps whatever is set now
+                if (value != MediaCardPreset.Custom)
                 {
-                    AppDataHelper.UseGSMTCThumbnailAsBackground = value;
+                    MediaCardLayout = MediaCardLayout.FromPreset(value);
                 }
             }
+        }
+
+        public MediaCardArt MediaCardArt
+        {
+            get => mediaCardLayout.Art;
+            set => MediaCardLayout = mediaCardLayout with { Art = value };
+        }
+
+        public bool MediaCardShowSource
+        {
+            get => mediaCardLayout.ShowSource;
+            set => MediaCardLayout = mediaCardLayout with { ShowSource = value };
+        }
+
+        public bool MediaCardShowArtist
+        {
+            get => mediaCardLayout.ShowArtist;
+            set => MediaCardLayout = mediaCardLayout with { ShowArtist = value };
+        }
+
+        public MediaCardTimeline MediaCardTimeline
+        {
+            get => mediaCardLayout.Timeline;
+            set => MediaCardLayout = mediaCardLayout with { Timeline = value };
+        }
+
+        public MediaCardControls MediaCardControls
+        {
+            get => mediaCardLayout.Controls;
+            set => MediaCardLayout = mediaCardLayout with { Controls = value };
+        }
+
+        public MediaCardShape MediaCardShape
+        {
+            get => mediaCardLayout.Shape;
+            set => MediaCardLayout = mediaCardLayout with { Shape = value };
+        }
+
+        private double sessionControlHeight = MediaCardLayout.Classic.Height;
+
+        public double SessionControlHeight
+        {
+            get => sessionControlHeight;
+            private set => SetProperty(ref sessionControlHeight, value);
         }
 
         private Orientation sessionsPanelOrientation = DefaultValuesStore.SessionsPanelOrientation;
@@ -369,7 +414,7 @@ namespace Flylet.UI
             }
         }
 
-        private double calculatedSessionsPanelMaxHeight = DefaultSessionControlHeight;
+        private double calculatedSessionsPanelMaxHeight = MediaCardLayout.Classic.Height;
 
         public double CalculatedSessionsPanelMaxHeight
         {
@@ -399,8 +444,14 @@ namespace Flylet.UI
 
             TopBarVisibility = AppDataHelper.TopBarVisibility;
             FlyoutTimeout = AppDataHelper.FlyoutTimeout;
-            AlignGSMTCThumbnailToRight = AppDataHelper.AlignGSMTCThumbnailToRight;
-            UseGSMTCThumbnailAsBackground = AppDataHelper.UseGSMTCThumbnailAsBackground;
+            MediaCardLayout = new MediaCardLayout(
+                AppDataHelper.MediaCardArt,
+                AppDataHelper.MediaCardShowSource,
+                AppDataHelper.MediaCardShowArtist,
+                AppDataHelper.MediaCardTimeline,
+                AppDataHelper.MediaCardControls,
+                AppDataHelper.MediaCardShape);
+            ApplyMediaCardSize();
             MaxVerticalSessionControlsCount = AppDataHelper.MaxVerticalSessionControlsCount;
             SessionsPanelOrientation = AppDataHelper.SessionsPanelOrientation;
 
@@ -567,14 +618,45 @@ namespace Flylet.UI
             if (sessionsPanelOrientation == Orientation.Vertical)
             {
                 var n = maxVerticalSessionControlsCount;
-                CalculatedSessionsPanelMaxHeight = (DefaultSessionControlHeight * n) + (DefaultVerticalSpacing * (n - 1));
+                CalculatedSessionsPanelMaxHeight = (sessionControlHeight * n) + (DefaultVerticalSpacing * (n - 1));
                 CalculatedSessionsPanelSpacing = DefaultVerticalSpacing;
             }
             else
             {
-                CalculatedSessionsPanelMaxHeight = DefaultSessionControlHeight;
+                CalculatedSessionsPanelMaxHeight = sessionControlHeight;
                 CalculatedSessionsPanelSpacing = 0;
             }
+        }
+
+        private void OnMediaCardLayoutChanged()
+        {
+            OnPropertyChanged(nameof(MediaCardPreset));
+            OnPropertyChanged(nameof(MediaCardArt));
+            OnPropertyChanged(nameof(MediaCardShowSource));
+            OnPropertyChanged(nameof(MediaCardShowArtist));
+            OnPropertyChanged(nameof(MediaCardTimeline));
+            OnPropertyChanged(nameof(MediaCardControls));
+            OnPropertyChanged(nameof(MediaCardShape));
+
+            ApplyMediaCardSize();
+
+            AppDataHelper.MediaCardArt = mediaCardLayout.Art;
+            AppDataHelper.MediaCardShowSource = mediaCardLayout.ShowSource;
+            AppDataHelper.MediaCardShowArtist = mediaCardLayout.ShowArtist;
+            AppDataHelper.MediaCardTimeline = mediaCardLayout.Timeline;
+            AppDataHelper.MediaCardControls = mediaCardLayout.Controls;
+            AppDataHelper.MediaCardShape = mediaCardLayout.Shape;
+        }
+
+        /// <summary>
+        /// The media card's height and corners depend on its layout; the flyout's media card chrome
+        /// and the sessions panel's paging both follow these.
+        /// </summary>
+        private void ApplyMediaCardSize()
+        {
+            SessionControlHeight = mediaCardLayout.Height;
+            Application.Current.Resources["MediaCardCornerRadius"] = new CornerRadius(mediaCardLayout.CornerRadius);
+            UpdateCalculatedSessionsPanelMaxHeight();
         }
 
         internal static Thickness GetFlyoutShadowMargin(double depth)

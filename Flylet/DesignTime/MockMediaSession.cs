@@ -38,6 +38,17 @@ namespace Flylet.DesignTime
             Artist = "Why not me?";
         }
 
+        /// <summary>
+        /// A stand-in song for the media card preview in Settings when nothing is playing.
+        /// </summary>
+        public MockMediaSession(string title, string artist, string sourceName) : this()
+        {
+            Title = title;
+            Artist = artist;
+            MediaSourceName = sourceName;
+            IsPlaying = true;
+        }
+
         protected override void ChangeAutoRepeatMode()
         {
             AutoRepeatMode = AutoRepeatMode switch

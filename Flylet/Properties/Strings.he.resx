@@ -410,4 +410,91 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>מצב מיקום</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>תצוגה מקדימה</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>מציג את השיר שמתנגן, או דוגמה כשלא מתנגן דבר.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>סגנון</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>עטיפת אלבום</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>אפליקציית מקור</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>אמן</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>ציר זמן</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>פקדים</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>צורה</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>שם השיר</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>שם האמן</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>שמאל</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>ימין</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>רקע</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>מוסתר</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>מוסתר</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>מוסתר</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>פס עם זמנים</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>פס דק</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>כל הלחצנים</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>לחצן הפעלה בלבד</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>מעוגל</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>מרובע</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>גלולה</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>קלאסי</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>מינימלי</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>גלולה קומפקטית</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>רקע אלבום</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>מותאם אישית</value>
+  </data>
 </root>

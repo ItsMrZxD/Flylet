@@ -410,4 +410,91 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>Staðsetningarhamur</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>Forskoðun</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>Sýnir lagið sem er í spilun, eða sýnishorn ef ekkert er í spilun.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>Stíll</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>Plötuumslag</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>Upprunaforrit</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>Flytjandi</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>Tímalína</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>Stýringar</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>Lögun</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>Heiti lags</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>Nafn flytjanda</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>Vinstri</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>Hægri</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>Bakgrunnur</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>Falið</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>Falið</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>Falið</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>Stika með tímum</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>Mjó stika</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>Allir hnappar</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>Aðeins spilunarhnappur</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>Ávalt</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>Ferkantað</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>Pilla</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>Klassískt</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>Lágmarks</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>Þétt pilla</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>Plötubakgrunnur</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>Sérsniðið</value>
+  </data>
 </root>

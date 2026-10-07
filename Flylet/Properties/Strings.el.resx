@@ -410,4 +410,91 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>Λειτουργία τοποθέτησης</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>Προεπισκόπηση</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>Δείχνει το τραγούδι που παίζει ή ένα δείγμα όταν δεν παίζει τίποτα.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>Στυλ</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>Εξώφυλλο άλμπουμ</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>Εφαρμογή προέλευσης</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>Καλλιτέχνης</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>Χρονολόγιο</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>Στοιχεία ελέγχου</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>Σχήμα</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>Τίτλος τραγουδιού</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>Όνομα καλλιτέχνη</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>Αριστερά</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>Δεξιά</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>Φόντο</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>Κρυφό</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>Κρυφό</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>Κρυφό</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>Γραμμή με χρόνους</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>Λεπτή γραμμή</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>Όλα τα κουμπιά</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>Μόνο κουμπί αναπαραγωγής</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>Στρογγυλεμένο</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>Τετράγωνο</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>Κάψουλα</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>Κλασικό</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>Ελάχιστο</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>Συμπαγής κάψουλα</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>Φόντο άλμπουμ</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>Προσαρμοσμένο</value>
+  </data>
 </root>

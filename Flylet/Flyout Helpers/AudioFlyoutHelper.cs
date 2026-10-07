@@ -318,6 +318,11 @@ namespace Flylet
 
         private bool AnyMediaSessionsAvailable() => mediaSessionManagers.Any(x => x.ContainsAnySession());
 
+        /// <summary>
+        /// The first media session there is, for the media card preview in Settings.
+        /// </summary>
+        public MediaSession FirstMediaSession => mediaSessionManagers.SelectMany(x => x.MediaSessions).FirstOrDefault();
+
         #endregion
 
         #region Media Session Fallback Thumbnails

@@ -1247,5 +1247,266 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("UnpinTopBar", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        public static string MediaCard_Preview {
+            get {
+                return ResourceManager.GetString("MediaCard_Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shows the song that&apos;s playing, or a sample when nothing is..
+        /// </summary>
+        public static string MediaCard_PreviewHint {
+            get {
+                return ResourceManager.GetString("MediaCard_PreviewHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Style.
+        /// </summary>
+        public static string MediaCard_Preset {
+            get {
+                return ResourceManager.GetString("MediaCard_Preset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Album art.
+        /// </summary>
+        public static string MediaCard_Art {
+            get {
+                return ResourceManager.GetString("MediaCard_Art", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source app.
+        /// </summary>
+        public static string MediaCard_ShowSource {
+            get {
+                return ResourceManager.GetString("MediaCard_ShowSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artist.
+        /// </summary>
+        public static string MediaCard_ShowArtist {
+            get {
+                return ResourceManager.GetString("MediaCard_ShowArtist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeline.
+        /// </summary>
+        public static string MediaCard_Timeline {
+            get {
+                return ResourceManager.GetString("MediaCard_Timeline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Controls.
+        /// </summary>
+        public static string MediaCard_Controls {
+            get {
+                return ResourceManager.GetString("MediaCard_Controls", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shape.
+        /// </summary>
+        public static string MediaCard_Shape {
+            get {
+                return ResourceManager.GetString("MediaCard_Shape", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Song title.
+        /// </summary>
+        public static string MediaCard_SampleTitle {
+            get {
+                return ResourceManager.GetString("MediaCard_SampleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Artist name.
+        /// </summary>
+        public static string MediaCard_SampleArtist {
+            get {
+                return ResourceManager.GetString("MediaCard_SampleArtist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left.
+        /// </summary>
+        public static string Enums_MediaCardArt_Left {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardArt.Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right.
+        /// </summary>
+        public static string Enums_MediaCardArt_Right {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardArt.Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Background.
+        /// </summary>
+        public static string Enums_MediaCardArt_Background {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardArt.Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hidden.
+        /// </summary>
+        public static string Enums_MediaCardArt_Hidden {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardArt.Hidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hidden.
+        /// </summary>
+        public static string Enums_MediaCardTimeline_Hidden {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardTimeline.Hidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hidden.
+        /// </summary>
+        public static string Enums_MediaCardControls_Hidden {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardControls.Hidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bar with times.
+        /// </summary>
+        public static string Enums_MediaCardTimeline_Full {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardTimeline.Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thin bar.
+        /// </summary>
+        public static string Enums_MediaCardTimeline_Thin {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardTimeline.Thin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All buttons.
+        /// </summary>
+        public static string Enums_MediaCardControls_Full {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardControls.Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play button only.
+        /// </summary>
+        public static string Enums_MediaCardControls_PlayOnly {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardControls.PlayOnly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rounded.
+        /// </summary>
+        public static string Enums_MediaCardShape_Rounded {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardShape.Rounded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Square.
+        /// </summary>
+        public static string Enums_MediaCardShape_Square {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardShape.Square", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pill.
+        /// </summary>
+        public static string Enums_MediaCardShape_Pill {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardShape.Pill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classic.
+        /// </summary>
+        public static string Enums_MediaCardPreset_Classic {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardPreset.Classic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal.
+        /// </summary>
+        public static string Enums_MediaCardPreset_Minimal {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardPreset.Minimal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compact pill.
+        /// </summary>
+        public static string Enums_MediaCardPreset_CompactPill {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardPreset.CompactPill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Album background.
+        /// </summary>
+        public static string Enums_MediaCardPreset_AlbumBackground {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardPreset.AlbumBackground", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        public static string Enums_MediaCardPreset_Custom {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardPreset.Custom", resourceCulture);
+            }
+        }
     }
 }

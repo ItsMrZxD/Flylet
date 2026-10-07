@@ -1,5 +1,7 @@
 using Flylet.Core.Helpers;
+using Flylet.Core.Media;
 using Flylet.Core.Media.Control;
+using ModernWpf;
 using ModernWpf.Media.Animation;
 using System;
 using System.Windows;
@@ -18,17 +20,17 @@ namespace Flylet.Controls
 
         #region Properties
 
-        public static readonly DependencyProperty AlignThumbnailToRightProperty =
+        public static readonly DependencyProperty LayoutProperty =
             DependencyProperty.Register(
-                nameof(AlignThumbnailToRight),
-                typeof(bool),
+                nameof(Layout),
+                typeof(MediaCardLayout),
                 typeof(SessionControl),
-                new PropertyMetadata(false, OnAlignThumbnailToRightChanged));
+                new PropertyMetadata(MediaCardLayout.Classic, OnLayoutChanged));
 
-        public bool AlignThumbnailToRight
+        public MediaCardLayout Layout
         {
-            get => (bool)GetValue(AlignThumbnailToRightProperty);
-            set => SetValue(AlignThumbnailToRightProperty, value);
+            get => (MediaCardLayout)GetValue(LayoutProperty);
+            set => SetValue(LayoutProperty, value);
         }
 
         #endregion
@@ -40,10 +42,11 @@ namespace Flylet.Controls
             Loaded += SessionControl_Loaded;
             Unloaded += SessionControl_Unloaded;
             DataContextChanged += SessionControl_DataContextChanged;
+            RootGrid.SizeChanged += (_, _) => UpdateClip();
 
-            AlignThumbnailToRight = FlyoutHandler.Instance.UIManager.AlignGSMTCThumbnailToRight;
-            BindingOperations.SetBinding(this, AlignThumbnailToRightProperty,
-                new Binding(nameof(UI.UIManager.AlignGSMTCThumbnailToRight)) { Source = FlyoutHandler.Instance.UIManager });
+            ApplyLayout();
+            BindingOperations.SetBinding(this, LayoutProperty,
+                new Binding(nameof(UI.UIManager.MediaCardLayout)) { Source = FlyoutHandler.Instance.UIManager });
         }
 
         private void SessionControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -61,6 +64,7 @@ namespace Flylet.Controls
             }
 
             UpdateAccentColor();
+            UpdateBackgroundArt();
         }
 
         private void SessionControl_Loaded(object sender, RoutedEventArgs e)
@@ -95,6 +99,7 @@ namespace Flylet.Controls
             {
                 EndTrackTransition();
                 UpdateAccentColor();
+                UpdateBackgroundArt();
 
                 // The More button that opens this pane can collapse (e.g. the source dropped
                 // Shuffle/Repeat/Stop entirely), leaving nothing left to close it if it's still open
@@ -178,6 +183,7 @@ namespace Flylet.Controls
                 buttonResources.Clear();
                 timelineResources.Clear();
                 TimelineProgressBar.ClearValue(ForegroundProperty);
+                ThinTimelineFill.SetResourceReference(Border.BackgroundProperty, "SystemControlHighlightAccentBrush");
                 return;
             }
 
@@ -203,6 +209,7 @@ namespace Flylet.Controls
             timelineResources["SliderThumbBackgroundPressed"] = pressed;
 
             TimelineProgressBar.Foreground = normal;
+            ThinTimelineFill.Background = normal;
         }
 
         private static SolidColorBrush CreateBrush(Color color)
@@ -212,28 +219,101 @@ namespace Flylet.Controls
             return brush;
         }
 
-        private static void OnAlignThumbnailToRightChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnLayoutChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var sessionControl = d as SessionControl;
-            var alignThumbnailToRight = (bool)e.NewValue;
+            ((SessionControl)d).ApplyLayout();
+        }
 
-            var C0 = sessionControl.ContentGrid.ColumnDefinitions[0];
-            var C2 = sessionControl.ContentGrid.ColumnDefinitions[2];
+        private void ApplyLayout()
+        {
+            var layout = Layout;
+            bool pill = layout.IsPill;
 
-            if (alignThumbnailToRight)
+            Height = layout.Height;
+
+            TopGrid.Height = layout.TopSectionHeight;
+            TopGrid.Margin = pill
+                ? new Thickness(MediaCardLayout.PillPadding, MediaCardLayout.PillPadding, 12, MediaCardLayout.PillPadding)
+                : new Thickness(MediaCardLayout.Padding, MediaCardLayout.Padding, MediaCardLayout.Padding, 0);
+            TimelineRow.Height = new GridLength(
+                layout.EffectiveTimeline == MediaCardTimeline.Full ? MediaCardLayout.FullTimelineHeight
+                : pill ? 0 : MediaCardLayout.Padding);
+
+            // Album art tile
+            double artSize = pill ? MediaCardLayout.PillArtSize : MediaCardLayout.ArtSize;
+            var artCorners = new CornerRadius(pill ? artSize / 2 : layout.Shape == MediaCardShape.Square ? 0 : MediaCardLayout.RoundedCornerRadius);
+            double artGap = pill ? 10 : 14;
+            bool artRight = layout.Art == MediaCardArt.Right;
+            ThumbnailGrid.Visibility = layout.ShowsArtTile ? Visibility.Visible : Visibility.Collapsed;
+            ThumbnailGrid.Width = ThumbnailGrid.Height = artSize;
+            ThumbnailPlaceholder.CornerRadius = ThumbnailBorder.CornerRadius = artCorners;
+            Grid.SetColumn(ThumbnailGrid, artRight ? 3 : 0);
+            ThumbnailGrid.Margin = artRight ? new Thickness(artGap, 0, 0, 0) : new Thickness(0, 0, artGap, 0);
+
+            // Text
+            AppInfoPanel.Visibility = layout.SourceVisible ? Visibility.Visible : Visibility.Collapsed;
+            ArtistTextBlock.Visibility = layout.ShowArtist ? Visibility.Visible : Visibility.Collapsed;
+            TextStack.VerticalAlignment = layout.ControlsBelowText ? VerticalAlignment.Top : VerticalAlignment.Center;
+
+            // Controls
+            bool playOnly = layout.Controls == MediaCardControls.PlayOnly;
+            ControlsGrid.Visibility = layout.Controls == MediaCardControls.Hidden ? Visibility.Collapsed : Visibility.Visible;
+            if (layout.ControlsBelowText)
             {
-                C0.Width = new GridLength(16, GridUnitType.Pixel);
-                C2.Width = new GridLength(0, GridUnitType.Auto);
-                sessionControl.ThumbnailGrid.SetValue(Grid.ColumnProperty, 2);
-                sessionControl.ThumbnailGrid.Margin = new Thickness(14, 16, 16, 0);
+                Grid.SetColumn(ControlsGrid, 1);
+                Grid.SetRow(ControlsGrid, 1);
+                Grid.SetRowSpan(ControlsGrid, 1);
+                ControlsGrid.Margin = new Thickness(0, 4, 0, 0);
+                ControlsGrid.VerticalAlignment = VerticalAlignment.Bottom;
+                MoreControlsHost.Visibility = Visibility.Visible;
             }
             else
             {
-                C0.Width = new GridLength(0, GridUnitType.Auto);
-                C2.Width = new GridLength(16, GridUnitType.Pixel);
-                sessionControl.ThumbnailGrid.SetValue(Grid.ColumnProperty, 0);
-                sessionControl.ThumbnailGrid.Margin = new Thickness(16, 16, 14, 0);
+                Grid.SetColumn(ControlsGrid, 2);
+                Grid.SetRow(ControlsGrid, 0);
+                Grid.SetRowSpan(ControlsGrid, 2);
+                ControlsGrid.Margin = new Thickness(8, 0, 0, 0);
+                ControlsGrid.VerticalAlignment = VerticalAlignment.Center;
+                MoreControlsHost.Visibility = Visibility.Collapsed;
+                ControlsSplitView.IsPaneOpen = false;
             }
+            PreviousButton.Visibility = NextButton.Visibility = playOnly ? Visibility.Collapsed : Visibility.Visible;
+            PlayPauseButton.Margin = playOnly ? new Thickness(0) : new Thickness(8, 0, 8, 0);
+
+            // Timeline
+            TimelineGrid.Visibility = layout.EffectiveTimeline == MediaCardTimeline.Full ? Visibility.Visible : Visibility.Collapsed;
+            ThinTimelineGrid.Visibility = layout.EffectiveTimeline == MediaCardTimeline.Thin ? Visibility.Visible : Visibility.Collapsed;
+
+            UpdateBackgroundArt();
+            UpdateClip();
+        }
+
+        /// <summary>
+        /// Shows the blurred album art behind the card when the layout asks for it and there is art.
+        /// The darkened art needs light text whatever the flyout theme is, so the card goes dark on it.
+        /// </summary>
+        private void UpdateBackgroundArt()
+        {
+            bool show = Layout.Art == MediaCardArt.Background && _mediaSession?.Thumbnail != null;
+
+            BackgroundArtGrid.Visibility = show ? Visibility.Visible : Visibility.Collapsed;
+            if (show)
+            {
+                ThemeManager.SetRequestedTheme(this, ElementTheme.Dark);
+            }
+            else
+            {
+                ClearValue(ThemeManager.RequestedThemeProperty);
+            }
+        }
+
+        /// <summary>
+        /// Rounds the background art and the thin timeline with the card's corners.
+        /// </summary>
+        private void UpdateClip()
+        {
+            double radius = Layout.CornerRadius;
+            RootGrid.Clip = new RectangleGeometry(new Rect(RootGrid.RenderSize), radius, radius);
         }
     }
 }

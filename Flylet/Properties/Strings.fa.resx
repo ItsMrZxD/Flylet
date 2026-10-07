@@ -410,4 +410,91 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>حالت جایگذاری</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>پیش‌نمایش</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>آهنگ در حال پخش را نشان می‌دهد، یا اگر چیزی پخش نمی‌شود یک نمونه.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>سبک</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>تصویر آلبوم</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>برنامه منبع</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>هنرمند</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>خط زمانی</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>کنترل‌ها</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>شکل</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>عنوان آهنگ</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>نام هنرمند</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>چپ</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>راست</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>پس‌زمینه</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>پنهان</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>پنهان</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>پنهان</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>نوار با زمان‌ها</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>نوار باریک</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>همه دکمه‌ها</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>فقط دکمه پخش</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>گرد</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>مربع</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>کپسولی</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>کلاسیک</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>مینیمال</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>کپسولی فشرده</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>پس‌زمینه آلبوم</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>سفارشی</value>
+  </data>
 </root>

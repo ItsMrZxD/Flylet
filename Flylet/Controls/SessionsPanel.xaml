@@ -13,7 +13,7 @@
              MaxWidth="{DynamicResource FlyoutWidth}" DataContext="{x:Static root:FlyoutHandler.Instance}">
 
     <local:ContentScrollViewer x:Name="ContentScrollViewer" MaxHeight="{Binding UIManager.CalculatedSessionsPanelMaxHeight, Mode=OneWay}"
-                               ContentHeight="{x:Static rootui:UIManager.DefaultSessionControlHeight}"
+                               ContentHeight="{Binding UIManager.SessionControlHeight, Mode=OneWay}"
                                ContentWidth="{x:Static rootui:UIManager.FlyoutWidth}"
                                VerticalSpacing="{x:Static rootui:UIManager.DefaultVerticalSpacing}">
         <ItemsControl ItemsSource="{Binding AudioFlyoutHelper.AllMediaSessions}">
