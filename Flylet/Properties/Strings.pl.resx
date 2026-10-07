@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>Karta multimediów</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>Zdjęcie w tle</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Użyj zdjęcia jako tła nakładek</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Wybierz zdjęcie</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>Przyciemnij zdjęcie</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>Zdjęcie jest rozmyte i przyciemnione, aby tekst był czytelny. Na karcie multimediów styl Tło z okładki pokazuje zamiast niego okładkę albumu.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>Nie udało się otworzyć tego pliku jako obrazu. Spróbuj innego.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>Obrazy</value>
+  </data>
 </root>

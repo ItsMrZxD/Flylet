@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>Mediekort</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>Fotobakgrund</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Använd ett foto som utfällningens bakgrund</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Välj foto</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>Gör fotot mörkare</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>Fotot blir suddigt och mörkare så att texten går att läsa. På mediekortet visar stilen Albumbakgrund albumomslaget i stället.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>Filen kunde inte öppnas som en bild. Prova en annan.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>Bilder</value>
+  </data>
 </root>

@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>媒体卡片</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>照片背景</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>使用照片作为浮出控件背景</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>选择照片</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>调暗照片</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>照片会被模糊并调暗，让文字保持清晰可读。在媒体卡片上，“专辑背景”样式会改为显示专辑封面。</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>无法将该文件作为图片打开。请换一个试试。</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>图片</value>
+  </data>
 </root>

@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>Miðlaspjald</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>Myndabakgrunnur</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Nota mynd sem bakgrunn sprettigluggans</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Velja mynd</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>Dekkja myndina</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>Myndin er gerð óskýr og dekkri svo textinn sé læsilegur. Á miðlaspjaldinu sýnir stíllinn Plötubakgrunnur plötuumslagið í staðinn.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>Ekki tókst að opna skrána sem mynd. Prófaðu aðra.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>Myndir</value>
+  </data>
 </root>

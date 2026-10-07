@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>Thẻ phương tiện</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>Ảnh nền</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Dùng ảnh làm nền cho flyout</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Chọn ảnh</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>Làm tối ảnh</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>Ảnh được làm mờ và tối đi để chữ vẫn dễ đọc. Trên thẻ phương tiện, kiểu Nền album sẽ hiện ảnh bìa album thay vào đó.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>Không mở được tệp đó dưới dạng ảnh. Hãy thử tệp khác.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>Ảnh</value>
+  </data>
 </root>

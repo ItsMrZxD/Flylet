@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>کارت رسانه</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>پس‌زمینه عکس</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>استفاده از عکس به‌عنوان پس‌زمینه پنجره بازشو</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>انتخاب عکس</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>تیره کردن عکس</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>عکس تار و تیره می‌شود تا متن خوانا بماند. در کارت رسانه، سبک پس‌زمینه آلبوم به‌جای آن تصویر آلبوم را نشان می‌دهد.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>این فایل به‌عنوان تصویر باز نشد. فایل دیگری را امتحان کنید.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>تصاویر</value>
+  </data>
 </root>

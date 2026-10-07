@@ -1517,5 +1517,68 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("MediaCard_Header", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Photo background.
+        /// </summary>
+        public static string Settings_FlyoutBackgroundImage {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use a photo as the flyout background.
+        /// </summary>
+        public static string Settings_UseFlyoutBackgroundImage {
+            get {
+                return ResourceManager.GetString("Settings.UseFlyoutBackgroundImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose photo.
+        /// </summary>
+        public static string Settings_ChooseFlyoutBackgroundImage {
+            get {
+                return ResourceManager.GetString("Settings.ChooseFlyoutBackgroundImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Darken the photo.
+        /// </summary>
+        public static string Settings_FlyoutBackgroundImageDim {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageDim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The photo is blurred and darkened so the text stays readable. On the media card, the Album background style shows the album art instead..
+        /// </summary>
+        public static string Settings_FlyoutBackgroundImage_Description {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImage_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That file couldn&apos;t be opened as a picture. Try another one..
+        /// </summary>
+        public static string Settings_FlyoutBackgroundImage_Error {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImage_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pictures.
+        /// </summary>
+        public static string Settings_FlyoutBackgroundImageFilter {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageFilter", resourceCulture);
+            }
+        }
     }
 }

@@ -40,8 +40,7 @@
                 Width="{DynamicResource FlyoutWidth}"
                 Visibility="{Binding PrimaryContentVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid>
-                    <Border Background="{DynamicResource FlyoutBackground}"
-                            CornerRadius="{DynamicResource FlyoutCornerRadius}"/>
+                    <controls:FlyoutBackgroundLayer CornerRadius="{DynamicResource FlyoutCornerRadius}" />
                     <StackPanel>
                         <ContentControl x:Name="TopBarHost" x:FieldModifier="private" />
                         <controls:CrossFadeContentControl Content="{Binding PrimaryContent}" />
@@ -64,8 +63,7 @@
                 Width="{DynamicResource FlyoutWidth}"
                 Visibility="{Binding SecondaryContentVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid>
-                    <Border Background="{DynamicResource FlyoutBackground}"
-                            CornerRadius="{DynamicResource MediaCardCornerRadius}"/>
+                    <controls:FlyoutBackgroundLayer CornerRadius="{DynamicResource MediaCardCornerRadius}" />
                     <controls:CrossFadeContentControl Content="{Binding SecondaryContent}" />
                     <Border
                         BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"

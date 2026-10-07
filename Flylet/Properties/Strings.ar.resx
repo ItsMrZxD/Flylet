@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>بطاقة الوسائط</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>خلفية الصورة</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>استخدام صورة كخلفية للنافذة المنبثقة</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>اختيار صورة</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>تعتيم الصورة</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>يتم تمويه الصورة وتعتيمها ليبقى النص مقروءًا. في بطاقة الوسائط، يعرض نمط خلفية الألبوم صورة الألبوم بدلًا منها.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>تعذر فتح هذا الملف كصورة. جرّب ملفًا آخر.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>الصور</value>
+  </data>
 </root>

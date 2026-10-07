@@ -501,4 +501,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>Карточка мультимедиа</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>Фото на фоне</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Использовать фото как фон всплывающего окна</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Выбрать фото</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>Затемнить фото</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>Фото размывается и затемняется, чтобы текст оставался читаемым. На карточке мультимедиа стиль «Фон из обложки» показывает вместо него обложку альбома.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>Не удалось открыть этот файл как изображение. Попробуйте другой.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>Изображения</value>
+  </data>
 </root>

@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>Κάρτα πολυμέσων</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>Φόντο φωτογραφίας</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Χρήση φωτογραφίας ως φόντο του αναδυόμενου στοιχείου</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>Επιλογή φωτογραφίας</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>Σκούρυνση φωτογραφίας</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>Η φωτογραφία θολώνει και σκουραίνει ώστε το κείμενο να διαβάζεται. Στην κάρτα πολυμέσων, το στυλ Φόντο άλμπουμ δείχνει αντί για αυτήν το εξώφυλλο.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>Αυτό το αρχείο δεν άνοιξε ως εικόνα. Δοκιμάστε άλλο.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>Εικόνες</value>
+  </data>
 </root>

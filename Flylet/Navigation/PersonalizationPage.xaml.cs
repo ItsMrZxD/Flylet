@@ -1,5 +1,6 @@
 using Flylet.DesignTime;
 using Flylet.Properties;
+using Microsoft.Win32;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,21 @@ namespace Flylet.Navigation
         private void AudioFlyoutHelper_MediaSessionsUpdated(object sender, EventArgs e)
         {
             Dispatcher.BeginInvoke(UpdatePreviewSession);
+        }
+
+        private void ChooseFlyoutBackgroundImage_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                Filter = $"{Strings.Settings_FlyoutBackgroundImageFilter}|*.jpg;*.jpeg;*.png;*.bmp;*.gif;*.tif;*.tiff;*.webp;*.heic;*.jxr",
+                Title = Strings.Settings_ChooseFlyoutBackgroundImage
+            };
+
+            if (dialog.ShowDialog(Window.GetWindow(this)) != true)
+                return;
+
+            bool imported = FlyoutHandler.Instance.UIManager.SetFlyoutBackgroundImage(dialog.FileName);
+            FlyoutBackgroundImageErrorText.Visibility = imported ? Visibility.Collapsed : Visibility.Visible;
         }
 
         /// <summary>

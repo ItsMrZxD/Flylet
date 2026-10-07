@@ -99,6 +99,10 @@ namespace Flylet.Helpers
 
         public const string CustomFlyoutBackgroundColor = "#222222";
 
+        public const bool UseFlyoutBackgroundImage = false;
+
+        public const double FlyoutBackgroundImageDim = 45.0;
+
         #endregion
     }
 }
