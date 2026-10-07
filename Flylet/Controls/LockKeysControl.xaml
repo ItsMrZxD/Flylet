@@ -6,13 +6,14 @@
              xmlns:root="clr-namespace:Flylet"
              xmlns:ui="http://schemas.modernwpf.com/2019" xmlns:utils="clr-namespace:Flylet.Utilities"
              mc:Ignorable="d"
-             Height="64" d:DesignWidth="354" DataContext="{x:Static root:FlyoutHandler.Instance}">
+             Height="54" d:DesignWidth="354" DataContext="{x:Static root:FlyoutHandler.Instance}">
 
+    <!-- The clean strip testers picked in the 0.11 survey: icon and state, nothing else -->
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-        <ui:FontIcon x:Name="LockGlyph" Glyph="{x:Static utils:CommonGlyphs.Lock}" FontSize="24" />
+        <ui:FontIcon x:Name="LockGlyph" Glyph="{x:Static utils:CommonGlyphs.Lock}" FontSize="20" />
         <TextBlock x:Name="txt" HorizontalAlignment="Left" VerticalAlignment="Center"
-                   Style="{DynamicResource BaseTextBlockStyle}" FontSize="18"
-                   Margin="20" Text="Lock key is on" />
+                   Style="{DynamicResource BaseTextBlockStyle}" FontSize="15"
+                   Margin="14,0,0,0" Text="Lock key is on" />
     </StackPanel>
 
 </UserControl>

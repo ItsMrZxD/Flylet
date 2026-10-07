@@ -47,7 +47,7 @@ namespace Flylet.UI
 
         #region General
 
-        private TopBarVisibility topBarVisibility = TopBarVisibility.Visible;
+        private TopBarVisibility topBarVisibility = DefaultValuesStore.DefaultTopBarVisibility;
 
         public TopBarVisibility TopBarVisibility
         {

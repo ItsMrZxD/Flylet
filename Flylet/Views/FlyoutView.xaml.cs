@@ -63,6 +63,10 @@ namespace Flylet.Views
         public FlyoutView()
         {
             InitializeComponent();
+
+            // The top bar's buttons show while the pointer is anywhere over the flyout's cards
+            CardsPanel.MouseEnter += (_, _) => FlyoutTopBar?.SetPointerOverFlyout(true);
+            CardsPanel.MouseLeave += (_, _) => FlyoutTopBar?.SetPointerOverFlyout(false);
         }
     }
 }

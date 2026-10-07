@@ -67,7 +67,8 @@ namespace Flylet.Helpers
 
         #region UI
 
-        public const TopBarVisibility DefaultTopBarVisibility = TopBarVisibility.Visible;
+        // Hidden until pointed at: testers found the always-on buttons busy (0.11 survey)
+        public const TopBarVisibility DefaultTopBarVisibility = TopBarVisibility.AutoHide;
 
         public const ElementTheme AppTheme = ElementTheme.Default;
 
