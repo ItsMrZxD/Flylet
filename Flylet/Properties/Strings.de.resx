@@ -410,4 +410,94 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>Platzierungsmodus</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>Zeigt den gerade laufenden Titel oder ein Beispiel, wenn nichts läuft.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>Stil</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>Albumcover</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>Quell-App</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>Interpret</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>Zeitleiste</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>Steuerelemente</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>Form</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>Name des Interpreten</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>Links</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>Rechts</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>Hintergrund</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>Ausgeblendet</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>Ausgeblendet</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>Ausgeblendet</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>Leiste mit Zeiten</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>Dünne Leiste</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>Alle Tasten</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>Nur Wiedergabetaste</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>Abgerundet</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>Eckig</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>Pille</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>Klassisch</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>Minimal</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>Kompakte Pille</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>Album-Hintergrund</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>Benutzerdefiniert</value>
+  </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>Medienkarte</value>
+  </data>
 </root>

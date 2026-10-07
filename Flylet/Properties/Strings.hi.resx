@@ -410,4 +410,94 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>स्थिति मोड</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>पूर्वावलोकन</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>चल रहा गाना दिखाता है, या कुछ न चलने पर एक नमूना।</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>शैली</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>एल्बम आर्ट</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>स्रोत ऐप</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>कलाकार</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>टाइमलाइन</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>नियंत्रण</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>आकार</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>गाने का शीर्षक</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>कलाकार का नाम</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>बाएँ</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>दाएँ</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>पृष्ठभूमि</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>छिपा हुआ</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>छिपा हुआ</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>छिपा हुआ</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>समय के साथ बार</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>पतला बार</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>सभी बटन</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>केवल प्ले बटन</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>गोलाकार</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>चौकोर</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>पिल</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>क्लासिक</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>न्यूनतम</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>कॉम्पैक्ट पिल</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>एल्बम पृष्ठभूमि</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>कस्टम</value>
+  </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>मीडिया कार्ड</value>
+  </data>
 </root>

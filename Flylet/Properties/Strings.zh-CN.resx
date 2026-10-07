@@ -410,4 +410,94 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>放置模式</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>预览</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>显示正在播放的歌曲；没有播放时显示示例。</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>样式</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>专辑封面</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>来源应用</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>艺术家</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>时间线</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>控件</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>形状</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>歌曲名称</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>艺术家名称</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>左侧</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>右侧</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>隐藏</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>带时间的进度条</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>细进度条</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>所有按钮</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>仅播放按钮</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>圆角</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>方形</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>胶囊</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>经典</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>极简</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>紧凑胶囊</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>专辑背景</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>媒体卡片</value>
+  </data>
 </root>

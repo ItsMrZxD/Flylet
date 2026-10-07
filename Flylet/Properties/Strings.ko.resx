@@ -410,4 +410,94 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>페이드 애니메이션</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>미리 보기</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>재생 중인 노래를 보여 주고, 재생 중인 것이 없으면 샘플을 보여 줍니다.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>스타일</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>앨범 아트</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>원본 앱</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>아티스트</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>타임라인</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>컨트롤</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>모양</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>노래 제목</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>아티스트 이름</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>왼쪽</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>오른쪽</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>배경</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>숨김</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>숨김</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>숨김</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>시간 표시 막대</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>얇은 막대</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>모든 버튼</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>재생 버튼만</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>둥근 모서리</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>사각형</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>알약형</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>클래식</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>미니멀</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>컴팩트 알약형</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>앨범 배경</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>사용자 지정</value>
+  </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>미디어 카드</value>
+  </data>
 </root>

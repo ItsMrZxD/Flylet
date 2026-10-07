@@ -10,10 +10,13 @@
       xmlns:helpers="clr-namespace:Flylet.Helpers"
       xmlns:resx="clr-namespace:Flylet.Properties"
       xmlns:localui="clr-namespace:Flylet.UI"
+      xmlns:media="clr-namespace:Flylet.Core.Media;assembly=Flylet.Core"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800" DataContext="{x:Static local:FlyoutHandler.Instance}">
     <controls:ScrollViewerEx VerticalScrollBarVisibility="Auto">
-        <StackPanel Margin="20,10">
+        <TabControl Margin="10,0" Style="{DynamicResource TabControlPivotStyle}">
+        <TabItem Header="{x:Static resx:Strings.GeneralSettings}">
+        <StackPanel Margin="10,10">
             <GroupBox Header="{x:Static resx:Strings.Settings_Appearance}">
                 <ui:SimpleStackPanel Spacing="10">
                     <ui:RadioButtons Header="{x:Static resx:Strings.Settings_FlyoutTheme}"
@@ -101,5 +104,67 @@
                 </ui:SimpleStackPanel>
             </GroupBox>
         </StackPanel>
+        </TabItem>
+
+        <TabItem Header="{x:Static resx:Strings.MediaCard_Header}">
+            <ui:SimpleStackPanel Margin="10" Spacing="10">
+                <TextBlock Text="{x:Static resx:Strings.MediaCard_Preview}" Style="{DynamicResource BaseTextBlockStyle}" />
+                <TextBlock Text="{x:Static resx:Strings.MediaCard_PreviewHint}" Margin="0,-6,0,0" TextWrapping="Wrap"
+                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
+                <!-- Drawn like the flyout's media card: same theme, background, corners and border -->
+                <Border HorizontalAlignment="Left" Margin="0,4,0,8"
+                        ui:ThemeManager.RequestedTheme="{Binding UIManager.ActualFlyoutTheme}">
+                    <Grid Width="{DynamicResource FlyoutWidth}">
+                        <!-- The real flyout's see-through background sits on the desktop; a solid base in the
+                             flyout theme's own color keeps the preview's text as readable as the flyout's -->
+                        <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}" CornerRadius="{DynamicResource MediaCardCornerRadius}" />
+                        <Border Background="{DynamicResource FlyoutBackground}" CornerRadius="{DynamicResource MediaCardCornerRadius}" />
+                        <controls:SessionControl x:Name="PreviewSessionControl" x:FieldModifier="private" />
+                        <Border BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
+                                BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
+                                CornerRadius="{DynamicResource MediaCardCornerRadius}" />
+                    </Grid>
+                </Border>
+
+                <ui:RadioButtons Header="{x:Static resx:Strings.MediaCard_Preset}" MaxColumns="2"
+                                 ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                 SelectedItem="{Binding UIManager.MediaCardPreset}">
+                    <!-- Custom isn't listed: any other mix of the options below simply leaves no preset picked -->
+                    <ui:RadioButtons.ItemsSource>
+                        <x:Array Type="{x:Type media:MediaCardPreset}">
+                            <media:MediaCardPreset>Classic</media:MediaCardPreset>
+                            <media:MediaCardPreset>Minimal</media:MediaCardPreset>
+                            <media:MediaCardPreset>CompactPill</media:MediaCardPreset>
+                            <media:MediaCardPreset>AlbumBackground</media:MediaCardPreset>
+                        </x:Array>
+                    </ui:RadioButtons.ItemsSource>
+                </ui:RadioButtons>
+                <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Art}" MinWidth="240"
+                          ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                          ItemsSource="{toolkit:EnumValues Type=media:MediaCardArt}"
+                          SelectedItem="{Binding UIManager.MediaCardArt}" />
+                <ui:ToggleSwitch Header="{x:Static resx:Strings.MediaCard_ShowSource}"
+                                 IsOn="{Binding UIManager.MediaCardShowSource}"
+                                 OnContent="{x:Static resx:Strings.Settings_On}"
+                                 OffContent="{x:Static resx:Strings.Settings_Off}" />
+                <ui:ToggleSwitch Header="{x:Static resx:Strings.MediaCard_ShowArtist}"
+                                 IsOn="{Binding UIManager.MediaCardShowArtist}"
+                                 OnContent="{x:Static resx:Strings.Settings_On}"
+                                 OffContent="{x:Static resx:Strings.Settings_Off}" />
+                <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Timeline}" MinWidth="240"
+                          ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                          ItemsSource="{toolkit:EnumValues Type=media:MediaCardTimeline}"
+                          SelectedItem="{Binding UIManager.MediaCardTimeline}" />
+                <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Controls}" MinWidth="240"
+                          ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                          ItemsSource="{toolkit:EnumValues Type=media:MediaCardControls}"
+                          SelectedItem="{Binding UIManager.MediaCardControls}" />
+                <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Shape}" MinWidth="240"
+                          ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                          ItemsSource="{toolkit:EnumValues Type=media:MediaCardShape}"
+                          SelectedItem="{Binding UIManager.MediaCardShape}" />
+            </ui:SimpleStackPanel>
+        </TabItem>
+        </TabControl>
     </controls:ScrollViewerEx>
 </Page>

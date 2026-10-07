@@ -410,4 +410,94 @@
   <data name="Settings.FlyoutPlacementMode" xml:space="preserve">
     <value>Chế độ vị trí</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>Xem trước</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>Hiển thị bài hát đang phát, hoặc một mẫu khi không có gì đang phát.</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>Kiểu</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>Ảnh bìa album</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>Ứng dụng nguồn</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>Nghệ sĩ</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>Dòng thời gian</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>Điều khiển</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>Hình dạng</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>Tên bài hát</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>Tên nghệ sĩ</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>Trái</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>Phải</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>Nền</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>Ẩn</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>Ẩn</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>Ẩn</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>Thanh có thời gian</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>Thanh mảnh</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>Tất cả các nút</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>Chỉ nút phát</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>Bo tròn</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>Vuông</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>Viên thuốc</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>Cổ điển</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>Tối giản</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>Viên thuốc gọn</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>Nền album</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>Tùy chỉnh</value>
+  </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>Thẻ phương tiện</value>
+  </data>
 </root>

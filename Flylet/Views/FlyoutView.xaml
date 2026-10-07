@@ -58,18 +58,19 @@
                     
                 </Border>-->
             </ui:ThemeShadowChrome>
+            <!-- The secondary card only ever holds the media card, so it takes the media card's shape -->
             <ui:ThemeShadowChrome Depth="{x:Static localui:UIManager.FlyoutShadowDepth}"
-                CornerRadius="{DynamicResource FlyoutCornerRadius}"
+                CornerRadius="{DynamicResource MediaCardCornerRadius}"
                 Width="{DynamicResource FlyoutWidth}"
                 Visibility="{Binding SecondaryContentVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid>
                     <Border Background="{DynamicResource FlyoutBackground}"
-                            CornerRadius="{DynamicResource FlyoutCornerRadius}"/>
+                            CornerRadius="{DynamicResource MediaCardCornerRadius}"/>
                     <controls:CrossFadeContentControl Content="{Binding SecondaryContent}" />
                     <Border
                         BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
                         BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
-                        CornerRadius="{DynamicResource FlyoutCornerRadius}" />
+                        CornerRadius="{DynamicResource MediaCardCornerRadius}" />
                 </Grid>
             </ui:ThemeShadowChrome>
         </controls:DirectableStackPanel>

@@ -35,9 +35,6 @@
                 </TabItem>
                 <TabItem Header="{x:Static resx:Strings.Settings_Modules_Audio_Media}">
                     <ui:SimpleStackPanel Margin="10" Spacing="10">
-                        <ui:ToggleSwitch Header="{x:Static resx:Strings.AudioFlyoutHelper_ThumbnailAlignment}"
-                                         OnContent="{x:Static resx:Strings.Settings_Right}" OffContent="{x:Static resx:Strings.Settings_Left}"
-                                         IsOn="{Binding UIManager.AlignGSMTCThumbnailToRight}" />
                         <ui:RadioButtons x:Name="orientationCmbBox" x:FieldModifier="private"
                                          Header="{x:Static resx:Strings.AudioFlyoutHelper_SessionsPanelOrientation}"
                                          ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"

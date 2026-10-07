@@ -20,6 +20,24 @@ namespace Flylet.AppLifecycle
                 }
             }
             catch { }
+
+            try
+            {
+                // 0.11 folded the thumbnail toggles into the media card's album art option. The background
+                // toggle was saved (default on) but never drawn anything, so it maps to nothing.
+                var values = ApplicationData.Current.LocalSettings.Values;
+                string alignThumbnailToRight = "AlignGSMTCThumbnailToRight";
+                if (values.ContainsKey(alignThumbnailToRight))
+                {
+                    if (AppDataHelper.GetValue(false, alignThumbnailToRight))
+                    {
+                        AppDataHelper.MediaCardArt = Core.Media.MediaCardArt.Right;
+                    }
+                    values.Remove(alignThumbnailToRight);
+                }
+                values.Remove("UseGSMTCThumbnailAsBackground");
+            }
+            catch { }
         }
     }
 }

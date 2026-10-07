@@ -410,4 +410,94 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>フェード アニメーション</value>
   </data>
+  <data name="MediaCard_Preview" xml:space="preserve">
+    <value>プレビュー</value>
+  </data>
+  <data name="MediaCard_PreviewHint" xml:space="preserve">
+    <value>再生中の曲を表示します。何も再生していないときはサンプルを表示します。</value>
+  </data>
+  <data name="MediaCard_Preset" xml:space="preserve">
+    <value>スタイル</value>
+  </data>
+  <data name="MediaCard_Art" xml:space="preserve">
+    <value>アルバムアート</value>
+  </data>
+  <data name="MediaCard_ShowSource" xml:space="preserve">
+    <value>ソースアプリ</value>
+  </data>
+  <data name="MediaCard_ShowArtist" xml:space="preserve">
+    <value>アーティスト</value>
+  </data>
+  <data name="MediaCard_Timeline" xml:space="preserve">
+    <value>タイムライン</value>
+  </data>
+  <data name="MediaCard_Controls" xml:space="preserve">
+    <value>コントロール</value>
+  </data>
+  <data name="MediaCard_Shape" xml:space="preserve">
+    <value>形</value>
+  </data>
+  <data name="MediaCard_SampleTitle" xml:space="preserve">
+    <value>曲名</value>
+  </data>
+  <data name="MediaCard_SampleArtist" xml:space="preserve">
+    <value>アーティスト名</value>
+  </data>
+  <data name="Enums.MediaCardArt.Left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="Enums.MediaCardArt.Right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="Enums.MediaCardArt.Background" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="Enums.MediaCardArt.Hidden" xml:space="preserve">
+    <value>非表示</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Hidden" xml:space="preserve">
+    <value>非表示</value>
+  </data>
+  <data name="Enums.MediaCardControls.Hidden" xml:space="preserve">
+    <value>非表示</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Full" xml:space="preserve">
+    <value>時間付きバー</value>
+  </data>
+  <data name="Enums.MediaCardTimeline.Thin" xml:space="preserve">
+    <value>細いバー</value>
+  </data>
+  <data name="Enums.MediaCardControls.Full" xml:space="preserve">
+    <value>すべてのボタン</value>
+  </data>
+  <data name="Enums.MediaCardControls.PlayOnly" xml:space="preserve">
+    <value>再生ボタンのみ</value>
+  </data>
+  <data name="Enums.MediaCardShape.Rounded" xml:space="preserve">
+    <value>角丸</value>
+  </data>
+  <data name="Enums.MediaCardShape.Square" xml:space="preserve">
+    <value>四角</value>
+  </data>
+  <data name="Enums.MediaCardShape.Pill" xml:space="preserve">
+    <value>ピル</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Classic" xml:space="preserve">
+    <value>クラシック</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Minimal" xml:space="preserve">
+    <value>ミニマル</value>
+  </data>
+  <data name="Enums.MediaCardPreset.CompactPill" xml:space="preserve">
+    <value>コンパクトピル</value>
+  </data>
+  <data name="Enums.MediaCardPreset.AlbumBackground" xml:space="preserve">
+    <value>アルバム背景</value>
+  </data>
+  <data name="Enums.MediaCardPreset.Custom" xml:space="preserve">
+    <value>カスタム</value>
+  </data>
+  <data name="MediaCard_Header" xml:space="preserve">
+    <value>メディアカード</value>
+  </data>
 </root>
