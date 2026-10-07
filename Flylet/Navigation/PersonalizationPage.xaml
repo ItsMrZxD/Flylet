@@ -84,6 +84,46 @@
                 </ui:SimpleStackPanel>
             </GroupBox>
 
+            <GroupBox Header="{x:Static resx:Strings.Settings_FlyoutBackgroundImage}">
+                <ui:SimpleStackPanel Spacing="10">
+                    <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_UseFlyoutBackgroundImage}"
+                                     IsOn="{Binding UIManager.UseFlyoutBackgroundImage}"
+                                     OnContent="{x:Static resx:Strings.Settings_On}"
+                                     OffContent="{x:Static resx:Strings.Settings_Off}" />
+                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="12">
+                        <!-- Thumbnail of the imported photo, an empty tile until one is picked -->
+                        <Grid Width="128" Height="72">
+                            <Border CornerRadius="4" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}" />
+                            <Border CornerRadius="4">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="{Binding UIManager.FlyoutBackgroundImage}" Stretch="UniformToFill" />
+                                </Border.Background>
+                            </Border>
+                        </Grid>
+                        <Button Content="{x:Static resx:Strings.Settings_ChooseFlyoutBackgroundImage}"
+                                VerticalAlignment="Center" Click="ChooseFlyoutBackgroundImage_Click" />
+                    </ui:SimpleStackPanel>
+                    <TextBlock x:Name="FlyoutBackgroundImageErrorText" x:FieldModifier="private" Visibility="Collapsed"
+                               Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImage_Error}" TextWrapping="Wrap"
+                               Foreground="{DynamicResource SystemControlErrorTextForegroundBrush}" />
+                    <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal"
+                                         Visibility="{Binding UIManager.UseFlyoutBackgroundImage, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <Slider ui:ControlHelper.Header="{x:Static resx:Strings.Settings_FlyoutBackgroundImageDim}"
+                                Minimum="{x:Static localui:UIManager.MinFlyoutBackgroundImageDim}" Maximum="100"
+                                AutoToolTipPlacement="TopLeft" Width="240"
+                                IsMoveToPointEnabled="True" Value="{Binding UIManager.FlyoutBackgroundImageDim}" />
+                        <TextBlock Style="{DynamicResource BaseTextBlockStyle}"
+                                   VerticalAlignment="Center" Margin="0,22,0,0">
+                            <Run Text="{Binding Path=UIManager.FlyoutBackgroundImageDim, StringFormat={}{0:#0}%}" />
+                        </TextBlock>
+                    </ui:SimpleStackPanel>
+                    <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImage_Description}"
+                               Style="{DynamicResource CaptionTextBlockStyle}"
+                               Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                               TextWrapping="Wrap" />
+                </ui:SimpleStackPanel>
+            </GroupBox>
+
             <GroupBox Header="{x:Static resx:Strings.Settings_Behavior}">
                 <ui:SimpleStackPanel Spacing="10">
                     <ui:NumberBox Header="{x:Static resx:Strings.Settings_FlyoutTimeout}"
@@ -118,7 +158,7 @@
                         <!-- The real flyout's see-through background sits on the desktop; a solid base in the
                              flyout theme's own color keeps the preview's text as readable as the flyout's -->
                         <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}" CornerRadius="{DynamicResource MediaCardCornerRadius}" />
-                        <Border Background="{DynamicResource FlyoutBackground}" CornerRadius="{DynamicResource MediaCardCornerRadius}" />
+                        <controls:FlyoutBackgroundLayer CornerRadius="{DynamicResource MediaCardCornerRadius}" />
                         <controls:SessionControl x:Name="PreviewSessionControl" x:FieldModifier="private" />
                         <Border BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
                                 BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"

@@ -368,6 +368,18 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static bool UseFlyoutBackgroundImage
+        {
+            get => GetValue(DefaultValuesStore.UseFlyoutBackgroundImage);
+            set => SetValue(value);
+        }
+
+        public static double FlyoutBackgroundImageDim
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundImageDim);
+            set => SetValue(value);
+        }
+
         #endregion
 
         #endregion

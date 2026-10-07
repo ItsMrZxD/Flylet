@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>मीडिया कार्ड</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>फ़ोटो बैकग्राउंड</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>फ्लाईआउट बैकग्राउंड के लिए फ़ोटो का उपयोग करें</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>फ़ोटो चुनें</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>फ़ोटो को गहरा करें</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>टेक्स्ट पढ़ने लायक रहे, इसलिए फ़ोटो धुंधली और गहरी की जाती है। मीडिया कार्ड पर एल्बम पृष्ठभूमि शैली इसके बजाय एल्बम आर्ट दिखाती है।</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>वह फ़ाइल चित्र के रूप में नहीं खुल सकी। कोई दूसरी आज़माएँ।</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>चित्र</value>
+  </data>
 </root>

@@ -500,4 +500,25 @@
   <data name="MediaCard_Header" xml:space="preserve">
     <value>כרטיס מדיה</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage" xml:space="preserve">
+    <value>תמונת רקע</value>
+  </data>
+  <data name="Settings.UseFlyoutBackgroundImage" xml:space="preserve">
+    <value>שימוש בתמונה כרקע של החלונית הנשלפת</value>
+  </data>
+  <data name="Settings.ChooseFlyoutBackgroundImage" xml:space="preserve">
+    <value>בחירת תמונה</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDim" xml:space="preserve">
+    <value>הכהיית התמונה</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Description" xml:space="preserve">
+    <value>התמונה מטושטשת ומוכהית כדי שהטקסט יישאר קריא. בכרטיס המדיה, הסגנון רקע אלבום מציג במקומה את עטיפת האלבום.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
+    <value>לא ניתן לפתוח את הקובץ כתמונה. נסו קובץ אחר.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
+    <value>תמונות</value>
+  </data>
 </root>

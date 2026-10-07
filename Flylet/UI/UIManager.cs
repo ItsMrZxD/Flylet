@@ -7,6 +7,7 @@ using Flylet.Core.UI;
 using Flylet.Helpers;
 using ModernWpf;
 using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -232,6 +233,82 @@ namespace Flylet.UI
                     AppDataHelper.CustomFlyoutBackgroundColor = value.ToString();
                 }
             }
+        }
+
+        private static string FlyoutBackgroundImagePath =>
+            Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "FlyoutBackground.jpg");
+
+        private bool useFlyoutBackgroundImage = DefaultValuesStore.UseFlyoutBackgroundImage;
+
+        public bool UseFlyoutBackgroundImage
+        {
+            get => useFlyoutBackgroundImage;
+            set
+            {
+                if (SetProperty(ref useFlyoutBackgroundImage, value))
+                {
+                    OnPropertyChanged(nameof(IsFlyoutBackgroundImageShown));
+                    UpdateTheme();
+                    AppDataHelper.UseFlyoutBackgroundImage = value;
+                }
+            }
+        }
+
+        private ImageSource flyoutBackgroundImage;
+
+        /// <summary>
+        /// The imported copy of the user's photo, or null before one is picked.
+        /// </summary>
+        public ImageSource FlyoutBackgroundImage
+        {
+            get => flyoutBackgroundImage;
+            private set
+            {
+                if (SetProperty(ref flyoutBackgroundImage, value))
+                {
+                    OnPropertyChanged(nameof(IsFlyoutBackgroundImageShown));
+                    UpdateTheme();
+                }
+            }
+        }
+
+        public bool IsFlyoutBackgroundImageShown => useFlyoutBackgroundImage && flyoutBackgroundImage != null;
+
+        private double flyoutBackgroundImageDim = DefaultValuesStore.FlyoutBackgroundImageDim;
+
+        /// <summary>
+        /// How much the photo is darkened, in percent. Never fully clear, so light text stays readable.
+        /// </summary>
+        public double FlyoutBackgroundImageDim
+        {
+            get => flyoutBackgroundImageDim;
+            set
+            {
+                value = Math.Clamp(value, MinFlyoutBackgroundImageDim, 100);
+                if (SetProperty(ref flyoutBackgroundImageDim, value))
+                {
+                    OnPropertyChanged(nameof(FlyoutBackgroundImageDimOpacity));
+                    AppDataHelper.FlyoutBackgroundImageDim = value;
+                }
+            }
+        }
+
+        public const double MinFlyoutBackgroundImageDim = 20;
+
+        public double FlyoutBackgroundImageDimOpacity => flyoutBackgroundImageDim / 100;
+
+        /// <summary>
+        /// Imports the picture at <paramref name="path"/> as the flyout background and turns it on.
+        /// </summary>
+        /// <returns>False if the file couldn't be read as a picture; the current photo stays.</returns>
+        public bool SetFlyoutBackgroundImage(string path)
+        {
+            if (!BackgroundImageHelper.TryImport(path, FlyoutBackgroundImagePath))
+                return false;
+
+            FlyoutBackgroundImage = BackgroundImageHelper.TryLoad(FlyoutBackgroundImagePath);
+            UseFlyoutBackgroundImage = true;
+            return FlyoutBackgroundImage != null;
         }
 
         #endregion
@@ -476,6 +553,9 @@ namespace Flylet.UI
             useCustomAccentColor = AppDataHelper.UseCustomAccentColor;
             customFlyoutBackgroundColor = ParseColorOrDefault(AppDataHelper.CustomFlyoutBackgroundColor, DefaultValuesStore.CustomFlyoutBackgroundColor);
             useCustomFlyoutBackgroundColor = AppDataHelper.UseCustomFlyoutBackgroundColor;
+            useFlyoutBackgroundImage = AppDataHelper.UseFlyoutBackgroundImage;
+            flyoutBackgroundImageDim = Math.Clamp(AppDataHelper.FlyoutBackgroundImageDim, MinFlyoutBackgroundImageDim, 100);
+            flyoutBackgroundImage = BackgroundImageHelper.TryLoad(FlyoutBackgroundImagePath);
             if (useCustomAccentColor)
             {
                 ApplyAccentColor();
@@ -570,8 +650,9 @@ namespace Flylet.UI
         private void UpdateTheme()
         {
             // The flyout's text and controls come from its theme, so a custom background picks the theme
-            // that stays readable on it instead of the flyout theme setting
-            ActualFlyoutTheme = useCustomFlyoutBackgroundColor
+            // that stays readable on it instead of the flyout theme setting. The photo is always darkened.
+            ActualFlyoutTheme = IsFlyoutBackgroundImageShown ? ElementTheme.Dark
+                : useCustomFlyoutBackgroundColor
                 ? (AccentColorHelper.IsLight(customFlyoutBackgroundColor) ? ElementTheme.Light : ElementTheme.Dark)
                 : (flyoutTheme == ElementTheme.Default ? currentSystemTheme : flyoutTheme);
 

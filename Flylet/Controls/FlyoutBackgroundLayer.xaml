@@ -1,0 +1,23 @@
+<UserControl x:Class="Flylet.Controls.FlyoutBackgroundLayer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:root="clr-namespace:Flylet">
+    <!-- Behind every flyout card: the background color, and the user's photo over it when that's on -->
+    <Grid x:Name="RootGrid" x:FieldModifier="private" DataContext="{x:Static root:FlyoutHandler.Instance}">
+        <Border x:Name="ColorBorder" x:FieldModifier="private" Background="{DynamicResource FlyoutBackground}" />
+        <!-- Blurred and darkened so the light text the flyout switches to stays readable -->
+        <Grid IsHitTestVisible="False"
+              Visibility="{Binding UIManager.IsFlyoutBackgroundImageShown, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border Margin="-40">
+                <Border.Background>
+                    <ImageBrush ImageSource="{Binding UIManager.FlyoutBackgroundImage}" Stretch="UniformToFill"
+                                RenderOptions.BitmapScalingMode="HighQuality" />
+                </Border.Background>
+                <Border.Effect>
+                    <BlurEffect Radius="30" KernelType="Gaussian" RenderingBias="Performance" />
+                </Border.Effect>
+            </Border>
+            <Border Background="#000000" Opacity="{Binding UIManager.FlyoutBackgroundImageDimOpacity}" />
+        </Grid>
+    </Grid>
+</UserControl>
