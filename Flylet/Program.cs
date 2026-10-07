@@ -80,7 +80,19 @@ namespace Flylet
 
         public static string AppVersion
         {
-            get => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            get
+            {
+                // The package version is the one the Store shows; the assembly version
+                // (Directory.Build.props) was never bumped per release, so it's only the fallback.
+                try
+                {
+                    var version = Windows.ApplicationModel.Package.Current.Id.Version;
+                    return $"{version.Major}.{version.Minor}.{version.Build}.{version.Revision}";
+                }
+                catch { }
+
+                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
         }
 
         internal static void InitializePrivateUseClasses()
