@@ -9,6 +9,7 @@
              xmlns:controls="clr-namespace:Flylet.Controls"
              xmlns:media="clr-namespace:Flylet.UI.Media"
              xmlns:utils="clr-namespace:Flylet.Utilities"
+             xmlns:helpers="clr-namespace:Flylet.Helpers"
              xmlns:resx="clr-namespace:Flylet.Properties"
              xmlns:coreui="clr-namespace:Flylet.Core.UI;assembly=Flylet.Core"
              xmlns:display="clr-namespace:Flylet.Core.Display;assembly=Flylet.Core"
@@ -204,16 +205,23 @@
                 </ui:SimpleStackPanel>
             </GroupBox>
 
-            <GroupBox Header="{x:Static resx:Strings.Settings_FlyoutHideAfter}">
-                <!-- In seconds, as the survey asked; stored in milliseconds like before -->
-                <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal">
-                    <Slider Minimum="1" Maximum="10" TickFrequency="0.25" IsSnapToTickEnabled="True"
-                            Width="240" IsMoveToPointEnabled="True"
-                            Value="{Binding UIManager.FlyoutTimeout, Converter={StaticResource MillisecondsToSecondsConverter}}" />
-                    <TextBlock Style="{DynamicResource BaseTextBlockStyle}" VerticalAlignment="Center">
-                        <Run Text="{Binding UIManager.FlyoutTimeout, Converter={StaticResource MillisecondsToSecondsConverter}, StringFormat={}{0:0.##} s}" />
-                    </TextBlock>
-                </ui:SimpleStackPanel>
+            <GroupBox>
+                <!-- A free number in milliseconds: a seconds slider capped at 10 s was tried and dropped -->
+                <ui:NumberBox Header="{x:Static resx:Strings.Settings_FlyoutTimeout}"
+                              HorizontalAlignment="Left" Minimum="100"
+                              SmallChange="50" LargeChange="100" MinWidth="240"
+                              SpinButtonPlacementMode="Inline" Value="{Binding UIManager.FlyoutTimeout}">
+                    <ui:NumberBox.Description>
+                        <ui:SimpleStackPanel Margin="0,5,0,0" Orientation="Horizontal" Spacing="5">
+                            <Viewbox Height="16">
+                                <Border>
+                                    <ui:SymbolIcon Symbol="SolidStar" />
+                                </Border>
+                            </Viewbox>
+                            <TextBlock Text="{x:Static helpers:DefaultValuesStore.RecommendedFlyoutTimeout}" />
+                        </ui:SimpleStackPanel>
+                    </ui:NumberBox.Description>
+                </ui:NumberBox>
             </GroupBox>
         </StackPanel>
     </controls:ScrollViewerEx>

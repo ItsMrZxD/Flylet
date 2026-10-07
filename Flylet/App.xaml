@@ -51,11 +51,7 @@
             <converters:TimeSpanToNumberConverter x:Key="TimeSpanToNumberConverter" />
             <converters:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
             <converters:TimelineFractionConverter x:Key="TimelineFractionConverter" />
-            <converters:MillisecondsToSecondsConverter x:Key="MillisecondsToSecondsConverter" />
-
             <CornerRadius x:Key="FlyoutCornerRadius">8</CornerRadius>
-            <!-- Follows the media card's shape setting (UIManager.ApplyMediaCardSize) -->
-            <CornerRadius x:Key="MediaCardCornerRadius">8</CornerRadius>
             <x:Static x:Key="FlyoutWidth" Member="localui:UIManager.FlyoutWidth" />
 
             <DataTemplate x:Key="LocalizedEnumItemTemplate">

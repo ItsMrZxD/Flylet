@@ -463,6 +463,18 @@ namespace Flylet.UI
             private set => SetProperty(ref sessionControlHeight, value);
         }
 
+        private CornerRadius mediaCardCornerRadius = new(MediaCardLayout.Classic.CornerRadius);
+
+        /// <summary>
+        /// The media card's corners. A binding, not an app resource: the flyout is created in a window
+        /// band outside the Application's windows, so it never sees app resource changes.
+        /// </summary>
+        public CornerRadius MediaCardCornerRadius
+        {
+            get => mediaCardCornerRadius;
+            private set => SetProperty(ref mediaCardCornerRadius, value);
+        }
+
         private Orientation sessionsPanelOrientation = DefaultValuesStore.SessionsPanelOrientation;
 
         public Orientation SessionsPanelOrientation
@@ -736,7 +748,7 @@ namespace Flylet.UI
         private void ApplyMediaCardSize()
         {
             SessionControlHeight = mediaCardLayout.Height;
-            Application.Current.Resources["MediaCardCornerRadius"] = new CornerRadius(mediaCardLayout.CornerRadius);
+            MediaCardCornerRadius = new CornerRadius(mediaCardLayout.CornerRadius);
             UpdateCalculatedSessionsPanelMaxHeight();
         }
 

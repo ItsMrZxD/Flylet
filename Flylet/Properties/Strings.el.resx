@@ -527,7 +527,4 @@
   <data name="Settings_Tab_Flyouts" xml:space="preserve">
     <value>Αναδυόμενα στοιχεία</value>
   </data>
-  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
-    <value>Απόκρυψη αναδυόμενων στοιχείων μετά από</value>
-  </data>
 </root>

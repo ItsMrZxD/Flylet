@@ -527,7 +527,4 @@
   <data name="Settings_Tab_Flyouts" xml:space="preserve">
     <value>חלוניות נשלפות</value>
   </data>
-  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
-    <value>הסתרת החלוניות הנשלפות אחרי</value>
-  </data>
 </root>

@@ -527,7 +527,4 @@
   <data name="Settings_Tab_Flyouts" xml:space="preserve">
     <value>Utfällningar</value>
   </data>
-  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
-    <value>Dölj utfällningar efter</value>
-  </data>
 </root>

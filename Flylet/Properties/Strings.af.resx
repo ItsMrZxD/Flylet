@@ -527,7 +527,4 @@
   <data name="Settings_Tab_Flyouts" xml:space="preserve">
     <value>Flyouts</value>
   </data>
-  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
-    <value>Versteek flyouts ná</value>
-  </data>
 </root>

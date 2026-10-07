@@ -527,7 +527,4 @@
   <data name="Settings_Tab_Flyouts" xml:space="preserve">
     <value>Controles flotantes</value>
   </data>
-  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
-    <value>Ocultar los controles flotantes después de</value>
-  </data>
 </root>

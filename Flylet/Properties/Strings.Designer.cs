@@ -1598,14 +1598,5 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("Settings_Tab_Flyouts", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hide flyouts after.
-        /// </summary>
-        public static string Settings_FlyoutHideAfter {
-            get {
-                return ResourceManager.GetString("Settings_FlyoutHideAfter", resourceCulture);
-            }
-        }
     }
 }

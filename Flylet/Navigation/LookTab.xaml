@@ -51,7 +51,7 @@
                     <ContentControl Style="{StaticResource PreviewCardStyle}" Tag="{DynamicResource FlyoutCornerRadius}">
                         <controls:VolumeControl x:Name="PreviewVolumeControl" x:FieldModifier="private" IsHitTestVisible="False" />
                     </ContentControl>
-                    <ContentControl Style="{StaticResource PreviewCardStyle}" Tag="{DynamicResource MediaCardCornerRadius}">
+                    <ContentControl Style="{StaticResource PreviewCardStyle}" Tag="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.MediaCardCornerRadius}">
                         <controls:SessionControl x:Name="PreviewSessionControl" x:FieldModifier="private" />
                     </ContentControl>
                 </ui:SimpleStackPanel>

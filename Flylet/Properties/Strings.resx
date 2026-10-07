@@ -632,7 +632,4 @@
   <data name="Settings_Tab_Flyouts" xml:space="preserve">
     <value>Flyouts</value>
   </data>
-  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
-    <value>Hide flyouts after</value>
-  </data>
 </root>
