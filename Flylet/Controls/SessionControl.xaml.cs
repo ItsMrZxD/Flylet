@@ -265,6 +265,7 @@ namespace Flylet.Controls
                 Grid.SetRowSpan(ControlsGrid, 1);
                 ControlsGrid.Margin = new Thickness(0, 4, 0, 0);
                 ControlsGrid.VerticalAlignment = VerticalAlignment.Bottom;
+                ControlsGrid.ClearValue(WidthProperty);
                 MoreControlsHost.Visibility = Visibility.Visible;
             }
             else
@@ -274,6 +275,11 @@ namespace Flylet.Controls
                 Grid.SetRowSpan(ControlsGrid, 2);
                 ControlsGrid.Margin = new Thickness(8, 0, 0, 0);
                 ControlsGrid.VerticalAlignment = VerticalAlignment.Center;
+                // The split view inside asks for far more width than its buttons need, which would
+                // squeeze the title, so the column gets exactly the buttons' width
+                ControlsGrid.Width = playOnly
+                    ? MediaCardLayout.ButtonSize
+                    : (MediaCardLayout.ButtonSize * 3) + 16;
                 MoreControlsHost.Visibility = Visibility.Collapsed;
                 ControlsSplitView.IsPaneOpen = false;
             }

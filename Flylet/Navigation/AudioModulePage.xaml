@@ -43,6 +43,9 @@
                         <Border HorizontalAlignment="Left" Margin="0,4,0,8"
                                 ui:ThemeManager.RequestedTheme="{Binding UIManager.ActualFlyoutTheme}">
                             <Grid Width="{DynamicResource FlyoutWidth}">
+                                <!-- The real flyout's see-through background sits on the desktop; a solid base in the
+                                     flyout theme's own color keeps the preview's text as readable as the flyout's -->
+                                <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}" CornerRadius="{DynamicResource MediaCardCornerRadius}" />
                                 <Border Background="{DynamicResource FlyoutBackground}" CornerRadius="{DynamicResource MediaCardCornerRadius}" />
                                 <controls:SessionControl x:Name="PreviewSessionControl" x:FieldModifier="private" />
                                 <Border BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
