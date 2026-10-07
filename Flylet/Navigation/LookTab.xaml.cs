@@ -7,25 +7,32 @@ using System.Windows.Controls;
 
 namespace Flylet.Navigation
 {
-    public partial class PersonalizationPage : Page
+    /// <summary>
+    /// Settings > Look: theme, colors, photo, media card and top bar, under a live preview.
+    /// </summary>
+    public partial class LookTab : UserControl
     {
         private MockMediaSession sampleMediaSession;
 
-        public PersonalizationPage()
+        public LookTab()
         {
             InitializeComponent();
 
-            Loaded += PersonalizationPage_Loaded;
-            Unloaded += PersonalizationPage_Unloaded;
+            // A still volume card for the preview; the real one is driven by the audio module
+            PreviewVolumeControl.VolumeSlider.Value = 40;
+            PreviewVolumeControl.textVal.Text = "40";
+
+            Loaded += LookTab_Loaded;
+            Unloaded += LookTab_Unloaded;
         }
 
-        private void PersonalizationPage_Loaded(object sender, RoutedEventArgs e)
+        private void LookTab_Loaded(object sender, RoutedEventArgs e)
         {
             FlyoutHandler.Instance.AudioFlyoutHelper.MediaSessionsUpdated += AudioFlyoutHelper_MediaSessionsUpdated;
             UpdatePreviewSession();
         }
 
-        private void PersonalizationPage_Unloaded(object sender, RoutedEventArgs e)
+        private void LookTab_Unloaded(object sender, RoutedEventArgs e)
         {
             FlyoutHandler.Instance.AudioFlyoutHelper.MediaSessionsUpdated -= AudioFlyoutHelper_MediaSessionsUpdated;
         }

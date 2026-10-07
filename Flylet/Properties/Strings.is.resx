@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Myndir</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Útlit</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Sprettigluggar</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>Fela sprettiglugga eftir</value>
+  </data>
 </root>

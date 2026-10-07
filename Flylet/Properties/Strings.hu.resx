@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Képek</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Megjelenés</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Flyoutok</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>Flyoutok elrejtése ennyi idő után</value>
+  </data>
 </root>

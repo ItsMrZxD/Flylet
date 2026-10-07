@@ -522,4 +522,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Изображения</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Всплывающие окна</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>Скрывать всплывающие окна через</value>
+  </data>
 </root>

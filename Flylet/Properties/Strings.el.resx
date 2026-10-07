@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Εικόνες</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Εμφάνιση</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Αναδυόμενα στοιχεία</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>Απόκρυψη αναδυόμενων στοιχείων μετά από</value>
+  </data>
 </root>

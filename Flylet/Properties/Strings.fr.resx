@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Images</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Apparence</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Menus volants</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>Masquer les menus volants après</value>
+  </data>
 </root>

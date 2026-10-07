@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>圖片</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>外觀</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>浮動視窗</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>浮動視窗隱藏前的時間</value>
+  </data>
 </root>

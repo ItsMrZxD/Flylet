@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>تصاویر</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>ظاهر</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>پنجره‌های بازشو</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>پنهان کردن پنجره‌های بازشو پس از</value>
+  </data>
 </root>

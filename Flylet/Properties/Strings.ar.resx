@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>الصور</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>المظهر</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>النوافذ المنبثقة</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>إخفاء النوافذ المنبثقة بعد</value>
+  </data>
 </root>

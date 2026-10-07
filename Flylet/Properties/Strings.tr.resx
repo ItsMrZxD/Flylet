@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Resimler</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Görünüm</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Açılır pencereler</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>Açılır pencereleri şu süre sonra gizle</value>
+  </data>
 </root>

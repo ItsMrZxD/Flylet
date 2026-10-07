@@ -521,4 +521,13 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Gambar</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Tampilan</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Flyout</value>
+  </data>
+  <data name="Settings_FlyoutHideAfter" xml:space="preserve">
+    <value>Sembunyikan flyout setelah</value>
+  </data>
 </root>

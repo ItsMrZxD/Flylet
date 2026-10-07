@@ -1580,5 +1580,32 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("Settings.FlyoutBackgroundImageFilter", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Look.
+        /// </summary>
+        public static string Settings_Tab_Look {
+            get {
+                return ResourceManager.GetString("Settings_Tab_Look", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flyouts.
+        /// </summary>
+        public static string Settings_Tab_Flyouts {
+            get {
+                return ResourceManager.GetString("Settings_Tab_Flyouts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide flyouts after.
+        /// </summary>
+        public static string Settings_FlyoutHideAfter {
+            get {
+                return ResourceManager.GetString("Settings_FlyoutHideAfter", resourceCulture);
+            }
+        }
     }
 }
