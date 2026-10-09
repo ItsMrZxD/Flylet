@@ -67,7 +67,8 @@ namespace Flylet.Helpers
 
         #region UI
 
-        public const TopBarVisibility DefaultTopBarVisibility = TopBarVisibility.Visible;
+        // Hidden until pointed at: testers found the always-on buttons busy (0.11 survey)
+        public const TopBarVisibility DefaultTopBarVisibility = TopBarVisibility.AutoHide;
 
         public const ElementTheme AppTheme = ElementTheme.Default;
 
@@ -102,6 +103,19 @@ namespace Flylet.Helpers
         public const bool UseFlyoutBackgroundImage = false;
 
         public const double FlyoutBackgroundImageDim = 45.0;
+
+        // 0 is sharp, 100 is very soft; 50 is the look 0.11 shipped with
+        public const double FlyoutBackgroundBlur = 50.0;
+
+        // Which part of the photo shows: zoom is 100 (all that fits) and up, the position 0-100 with 50 centered
+        public const double FlyoutBackgroundImageZoom = 100.0;
+
+        public const double FlyoutBackgroundImagePositionX = 50.0;
+
+        public const double FlyoutBackgroundImagePositionY = 50.0;
+
+        // How many quarter turns clockwise an animated (GIF) background has been turned
+        public const int FlyoutBackgroundAnimationTurns = 0;
 
         #endregion
     }

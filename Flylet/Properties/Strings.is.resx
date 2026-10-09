@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Myndir</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Útlit</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Sprettigluggar</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Óskýrleiki (mynda- og plötubakgrunnur)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Ábending: textinn er lítill, svo rólegar myndir virka best. Mjúk form eins og himinn, landslag, litaskil eða áferð eru góð. Forðastu myndir með fínum smáatriðum eða skörpum björtum og dökkum blettum. Miðlungs, dempaðir litir lesast betur en mjög skærir. Breiðar myndir passa best í sprettigluggana. Minni óskýrleiki þarf dekkri mynd.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Endurstilla staðsetningu og aðdrátt</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Stilla mynd</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Dragðu myndina til að færa hana og skrunaðu til að stækka. Rammin hefur lögun sprettiglugga.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Snúa til vinstri</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Snúa til hægri</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Lokið</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Hreyfimynd í bakgrunni notar örlítið meiri orku á meðan sprettigluggi er opinn.</value>
+  </data>
 </root>

@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>图片</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>外观</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>浮出控件</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>模糊（照片和专辑背景）</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>提示：文字较小，所以平静的图片效果最好。天空、风景、渐变或纹理这类柔和的形状很合适。避免细节繁杂的图片，以及明暗对比强烈的色块。中等、柔和的颜色比特别鲜艳的颜色更易阅读。宽幅图片最适合浮出控件。模糊程度越低，照片需要越暗。</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>重置位置和缩放</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>调整照片</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>拖动照片可移动，滚动可缩放。边框就是浮出窗口的形状。</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>向左旋转</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>向右旋转</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>动画背景会在浮出窗口打开时多耗一点电。</value>
+  </data>
 </root>

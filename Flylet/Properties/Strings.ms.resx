@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Gambar</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Rupa</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Flyout</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Kabur (latar foto dan album)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Petua: teks adalah kecil, jadi gambar yang tenang paling sesuai. Bentuk lembut seperti langit, pemandangan, kecerunan atau tekstur adalah bagus. Elakkan gambar sesak dengan perincian halus atau tompok terang dan gelap yang tajam. Warna sederhana yang malap lebih mudah dibaca daripada warna yang sangat terang. Gambar lebar paling sesuai untuk flyout. Kekaburan yang kurang memerlukan foto yang lebih gelap.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Tetapkan semula kedudukan dan zum</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Laraskan foto</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Seret foto untuk mengalihkannya dan skrol untuk zum. Bingkai berbentuk seperti flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Putar ke kiri</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Putar ke kanan</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Selesai</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Latar belakang beranimasi menggunakan sedikit lebih banyak kuasa semasa flyout dibuka.</value>
+  </data>
 </root>

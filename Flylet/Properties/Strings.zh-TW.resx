@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>圖片</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>外觀</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>浮動視窗</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>模糊（相片和專輯背景）</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>提示：文字較小，所以平靜的圖片效果最好。天空、風景、漸層或紋理這類柔和的形狀很合適。避免細節繁雜的圖片，以及明暗對比強烈的色塊。中等、柔和的顏色比特別鮮豔的顏色更易閱讀。寬幅圖片最適合浮動視窗。模糊程度越低，相片需要越暗。</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>重設位置和縮放</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>調整相片</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>拖曳相片可移動，捲動可縮放。外框就是飛出視窗的形狀。</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>向左旋轉</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>向右旋轉</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>動畫背景會在飛出視窗開啟時多耗一點電。</value>
+  </data>
 </root>

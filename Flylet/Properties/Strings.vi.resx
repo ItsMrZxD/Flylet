@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Ảnh</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Giao diện</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Flyout</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Độ mờ (nền ảnh và album)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Mẹo: chữ nhỏ nên ảnh yên tĩnh sẽ hợp nhất. Các hình mềm như bầu trời, phong cảnh, dải màu chuyển hoặc kết cấu đều tốt. Tránh ảnh rối với nhiều chi tiết nhỏ hoặc các mảng sáng tối gắt. Màu vừa phải, dịu dễ đọc hơn màu quá chói. Ảnh ngang rộng vừa với flyout nhất. Ít làm mờ hơn thì cần ảnh tối hơn.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Đặt lại vị trí và thu phóng</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Chỉnh ảnh</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Kéo ảnh để di chuyển và cuộn để thu phóng. Khung có hình dạng của cửa sổ bật lên.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Xoay trái</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Xoay phải</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Xong</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Nền động dùng nhiều điện hơn một chút khi cửa sổ bật lên đang mở.</value>
+  </data>
 </root>

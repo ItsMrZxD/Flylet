@@ -29,10 +29,11 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
+        <!-- Only Settings, the drag handle and Close (survey, 0.11): moving the flyout back to its
+             default spot lives in Settings, and Always/Never in Settings replace the pin button -->
         <Grid x:Name="G1" x:FieldModifier="private"
               Grid.Column="0" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="34" />
                 <ColumnDefinition Width="34" />
             </Grid.ColumnDefinitions>
 
@@ -41,13 +42,6 @@
                     Command="{x:Static utils:CommonCommands.OpenSettingsWindowCommand}"
                     ToolTip="{x:Static resx:Strings.SettingsItem}">
                 <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Settings}" FontSize="16" />
-            </Button>
-
-            <Button Grid.Column="1" HorizontalAlignment="Left"
-                    ui:ControlHelper.CornerRadius="{DynamicResource ControlCornerRadius}"
-                    Command="{x:Static utils:CommonCommands.AlignOnScreenFlyoutToDefaultPosition}"
-                    ToolTip="{x:Static resx:Strings.Align}">
-                <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Align}" FontSize="14" />
             </Button>
         </Grid>
 
@@ -65,19 +59,9 @@
               Grid.Column="2" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="34" />
-                <ColumnDefinition Width="34" />
             </Grid.ColumnDefinitions>
 
-            <Button x:Name="TopBarPinButton" x:FieldModifier="private"
-                    Grid.Column="0" HorizontalAlignment="Right"
-                    ui:ControlHelper.CornerRadius="{DynamicResource ControlCornerRadius}"
-                    Command="{x:Static utils:CommonCommands.PinUnpinFlyoutTopBarCommand}"
-                    ToolTip="{x:Static resx:Strings.UnpinTopBar}">
-                <ui:FontIcon x:Name="TopBarPinButtonIcon" x:FieldModifier="private"
-                         Glyph="{x:Static utils:CommonGlyphs.UnPin}" FontSize="16" />
-            </Button>
-
-            <Button Grid.Column="1" HorizontalAlignment="Right"
+            <Button Grid.Column="0" HorizontalAlignment="Right"
                     ui:ControlHelper.CornerRadius="2,8,2,2"
                     Command="{x:Static utils:CommonCommands.CloseFlyoutCommand}"
                     CommandParameter="{x:Reference Name=TopBarGrid}"

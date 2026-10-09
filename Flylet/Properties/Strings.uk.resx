@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Зображення</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Вигляд</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Спливаючі меню</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Розмиття (тло з фото й обкладинки)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Порада: текст дрібний, тому найкраще підходять спокійні зображення. Добре працюють м’які форми: небо, пейзажі, градієнти, текстури. Уникайте строкатих зображень з дрібними деталями та різкими світлими й темними плямами. Середні, приглушені кольори читаються краще за дуже яскраві. Широкі зображення найкраще пасують до спливаючих меню. Менше розмиття потребує темнішого фото.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Скинути положення й масштаб</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Налаштувати фото</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Перетягніть фото, щоб посунути його, і прокрутіть колесо для масштабу. Рамка має форму спливного вікна.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Повернути вліво</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Повернути вправо</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Анімований фон споживає трохи більше енергії, поки відкрите спливне вікно.</value>
+  </data>
 </root>

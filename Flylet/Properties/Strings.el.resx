@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Εικόνες</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Εμφάνιση</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Αναδυόμενα στοιχεία</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Θόλωμα (φόντο φωτογραφίας και άλμπουμ)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Συμβουλή: Το κείμενο είναι μικρό, γι αυτό οι ήρεμες εικόνες λειτουργούν καλύτερα. Απαλά σχήματα όπως ουρανοί, τοπία, διαβαθμίσεις ή υφές είναι καλά. Αποφύγετε φορτωμένες εικόνες με λεπτομέρειες ή έντονες φωτεινές και σκοτεινές κηλίδες. Τα μεσαία, απαλά χρώματα διαβάζονται καλύτερα από τα πολύ έντονα. Οι πλατιές εικόνες ταιριάζουν καλύτερα στα αναδυόμενα στοιχεία. Λιγότερο θόλωμα θέλει πιο σκούρα φωτογραφία.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Επαναφορά θέσης και μεγέθυνσης</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Προσαρμογή φωτογραφίας</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Σύρετε τη φωτογραφία για να την μετακινήσετε και κάντε κύλιση για μεγέθυνση. Το πλαίσιο έχει το σχήμα του flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Περιστροφή αριστερά</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Περιστροφή δεξιά</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Τέλος</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Ένα κινούμενο φόντο καταναλώνει λίγη περισσότερη ενέργεια όσο είναι ανοιχτό ένα flyout.</value>
+  </data>
 </root>

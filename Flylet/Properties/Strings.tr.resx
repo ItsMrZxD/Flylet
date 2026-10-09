@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Resimler</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Görünüm</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Açılır pencereler</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Bulanıklık (fotoğraf ve albüm arka planları)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>İpucu: Yazı küçük olduğu için sakin resimler en iyi sonucu verir. Gökyüzü, manzara, renk geçişleri veya dokular gibi yumuşak şekiller iyidir. İnce ayrıntılı kalabalık resimlerden veya keskin açık ve koyu lekelerden kaçının. Orta tonlu, sönük renkler çok parlak renklerden daha kolay okunur. Geniş resimler açılır pencerelere en iyi uyar. Daha az bulanıklık için fotoğrafı daha koyu yapın.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Konumu ve yakınlaştırmayı sıfırla</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Fotoğrafı ayarla</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Taşımak için fotoğrafı sürükleyin, yakınlaştırmak için kaydırın. Çerçeve, açılır pencerenin şeklindedir.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Sola döndür</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Sağa döndür</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Bitti</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Hareketli arka plan, bir açılır pencere açıkken biraz daha fazla güç kullanır.</value>
+  </data>
 </root>

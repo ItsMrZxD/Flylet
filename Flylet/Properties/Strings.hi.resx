@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>चित्र</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>रूप</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>फ्लाईआउट</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>धुंधलापन (फ़ोटो और एल्बम बैकग्राउंड)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>सुझाव: टेक्स्ट छोटा है, इसलिए शांत तस्वीरें सबसे अच्छी रहती हैं। आसमान, प्राकृतिक दृश्य, ग्रेडिएंट या टेक्सचर जैसे मुलायम आकार अच्छे हैं। बारीक डिटेल या तेज़ चमकीले और गहरे धब्बों वाली भरी-भरी तस्वीरों से बचें। बहुत चटक रंगों की तुलना में मध्यम, फीके रंग बेहतर पढ़े जाते हैं। चौड़ी तस्वीरें फ्लाईआउट में सबसे अच्छी बैठती हैं। कम धुंधलेपन के लिए फ़ोटो को ज़्यादा गहरा करें।</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>स्थिति और ज़ूम रीसेट करें</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>फ़ोटो समायोजित करें</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>फ़ोटो को खिसकाने के लिए खींचें और ज़ूम करने के लिए स्क्रोल करें। फ़्रेम फ़्लाईआउट के आकार का है।</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>बाएँ घुमाएँ</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>दाएँ घुमाएँ</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>हो गया</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>एनिमेटेड पृष्ठभूमि फ़्लाईआउट खुला रहने के दौरान थोड़ी अधिक बिजली इस्तेमाल करती है।</value>
+  </data>
 </root>

@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Afbeeldingen</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Uiterlijk</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Flyouts</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Vervaging (foto- en albumachtergronden)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Tip: de tekst is klein, dus rustige afbeeldingen werken het best. Zachte vormen zoals luchten, landschappen, kleurverlopen of texturen zijn goed. Vermijd drukke afbeeldingen met fijn detail of scherpe lichte en donkere vlekken. Middelmatige, gedempte kleuren lezen beter dan heel felle kleuren. Brede afbeeldingen passen het best in de flyouts. Minder vervaging vraagt om een donkerdere foto.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Positie en zoom herstellen</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Foto aanpassen</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Sleep de foto om hem te verplaatsen en scrol om in te zoomen. Het kader heeft de vorm van een flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Naar links draaien</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Naar rechts draaien</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Klaar</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Een geanimeerde achtergrond gebruikt iets meer stroom zolang een flyout open is.</value>
+  </data>
 </root>

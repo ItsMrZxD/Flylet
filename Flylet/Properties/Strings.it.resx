@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Immagini</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Aspetto</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Riquadri a comparsa</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Sfocatura (sfondi foto e album)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Consiglio: il testo è piccolo, quindi le immagini calme funzionano meglio. Forme morbide come cieli, paesaggi, sfumature o texture vanno bene. Evita immagini affollate con dettagli fini o macchie nette chiare e scure. I colori medi e tenui si leggono meglio di quelli molto vivaci. Le immagini larghe si adattano meglio ai riquadri a comparsa. Meno sfocatura richiede una foto più scura.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Reimposta posizione e zoom</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Regola foto</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Trascina la foto per spostarla e scorri per ingrandire. La cornice ha la forma di un flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Ruota a sinistra</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Ruota a destra</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Fatto</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Uno sfondo animato consuma un po' più energia mentre un flyout è aperto.</value>
+  </data>
 </root>

@@ -21,6 +21,58 @@ namespace Flylet.Core.Tests
             try { Directory.Delete(folder, true); } catch { }
         }
 
+        [Fact]
+        public void GetViewbox_TallPhotoInWideTile_ShowsAThinSliceAtThePickedHeight()
+        {
+            // 1:2 photo in a 4:1 tile: full width, an eighth of the height
+            var top = BackgroundImageHelper.GetViewbox(0.5, 4, 1, 0.5, 0);
+            var bottom = BackgroundImageHelper.GetViewbox(0.5, 4, 1, 0.5, 1);
+
+            Assert.Equal(1, top.Width, 6);
+            Assert.Equal(0.125, top.Height, 6);
+            Assert.Equal(0, top.Y, 6);
+            Assert.Equal(0.875, bottom.Y, 6);
+        }
+
+        [Fact]
+        public void GetViewbox_ZoomShrinksTheViewAndKeepsItInsideThePhoto()
+        {
+            var view = BackgroundImageHelper.GetViewbox(2, 1, 2, 1, 1);
+
+            Assert.Equal(0.25, view.Width, 6);
+            Assert.Equal(0.5, view.Height, 6);
+            Assert.Equal(1, view.Right, 6);
+            Assert.Equal(1, view.Bottom, 6);
+        }
+
+        [Fact]
+        public void TryRotate_SwapsWidthAndHeight()
+        {
+            string source = SavePng(300, 100);
+            string stored = Path.Combine(folder, "stored.jpg");
+            Assert.True(BackgroundImageHelper.TryImport(source, stored));
+
+            Assert.True(BackgroundImageHelper.TryRotate(stored, true));
+
+            var rotated = BackgroundImageHelper.TryLoad(stored);
+            Assert.Equal(100, rotated.Width, 0);
+            Assert.Equal(300, rotated.Height, 0);
+        }
+
+        [Fact]
+        public void TryRotate_MissingFile_ReturnsFalse()
+        {
+            Assert.False(BackgroundImageHelper.TryRotate(Path.Combine(folder, "none.jpg"), false));
+        }
+
+        [Fact]
+        public void GetViewbox_KeepsTheTileShape()
+        {
+            var view = BackgroundImageHelper.GetViewbox(1.5, 3.6, 1.7, 0.3, 0.8);
+
+            Assert.Equal(3.6 / 1.5, view.Width / view.Height, 6);
+        }
+
         private string SavePng(int width, int height, string name = "source.png")
         {
             var pixels = new byte[width * height * 4];

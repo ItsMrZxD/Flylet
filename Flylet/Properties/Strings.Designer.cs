@@ -1580,5 +1580,83 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("Settings.FlyoutBackgroundImageFilter", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Look.
+        /// </summary>
+        public static string Settings_Tab_Look {
+            get {
+                return ResourceManager.GetString("Settings_Tab_Look", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flyouts.
+        /// </summary>
+        public static string Settings_Tab_Flyouts {
+            get {
+                return ResourceManager.GetString("Settings_Tab_Flyouts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blur (photo and album backgrounds).
+        /// </summary>
+        public static string Settings_FlyoutBackgroundImageBlur {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageBlur", resourceCulture);
+            }
+        }
+        
+        public static string Settings_FlyoutBackgroundImage_GifNote {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImage_GifNote", resourceCulture);
+            }
+        }
+
+        public static string Settings_FlyoutBackgroundImageAdjust {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageAdjust", resourceCulture);
+            }
+        }
+
+        public static string Settings_FlyoutBackgroundImageAdjustHint {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageAdjustHint", resourceCulture);
+            }
+        }
+        
+        public static string Settings_FlyoutBackgroundImageRotateLeft {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageRotateLeft", resourceCulture);
+            }
+        }
+        
+        public static string Settings_FlyoutBackgroundImageRotateRight {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageRotateRight", resourceCulture);
+            }
+        }
+        
+        public static string Settings_FlyoutBackgroundImageDone {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageDone", resourceCulture);
+            }
+        }
+        
+        public static string Settings_FlyoutBackgroundImageReset {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImageReset", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tip: the text is small, so calm pictures work best. Soft shapes like skies, landscapes, gradients or textures are good. Avoid busy pictures with fine detail, or sharp bright and dark patches. Medium, muted colors read better than very bright ones. Wide pictures fit the flyouts best. Less blur needs a darker photo..
+        /// </summary>
+        public static string Settings_FlyoutBackgroundImage_Tips {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImage_Tips", resourceCulture);
+            }
+        }
     }
 }

@@ -32,7 +32,7 @@
         <Border Background="#00FFFFFF" input:InputHelper.IsTapEnabled="True"
                 input:InputHelper.TappedCommand="{x:Static utils:CommonCommands.CloseFlyoutCommand}"
                 input:InputHelper.TappedCommandParameter="{x:Reference Name=TopBarHost}" />
-        <controls:DirectableStackPanel
+        <controls:DirectableStackPanel x:Name="CardsPanel" x:FieldModifier="private" controls:FlyoutBackgroundLayer.IsPhotoStack="True"
             Spacing="8" Margin="{x:Static localui:UIManager.FlyoutShadowMargin}"
             Direction="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.OnScreenFlyoutContentStackingDirection}">
             <ui:ThemeShadowChrome Depth="{x:Static localui:UIManager.FlyoutShadowDepth}"
@@ -59,16 +59,16 @@
             </ui:ThemeShadowChrome>
             <!-- The secondary card only ever holds the media card, so it takes the media card's shape -->
             <ui:ThemeShadowChrome Depth="{x:Static localui:UIManager.FlyoutShadowDepth}"
-                CornerRadius="{DynamicResource MediaCardCornerRadius}"
+                CornerRadius="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.MediaCardCornerRadius}"
                 Width="{DynamicResource FlyoutWidth}"
                 Visibility="{Binding SecondaryContentVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid>
-                    <controls:FlyoutBackgroundLayer CornerRadius="{DynamicResource MediaCardCornerRadius}" />
+                    <controls:FlyoutBackgroundLayer CornerRadius="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.MediaCardCornerRadius}" />
                     <controls:CrossFadeContentControl Content="{Binding SecondaryContent}" />
                     <Border
                         BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
                         BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
-                        CornerRadius="{DynamicResource MediaCardCornerRadius}" />
+                        CornerRadius="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.MediaCardCornerRadius}" />
                 </Grid>
             </ui:ThemeShadowChrome>
         </controls:DirectableStackPanel>

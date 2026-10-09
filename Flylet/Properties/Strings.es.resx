@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Imágenes</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Aspecto</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Controles flotantes</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Desenfoque (fondos de foto y de álbum)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Consejo: el texto es pequeño, así que las imágenes tranquilas funcionan mejor. Las formas suaves como cielos, paisajes, degradados o texturas son buenas. Evita imágenes recargadas con detalles finos o manchas muy claras y oscuras. Los colores medios y apagados se leen mejor que los muy brillantes. Las imágenes anchas encajan mejor en los controles flotantes. Menos desenfoque necesita una foto más oscura.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Restablecer posición y zoom</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Ajustar foto</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Arrastra la foto para moverla y usa la rueda para hacer zoom. El marco tiene la forma de un flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Girar a la izquierda</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Girar a la derecha</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Listo</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Un fondo animado usa un poco más de energía mientras hay un flyout abierto.</value>
+  </data>
 </root>

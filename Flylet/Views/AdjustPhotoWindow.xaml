@@ -1,0 +1,51 @@
+<Window x:Class="Flylet.Views.AdjustPhotoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:resx="clr-namespace:Flylet.Properties"
+        ui:WindowHelper.UseModernWindowStyle="True"
+        Title="{x:Static resx:Strings.Settings_FlyoutBackgroundImageAdjust}"
+        SizeToContent="WidthAndHeight" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False" Icon="..\Assets\Logo.ico">
+    <StackPanel Margin="20">
+        <!-- The photo is laid out by the code-behind so the frame always shows exactly what the flyout will -->
+        <Border Width="440" Height="260" ClipToBounds="True" CornerRadius="8" Background="#1C1C1C">
+            <Grid x:Name="Stage" x:FieldModifier="private" Background="Transparent" ClipToBounds="True"
+                  Cursor="SizeAll" MouseLeftButtonDown="Stage_MouseLeftButtonDown"
+                  MouseMove="Stage_MouseMove" MouseLeftButtonUp="Stage_MouseLeftButtonUp"
+                  MouseWheel="Stage_MouseWheel">
+                <Canvas>
+                    <Image x:Name="Photo" x:FieldModifier="private" Stretch="Fill" IsHitTestVisible="False"
+                           RenderOptions.BitmapScalingMode="HighQuality" />
+                    <Path x:Name="Dimmer" x:FieldModifier="private" Fill="#99000000" IsHitTestVisible="False" />
+                    <Border x:Name="FrameBorder" x:FieldModifier="private" BorderBrush="White" BorderThickness="2"
+                            CornerRadius="8" IsHitTestVisible="False" />
+                </Canvas>
+            </Grid>
+        </Border>
+        <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImageAdjustHint}" Margin="0,8,0,12" MaxWidth="440"
+                   TextWrapping="Wrap" Style="{DynamicResource CaptionTextBlockStyle}"
+                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
+        <DockPanel LastChildFill="False">
+            <ui:SimpleStackPanel DockPanel.Dock="Left" Orientation="Horizontal" Spacing="8">
+                <Button Click="RotateLeft_Click">
+                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8">
+                        <ui:FontIcon Glyph="&#xE7A7;" FontSize="14" />
+                        <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImageRotateLeft}" />
+                    </ui:SimpleStackPanel>
+                </Button>
+                <Button Click="RotateRight_Click">
+                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8">
+                        <ui:FontIcon Glyph="&#xE7A6;" FontSize="14" />
+                        <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImageRotateRight}" />
+                    </ui:SimpleStackPanel>
+                </Button>
+            </ui:SimpleStackPanel>
+            <ui:SimpleStackPanel DockPanel.Dock="Right" Orientation="Horizontal" Spacing="8">
+                <Button Content="{x:Static resx:Strings.Settings_FlyoutBackgroundImageReset}" Click="Reset_Click" />
+                <Button Content="{x:Static resx:Strings.Settings_FlyoutBackgroundImageDone}" Click="Done_Click"
+                        Style="{DynamicResource AccentButtonStyle}" IsDefault="True" />
+            </ui:SimpleStackPanel>
+        </DockPanel>
+    </StackPanel>
+</Window>

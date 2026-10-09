@@ -196,6 +196,7 @@ namespace Flylet
             #endregion
 
             HasInitialized = true;
+            RatePromptHelper.Initialize();
             Initialized?.Invoke(this, EventArgs.Empty);
 
             DisplayManager.Instance.DisplayUpdated += Instance_DisplayUpdated;
@@ -432,6 +433,7 @@ namespace Flylet
             if (!OnScreenFlyoutWindow.IsOpen || OnScreenFlyoutView.FlyoutHelper != helper)
             {
                 helper.OnFlyoutOpening();
+                RatePromptHelper.CountFlyoutShown();
             }
 
             OnScreenFlyoutView.FlyoutHelper = helper;
@@ -578,6 +580,9 @@ namespace Flylet
                 Instance.SettingsWindow.Show();
                 Instance.SettingsWindow.Activate();
                 Instance.SettingsWindow.Focus();
+
+                // The user is in Settings, engaged with the app: a good moment to ask for a rating
+                RatePromptHelper.TryPrompt(Instance.SettingsWindow);
             });
         }
     }

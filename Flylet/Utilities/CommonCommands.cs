@@ -14,20 +14,6 @@ namespace Flylet.Utilities
         public static RelayCommand AlignOnScreenFlyoutToDefaultPosition { get; } =
             new RelayCommand(() => FlyoutHandler.Instance.AlignFlyout(), () => FlyoutHandler.HasInitialized);
 
-        public static RelayCommand PinUnpinFlyoutTopBarCommand { get; } =
-            new RelayCommand(() =>
-            {
-                var uiManager = FlyoutHandler.Instance.UIManager;
-                if (uiManager.TopBarVisibility == UI.TopBarVisibility.Visible)
-                {
-                    uiManager.TopBarVisibility = UI.TopBarVisibility.AutoHide;
-                }
-                else if (uiManager.TopBarVisibility == UI.TopBarVisibility.AutoHide)
-                {
-                    uiManager.TopBarVisibility = UI.TopBarVisibility.Visible;
-                }
-            }, () => FlyoutHandler.HasInitialized);
-
         public static RelayCommand<FrameworkElement> CloseFlyoutCommand { get; } =
             new RelayCommand<FrameworkElement>(x =>
             {
@@ -57,7 +43,6 @@ namespace Flylet.Utilities
         {
             OpenSettingsWindowCommand.NotifyCanExecuteChanged();
             AlignOnScreenFlyoutToDefaultPosition.NotifyCanExecuteChanged();
-            PinUnpinFlyoutTopBarCommand.NotifyCanExecuteChanged();
             CloseFlyoutCommand.NotifyCanExecuteChanged();
             ExitAppCommand.NotifyCanExecuteChanged();
             ResetAppDataCommand.NotifyCanExecuteChanged();

@@ -1,6 +1,5 @@
 ﻿using Flylet.Helpers;
 using Flylet.UI;
-using Flylet.Utilities;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +24,9 @@ namespace Flylet.Controls
         private TopBarVisibility _topBarVisibility = TopBarVisibility.Visible;
 
         private bool isAnimating;
+
+        // Set by the flyout view: pointing anywhere at the flyout, not only at this strip, shows the buttons
+        private bool isPointerOverFlyout;
 
         #region Properties
 
@@ -57,13 +59,23 @@ namespace Flylet.Controls
 
             PrepareAnimations();
 
-            MouseEnter += (_, e) => OnMouseEnter();
-            MouseLeave += (_, e) => OnMouseLeave();
-
             if (System.ComponentModel.DesignerProperties.GetIsInDesignMode(this)) { return; }
 
             BindingOperations.SetBinding(this, TopBarVisibilityProperty,
                 new Binding(nameof(UIManager.TopBarVisibility)) { Source = FlyoutHandler.Instance.UIManager, Mode = BindingMode.OneWay });
+        }
+
+        /// <summary>
+        /// Tells the bar whether the pointer is over the flyout it sits on.
+        /// </summary>
+        public void SetPointerOverFlyout(bool isOver)
+        {
+            isPointerOverFlyout = isOver;
+
+            if (isOver)
+                OnMouseEnter();
+            else
+                OnMouseLeave();
         }
 
         private void OnMouseEnter()
@@ -95,10 +107,8 @@ namespace Flylet.Controls
             _topBarVisibility = value;
             _topBarVisible = value == TopBarVisibility.Visible;
 
-            TopBarPinButtonIcon.Glyph = _topBarVisible ? CommonGlyphs.UnPin : CommonGlyphs.Pin;
-            TopBarPinButton.ToolTip = _topBarVisible ? Properties.Strings.UnpinTopBar : Properties.Strings.PinTopBar;
             _topBarOverlay = false;
-            if (value != TopBarVisibility.Collapsed && IsMouseOver)
+            if (value != TopBarVisibility.Collapsed && isPointerOverFlyout)
             {
                 _topBarOverlay = true;
                 _topBarVisible = true;
@@ -181,7 +191,7 @@ namespace Flylet.Controls
                 expandStoryboard.Completed += (_, __) =>
                 {
                     isAnimating = false;
-                    if (!IsMouseOver)
+                    if (!isPointerOverFlyout)
                     {
                         OnMouseLeave();
                     }
@@ -209,7 +219,7 @@ namespace Flylet.Controls
 
                 ThicknessAnimation g1MarginAnim = new()
                 {
-                    To = new(-68, 0, 0, 0),
+                    To = new(-34, 0, 0, 0),
                     Duration = duration,
                     EasingFunction = easingFunction
                 };
@@ -218,7 +228,7 @@ namespace Flylet.Controls
 
                 ThicknessAnimation g2MarginAnim = new()
                 {
-                    To = new(0, 0, -68, 0),
+                    To = new(0, 0, -34, 0),
                     Duration = duration,
                     EasingFunction = easingFunction
                 };
@@ -241,7 +251,7 @@ namespace Flylet.Controls
                 collapseStoryboard.Completed += (_, __) =>
                 {
                     isAnimating = false;
-                    if (IsMouseOver)
+                    if (isPointerOverFlyout)
                     {
                         OnMouseEnter();
                     }

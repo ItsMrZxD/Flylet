@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Képek</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Megjelenés</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Flyoutok</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Elmosás (fotó- és albumháttér)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Tipp: a szöveg kicsi, ezért a nyugodt képek működnek a legjobban. A lágy formák, például égbolt, tájkép, színátmenet vagy textúra jók. Kerüld a zsúfolt, finom részletekkel teli képeket vagy az éles, világos és sötét foltokat. A közepes, tompa színek jobban olvashatók, mint a nagyon élénkek. A széles képek illenek legjobban a flyoutokhoz. Kevesebb elmosáshoz sötétebb fotó kell.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Pozíció és nagyítás visszaállítása</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Fotó igazítása</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Húzd a fotót az áthelyezéshez, görgess a nagyításhoz. A keret a felugró ablak alakját mutatja.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Forgatás balra</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Forgatás jobbra</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Kész</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Az animált háttér egy kicsit több energiát használ, amíg egy felugró ablak nyitva van.</value>
+  </data>
 </root>

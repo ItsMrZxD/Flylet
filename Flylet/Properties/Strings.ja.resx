@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>画像</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>外観</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>フライアウト</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>ぼかし（写真・アルバム背景）</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>ヒント：文字が小さいので、落ち着いた写真が向いています。空、風景、グラデーション、テクスチャのようなやわらかい形が最適です。細かい模様が多い写真や、明暗がはっきり分かれた写真は避けましょう。とても鮮やかな色より、中間的で落ち着いた色のほうが読みやすくなります。横長の写真がフライアウトに最も合います。ぼかしを弱くするときは、写真を暗くしてください。</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>位置とズームをリセット</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>写真を調整</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>写真をドラッグして移動し、スクロールで拡大します。枠はフライアウトの形です。</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>左に回転</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>右に回転</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>完了</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>アニメーション背景は、フライアウトが開いている間、少し多めに電力を使います。</value>
+  </data>
 </root>

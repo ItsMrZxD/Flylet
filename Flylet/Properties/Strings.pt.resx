@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Imagens</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Aparência</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Flyouts</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Desfoque (fundos de foto e de álbum)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Dica: o texto é pequeno, então imagens calmas funcionam melhor. Formas suaves, como céus, paisagens, degradês ou texturas, são boas. Evite imagens cheias de detalhes finos ou manchas muito claras e escuras. Cores médias e discretas são mais fáceis de ler do que cores muito vivas. Imagens largas se encaixam melhor nos flyouts. Menos desfoque exige uma foto mais escura.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Repor posição e zoom</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Ajustar foto</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Arraste a foto para a mover e use a roda para ampliar. A moldura tem a forma de um flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Rodar para a esquerda</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Rodar para a direita</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Concluído</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Um fundo animado usa um pouco mais de energia enquanto um flyout está aberto.</value>
+  </data>
 </root>

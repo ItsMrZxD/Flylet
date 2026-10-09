@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Billeder</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Udseende</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Flyouts</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Sløring (foto- og albumbaggrunde)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Tip: Teksten er lille, så rolige billeder fungerer bedst. Bløde former som himmel, landskaber, farveovergange eller teksturer er gode. Undgå uroligt billeder med fine detaljer eller skarpe lyse og mørke pletter. Middelfarver i dæmpede toner er lettere at læse end meget skarpe farver. Brede billeder passer bedst til flyouts. Mindre sløring kræver et mørkere foto.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Nulstil position og zoom</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Juster foto</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Træk i fotoet for at flytte det, og scroll for at zoome. Rammen har form som en flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Roter til venstre</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Roter til højre</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Færdig</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>En animeret baggrund bruger lidt mere strøm, mens en flyout er åben.</value>
+  </data>
 </root>

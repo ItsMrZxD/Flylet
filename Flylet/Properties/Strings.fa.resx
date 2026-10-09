@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>تصاویر</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>ظاهر</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>پنجره‌های بازشو</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>تاری (پس‌زمینه عکس و آلبوم)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>نکته: متن کوچک است، پس تصاویر آرام بهتر کار می‌کنند. شکل‌های نرم مانند آسمان، منظره، گرادیان یا بافت مناسب‌اند. از تصاویر شلوغ با جزئیات ریز یا لکه‌های روشن و تیره تند دوری کنید. رنگ‌های متوسط و ملایم بهتر از رنگ‌های بسیار روشن خوانده می‌شوند. تصاویر عریض بهتر در پنجره‌های بازشو جا می‌گیرند. تاری کمتر به عکس تیره‌تری نیاز دارد.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>بازنشانی موقعیت و بزرگ‌نمایی</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>تنظیم عکس</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>عکس را بکشید تا جابه‌جا شود و برای بزرگ‌نمایی اسکرول کنید. قاب به شکل فلای‌اوت است.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>چرخش به چپ</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>چرخش به راست</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>تمام</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>پس‌زمینه متحرک تا زمانی که فلای‌اوت باز است کمی انرژی بیشتری مصرف می‌کند.</value>
+  </data>
 </root>

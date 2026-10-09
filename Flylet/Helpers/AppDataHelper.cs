@@ -368,6 +368,30 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        /// <summary>
+        /// When Flylet first ran, as a round-trip UTC string; empty until set. Drives the rating prompt.
+        /// </summary>
+        public static string FirstRunUtc
+        {
+            get => GetValue(string.Empty);
+            set => SetValue(value);
+        }
+
+        public static int FlyoutsShownCount
+        {
+            get => GetValue(0);
+            set => SetValue(value);
+        }
+
+        /// <summary>
+        /// True once the Store's rating dialog was shown (rated or dismissed); it's never shown again.
+        /// </summary>
+        public static bool RatePromptHandled
+        {
+            get => GetValue(false);
+            set => SetValue(value);
+        }
+
         public static bool UseFlyoutBackgroundImage
         {
             get => GetValue(DefaultValuesStore.UseFlyoutBackgroundImage);
@@ -377,6 +401,36 @@ namespace Flylet.Helpers
         public static double FlyoutBackgroundImageDim
         {
             get => GetValue(DefaultValuesStore.FlyoutBackgroundImageDim);
+            set => SetValue(value);
+        }
+
+        public static double FlyoutBackgroundBlur
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundBlur);
+            set => SetValue(value);
+        }
+
+        public static double FlyoutBackgroundImageZoom
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundImageZoom);
+            set => SetValue(value);
+        }
+
+        public static double FlyoutBackgroundImagePositionX
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundImagePositionX);
+            set => SetValue(value);
+        }
+
+        public static int FlyoutBackgroundAnimationTurns
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundAnimationTurns);
+            set => SetValue(value);
+        }
+
+        public static double FlyoutBackgroundImagePositionY
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundImagePositionY);
             set => SetValue(value);
         }
 

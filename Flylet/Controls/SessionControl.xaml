@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:root="clr-namespace:Flylet"
              xmlns:utils="clr-namespace:Flylet.Utilities"
              xmlns:resx="clr-namespace:Flylet.Properties"
              xmlns:input="clr-namespace:Flylet.Input"
@@ -14,12 +15,12 @@
     <Grid x:Name="RootGrid" x:FieldModifier="private">
         <!-- Album art as the card's background, blurred and darkened so the text stays readable -->
         <Grid x:Name="BackgroundArtGrid" x:FieldModifier="private" Visibility="Collapsed" IsHitTestVisible="False">
-            <Border Margin="-48">
+            <Border Margin="-110">
                 <Border.Background>
                     <ImageBrush ImageSource="{Binding Thumbnail}" Stretch="UniformToFill" RenderOptions.BitmapScalingMode="HighQuality" />
                 </Border.Background>
                 <Border.Effect>
-                    <BlurEffect Radius="48" KernelType="Gaussian" RenderingBias="Performance" />
+                    <BlurEffect Radius="{Binding UIManager.AlbumBackgroundBlurRadius, Source={x:Static root:FlyoutHandler.Instance}}" KernelType="Gaussian" RenderingBias="Performance" />
                 </Border.Effect>
             </Border>
             <Border Background="#000000" Opacity="0.45" />

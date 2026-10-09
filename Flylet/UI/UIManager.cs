@@ -12,6 +12,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Threading;
+using System.Threading.Tasks;
 
 namespace Flylet.UI
 {
@@ -47,7 +50,7 @@ namespace Flylet.UI
 
         #region General
 
-        private TopBarVisibility topBarVisibility = TopBarVisibility.Visible;
+        private TopBarVisibility topBarVisibility = DefaultValuesStore.DefaultTopBarVisibility;
 
         public TopBarVisibility TopBarVisibility
         {
@@ -238,6 +241,10 @@ namespace Flylet.UI
         private static string FlyoutBackgroundImagePath =>
             Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "FlyoutBackground.jpg");
 
+        // An animated photo keeps its own file; when it exists it wins over the still one
+        private static string FlyoutBackgroundGifPath =>
+            Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "FlyoutBackground.gif");
+
         private bool useFlyoutBackgroundImage = DefaultValuesStore.UseFlyoutBackgroundImage;
 
         public bool UseFlyoutBackgroundImage
@@ -249,6 +256,13 @@ namespace Flylet.UI
                 {
                     OnPropertyChanged(nameof(IsFlyoutBackgroundImageShown));
                     UpdateTheme();
+                    if (value && animatedBackground == null)
+                    {
+                        // A saved GIF isn't decoded at startup while the photo is off
+                        LoadAnimatedBackground();
+                    }
+
+                    UpdateBackgroundAnimation();
                     AppDataHelper.UseFlyoutBackgroundImage = value;
                 }
             }
@@ -293,6 +307,123 @@ namespace Flylet.UI
             }
         }
 
+        private double flyoutBackgroundBlur = DefaultValuesStore.FlyoutBackgroundBlur;
+
+        /// <summary>
+        /// How soft the photo and album-art backgrounds are, 0 (sharp) to 100.
+        /// </summary>
+        public double FlyoutBackgroundBlur
+        {
+            get => flyoutBackgroundBlur;
+            set
+            {
+                value = Math.Clamp(value, 0, 100);
+                if (SetProperty(ref flyoutBackgroundBlur, value))
+                {
+                    OnPropertyChanged(nameof(FlyoutBackgroundBlurRadius));
+                    OnPropertyChanged(nameof(AlbumBackgroundBlurRadius));
+                    AppDataHelper.FlyoutBackgroundBlur = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Blur radius in pixels for the photo; 50% is the radius 0.11 shipped with.
+        /// </summary>
+        public double FlyoutBackgroundBlurRadius => flyoutBackgroundBlur * 0.6;
+
+        /// <summary>
+        /// The album art is blurred a bit more than a photo at the same setting (it's small and busy), which
+        /// keeps the default album look exactly as shipped.
+        /// </summary>
+        public double AlbumBackgroundBlurRadius => FlyoutBackgroundBlurRadius * 1.6;
+
+        private double flyoutBackgroundImageZoom = DefaultValuesStore.FlyoutBackgroundImageZoom;
+
+        /// <summary>
+        /// How far the photo is zoomed in, in percent: 100 shows as much of it as fits.
+        /// </summary>
+        public double FlyoutBackgroundImageZoom
+        {
+            get => flyoutBackgroundImageZoom;
+            set
+            {
+                value = Math.Clamp(value, 100, 300);
+                if (SetProperty(ref flyoutBackgroundImageZoom, value))
+                {
+                    AppDataHelper.FlyoutBackgroundImageZoom = value;
+                }
+            }
+        }
+
+        private double flyoutBackgroundImagePositionX = DefaultValuesStore.FlyoutBackgroundImagePositionX;
+
+        /// <summary>
+        /// Which part of the photo shows sideways, 0 (left edge) to 100 (right edge).
+        /// </summary>
+        public double FlyoutBackgroundImagePositionX
+        {
+            get => flyoutBackgroundImagePositionX;
+            set
+            {
+                value = Math.Clamp(value, 0, 100);
+                if (SetProperty(ref flyoutBackgroundImagePositionX, value))
+                {
+                    AppDataHelper.FlyoutBackgroundImagePositionX = value;
+                }
+            }
+        }
+
+        private double flyoutBackgroundImagePositionY = DefaultValuesStore.FlyoutBackgroundImagePositionY;
+
+        /// <summary>
+        /// Which part of the photo shows up and down, 0 (top) to 100 (bottom).
+        /// </summary>
+        public double FlyoutBackgroundImagePositionY
+        {
+            get => flyoutBackgroundImagePositionY;
+            set
+            {
+                value = Math.Clamp(value, 0, 100);
+                if (SetProperty(ref flyoutBackgroundImagePositionY, value))
+                {
+                    AppDataHelper.FlyoutBackgroundImagePositionY = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Turns the photo a quarter turn; the framing starts over because the picture's shape changed.
+        /// </summary>
+        public bool RotateFlyoutBackgroundImage(bool clockwise)
+        {
+            if (animatedBackground != null)
+            {
+                int turns = AppDataHelper.FlyoutBackgroundAnimationTurns;
+                AppDataHelper.FlyoutBackgroundAnimationTurns = (turns + (clockwise ? 1 : 3)) % 4;
+                ResetFlyoutBackgroundImageFraming();
+                ShowAnimatedBackground(AnimatedBackgroundHelper.Rotate(animatedBackground, clockwise), animationFrame);
+                return true;
+            }
+
+            if (!BackgroundImageHelper.TryRotate(FlyoutBackgroundImagePath, clockwise))
+                return false;
+
+            ResetFlyoutBackgroundImageFraming();
+            FlyoutBackgroundImage = BackgroundImageHelper.TryLoad(FlyoutBackgroundImagePath);
+            return FlyoutBackgroundImage != null;
+        }
+
+        /// <summary>
+        /// Shows the whole photo again, centered.
+        /// </summary>
+        public void ResetFlyoutBackgroundImageFraming()
+        {
+            FlyoutBackgroundImageZoom = DefaultValuesStore.FlyoutBackgroundImageZoom;
+            FlyoutBackgroundImagePositionX = DefaultValuesStore.FlyoutBackgroundImagePositionX;
+            FlyoutBackgroundImagePositionY = DefaultValuesStore.FlyoutBackgroundImagePositionY;
+        }
+
         public const double MinFlyoutBackgroundImageDim = 20;
 
         public double FlyoutBackgroundImageDimOpacity => flyoutBackgroundImageDim / 100;
@@ -306,10 +437,216 @@ namespace Flylet.UI
             if (!BackgroundImageHelper.TryImport(path, FlyoutBackgroundImagePath))
                 return false;
 
+            ClearAnimatedBackground(deleteFile: true);
             FlyoutBackgroundImage = BackgroundImageHelper.TryLoad(FlyoutBackgroundImagePath);
+            ResetFlyoutBackgroundImageFraming();
             UseFlyoutBackgroundImage = true;
             return FlyoutBackgroundImage != null;
         }
+
+        /// <summary>
+        /// Like <see cref="SetFlyoutBackgroundImage"/>, and an animated GIF is accepted too: it's decoded off
+        /// the UI thread, which can take a few seconds for a big one.
+        /// </summary>
+        public async Task<bool> SetFlyoutBackgroundImageAsync(string path)
+        {
+            // The saved GIF may still be open for reading (startup, or the photo just turned on); replacing or
+            // deleting it then fails, and a GIF left behind would win over a newly chosen photo after a restart
+            if (pendingAnimatedLoad is Task pending)
+            {
+                try { await pending; } catch { }
+            }
+
+            string tempPath = FlyoutBackgroundGifPath + ".tmp";
+
+            // Off the UI thread: counting a big GIF's frames means reading the whole file
+            var (isGif, loaded) = await Task.Run(() =>
+            {
+                try
+                {
+                    if (!string.Equals(Path.GetExtension(path), ".gif", StringComparison.OrdinalIgnoreCase)
+                        || !AnimatedBackgroundHelper.IsAnimatedGif(path))
+                    {
+                        return (false, (AnimatedBackground)null);
+                    }
+
+                    if (new FileInfo(path).Length > AnimatedBackgroundHelper.MaxFileSize)
+                        return (true, null);
+
+                    File.Copy(path, tempPath, true);
+                    return (true, LoadAndCleanUp(() => AnimatedBackgroundHelper.TryLoad(tempPath)));
+                }
+                catch
+                {
+                    return (true, null);
+                }
+            });
+
+            if (!isGif)
+            {
+                return SetFlyoutBackgroundImage(path);
+            }
+
+            try
+            {
+                if (loaded == null)
+                    return false;
+
+                File.Move(tempPath, FlyoutBackgroundGifPath, true);
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                try { File.Delete(tempPath); } catch { }
+            }
+
+            try { File.Delete(FlyoutBackgroundImagePath); } catch { }
+
+            ClearAnimatedBackground(deleteFile: false);
+            AppDataHelper.FlyoutBackgroundAnimationTurns = 0;
+            ShowAnimatedBackground(loaded);
+            ResetFlyoutBackgroundImageFraming();
+            UseFlyoutBackgroundImage = true;
+            return true;
+        }
+
+        #region Animated background
+
+        private AnimatedBackground animatedBackground;
+        private DispatcherTimer animationTimer;
+        private int animationFrame;
+        private int animationViewers;
+        private bool isLoadingAnimatedBackground;
+        private Task pendingAnimatedLoad;
+
+        public bool IsFlyoutBackgroundAnimated => animatedBackground != null;
+
+        /// <summary>
+        /// Called by every visible background layer; the animation only runs while at least one is on screen.
+        /// </summary>
+        public void AcquireBackgroundAnimation()
+        {
+            animationViewers++;
+            UpdateBackgroundAnimation();
+        }
+
+        public void ReleaseBackgroundAnimation()
+        {
+            animationViewers = Math.Max(0, animationViewers - 1);
+            UpdateBackgroundAnimation();
+        }
+
+        private void ShowAnimatedBackground(AnimatedBackground animation, int frame = 0)
+        {
+            animationTimer?.Stop();
+            bool wasAnimated = animatedBackground != null;
+            animatedBackground = animation;
+            animationFrame = Math.Clamp(frame, 0, animation.Frames.Count - 1);
+            if (!wasAnimated)
+            {
+                OnPropertyChanged(nameof(IsFlyoutBackgroundAnimated));
+            }
+
+            FlyoutBackgroundImage = animation.Frames[animationFrame];
+            UpdateBackgroundAnimation();
+        }
+
+        private void ClearAnimatedBackground(bool deleteFile)
+        {
+            animationTimer?.Stop();
+            if (animatedBackground == null && !deleteFile)
+                return;
+
+            animatedBackground = null;
+            OnPropertyChanged(nameof(IsFlyoutBackgroundAnimated));
+            if (deleteFile)
+            {
+                AppDataHelper.FlyoutBackgroundAnimationTurns = 0;
+                try { File.Delete(FlyoutBackgroundGifPath); } catch { }
+            }
+        }
+
+        /// <summary>
+        /// Reads the saved animated photo, if there is one, without holding up startup.
+        /// </summary>
+        private async void LoadAnimatedBackground()
+        {
+            string path = FlyoutBackgroundGifPath;
+            if (!useFlyoutBackgroundImage || isLoadingAnimatedBackground || !File.Exists(path))
+                return;
+
+            isLoadingAnimatedBackground = true;
+
+            int turns = AppDataHelper.FlyoutBackgroundAnimationTurns;
+            var loading = Task.Run(() => LoadAndCleanUp(() => AnimatedBackgroundHelper.TryLoad(path, turns)));
+            pendingAnimatedLoad = loading;
+            var loaded = await loading;
+            pendingAnimatedLoad = null;
+            isLoadingAnimatedBackground = false;
+
+            // A new photo or GIF may have been picked meanwhile; it wins over this older one
+            if (loaded != null && animatedBackground == null && File.Exists(path) && !File.Exists(FlyoutBackgroundImagePath))
+            {
+                ShowAnimatedBackground(loaded);
+            }
+        }
+
+        /// <summary>
+        /// Decoding leaves tens of MB of native picture buffers behind that .NET can't see, so they'd sit there
+        /// until some later collection. One full collection right after this one-off job gives them back.
+        /// </summary>
+        private static AnimatedBackground LoadAndCleanUp(Func<AnimatedBackground> load)
+        {
+            var result = load();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            return result;
+        }
+
+        private void UpdateBackgroundAnimation()
+        {
+            bool shouldRun = animatedBackground != null && useFlyoutBackgroundImage && animationViewers > 0;
+            if (!shouldRun)
+            {
+                animationTimer?.Stop();
+                return;
+            }
+
+            if (animationTimer == null)
+            {
+                // Normal, not Background: at Background it waited behind other UI work and the frames came late
+                animationTimer = new DispatcherTimer(DispatcherPriority.Normal);
+                animationTimer.Tick += (_, _) => AdvanceAnimation();
+            }
+
+            if (!animationTimer.IsEnabled)
+            {
+                animationTimer.Interval = animatedBackground.Delays[animationFrame];
+                animationTimer.Start();
+            }
+        }
+
+        private void AdvanceAnimation()
+        {
+            var animation = animatedBackground;
+            if (animation == null)
+            {
+                animationTimer.Stop();
+                return;
+            }
+
+            animationFrame = (animationFrame + 1) % animation.Frames.Count;
+            flyoutBackgroundImage = animation.Frames[animationFrame];
+            // Only the picture changes: not the theme, which a new photo would rebuild every frame
+            OnPropertyChanged(nameof(FlyoutBackgroundImage));
+            animationTimer.Interval = animation.Delays[animationFrame];
+        }
+
+        #endregion
 
         #endregion
 
@@ -463,6 +800,18 @@ namespace Flylet.UI
             private set => SetProperty(ref sessionControlHeight, value);
         }
 
+        private CornerRadius mediaCardCornerRadius = new(MediaCardLayout.Classic.CornerRadius);
+
+        /// <summary>
+        /// The media card's corners. A binding, not an app resource: the flyout is created in a window
+        /// band outside the Application's windows, so it never sees app resource changes.
+        /// </summary>
+        public CornerRadius MediaCardCornerRadius
+        {
+            get => mediaCardCornerRadius;
+            private set => SetProperty(ref mediaCardCornerRadius, value);
+        }
+
         private Orientation sessionsPanelOrientation = DefaultValuesStore.SessionsPanelOrientation;
 
         public Orientation SessionsPanelOrientation
@@ -555,7 +904,13 @@ namespace Flylet.UI
             useCustomFlyoutBackgroundColor = AppDataHelper.UseCustomFlyoutBackgroundColor;
             useFlyoutBackgroundImage = AppDataHelper.UseFlyoutBackgroundImage;
             flyoutBackgroundImageDim = Math.Clamp(AppDataHelper.FlyoutBackgroundImageDim, MinFlyoutBackgroundImageDim, 100);
+            flyoutBackgroundBlur = Math.Clamp(AppDataHelper.FlyoutBackgroundBlur, 0, 100);
+            flyoutBackgroundImageZoom = Math.Clamp(AppDataHelper.FlyoutBackgroundImageZoom, 100, 300);
+            flyoutBackgroundImagePositionX = Math.Clamp(AppDataHelper.FlyoutBackgroundImagePositionX, 0, 100);
+            flyoutBackgroundImagePositionY = Math.Clamp(AppDataHelper.FlyoutBackgroundImagePositionY, 0, 100);
             flyoutBackgroundImage = BackgroundImageHelper.TryLoad(FlyoutBackgroundImagePath);
+            // After the photo switch is read: a saved GIF is only decoded when the photo is on
+            LoadAnimatedBackground();
             if (useCustomAccentColor)
             {
                 ApplyAccentColor();
@@ -736,7 +1091,7 @@ namespace Flylet.UI
         private void ApplyMediaCardSize()
         {
             SessionControlHeight = mediaCardLayout.Height;
-            Application.Current.Resources["MediaCardCornerRadius"] = new CornerRadius(mediaCardLayout.CornerRadius);
+            MediaCardCornerRadius = new CornerRadius(mediaCardLayout.CornerRadius);
             UpdateCalculatedSessionsPanelMaxHeight();
         }
 

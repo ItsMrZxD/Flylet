@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Bilder</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Utseende</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Utfällningar</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Oskärpa (foto- och albumbakgrund)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Tips: texten är liten, så lugna bilder fungerar bäst. Mjuka former som himmel, landskap, färgövergångar eller texturer är bra. Undvik stökiga bilder med fina detaljer eller skarpa ljusa och mörka partier. Medelstarka, dämpade färger är lättare att läsa än mycket skarpa. Breda bilder passar bäst i utfällningarna. Mindre oskärpa kräver ett mörkare foto.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Återställ position och zoom</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Justera foto</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Dra i fotot för att flytta det och scrolla för att zooma. Ramen har formen av en flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Rotera åt vänster</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Rotera åt höger</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Klart</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>En animerad bakgrund drar lite mer ström medan en flyout är öppen.</value>
+  </data>
 </root>

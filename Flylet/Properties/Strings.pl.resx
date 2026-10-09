@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Obrazy</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Wygląd</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Nakładki</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Rozmycie (tła ze zdjęcia i okładki)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Wskazówka: tekst jest mały, więc najlepiej sprawdzają się spokojne obrazy. Miękkie kształty, takie jak niebo, krajobrazy, gradienty czy faktury, są dobre. Unikaj zatłoczonych obrazów z drobnymi detalami lub ostrymi jasnymi i ciemnymi plamami. Średnie, stonowane kolory czyta się lepiej niż bardzo jaskrawe. Szerokie obrazy najlepiej pasują do nakładek. Mniejsze rozmycie wymaga ciemniejszego zdjęcia.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Resetuj pozycję i powiększenie</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Dostosuj zdjęcie</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Przeciągnij zdjęcie, aby je przesunąć, i przewiń, aby powiększyć. Ramka ma kształt okienka.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Obróć w lewo</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Obróć w prawo</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Gotowe</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Animowane tło zużywa nieco więcej energii, gdy okienko jest otwarte.</value>
+  </data>
 </root>

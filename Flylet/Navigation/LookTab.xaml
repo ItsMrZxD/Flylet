@@ -1,0 +1,239 @@
+<UserControl x:Class="Flylet.Navigation.LookTab"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Flylet" xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:toolkit="http://schemas.modernwpf.com/toolkit"
+             xmlns:controls="clr-namespace:Flylet.Controls"
+             xmlns:resx="clr-namespace:Flylet.Properties"
+             xmlns:localui="clr-namespace:Flylet.UI"
+             xmlns:media="clr-namespace:Flylet.Core.Media;assembly=Flylet.Core"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800" DataContext="{x:Static local:FlyoutHandler.Instance}">
+    <UserControl.Resources>
+        <!-- A preview card drawn like a flyout card: theme, background, photo, corners (Tag) and border -->
+        <Style x:Key="PreviewCardStyle" TargetType="ContentControl">
+            <Setter Property="Width" Value="{x:Static localui:UIManager.FlyoutWidth}" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ContentControl">
+                        <Grid>
+                            <!-- The real flyout's see-through background sits on the desktop; a solid base in the
+                                 flyout theme's own color keeps the preview's text as readable as the flyout's -->
+                            <Border Background="{DynamicResource SystemControlBackgroundAltHighBrush}"
+                                    CornerRadius="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <controls:FlyoutBackgroundLayer CornerRadius="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+                            <ContentPresenter />
+                            <Border BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
+                                    BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
+                                    CornerRadius="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- The preview stays put while the options below scroll -->
+        <Border Background="{DynamicResource SystemControlBackgroundBaseLowBrush}" Padding="16,14">
+            <StackPanel>
+                <ui:SimpleStackPanel x:Name="PreviewCards" x:FieldModifier="private" controls:FlyoutBackgroundLayer.IsPhotoStack="True"
+                                     Orientation="Horizontal" Spacing="12" HorizontalAlignment="Center"
+                                     ui:ThemeManager.RequestedTheme="{Binding UIManager.ActualFlyoutTheme}">
+                    <ContentControl Style="{StaticResource PreviewCardStyle}" Tag="{DynamicResource FlyoutCornerRadius}">
+                        <StackPanel>
+                            <!-- Like the real flyout: follows the top bar setting and shows when the pointer is over the cards.
+                                 Its buttons are for show here, so only the hover is live (see LookTab.xaml.cs) -->
+                            <ContentControl x:Name="PreviewTopBarHost" x:FieldModifier="private" IsHitTestVisible="False" />
+                            <controls:VolumeControl x:Name="PreviewVolumeControl" x:FieldModifier="private" IsHitTestVisible="False" />
+                        </StackPanel>
+                    </ContentControl>
+                    <ContentControl Style="{StaticResource PreviewCardStyle}" Tag="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.MediaCardCornerRadius}">
+                        <controls:SessionControl x:Name="PreviewSessionControl" x:FieldModifier="private" />
+                    </ContentControl>
+                </ui:SimpleStackPanel>
+                <TextBlock Text="{x:Static resx:Strings.MediaCard_PreviewHint}" Margin="0,10,0,0" HorizontalAlignment="Center"
+                           TextWrapping="Wrap" Style="{DynamicResource CaptionTextBlockStyle}"
+                           Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
+            </StackPanel>
+        </Border>
+
+        <controls:ScrollViewerEx Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="20,10" MaxWidth="760" HorizontalAlignment="Left">
+                <GroupBox Header="{x:Static resx:Strings.Settings_Appearance}">
+                    <ui:SimpleStackPanel Spacing="10">
+                        <ui:RadioButtons Header="{x:Static resx:Strings.Settings_FlyoutTheme}"
+                                         ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                         ItemsSource="{toolkit:EnumValues Type=ui:ElementTheme}"
+                                         SelectedItem="{Binding UIManager.FlyoutTheme}" />
+                        <ui:RadioButtons Header="{x:Static resx:Strings.Settings_AppTheme}"
+                                         ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                         ItemsSource="{toolkit:EnumValues Type=ui:ElementTheme}"
+                                         SelectedItem="{Binding UIManager.AppTheme}" />
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_FlyoutAnimationEnabled}"
+                                         IsOn="{Binding UIManager.FlyoutAnimationEnabled}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                    </ui:SimpleStackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{x:Static resx:Strings.Settings_Colors}">
+                    <ui:SimpleStackPanel Spacing="10">
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_UseCustomAccentColor}"
+                                         IsOn="{Binding UIManager.UseCustomAccentColor}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                        <controls:ColorSwatchPicker SelectedColor="{Binding UIManager.CustomAccentColor}"
+                                                     Visibility="{Binding UIManager.UseCustomAccentColor,
+                                                        Converter={StaticResource BooleanToVisibilityConverter}}" />
+
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_UseCustomFlyoutBackgroundColor}"
+                                         IsOn="{Binding UIManager.UseCustomFlyoutBackgroundColor}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                        <controls:ColorSwatchPicker SelectedColor="{Binding UIManager.CustomFlyoutBackgroundColor}"
+                                                     Visibility="{Binding UIManager.UseCustomFlyoutBackgroundColor,
+                                                        Converter={StaticResource BooleanToVisibilityConverter}}" />
+                        <TextBlock Text="{x:Static resx:Strings.Settings_CustomFlyoutBackgroundColor_Description}"
+                                   Visibility="{Binding UIManager.UseCustomFlyoutBackgroundColor,
+                                      Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                   TextWrapping="Wrap" />
+
+                        <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal">
+                            <Slider ui:ControlHelper.Header="{x:Static resx:Strings.Settings_FlyoutBackgroundOpacity}"
+                                    Minimum="0" Maximum="100" HorizontalAlignment="Left"
+                                    AutoToolTipPlacement="TopLeft" Width="240"
+                                    IsMoveToPointEnabled="True" Value="{Binding UIManager.FlyoutBackgroundOpacity}" />
+                            <TextBlock Style="{DynamicResource BaseTextBlockStyle}"
+                                       VerticalAlignment="Center" Margin="0,22,0,0">
+                                <Run Text="{Binding Path=UIManager.FlyoutBackgroundOpacity, StringFormat={}{0:#0}%}" />
+                            </TextBlock>
+                        </ui:SimpleStackPanel>
+                    </ui:SimpleStackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{x:Static resx:Strings.Settings_FlyoutBackgroundImage}">
+                    <ui:SimpleStackPanel Spacing="10">
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_UseFlyoutBackgroundImage}"
+                                         IsOn="{Binding UIManager.UseFlyoutBackgroundImage}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                        <ui:SimpleStackPanel Orientation="Horizontal" Spacing="12">
+                            <!-- Thumbnail of the imported photo, an empty tile until one is picked -->
+                            <Grid Width="120" Height="80">
+                                <Border CornerRadius="4" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}" />
+                                <Border CornerRadius="4">
+                                    <Border.Background>
+                                        <ImageBrush x:Name="ThumbnailBrush" x:FieldModifier="private" ImageSource="{Binding UIManager.FlyoutBackgroundImage}" Stretch="Fill" />
+                                    </Border.Background>
+                                </Border>
+                            </Grid>
+                            <Button Content="{x:Static resx:Strings.Settings_ChooseFlyoutBackgroundImage}"
+                                    VerticalAlignment="Center" Click="ChooseFlyoutBackgroundImage_Click" />
+                        </ui:SimpleStackPanel>
+                        <TextBlock x:Name="FlyoutBackgroundImageErrorText" x:FieldModifier="private" Visibility="Collapsed"
+                                   Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImage_Error}" TextWrapping="Wrap"
+                                   Foreground="{DynamicResource SystemControlErrorTextForegroundBrush}" />
+                        <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal"
+                                             Visibility="{Binding UIManager.UseFlyoutBackgroundImage, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <Slider ui:ControlHelper.Header="{x:Static resx:Strings.Settings_FlyoutBackgroundImageDim}"
+                                    Minimum="{x:Static localui:UIManager.MinFlyoutBackgroundImageDim}" Maximum="100"
+                                    AutoToolTipPlacement="TopLeft" Width="240"
+                                    IsMoveToPointEnabled="True" Value="{Binding UIManager.FlyoutBackgroundImageDim}" />
+                            <TextBlock Style="{DynamicResource BaseTextBlockStyle}"
+                                       VerticalAlignment="Center" Margin="0,22,0,0">
+                                <Run Text="{Binding Path=UIManager.FlyoutBackgroundImageDim, StringFormat={}{0:#0}%}" />
+                            </TextBlock>
+                        </ui:SimpleStackPanel>
+                        <Button Content="{x:Static resx:Strings.Settings_FlyoutBackgroundImageAdjust}" HorizontalAlignment="Left"
+                                Visibility="{Binding UIManager.UseFlyoutBackgroundImage, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Click="AdjustFlyoutBackgroundImage_Click" />
+                        <!-- Also softens the media card's album background, so it isn't tied to the photo switch -->
+                        <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal">
+                            <Slider ui:ControlHelper.Header="{x:Static resx:Strings.Settings_FlyoutBackgroundImageBlur}"
+                                    Minimum="0" Maximum="100"
+                                    AutoToolTipPlacement="TopLeft" Width="240"
+                                    IsMoveToPointEnabled="True" Value="{Binding UIManager.FlyoutBackgroundBlur}" />
+                            <TextBlock Style="{DynamicResource BaseTextBlockStyle}"
+                                       VerticalAlignment="Center" Margin="0,22,0,0">
+                                <Run Text="{Binding Path=UIManager.FlyoutBackgroundBlur, StringFormat={}{0:#0}%}" />
+                            </TextBlock>
+                        </ui:SimpleStackPanel>
+                        <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImage_Description}"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImage_GifNote}"
+                                   Visibility="{Binding UIManager.IsFlyoutBackgroundAnimated, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImage_Tips}"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                   TextWrapping="Wrap" />
+                    </ui:SimpleStackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{x:Static resx:Strings.MediaCard_Header}">
+                    <ui:SimpleStackPanel Spacing="10">
+                        <ui:RadioButtons Header="{x:Static resx:Strings.MediaCard_Preset}" MaxColumns="2"
+                                         ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                         SelectedItem="{Binding UIManager.MediaCardPreset}">
+                            <!-- Custom isn't listed: any other mix of the options below simply leaves no preset picked -->
+                            <ui:RadioButtons.ItemsSource>
+                                <x:Array Type="{x:Type media:MediaCardPreset}">
+                                    <media:MediaCardPreset>Classic</media:MediaCardPreset>
+                                    <media:MediaCardPreset>Minimal</media:MediaCardPreset>
+                                    <media:MediaCardPreset>CompactPill</media:MediaCardPreset>
+                                    <media:MediaCardPreset>AlbumBackground</media:MediaCardPreset>
+                                </x:Array>
+                            </ui:RadioButtons.ItemsSource>
+                        </ui:RadioButtons>
+                        <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Art}" MinWidth="240"
+                                  ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                  ItemsSource="{toolkit:EnumValues Type=media:MediaCardArt}"
+                                  SelectedItem="{Binding UIManager.MediaCardArt}" />
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.MediaCard_ShowSource}"
+                                         IsOn="{Binding UIManager.MediaCardShowSource}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.MediaCard_ShowArtist}"
+                                         IsOn="{Binding UIManager.MediaCardShowArtist}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                        <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Timeline}" MinWidth="240"
+                                  ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                  ItemsSource="{toolkit:EnumValues Type=media:MediaCardTimeline}"
+                                  SelectedItem="{Binding UIManager.MediaCardTimeline}" />
+                        <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Controls}" MinWidth="240"
+                                  ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                  ItemsSource="{toolkit:EnumValues Type=media:MediaCardControls}"
+                                  SelectedItem="{Binding UIManager.MediaCardControls}" />
+                        <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Shape}" MinWidth="240"
+                                  ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                  ItemsSource="{toolkit:EnumValues Type=media:MediaCardShape}"
+                                  SelectedItem="{Binding UIManager.MediaCardShape}" />
+                    </ui:SimpleStackPanel>
+                </GroupBox>
+
+                <GroupBox Header="{x:Static resx:Strings.Settings_TopBarVisibility}">
+                    <ui:RadioButtons ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                     ItemsSource="{toolkit:EnumValues Type=localui:TopBarVisibility}"
+                                     SelectedItem="{Binding UIManager.TopBarVisibility}" />
+                </GroupBox>
+            </StackPanel>
+        </controls:ScrollViewerEx>
+    </Grid>
+</UserControl>

@@ -522,4 +522,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Изображения</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Вид</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Всплывающие окна</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Размытие (фон из фото и обложки)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Совет: текст мелкий, поэтому лучше всего подходят спокойные картинки. Хороши мягкие формы: небо, пейзажи, градиенты, текстуры. Избегайте пёстрых картинок с мелкими деталями и резкими светлыми и тёмными пятнами. Средние, приглушённые цвета читаются лучше, чем очень яркие. Широкие картинки лучше всего подходят для всплывающих окон. При меньшем размытии фото нужно затемнить сильнее.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Сбросить положение и масштаб</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Настроить фото</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Перетащите фото, чтобы сдвинуть его, и прокрутите колесо для масштаба. Рамка повторяет форму всплывающего окна.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Повернуть влево</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Повернуть вправо</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Анимированный фон потребляет немного больше энергии, пока открыто всплывающее окно.</value>
+  </data>
 </root>

@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>الصور</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>المظهر</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>النوافذ المنبثقة</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>التمويه (خلفيات الصور والألبومات)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>نصيحة: النص صغير، لذا تعمل الصور الهادئة بشكل أفضل. الأشكال الناعمة مثل السماء والمناظر الطبيعية والتدرجات اللونية أو الخامات جيدة. تجنّب الصور المزدحمة بالتفاصيل الدقيقة أو بقع الضوء والظل الحادة. الألوان المتوسطة الهادئة أوضح من الألوان الساطعة جدًا. الصور العريضة تناسب النوافذ المنبثقة أكثر. التمويه الأقل يحتاج إلى صورة أغمق.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>إعادة تعيين الموضع والتكبير</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>ضبط الصورة</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>اسحب الصورة لتحريكها ومرّر للتكبير. الإطار بشكل النافذة المنبثقة.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>تدوير لليسار</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>تدوير لليمين</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>تم</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>تستهلك الخلفية المتحركة قدرًا أكبر قليلًا من الطاقة أثناء ظهور النافذة المنبثقة.</value>
+  </data>
 </root>

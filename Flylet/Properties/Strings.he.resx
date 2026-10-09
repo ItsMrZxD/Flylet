@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>תמונות</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>מראה</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>חלוניות נשלפות</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>טשטוש (רקע תמונה ואלבום)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>טיפ: הטקסט קטן, ולכן תמונות רגועות עובדות הכי טוב. צורות רכות כמו שמיים, נופים, מעברי צבע או מרקמים מתאימות. הימנעו מתמונות עמוסות בפרטים קטנים או בכתמי אור וצל חדים. צבעים בינוניים ומעומעמים נקראים טוב יותר מצבעים בוהקים מאוד. תמונות רחבות מתאימות ביותר לחלוניות. פחות טשטוש דורש תמונה כהה יותר.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>איפוס מיקום וזום</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>התאמת התמונה</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>גררו את התמונה כדי להזיז אותה וגללו כדי להתקרב. המסגרת היא בצורת החלון הקופץ.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>סיבוב שמאלה</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>סיבוב ימינה</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>סיום</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>רקע מונפש צורך מעט יותר חשמל בזמן שחלון קופץ פתוח.</value>
+  </data>
 </root>

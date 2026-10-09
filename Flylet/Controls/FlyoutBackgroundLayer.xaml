@@ -8,13 +8,15 @@
         <!-- Blurred and darkened so the light text the flyout switches to stays readable -->
         <Grid IsHitTestVisible="False"
               Visibility="{Binding UIManager.IsFlyoutBackgroundImageShown, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <Border Margin="-40">
+            <Border x:Name="PhotoBorder" x:FieldModifier="private" Margin="-70">
                 <Border.Background>
-                    <ImageBrush ImageSource="{Binding UIManager.FlyoutBackgroundImage}" Stretch="UniformToFill"
+                    <!-- Stretch=Fill is safe: the code-behind picks a viewbox with the tile's own shape -->
+                    <ImageBrush x:Name="PhotoBrush" x:FieldModifier="private"
+                                ImageSource="{Binding UIManager.FlyoutBackgroundImage}" Stretch="Fill"
                                 RenderOptions.BitmapScalingMode="HighQuality" />
                 </Border.Background>
                 <Border.Effect>
-                    <BlurEffect Radius="30" KernelType="Gaussian" RenderingBias="Performance" />
+                    <BlurEffect Radius="{Binding UIManager.FlyoutBackgroundBlurRadius, Source={x:Static root:FlyoutHandler.Instance}}" KernelType="Gaussian" RenderingBias="Performance" />
                 </Border.Effect>
             </Border>
             <Border Background="#000000" Opacity="{Binding UIManager.FlyoutBackgroundImageDimOpacity}" />

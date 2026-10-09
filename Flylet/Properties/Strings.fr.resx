@@ -521,4 +521,37 @@
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Images</value>
   </data>
+  <data name="Settings_Tab_Look" xml:space="preserve">
+    <value>Apparence</value>
+  </data>
+  <data name="Settings_Tab_Flyouts" xml:space="preserve">
+    <value>Menus volants</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageBlur" xml:space="preserve">
+    <value>Flou (arrière-plans photo et album)</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_Tips" xml:space="preserve">
+    <value>Conseil : le texte est petit, donc les images calmes fonctionnent le mieux. Les formes douces comme les ciels, les paysages, les dégradés ou les textures conviennent bien. Évitez les images chargées de détails fins ou de taches très claires et très sombres. Les couleurs moyennes et sourdes se lisent mieux que les couleurs très vives. Les images larges s&apos;adaptent mieux aux menus volants. Moins de flou demande une photo plus sombre.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageReset" xml:space="preserve">
+    <value>Réinitialiser la position et le zoom</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjust" xml:space="preserve">
+    <value>Ajuster la photo</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageAdjustHint" xml:space="preserve">
+    <value>Faites glisser la photo pour la déplacer et faites défiler pour zoomer. Le cadre a la forme d'un flyout.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateLeft" xml:space="preserve">
+    <value>Pivoter à gauche</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageRotateRight" xml:space="preserve">
+    <value>Pivoter à droite</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImageDone" xml:space="preserve">
+    <value>Terminé</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
+    <value>Un arrière-plan animé consomme un peu plus d'énergie tant qu'un flyout est ouvert.</value>
+  </data>
 </root>
