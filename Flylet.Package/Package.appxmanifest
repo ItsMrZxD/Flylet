@@ -11,7 +11,7 @@
   <Identity
     Name="MrzxD.Flylet"
     Publisher="CN=154739CE-3DC2-44F5-A82B-30BF10ACE666"
-    Version="0.10.2.0" />
+    Version="0.11.0.0" />
 
   <Properties>
     <DisplayName>ms-resource:Resources/PackageDisplayName</DisplayName>
