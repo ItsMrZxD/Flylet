@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>En animert bakgrunn bruker litt mer strøm mens en flyout er åpen.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Støtt Flylet på Ko-fi</value>
+  </data>
 </root>

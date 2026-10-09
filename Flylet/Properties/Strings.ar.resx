@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>تستهلك الخلفية المتحركة قدرًا أكبر قليلًا من الطاقة أثناء ظهور النافذة المنبثقة.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>ادعم Flylet على Ko-fi</value>
+  </data>
 </root>

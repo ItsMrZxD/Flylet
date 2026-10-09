@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Latar belakang animasi menggunakan sedikit lebih banyak daya saat flyout terbuka.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Dukung Flylet di Ko-fi</value>
+  </data>
 </root>

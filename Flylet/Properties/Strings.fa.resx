@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>پس‌زمینه متحرک تا زمانی که فلای‌اوت باز است کمی انرژی بیشتری مصرف می‌کند.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>از Flylet در Ko-fi حمایت کنید</value>
+  </data>
 </root>

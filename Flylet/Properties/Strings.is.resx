@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Hreyfimynd í bakgrunni notar örlítið meiri orku á meðan sprettigluggi er opinn.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Styðjið Flylet á Ko-fi</value>
+  </data>
 </root>

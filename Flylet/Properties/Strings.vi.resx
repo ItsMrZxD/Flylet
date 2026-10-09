@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Nền động dùng nhiều điện hơn một chút khi cửa sổ bật lên đang mở.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Ủng hộ Flylet trên Ko-fi</value>
+  </data>
 </root>

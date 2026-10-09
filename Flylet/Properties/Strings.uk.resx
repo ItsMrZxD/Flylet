@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Анімований фон споживає трохи більше енергії, поки відкрите спливне вікно.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Підтримати Flylet на Ko-fi</value>
+  </data>
 </root>

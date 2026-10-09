@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Ένα κινούμενο φόντο καταναλώνει λίγη περισσότερη ενέργεια όσο είναι ανοιχτό ένα flyout.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Υποστηρίξτε το Flylet στο Ko-fi</value>
+  </data>
 </root>

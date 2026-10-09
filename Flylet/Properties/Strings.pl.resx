@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Animowane tło zużywa nieco więcej energii, gdy okienko jest otwarte.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Wesprzyj Flylet na Ko-fi</value>
+  </data>
 </root>

@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>动画背景会在浮出窗口打开时多耗一点电。</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>在 Ko-fi 上支持 Flylet</value>
+  </data>
 </root>

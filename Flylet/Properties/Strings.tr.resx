@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Hareketli arka plan, bir açılır pencere açıkken biraz daha fazla güç kullanır.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Flylet&apos;i Ko-fi&apos;de destekleyin</value>
+  </data>
 </root>

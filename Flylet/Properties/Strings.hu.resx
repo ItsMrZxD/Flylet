@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Az animált háttér egy kicsit több energiát használ, amíg egy felugró ablak nyitva van.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Támogasd a Flylet-et a Ko-fin</value>
+  </data>
 </root>

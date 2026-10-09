@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>Latar belakang beranimasi menggunakan sedikit lebih banyak kuasa semasa flyout dibuka.</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Sokong Flylet di Ko-fi</value>
+  </data>
 </root>

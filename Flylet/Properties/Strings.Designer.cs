@@ -106,6 +106,15 @@ namespace Flylet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Support Flylet on Ko-fi.
+        /// </summary>
+        public static string About_Donate {
+            get {
+                return ResourceManager.GetString("About.Donate", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to GitHub repository.
         /// </summary>
         public static string About_GitHub {

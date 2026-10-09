@@ -554,4 +554,7 @@
   <data name="Settings.FlyoutBackgroundImage_GifNote" xml:space="preserve">
     <value>アニメーション背景は、フライアウトが開いている間、少し多めに電力を使います。</value>
   </data>
+  <data name="About.Donate" xml:space="preserve">
+    <value>Ko-fiでFlyletを応援する</value>
+  </data>
 </root>

@@ -86,6 +86,8 @@
                             Content="{x:Static resx:Strings.About_RateAndReview}" Click="RateAndReviewButton_Click" />
                     <ui:HyperlinkButton Content="{x:Static resx:Strings.About_GitHub}"
                                         NavigateUri="https://github.com/ItsMrZxD/Flylet" />
+                    <ui:HyperlinkButton Content="{x:Static resx:Strings.About_Donate}"
+                                        NavigateUri="https://ko-fi.com/itsmrzxd" />
                     <ui:HyperlinkButton Content="{x:Static resx:Strings.About_OpenNewIssue}"
                                         NavigateUri="https://github.com/ItsMrZxD/Flylet/issues/new/choose" />
                     <ui:HyperlinkButton Content="{x:Static resx:Strings.About_Contributors}"
