@@ -21,6 +21,18 @@ moving while the music plays.
 > November 2025. Its original authors and contributors built the foundation of this project, and
 > their work is used here under the MIT License. Flylet is not affiliated with them.
 
+## What's new in 0.11
+
+https://github.com/user-attachments/assets/6ccc40cd-9d9a-4478-9edf-f60010074bef
+
+<p align="center"><sub>Song: Elektronomia - Sky High [NCS Release] · Music provided by NoCopyrightSounds · <a href="http://ncs.io/skyhigh">ncs.io/skyhigh</a></sub></p>
+
+- **Your own photo or animated GIF** behind the pop-ups, with a window to drag, zoom and rotate it
+- **Blur and darken** sliders so the text stays readable
+- **Media card styles:** Classic, Minimal, Compact pill and Album background, or mix your own
+- **Redesigned Settings:** three tabs and a live preview of your pop-up
+- **Cleaner pop-ups:** the top bar shows only when you point at the pop-up, and a slimmer lock-key pop-up
+
 ## What Flylet replaces
 
 | Pop-up | What Flylet shows |
