@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/d2666632-3dc9-4cc8-b016-0666ab3695b7
 
 <p align="center"><sub>Music: "Funkorama" by Kevin MacLeod (incompetech.com), licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></sub></p>
 
-![Flylet's volume and media flyouts](docs/images/flylet-flyouts.png)
+![Flylet's flyouts: media card styles, photo and GIF backgrounds, colors, Caps Lock and brightness](docs/images/flylet-flyouts.png)
 
 Press a volume key and Windows shows its own small pop-up. Flylet hides that one and shows its
 own instead: cleaner, with real media controls, and with a song timeline that actually keeps
