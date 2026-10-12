@@ -140,3 +140,5 @@ Third-party code and its licenses are listed in [NOTICE.md](NOTICE.md).
 ## License
 
 [MIT](LICENSE) — the original copyright notice is kept alongside this project's.
+
+The Flylet name and icon aren't covered by the MIT license. Please don't use them for other products or forks in a way that suggests they are the official Flylet.
