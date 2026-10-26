@@ -60,15 +60,22 @@ namespace Flylet.Core.AppInformation
                 if (sourceProcess == null)
                     return;
 
+                // Process.MainModule throws for apps running as administrator, so look the path up with limited access
+                string path = null;
                 try
                 {
-                    DisplayName = sourceProcess.MainModule.FileVersionInfo.FileDescription;
+                    path = GetProcessImagePath((uint)sourceProcess.Id);
                 }
                 catch { }
 
                 try
                 {
-                    var path = sourceProcess.MainModule.FileName;
+                    DisplayName = FileVersionInfo.GetVersionInfo(path).FileDescription;
+                }
+                catch { }
+
+                try
+                {
                     var ie = new IconExtractor(path);
                     var icon = ie.GetIcon(0);
                     bitmap = icon.ToBitmap();
@@ -92,7 +99,7 @@ namespace Flylet.Core.AppInformation
         {
             base.Disconnect();
 
-            sourceProcess.Dispose();
+            sourceProcess?.Dispose();
             sourceProcess = null;
         }
 

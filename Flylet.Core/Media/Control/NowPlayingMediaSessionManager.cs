@@ -70,9 +70,9 @@ namespace Flylet.Core.Media.Control
             {
                 var session = NPSessionManager.FindSession(nowPlayingSessionInfo);
 
-                if (session != null)
+                if (session != null && TryCreateMediaSession(session, out var mediaSession))
                 {
-                    MediaSessions.Add(new NowPlayingMediaSession(session));
+                    MediaSessions.Add(mediaSession);
                     RaiseMediaSessionsChanged();
                 }
             }
@@ -131,11 +131,29 @@ namespace Flylet.Core.Media.Control
 
                 foreach (var session in sessions)
                 {
-                    MediaSessions.Add(new NowPlayingMediaSession(session));
+                    if (TryCreateMediaSession(session, out var mediaSession))
+                    {
+                        MediaSessions.Add(mediaSession);
+                    }
                 }
             }
 
             RaiseMediaSessionsChanged();
+        }
+
+        // One app's session failing to load must not crash Flylet or drop every other session (GitHub issue #1)
+        private static bool TryCreateMediaSession(NowPlayingSession session, out NowPlayingMediaSession mediaSession)
+        {
+            try
+            {
+                mediaSession = new NowPlayingMediaSession(session);
+                return true;
+            }
+            catch
+            {
+                mediaSession = null;
+                return false;
+            }
         }
 
         public override async void OnDisabled()

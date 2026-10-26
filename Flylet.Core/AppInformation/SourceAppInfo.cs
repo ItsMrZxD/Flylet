@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using static Flylet.Core.Interop.NativeMethods;
 
@@ -94,8 +93,8 @@ namespace Flylet.Core.AppInformation
 
         internal static bool IsAppPackaged(SourceAppInfoData data)
         {
-            using var process = Process.GetProcessById((int)data.ProcessId);
-            return IsImmersiveProcess(process.Handle);
+            // Process.Handle throws "Access is denied" for apps running as administrator (GitHub issue #1)
+            return IsImmersiveProcess(data.ProcessId);
         }
 
         public void Dispose()

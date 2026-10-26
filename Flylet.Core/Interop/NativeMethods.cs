@@ -909,6 +909,56 @@ namespace Flylet.Core.Interop
         [return: MarshalAs(UnmanagedType.Bool)]
         private static extern bool CloseHandle(IntPtr hObject);
 
+        // Unlike Process.Handle (PROCESS_ALL_ACCESS), this access right is granted for elevated processes too
+        private const uint PROCESS_QUERY_LIMITED_INFORMATION = 0x1000;
+
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern IntPtr OpenProcess(uint dwDesiredAccess, bool bInheritHandle, uint dwProcessId);
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool QueryFullProcessImageName(IntPtr hProcess, uint dwFlags, StringBuilder lpExeName, ref int lpdwSize);
+
+        /// <summary>
+        /// Checks whether a process is a packaged (immersive) app. Returns false when the process can't be opened.
+        /// </summary>
+        public static bool IsImmersiveProcess(uint processId)
+        {
+            IntPtr hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, false, processId);
+            if (hProcess == IntPtr.Zero)
+                return false;
+
+            try
+            {
+                return IsImmersiveProcess(hProcess);
+            }
+            finally
+            {
+                CloseHandle(hProcess);
+            }
+        }
+
+        /// <summary>
+        /// Gets the full path of a process's executable. Works for elevated processes, where Process.MainModule throws.
+        /// </summary>
+        public static string GetProcessImagePath(uint processId)
+        {
+            IntPtr hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, false, processId);
+            if (hProcess == IntPtr.Zero)
+                return null;
+
+            try
+            {
+                int size = 1024;
+                var buffer = new StringBuilder(size);
+                return QueryFullProcessImageName(hProcess, 0, buffer, ref size) ? buffer.ToString() : null;
+            }
+            finally
+            {
+                CloseHandle(hProcess);
+            }
+        }
+
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, PreserveSig = true)]
         internal static extern int GetApplicationUserModelId(
             IntPtr hProcess,

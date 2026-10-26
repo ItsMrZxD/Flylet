@@ -101,7 +101,7 @@ namespace Flylet.Core.Media.Control
             NPSession = null;
             StopTimeline();
 
-            sourceAppInfo.Dispose();
+            sourceAppInfo?.Dispose();
             sourceAppInfo = null;
         }
 
