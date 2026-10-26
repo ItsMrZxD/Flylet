@@ -44,7 +44,7 @@ namespace Flylet.Helpers
         /// </summary>
         public static async void TryPrompt(Window owner)
         {
-            if (attemptedThisRun || !IsTime())
+            if (attemptedThisRun || IsDevBuild() || !IsTime())
                 return;
 
             attemptedThisRun = true;
@@ -66,6 +66,20 @@ namespace Flylet.Helpers
             catch
             {
                 // Never let a rating prompt bother the user
+            }
+        }
+
+        // The dev build (MrzxD.Flylet.Dev) has no Store listing, and asking the Store to rate it
+        // crashes with an access violation inside Windows.ApplicationModel.Store.dll that can't be caught
+        private static bool IsDevBuild()
+        {
+            try
+            {
+                return Windows.ApplicationModel.Package.Current.Id.Name.EndsWith(".Dev", StringComparison.Ordinal);
+            }
+            catch
+            {
+                return true;
             }
         }
 
