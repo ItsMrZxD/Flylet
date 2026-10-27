@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Ko-fiでFlyletを応援する</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>パフォーマンス</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>メモリ使用量を減らす</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>フライアウトをグラフィックス カードではなくプロセッサで描画します。約 40 MB 節約できますが、古い PC ではアニメーションが滑らかでなくなる場合があります。</value>
+  </data>
 </root>

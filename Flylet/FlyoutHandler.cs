@@ -333,6 +333,13 @@ namespace Flylet
                 Path = new PropertyPath(nameof(UIManager.FlyoutAnimationEnabled)),
                 Mode = BindingMode.OneWay
             });
+
+            BindingOperations.SetBinding(flyoutWindow, FlyoutWindow.UseSoftwareRenderingProperty, new Binding()
+            {
+                Source = UIManager,
+                Path = new PropertyPath(nameof(UIManager.UseLessMemory)),
+                Mode = BindingMode.OneWay
+            });
         }
 
         private void OnNativeFlyoutShown()

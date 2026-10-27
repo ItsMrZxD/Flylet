@@ -296,6 +296,12 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static bool UseLessMemory
+        {
+            get => GetValue(DefaultValuesStore.UseLessMemory);
+            set => SetValue(value);
+        }
+
         public static MediaCardArt MediaCardArt
         {
             get => GetValue(DefaultValuesStore.MediaCardLayout.Art);

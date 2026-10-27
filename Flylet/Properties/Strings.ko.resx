@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Ko-fi에서 Flylet 후원하기</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>성능</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>메모리 적게 사용</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>플라이아웃을 그래픽 카드 대신 프로세서로 그립니다. 약 40MB를 절약하지만, 오래된 PC에서는 애니메이션이 덜 부드러울 수 있습니다.</value>
+  </data>
 </root>

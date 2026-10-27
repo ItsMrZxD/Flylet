@@ -86,6 +86,8 @@ namespace Flylet.Helpers
 
         public const bool FlyoutAnimationEnabled = true;
 
+        public const bool UseLessMemory = false;
+
         public static MediaCardLayout MediaCardLayout => MediaCardLayout.Classic;
 
         public const int MaxVerticalSessionControlsCount = 1;

@@ -172,6 +172,23 @@ namespace Flylet.UI
             }
         }
 
+        private bool useLessMemory = DefaultValuesStore.UseLessMemory;
+
+        /// <summary>
+        /// Flyouts drawn with the CPU instead of the graphics card: about 40 MB less, a bit more CPU while shown.
+        /// </summary>
+        public bool UseLessMemory
+        {
+            get => useLessMemory;
+            set
+            {
+                if (SetProperty(ref useLessMemory, value))
+                {
+                    AppDataHelper.UseLessMemory = value;
+                }
+            }
+        }
+
         private bool useCustomAccentColor = DefaultValuesStore.UseCustomAccentColor;
 
         public bool UseCustomAccentColor
@@ -895,6 +912,7 @@ namespace Flylet.UI
             TrayIconEnabled = AppDataHelper.TrayIconEnabled;
             UseColoredTrayIcon = AppDataHelper.UseColoredTrayIcon;
             FlyoutAnimationEnabled = AppDataHelper.FlyoutAnimationEnabled;
+            UseLessMemory = AppDataHelper.UseLessMemory;
 
             // Straight into the fields: the setters would re-save what was just read and rebuild the accent
             // more than once, and the background is applied by the theme update below, once the system theme is known

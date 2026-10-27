@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>תמכו ב-Flylet ב-Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>ביצועים</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>שימוש בפחות זיכרון</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>משרטט את החלונות הקופצים בעזרת המעבד במקום כרטיס המסך. חוסך כ-40 MB, אבל ההנפשות עשויות להיות פחות חלקות במחשבים ישנים.</value>
+  </data>
 </root>

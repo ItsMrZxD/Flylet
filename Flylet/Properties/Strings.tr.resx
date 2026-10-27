@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Flylet&apos;i Ko-fi&apos;de destekleyin</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Performans</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Daha az bellek kullan</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Açılır pencereleri ekran kartı yerine işlemciyle çizer. Yaklaşık 40 MB tasarruf sağlar, ancak eski bilgisayarlarda animasyonlar daha az akıcı olabilir.</value>
+  </data>
 </root>

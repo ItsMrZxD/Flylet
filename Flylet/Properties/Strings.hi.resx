@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Ko-fi पर Flylet का समर्थन करें</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>प्रदर्शन</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>कम मेमोरी का उपयोग करें</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>फ़्लायआउट को ग्राफ़िक्स कार्ड के बजाय प्रोसेसर से बनाता है। लगभग 40 MB बचाता है, लेकिन पुराने पीसी पर एनिमेशन कम स्मूथ हो सकते हैं।</value>
+  </data>
 </root>

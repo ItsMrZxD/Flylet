@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Wesprzyj Flylet na Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Wydajność</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Używaj mniej pamięci</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Rysuje okna wysuwane procesorem zamiast karty graficznej. Oszczędza około 40 MB, ale animacje mogą być mniej płynne na starszych komputerach.</value>
+  </data>
 </root>

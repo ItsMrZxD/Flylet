@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Sokong Flylet di Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Prestasi</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Guna kurang memori</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Melukis flyout menggunakan pemproses dan bukannya kad grafik. Menjimatkan kira-kira 40 MB, tetapi animasi mungkin kurang lancar pada PC lama.</value>
+  </data>
 </root>

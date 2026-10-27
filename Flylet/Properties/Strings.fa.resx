@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>از Flylet در Ko-fi حمایت کنید</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>کارایی</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>استفاده از حافظهٔ کمتر</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>پنجره‌های بازشو را به‌جای کارت گرافیک با پردازنده رسم می‌کند. حدود ۴۰ مگابایت صرفه‌جویی می‌کند، اما ممکن است پویانمایی‌ها در رایانه‌های قدیمی‌تر روان نباشند.</value>
+  </data>
 </root>

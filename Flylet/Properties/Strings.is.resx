@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Styðjið Flylet á Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Afköst</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Nota minna minni</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Teiknar sprettiglugga með örgjörvanum í stað skjákortsins. Sparar um 40 MB, en hreyfimyndir geta verið hnökróttari á eldri tölvum.</value>
+  </data>
 </root>

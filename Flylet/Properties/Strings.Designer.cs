@@ -781,6 +781,15 @@ namespace Flylet.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Performance.
+        /// </summary>
+        public static string Settings_Performance {
+            get {
+                return ResourceManager.GetString("Settings.Performance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use a custom accent color.
         /// </summary>
         public static string Settings_UseCustomAccentColor {
@@ -1209,6 +1218,24 @@ namespace Flylet.Properties {
         public static string Settings_UseColoredTrayIcon {
             get {
                 return ResourceManager.GetString("Settings.UseColoredTrayIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use less memory.
+        /// </summary>
+        public static string Settings_UseLessMemory {
+            get {
+                return ResourceManager.GetString("Settings.UseLessMemory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Draws flyouts with the processor instead of the graphics card. Saves about 40 MB, but animations may be less smooth on older PCs..
+        /// </summary>
+        public static string Settings_UseLessMemoryDescription {
+            get {
+                return ResourceManager.GetString("Settings.UseLessMemoryDescription", resourceCulture);
             }
         }
         

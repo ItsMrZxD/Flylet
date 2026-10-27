@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Ondersteun Flylet op Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Werkverrigting</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Gebruik minder geheue</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Teken flyouts met die verwerker in plaas van die grafiese kaart. Spaar sowat 40 MB, maar animasies kan op ouer rekenaars minder glad wees.</value>
+  </data>
 </root>

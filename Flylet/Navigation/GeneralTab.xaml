@@ -60,6 +60,17 @@
                 </ui:SimpleStackPanel>
             </GroupBox>
 
+            <GroupBox Header="{x:Static resx:Strings.Settings_Performance}">
+                <ui:SimpleStackPanel Spacing="4">
+                    <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_UseLessMemory}"
+                                     IsOn="{Binding UIManager.UseLessMemory}"
+                                     OnContent="{x:Static resx:Strings.Settings_On}"
+                                     OffContent="{x:Static resx:Strings.Settings_Off}" />
+                    <TextBlock TextWrapping="Wrap" Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                               Text="{x:Static resx:Strings.Settings_UseLessMemoryDescription}" />
+                </ui:SimpleStackPanel>
+            </GroupBox>
+
             <GroupBox Header="{x:Static resx:Strings.Settings_Additional}">
                 <Button Style="{DynamicResource ButtonRevealStyle}"
                         Content="{x:Static resx:Strings.Settings_ResetToDefaults}"

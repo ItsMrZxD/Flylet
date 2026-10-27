@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Υποστηρίξτε το Flylet στο Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Επιδόσεις</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Χρήση λιγότερης μνήμης</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Σχεδιάζει τα αναδυόμενα παράθυρα με τον επεξεργαστή αντί για την κάρτα γραφικών. Εξοικονομεί περίπου 40 MB, αλλά οι κινήσεις μπορεί να είναι λιγότερο ομαλές σε παλαιότερους υπολογιστές.</value>
+  </data>
 </root>

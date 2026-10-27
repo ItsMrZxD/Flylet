@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Ủng hộ Flylet trên Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Hiệu năng</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Dùng ít bộ nhớ hơn</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Vẽ flyout bằng bộ xử lý thay vì card đồ họa. Tiết kiệm khoảng 40 MB, nhưng hoạt ảnh có thể kém mượt hơn trên máy tính cũ.</value>
+  </data>
 </root>

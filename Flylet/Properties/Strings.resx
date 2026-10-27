@@ -662,4 +662,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Support Flylet on Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Performance</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Use less memory</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Draws flyouts with the processor instead of the graphics card. Saves about 40 MB, but animations may be less smooth on older PCs.</value>
+  </data>
 </root>

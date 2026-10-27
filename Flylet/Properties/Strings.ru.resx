@@ -558,4 +558,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Поддержать Flylet на Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Производительность</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Использовать меньше памяти</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Отрисовывает всплывающие окна процессором вместо видеокарты. Экономит около 40 МБ, но на старых ПК анимация может быть менее плавной.</value>
+  </data>
 </root>

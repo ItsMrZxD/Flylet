@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>ادعم Flylet على Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>الأداء</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>استخدام ذاكرة أقل</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>يرسم النوافذ المنبثقة باستخدام المعالج بدلاً من بطاقة الرسومات. يوفّر نحو 40 ميغابايت، لكن قد تكون الحركات أقل سلاسة على الأجهزة القديمة.</value>
+  </data>
 </root>

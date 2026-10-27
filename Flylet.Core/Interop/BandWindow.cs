@@ -85,6 +85,36 @@ namespace Flylet.Core.Interop
 
         #endregion
 
+        #region UseSoftwareRendering
+
+        public static readonly DependencyProperty UseSoftwareRenderingProperty =
+            DependencyProperty.Register(
+                nameof(UseSoftwareRendering),
+                typeof(bool),
+                typeof(BandWindow),
+                new PropertyMetadata(false, (d, _) => ((BandWindow)d).ApplyRenderMode()));
+
+        /// <summary>
+        /// Draws the window with the CPU instead of the graphics card. Saves about 40 MB (the graphics device,
+        /// driver heaps and the copy back from the GPU that per-pixel transparency needs), but costs more CPU
+        /// while the window is on screen. Takes effect right away.
+        /// </summary>
+        public bool UseSoftwareRendering
+        {
+            get => (bool)GetValue(UseSoftwareRenderingProperty);
+            set => SetValue(UseSoftwareRenderingProperty, value);
+        }
+
+        private void ApplyRenderMode()
+        {
+            if (hwndSource?.CompositionTarget is HwndTarget target)
+            {
+                target.RenderMode = UseSoftwareRendering ? RenderMode.SoftwareOnly : RenderMode.Default;
+            }
+        }
+
+        #endregion
+
         #region ActualLeft
 
         private static readonly DependencyPropertyKey ActualLeftPropertyKey =
@@ -362,6 +392,7 @@ namespace Flylet.Core.Interop
             };
 
             hwndSource.CompositionTarget.BackgroundColor = Colors.Transparent;
+            ApplyRenderMode();
             hwndSource.ContentRendered += HwndSource_ContentRendered;
 
             UpdateWindow(hWnd);

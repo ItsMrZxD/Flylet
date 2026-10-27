@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Støtt Flylet på Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Ytelse</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Bruk mindre minne</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Tegner flyouts med prosessoren i stedet for grafikkortet. Sparer omtrent 40 MB, men animasjoner kan bli mindre jevne på eldre PC-er.</value>
+  </data>
 </root>

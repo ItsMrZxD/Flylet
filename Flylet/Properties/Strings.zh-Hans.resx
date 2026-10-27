@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>在 Ko-fi 上支持 Flylet</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>性能</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>减少内存占用</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>使用处理器而不是显卡绘制浮出控件。可节省约 40 MB，但在较旧的电脑上动画可能不够流畅。</value>
+  </data>
 </root>

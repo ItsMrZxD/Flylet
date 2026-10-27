@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Підтримати Flylet на Ko-fi</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Продуктивність</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Використовувати менше пам'яті</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Малює спливаючі вікна процесором замість відеокарти. Заощаджує близько 40 МБ, але на старих ПК анімація може бути менш плавною.</value>
+  </data>
 </root>

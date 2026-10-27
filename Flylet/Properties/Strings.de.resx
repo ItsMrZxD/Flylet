@@ -557,4 +557,13 @@
   <data name="About.Donate" xml:space="preserve">
     <value>Flylet auf Ko-fi unterstützen</value>
   </data>
+  <data name="Settings.Performance" xml:space="preserve">
+    <value>Leistung</value>
+  </data>
+  <data name="Settings.UseLessMemory" xml:space="preserve">
+    <value>Weniger Arbeitsspeicher verwenden</value>
+  </data>
+  <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
+    <value>Zeichnet Flyouts mit dem Prozessor statt mit der Grafikkarte. Spart etwa 40 MB, aber Animationen können auf älteren PCs weniger flüssig sein.</value>
+  </data>
 </root>
