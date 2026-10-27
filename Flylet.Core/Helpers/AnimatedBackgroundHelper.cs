@@ -13,12 +13,15 @@ namespace Flylet.Core.Helpers
     /// changed part), and thinned out so a long GIF can't use up the PC's memory.
     /// </summary>
     /// <remarks>
-    /// Each frame is its own frozen bitmap, swapped in on every tick. Writing new pixels into one shared
-    /// WriteableBitmap was tried: WPF didn't redraw the flyout cards for it, so the GIF stood still.
+    /// Frames are kept as plain pixels, and every tick shows a new frozen bitmap made by <see cref="CreateFrame"/>.
+    /// WPF keeps a GPU copy of each bitmap it has drawn for as long as that bitmap lives, so keeping one bitmap
+    /// per frame doubled the GIF's memory once it had played through (about 60 MB for a 72-frame GIF).
+    /// Writing new pixels into one shared WriteableBitmap was tried: WPF didn't redraw the flyout cards for it,
+    /// so the GIF stood still.
     /// </remarks>
     public sealed class AnimatedBackground
     {
-        public AnimatedBackground(int pixelWidth, int pixelHeight, IReadOnlyList<BitmapSource> frames, IReadOnlyList<TimeSpan> delays)
+        public AnimatedBackground(int pixelWidth, int pixelHeight, IReadOnlyList<byte[]> frames, IReadOnlyList<TimeSpan> delays)
         {
             PixelWidth = pixelWidth;
             PixelHeight = pixelHeight;
@@ -30,7 +33,20 @@ namespace Flylet.Core.Helpers
 
         public int PixelHeight { get; }
 
-        public IReadOnlyList<BitmapSource> Frames { get; }
+        /// <summary>
+        /// Every frame's Pbgra32 pixels, rows <see cref="PixelWidth"/> * 4 bytes long.
+        /// </summary>
+        public IReadOnlyList<byte[]> Frames { get; }
+
+        /// <summary>
+        /// A new frozen bitmap of frame <paramref name="index"/>. Don't keep it past its turn on screen.
+        /// </summary>
+        public BitmapSource CreateFrame(int index)
+        {
+            var bitmap = BitmapSource.Create(PixelWidth, PixelHeight, 96, 96, PixelFormats.Pbgra32, null, Frames[index], PixelWidth * 4);
+            bitmap.Freeze();
+            return bitmap;
+        }
 
         /// <summary>
         /// How long each frame is shown before the next one.
@@ -113,7 +129,7 @@ namespace Flylet.Core.Helpers
                 long frameBytes = (long)stride * height;
                 int keepEvery = (int)Math.Max(1, (count * frameBytes + MaxFrameMemory - 1) / MaxFrameMemory);
 
-                var frames = new List<BitmapSource>();
+                var frames = new List<byte[]>();
                 var delays = new List<TimeSpan>();
 
                 // One drawing surface for every frame, and one bitmap to draw the previous result from
@@ -181,7 +197,7 @@ namespace Flylet.Core.Helpers
                         continue;
                     }
 
-                    frames.Add(ToFrozenBitmap(composed, width, height));
+                    frames.Add(composed);
                     delays.Add(delay);
                 }
 
@@ -218,11 +234,9 @@ namespace Flylet.Core.Helpers
         {
             int width = animation.PixelWidth;
             int height = animation.PixelHeight;
-            var pixels = new byte[width * height * 4];
-            var frames = new List<BitmapSource>(animation.Frames.Count);
-            foreach (var frame in animation.Frames)
+            var frames = new List<byte[]>(animation.Frames.Count);
+            foreach (var pixels in animation.Frames)
             {
-                frame.CopyPixels(pixels, width * 4, 0);
                 var source = MemoryMarshal.Cast<byte, uint>(pixels.AsSpan());
                 var rotated = new byte[pixels.Length];
                 var target = MemoryMarshal.Cast<byte, uint>(rotated.AsSpan());
@@ -238,20 +252,10 @@ namespace Flylet.Core.Helpers
                     }
                 }
 
-                frames.Add(ToFrozenBitmap(rotated, height, width));
+                frames.Add(rotated);
             }
 
             return new AnimatedBackground(height, width, frames, animation.Delays);
-        }
-
-        /// <summary>
-        /// A plain bitmap from Pbgra32 pixels; it keeps its own copy, so the array can be reused or dropped.
-        /// </summary>
-        private static BitmapSource ToFrozenBitmap(byte[] pixels, int width, int height)
-        {
-            var bitmap = BitmapSource.Create(width, height, 96, 96, PixelFormats.Pbgra32, null, pixels, width * 4);
-            bitmap.Freeze();
-            return bitmap;
         }
 
         private static Rect ToRect(Int32Rect area, double scale) =>

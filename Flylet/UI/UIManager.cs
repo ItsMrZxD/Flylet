@@ -550,7 +550,7 @@ namespace Flylet.UI
                 OnPropertyChanged(nameof(IsFlyoutBackgroundAnimated));
             }
 
-            FlyoutBackgroundImage = animation.Frames[animationFrame];
+            FlyoutBackgroundImage = animation.CreateFrame(animationFrame);
             UpdateBackgroundAnimation();
         }
 
@@ -640,7 +640,7 @@ namespace Flylet.UI
             }
 
             animationFrame = (animationFrame + 1) % animation.Frames.Count;
-            flyoutBackgroundImage = animation.Frames[animationFrame];
+            flyoutBackgroundImage = animation.CreateFrame(animationFrame);
             // Only the picture changes: not the theme, which a new photo would rebuild every frame
             OnPropertyChanged(nameof(FlyoutBackgroundImage));
             animationTimer.Interval = animation.Delays[animationFrame];

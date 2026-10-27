@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -87,7 +87,8 @@ namespace Flylet.Core.Tests
             Assert.True(animation.Frames.Count >= 2);
             Assert.Equal(40, animation.PixelWidth);
             Assert.Equal(30, animation.PixelHeight);
-            Assert.All(animation.Frames, f => Assert.True(f.IsFrozen));
+            Assert.All(animation.Frames, f => Assert.Equal(40 * 30 * 4, f.Length));
+            Assert.True(animation.CreateFrame(0).IsFrozen);
             Assert.All(animation.Delays, d => Assert.True(d > TimeSpan.Zero));
         }
 
@@ -133,12 +134,11 @@ namespace Flylet.Core.Tests
             var pixels = new byte[8];
             a.CopyTo(pixels, 0);
             b.CopyTo(pixels, 4);
-            var frame = BitmapSource.Create(2, 1, 96, 96, PixelFormats.Pbgra32, null, pixels, 8);
-            var animation = new AnimatedBackground(2, 1, new[] { frame, frame }, new[] { TimeSpan.FromMilliseconds(100), TimeSpan.FromMilliseconds(100) });
+            var animation = new AnimatedBackground(2, 1, new[] { pixels, pixels }, new[] { TimeSpan.FromMilliseconds(100), TimeSpan.FromMilliseconds(100) });
 
             // Clockwise: A ends up on top, B below; counter-clockwise: B on top
-            var clockwise = Pixels(AnimatedBackgroundHelper.Rotate(animation, true).Frames[0]);
-            var counter = Pixels(AnimatedBackgroundHelper.Rotate(animation, false).Frames[0]);
+            var clockwise = AnimatedBackgroundHelper.Rotate(animation, true).Frames[0];
+            var counter = AnimatedBackgroundHelper.Rotate(animation, false).Frames[0];
 
             Assert.Equal(1, clockwise[0]);
             Assert.Equal(2, clockwise[4]);
@@ -152,14 +152,7 @@ namespace Flylet.Core.Tests
             var animation = AnimatedBackgroundHelper.TryLoad(SaveGif(40, 30, 3));
 
             // The test frames differ in color, so composed frames must differ too
-            Assert.NotEqual(Pixels(animation.Frames[0])[0], Pixels(animation.Frames[1])[0]);
-        }
-
-        private static byte[] Pixels(BitmapSource frame)
-        {
-            var pixels = new byte[frame.PixelWidth * frame.PixelHeight * 4];
-            frame.CopyPixels(pixels, frame.PixelWidth * 4, 0);
-            return pixels;
+            Assert.NotEqual(animation.Frames[0][0], animation.Frames[1][0]);
         }
 
         [Fact]
