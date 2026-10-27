@@ -53,26 +53,29 @@ namespace Flylet.Controls
         {
             if (e.OldValue is MediaSession oldMediaSession)
             {
-                oldMediaSession.MediaPropertiesChanging -= MediaSession_MediaPropertiesChanging;
-                oldMediaSession.MediaPropertiesChanged -= MediaSession_MediaPropertiesChanged;
+                Unsubscribe(oldMediaSession);
             }
             if (e.NewValue is MediaSession mediaSession)
             {
                 _mediaSession = mediaSession;
-                mediaSession.MediaPropertiesChanging += MediaSession_MediaPropertiesChanging;
-                mediaSession.MediaPropertiesChanged += MediaSession_MediaPropertiesChanged;
+                if (IsLoaded)
+                {
+                    Subscribe(mediaSession);
+                }
             }
 
             UpdateAccentColor();
             UpdateBackgroundArt();
         }
 
+        // Subscribed only while loaded, and never twice: Loaded used to add a second pair of handlers on top
+        // of DataContextChanged's, and the pair left after Unloaded let the long-lived media session keep the
+        // card, and the window it was in, alive
         private void SessionControl_Loaded(object sender, RoutedEventArgs e)
         {
             if (_mediaSession != null)
             {
-                _mediaSession.MediaPropertiesChanging += MediaSession_MediaPropertiesChanging;
-                _mediaSession.MediaPropertiesChanged += MediaSession_MediaPropertiesChanged;
+                Subscribe(_mediaSession);
             }
         }
 
@@ -80,9 +83,21 @@ namespace Flylet.Controls
         {
             if (_mediaSession != null)
             {
-                _mediaSession.MediaPropertiesChanging -= MediaSession_MediaPropertiesChanging;
-                _mediaSession.MediaPropertiesChanged -= MediaSession_MediaPropertiesChanged;
+                Unsubscribe(_mediaSession);
             }
+        }
+
+        private void Subscribe(MediaSession mediaSession)
+        {
+            Unsubscribe(mediaSession);
+            mediaSession.MediaPropertiesChanging += MediaSession_MediaPropertiesChanging;
+            mediaSession.MediaPropertiesChanged += MediaSession_MediaPropertiesChanged;
+        }
+
+        private void Unsubscribe(MediaSession mediaSession)
+        {
+            mediaSession.MediaPropertiesChanging -= MediaSession_MediaPropertiesChanging;
+            mediaSession.MediaPropertiesChanged -= MediaSession_MediaPropertiesChanged;
         }
 
         private void MediaSession_MediaPropertiesChanging(object sender, EventArgs e)
