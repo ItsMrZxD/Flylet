@@ -6,6 +6,10 @@
 
 <p align="center">Modern, Fluent-style replacements for the Windows volume, brightness, media and lock-key pop-ups.</p>
 
+<p align="center">
+  <img src="docs/images/tagline.png" width="480" alt="Your pop-ups, your way.">
+</p>
+
 https://github.com/user-attachments/assets/3a720fee-069a-4b35-8d25-61ee6c4f805f
 
 <p align="center"><sub>Song: DEAF KEV - Invincible [NCS Release] · Music provided by NoCopyrightSounds · <a href="http://ncs.io/invincible">ncs.io/invincible</a></sub></p>
