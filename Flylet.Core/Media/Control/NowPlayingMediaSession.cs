@@ -144,7 +144,9 @@ namespace Flylet.Core.Media.Control
         {
             if (mediaPlaybackDataSource != null)
             {
-                if (IsPlaybackPositionEnabled)
+                // Read the timeline even when the source can't seek: Edge on Windows 10 reports the song's
+                // length and position without the PlaybackPosition capability (the card shows a progress bar then)
+                try
                 {
                     var timeline = mediaPlaybackDataSource.GetMediaTimelineProperties();
                     var playback = mediaPlaybackDataSource.GetMediaPlaybackInfo();
@@ -161,8 +163,9 @@ namespace Flylet.Core.Media.Control
                         IsPlaying = playback.PlaybackState == MediaPlaybackState.Playing
                     });
                 }
-                else
+                catch (Exception ex)
                 {
+                    System.Diagnostics.Debug.WriteLine($"{nameof(NowPlayingMediaSession)}: no timeline: {ex.Message}");
                     ClearTimeline();
                 }
             }

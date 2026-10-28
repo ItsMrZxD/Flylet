@@ -175,12 +175,11 @@
 
             <!-- The play button and timeline colors come from the thumbnail (see SessionControl.UpdateAccentColor) -->
             <Grid x:Name="TimelineGrid" Grid.Row="1" Margin="16,0,16,4" VerticalAlignment="Center">
-                <!-- Firefox only reports a song's length after the first pause; until a real timeline is known, show an empty line -->
-                <Grid Visibility="{Binding IsPlaybackPositionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}">
-                    <Border Height="4" CornerRadius="2" VerticalAlignment="Center"
-                            Background="{DynamicResource SystemControlForegroundBaseLowBrush}"
-                            Visibility="{Binding IsTimelinePropertiesEnabled, Converter={StaticResource InvertBooleanToVisibilityConverter}}" />
-                </Grid>
+                <!-- Firefox only reports a song's length after the first pause, and some sources never do; until a
+                     real timeline is known, show an empty line rather than a blank gap -->
+                <Border Height="4" CornerRadius="2" VerticalAlignment="Center"
+                        Background="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                        Visibility="{Binding IsTimelinePropertiesEnabled, Converter={StaticResource InvertBooleanToVisibilityConverter}}" />
 
                 <Grid Visibility="{Binding IsTimelinePropertiesEnabled, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid Visibility="{Binding IsPlaybackPositionEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
