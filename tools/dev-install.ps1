@@ -1,11 +1,14 @@
 <#
 .SYNOPSIS
-    Builds Flylet (Release x64), installs it on this PC under a dev identity, and starts it.
+    Builds Flylet (Release, x64 by default), installs it on this PC under a dev identity, and starts it.
 
 .DESCRIPTION
     Local installs use the package name MrzxD.Flylet.Dev ("Flylet (Dev)"). The Store identity in
     Package.appxmanifest (MrzxD.Flylet) won't start when registered from a build folder on a PC without
     a Store license, so it is only used for Store uploads. Needs Visual Studio 2026 and Developer Mode.
+
+.PARAMETER Platform
+    x64 (default), x86 or ARM64. An x64 PC can run x86 but not ARM64.
 
 .PARAMETER NoBuild
     Install the existing build output without rebuilding.
@@ -14,13 +17,15 @@
     Install without starting the app.
 #>
 param(
+    [ValidateSet('x64', 'x86', 'ARM64')]
+    [string]$Platform = 'x64',
     [switch]$NoBuild,
     [switch]$NoLaunch
 )
 
 $ErrorActionPreference = 'Stop'
 $repo = Split-Path $PSScriptRoot -Parent
-$layout = Join-Path $repo 'Flylet.Package\bin\x64\Release'
+$layout = Join-Path $repo "Flylet.Package\bin\$Platform\Release"
 $devName = 'MrzxD.Flylet.Dev'
 
 # The dev build runs straight from the build output, so a running copy locks its files
@@ -35,8 +40,8 @@ if (-not $NoBuild) {
     $dotnet = Join-Path $env:ProgramFiles 'dotnet'
     if ($env:PATH -notlike "*$dotnet*") { $env:PATH = "$dotnet;$env:PATH" }
 
-    # Bundling would also build x86 and ARM64, which a local install doesn't need
-    & $msbuild (Join-Path $repo 'Flylet.sln') /restore /m /nologo /v:minimal /p:Configuration=Release /p:Platform=x64 /p:AppxBundle=Never
+    # Bundling would build all three platforms, which a local install doesn't need
+    & $msbuild (Join-Path $repo 'Flylet.sln') /restore /m /nologo /v:minimal /p:Configuration=Release /p:Platform=$Platform /p:AppxBundle=Never
     if ($LASTEXITCODE -ne 0) { throw "Build failed (exit code $LASTEXITCODE)." }
 }
 
