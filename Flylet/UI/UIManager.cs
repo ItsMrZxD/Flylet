@@ -446,6 +446,12 @@ namespace Flylet.UI
         public double FlyoutBackgroundImageDimOpacity => flyoutBackgroundImageDim / 100;
 
         /// <summary>
+        /// The background opacity setting also fades the photo, which would otherwise cover the
+        /// see-through color behind it.
+        /// </summary>
+        public double FlyoutBackgroundImageOpacity => flyoutBackgroundOpacity / 100;
+
+        /// <summary>
         /// Imports the picture at <paramref name="path"/> as the flyout background and turns it on.
         /// </summary>
         /// <returns>False if the file couldn't be read as a picture; the current photo stays.</returns>
@@ -944,6 +950,7 @@ namespace Flylet.UI
         private void OnFlyoutBackgroundOpacityChanged()
         {
             UpdateFlyoutBackground();
+            OnPropertyChanged(nameof(FlyoutBackgroundImageOpacity));
             AppDataHelper.FlyoutBackgroundOpacity = flyoutBackgroundOpacity;
         }
 

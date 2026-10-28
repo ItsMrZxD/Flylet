@@ -6,7 +6,7 @@
     <Grid x:Name="RootGrid" x:FieldModifier="private" DataContext="{x:Static root:FlyoutHandler.Instance}">
         <Border x:Name="ColorBorder" x:FieldModifier="private" Background="{DynamicResource FlyoutBackground}" />
         <!-- Blurred and darkened so the light text the flyout switches to stays readable -->
-        <Grid IsHitTestVisible="False"
+        <Grid IsHitTestVisible="False" Opacity="{Binding UIManager.FlyoutBackgroundImageOpacity}"
               Visibility="{Binding UIManager.IsFlyoutBackgroundImageShown, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Border x:Name="PhotoBorder" x:FieldModifier="private" Margin="-70">
                 <Border.Background>
