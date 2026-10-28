@@ -6,9 +6,9 @@
 
 <p align="center">Modern, Fluent-style replacements for the Windows volume, brightness, media and lock-key pop-ups.</p>
 
-https://github.com/user-attachments/assets/d2666632-3dc9-4cc8-b016-0666ab3695b7
+https://github.com/user-attachments/assets/3a720fee-069a-4b35-8d25-61ee6c4f805f
 
-<p align="center"><sub>Music: "Funkorama" by Kevin MacLeod (incompetech.com), licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></sub></p>
+<p align="center"><sub>Song: DEAF KEV - Invincible [NCS Release] · Music provided by NoCopyrightSounds · <a href="http://ncs.io/invincible">ncs.io/invincible</a></sub></p>
 
 ![Flylet's flyouts: media card styles, photo and GIF backgrounds, colors, Caps Lock and brightness](docs/images/flylet-flyouts.png)
 
