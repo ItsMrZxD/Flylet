@@ -122,6 +122,23 @@ Flylet watches window events on `explorer.exe` to spot the built-in flyout, hide
 its own window in its place. Media information comes from Windows' Now Playing session
 (NPSM), so it works with any app that reports media to Windows.
 
+## Performance
+
+Measured on Flylet 0.11.2 (x64), as the process's working set, the same kind of number Task
+Manager shows:
+
+- About 66 MB right after starting, and about 110 MB once flyouts have shown.
+- About 41–65 MB with **Use less memory** on (Settings → General → Performance).
+- About 0% CPU when idle.
+
+Photo and GIF backgrounds use more, depending on the image.
+
+## Privacy
+
+Flylet has no network code of its own and sends no data. The only exception is the Microsoft
+Store's own rating dialog, shown once, which talks to the Store. Flylet is open source, so anyone
+can check.
+
 ## Known limits
 
 - Firefox sends Windows a 60x60 album image, so art looks soft for songs played there. Chrome

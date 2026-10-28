@@ -93,6 +93,5 @@
     <rescap:Capability Name="runFullTrust" />
     <!--<rescap:Capability Name="packageManagement" />-->
     <!--<Capability Name="globalMediaControl" / >-->
-    <Capability Name="internetClient"/>
   </Capabilities>
 </Package>
