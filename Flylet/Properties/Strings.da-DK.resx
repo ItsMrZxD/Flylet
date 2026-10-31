@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Tegner flyouts med processoren i stedet for grafikkortet. Sparer ca. 40 MB, men animationer kan være mindre glatte på ældre pc'er.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Glas</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Slører alt bag flyout&apos;en, som matteret glas. Kræver Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Glasfarvetone</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0 % er klart glas, 100 % er din ensfarvede farve.</value>
+  </data>
 </root>

@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>يرسم النوافذ المنبثقة باستخدام المعالج بدلاً من بطاقة الرسومات. يوفّر نحو 40 ميغابايت، لكن قد تكون الحركات أقل سلاسة على الأجهزة القديمة.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>زجاج</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>يطمس كل ما خلف المشغل، مثل الزجاج المصنفر. يتطلب Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>صبغة الزجاج</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% زجاج شفاف، و100% لونك المصمت.</value>
+  </data>
 </root>

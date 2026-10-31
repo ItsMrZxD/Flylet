@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Dessine les flyouts avec le processeur au lieu de la carte graphique. Économise environ 40 Mo, mais les animations peuvent être moins fluides sur les PC anciens.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Verre</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Floute tout ce qui se trouve derrière le menu volant, comme du verre dépoli. Nécessite Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Teinte du verre</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0 % donne un verre clair, 100 % votre couleur unie.</value>
+  </data>
 </root>

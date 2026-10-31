@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Teiknar sprettiglugga með örgjörvanum í stað skjákortsins. Sparar um 40 MB, en hreyfimyndir geta verið hnökróttari á eldri tölvum.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Gler</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Gerir allt á bak við gluggann óskýrt, eins og matt gler. Krefst Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Litblær glers</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% er glært gler, 100% er heili liturinn þinn.</value>
+  </data>
 </root>

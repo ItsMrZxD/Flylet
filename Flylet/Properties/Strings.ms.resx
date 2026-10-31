@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Melukis flyout menggunakan pemproses dan bukannya kad grafik. Menjimatkan kira-kira 40 MB, tetapi animasi mungkin kurang lancar pada PC lama.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Kaca</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Mengaburkan apa sahaja di belakang paparan terbang, seperti kaca kabur. Memerlukan Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Warna kaca</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% ialah kaca jernih, 100% ialah warna padu anda.</value>
+  </data>
 </root>

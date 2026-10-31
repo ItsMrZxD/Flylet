@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Menggambar flyout dengan prosesor alih-alih kartu grafis. Menghemat sekitar 40 MB, tetapi animasi mungkin kurang mulus di PC lama.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Kaca</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Memburamkan apa pun di belakang sembulan, seperti kaca buram. Memerlukan Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Warna kaca</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% adalah kaca bening, 100% adalah warna solid Anda.</value>
+  </data>
 </root>

@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Açılır pencereleri ekran kartı yerine işlemciyle çizer. Yaklaşık 40 MB tasarruf sağlar, ancak eski bilgisayarlarda animasyonlar daha az akıcı olabilir.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Cam</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Açılır pencerenin arkasındaki her şeyi buzlu cam gibi bulanıklaştırır. Windows 11 gerektirir.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Cam rengi</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>%0 şeffaf cam, %100 düz renginizdir.</value>
+  </data>
 </root>

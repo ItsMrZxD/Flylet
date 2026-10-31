@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>使用處理器而非顯示卡繪製飛出視窗。可節省約 40 MB，但在較舊的電腦上動畫可能不夠流暢。</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>玻璃</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>像毛玻璃一樣模糊浮動視窗後方的內容。需要 Windows 11。</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>玻璃色調</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% 為透明玻璃，100% 為純色背景。</value>
+  </data>
 </root>

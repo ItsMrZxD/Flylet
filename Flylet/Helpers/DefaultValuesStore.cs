@@ -99,6 +99,7 @@ namespace Flylet.Helpers
         public const string CustomAccentColor = "#0078D7";
 
         public const bool UseCustomFlyoutBackgroundColor = false;
+        public const bool UseGlass = false;
 
         public const string CustomFlyoutBackgroundColor = "#222222";
 

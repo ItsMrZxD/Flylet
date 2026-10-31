@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>फ़्लायआउट को ग्राफ़िक्स कार्ड के बजाय प्रोसेसर से बनाता है। लगभग 40 MB बचाता है, लेकिन पुराने पीसी पर एनिमेशन कम स्मूथ हो सकते हैं।</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>ग्लास</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>फ्लाईआउट के पीछे जो कुछ भी है उसे फ्रॉस्टेड ग्लास की तरह धुंधला करता है। Windows 11 आवश्यक है।</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>ग्लास रंगत</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% साफ़ ग्लास है, 100% आपका ठोस रंग है।</value>
+  </data>
 </root>

@@ -799,6 +799,42 @@ namespace Flylet.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Glass.
+        /// </summary>
+        public static string Settings_Glass {
+            get {
+                return ResourceManager.GetString("Settings.Glass", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Blurs whatever is behind the flyout, like frosted glass. Needs Windows 11..
+        /// </summary>
+        public static string Settings_Glass_Description {
+            get {
+                return ResourceManager.GetString("Settings.Glass.Description", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Glass tint.
+        /// </summary>
+        public static string Settings_GlassTint {
+            get {
+                return ResourceManager.GetString("Settings.GlassTint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to 0% is clear glass, 100% is your solid color..
+        /// </summary>
+        public static string Settings_GlassTint_Description {
+            get {
+                return ResourceManager.GetString("Settings.GlassTint.Description", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Use a custom flyout background color.
         /// </summary>
         public static string Settings_UseCustomFlyoutBackgroundColor {

@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>A felugró ablakokat a processzor rajzolja a videokártya helyett. Körülbelül 40 MB-ot takarít meg, de régebbi gépeken az animációk kevésbé lehetnek folyamatosak.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Üveg</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Elmossa a panel mögötti tartalmat, mint egy tejüveg. Windows 11 szükséges.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Üveg színezése</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>A 0% tiszta üveg, a 100% az egyszínű háttérszín.</value>
+  </data>
 </root>

@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>使用处理器而不是显卡绘制浮出控件。可节省约 40 MB，但在较旧的电脑上动画可能不够流畅。</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>玻璃</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>像磨砂玻璃一样模糊浮出控件后面的内容。需要 Windows 11。</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>玻璃色调</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% 为透明玻璃，100% 为纯色背景。</value>
+  </data>
 </root>

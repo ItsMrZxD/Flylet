@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Dibuja los flyouts con el procesador en lugar de la tarjeta gráfica. Ahorra unos 40 MB, pero las animaciones pueden ser menos fluidas en PC antiguos.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Desenfoca lo que hay detrás del control flotante, como un cristal esmerilado. Requiere Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Tinte del cristal</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0 % es cristal transparente y 100 % es tu color sólido.</value>
+  </data>
 </root>

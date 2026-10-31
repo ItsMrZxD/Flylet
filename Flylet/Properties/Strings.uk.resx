@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Малює спливаючі вікна процесором замість відеокарти. Заощаджує близько 40 МБ, але на старих ПК анімація може бути менш плавною.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Скло</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Розмиває все, що знаходиться за спливаючим меню, як матове скло. Потрібна Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Відтінок скла</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% — прозоре скло, 100% — суцільний колір.</value>
+  </data>
 </root>

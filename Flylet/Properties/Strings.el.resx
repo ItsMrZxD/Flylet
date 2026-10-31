@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Σχεδιάζει τα αναδυόμενα παράθυρα με τον επεξεργαστή αντί για την κάρτα γραφικών. Εξοικονομεί περίπου 40 MB, αλλά οι κινήσεις μπορεί να είναι λιγότερο ομαλές σε παλαιότερους υπολογιστές.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Γυαλί</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Θολώνει ό,τι βρίσκεται πίσω από το αναδυόμενο στοιχείο, σαν θαμπό γυαλί. Απαιτεί Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Απόχρωση γυαλιού</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% είναι διάφανο γυαλί, 100% είναι το συμπαγές σας χρώμα.</value>
+  </data>
 </root>

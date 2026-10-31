@@ -567,4 +567,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Отрисовывает всплывающие окна процессором вместо видеокарты. Экономит около 40 МБ, но на старых ПК анимация может быть менее плавной.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Стекло</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Размывает всё, что находится за всплывающим окном, как матовое стекло. Требуется Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Оттенок стекла</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% — прозрачное стекло, 100% — сплошной цвет.</value>
+  </data>
 </root>

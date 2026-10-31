@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>پنجره‌های بازشو را به‌جای کارت گرافیک با پردازنده رسم می‌کند. حدود ۴۰ مگابایت صرفه‌جویی می‌کند، اما ممکن است پویانمایی‌ها در رایانه‌های قدیمی‌تر روان نباشند.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>شیشه</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>هر چیزی پشت پنجره را مات می‌کند، مثل شیشهٔ مات. به Windows 11 نیاز دارد.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>رنگ شیشه</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% شیشهٔ شفاف است و 100% رنگ یکدست شما.</value>
+  </data>
 </root>

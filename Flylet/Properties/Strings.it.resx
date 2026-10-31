@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Disegna i flyout con il processore invece che con la scheda grafica. Risparmia circa 40 MB, ma le animazioni potrebbero essere meno fluide sui PC più vecchi.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Vetro</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Sfoca tutto ciò che si trova dietro il riquadro a comparsa, come un vetro smerigliato. Richiede Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Tinta del vetro</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% è vetro trasparente, 100% è il tuo colore pieno.</value>
+  </data>
 </root>

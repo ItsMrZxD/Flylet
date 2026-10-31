@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>משרטט את החלונות הקופצים בעזרת המעבד במקום כרטיס המסך. חוסך כ-40 MB, אבל ההנפשות עשויות להיות פחות חלקות במחשבים ישנים.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>זכוכית</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>מטשטש את מה שמאחורי הנשלף, כמו זכוכית חלבית. דורש Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>גוון הזכוכית</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% הוא זכוכית שקופה, 100% הוא הצבע המלא שלך.</value>
+  </data>
 </root>

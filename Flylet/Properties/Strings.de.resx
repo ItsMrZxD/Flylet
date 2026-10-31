@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Zeichnet Flyouts mit dem Prozessor statt mit der Grafikkarte. Spart etwa 40 MB, aber Animationen können auf älteren PCs weniger flüssig sein.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Glas</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Zeichnet alles hinter dem Flyout unscharf, wie Milchglas. Erfordert Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Glastönung</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0 % ist klares Glas, 100 % ist deine Vollfarbe.</value>
+  </data>
 </root>

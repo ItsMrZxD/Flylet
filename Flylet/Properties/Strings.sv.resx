@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Ritar flyouts med processorn i stället för grafikkortet. Sparar cirka 40 MB, men animationer kan bli mindre mjuka på äldre datorer.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Glas</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Gör allt bakom den utfällda panelen suddigt, som frostat glas. Kräver Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Glasets färgton</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0 % är klart glas, 100 % är din enfärgade färg.</value>
+  </data>
 </root>

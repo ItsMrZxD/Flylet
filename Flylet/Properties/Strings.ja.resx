@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>フライアウトをグラフィックス カードではなくプロセッサで描画します。約 40 MB 節約できますが、古い PC ではアニメーションが滑らかでなくなる場合があります。</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>ガラス</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>フライアウトの背後にあるものをすりガラスのようにぼかします。Windows 11 が必要です。</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>ガラスの色合い</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% は透明なガラス、100% は単色の背景です。</value>
+  </data>
 </root>

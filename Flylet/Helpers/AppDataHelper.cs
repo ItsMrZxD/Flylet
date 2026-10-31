@@ -368,6 +368,12 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static bool UseGlass
+        {
+            get => GetValue(DefaultValuesStore.UseGlass);
+            set => SetValue(value);
+        }
+
         public static string CustomFlyoutBackgroundColor
         {
             get => GetValue(DefaultValuesStore.CustomFlyoutBackgroundColor);

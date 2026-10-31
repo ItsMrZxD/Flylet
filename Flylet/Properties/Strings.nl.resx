@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Tekent flyouts met de processor in plaats van de videokaart. Bespaart ongeveer 40 MB, maar animaties kunnen minder vloeiend zijn op oudere pc's.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Glas</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Vervaagt alles achter de flyout, zoals matglas. Vereist Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Glastint</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% is helder glas, 100% is je effen kleur.</value>
+  </data>
 </root>

@@ -110,8 +110,18 @@
                                    Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
                                    TextWrapping="Wrap" />
 
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_Glass}"
+                                         IsOn="{Binding UIManager.UseGlass}"
+                                         IsEnabled="{x:Static localui:UIManager.IsGlassSupported}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                        <TextBlock Text="{x:Static resx:Strings.Settings_Glass_Description}"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                   TextWrapping="Wrap" />
+
                         <ui:SimpleStackPanel Spacing="10" HorizontalAlignment="Left" Orientation="Horizontal">
-                            <Slider ui:ControlHelper.Header="{x:Static resx:Strings.Settings_FlyoutBackgroundOpacity}"
+                            <Slider ui:ControlHelper.Header="{Binding UIManager.FlyoutBackgroundOpacityHeader}"
                                     Minimum="0" Maximum="100" HorizontalAlignment="Left"
                                     AutoToolTipPlacement="TopLeft" Width="240"
                                     IsMoveToPointEnabled="True" Value="{Binding UIManager.FlyoutBackgroundOpacity}" />
@@ -120,6 +130,11 @@
                                 <Run Text="{Binding Path=UIManager.FlyoutBackgroundOpacity, StringFormat={}{0:#0}%}" />
                             </TextBlock>
                         </ui:SimpleStackPanel>
+                        <TextBlock Text="{x:Static resx:Strings.Settings_GlassTint_Description}"
+                                   Visibility="{Binding UIManager.IsGlassActive, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                   TextWrapping="Wrap" />
                     </ui:SimpleStackPanel>
                 </GroupBox>
 

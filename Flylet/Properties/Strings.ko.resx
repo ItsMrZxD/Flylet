@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>플라이아웃을 그래픽 카드 대신 프로세서로 그립니다. 약 40MB를 절약하지만, 오래된 PC에서는 애니메이션이 덜 부드러울 수 있습니다.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>유리</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>플라이아웃 뒤에 있는 모든 것을 반투명 유리처럼 흐리게 합니다. Windows 11이 필요합니다.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>유리 색조</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0%는 투명한 유리, 100%는 단색입니다.</value>
+  </data>
 </root>

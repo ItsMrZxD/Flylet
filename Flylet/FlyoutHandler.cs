@@ -239,6 +239,8 @@ namespace Flylet
             }
         }
 
+        private FlyoutGlass onScreenFlyoutGlass;
+
         private void CreateOnScreenFlyoutWindow()
         {
             OnScreenFlyoutView = new()
@@ -273,6 +275,7 @@ namespace Flylet
             };
 
             OnScreenFlyoutWindow = flyoutWindow;
+            onScreenFlyoutGlass = new FlyoutGlass(flyoutWindow, UIManager);
 
             BindingOperations.SetBinding(flyoutWindow, FlyoutWindow.PlacementModeProperty, new Binding()
             {

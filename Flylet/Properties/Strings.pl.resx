@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Rysuje okna wysuwane procesorem zamiast karty graficznej. Oszczędza około 40 MB, ale animacje mogą być mniej płynne na starszych komputerach.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Szkło</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Rozmywa wszystko za nakładką, jak matowe szkło. Wymaga systemu Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Odcień szkła</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% to przezroczyste szkło, 100% to jednolity kolor.</value>
+  </data>
 </root>

@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Vẽ flyout bằng bộ xử lý thay vì card đồ họa. Tiết kiệm khoảng 40 MB, nhưng hoạt ảnh có thể kém mượt hơn trên máy tính cũ.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Kính</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Làm mờ mọi thứ phía sau cửa sổ bay ra, như kính mờ. Cần Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Sắc màu kính</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% là kính trong suốt, 100% là màu đặc của bạn.</value>
+  </data>
 </root>

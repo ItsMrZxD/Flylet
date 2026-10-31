@@ -566,4 +566,16 @@
   <data name="Settings.UseLessMemoryDescription" xml:space="preserve">
     <value>Draws flyouts with the processor instead of the graphics card. Saves about 40 MB, but animations may be less smooth on older PCs.</value>
   </data>
+  <data name="Settings.Glass" xml:space="preserve">
+    <value>Glass</value>
+  </data>
+  <data name="Settings.Glass.Description" xml:space="preserve">
+    <value>Blurs whatever is behind the flyout, like frosted glass. Needs Windows 11.</value>
+  </data>
+  <data name="Settings.GlassTint" xml:space="preserve">
+    <value>Glass tint</value>
+  </data>
+  <data name="Settings.GlassTint.Description" xml:space="preserve">
+    <value>0% is clear glass, 100% is your solid colour.</value>
+  </data>
 </root>

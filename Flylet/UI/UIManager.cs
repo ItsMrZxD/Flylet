@@ -237,6 +237,41 @@ namespace Flylet.UI
             }
         }
 
+        /// <summary>
+        /// The blur behind the cards needs DWMWA_USE_HOSTBACKDROPBRUSH, which only Windows 11 has;
+        /// on Windows 10 the backdrop brush paints solid black.
+        /// </summary>
+        public static bool IsGlassSupported { get; } = Environment.OSVersion.Version.Build >= 22000;
+
+        private bool useGlass = DefaultValuesStore.UseGlass;
+
+        /// <summary>
+        /// Blurs whatever is behind each card (see FlyoutGlass); the background opacity becomes the glass tint.
+        /// </summary>
+        public bool UseGlass
+        {
+            get => useGlass;
+            set
+            {
+                if (SetProperty(ref useGlass, value))
+                {
+                    AppDataHelper.UseGlass = value;
+                    OnPropertyChanged(nameof(IsGlassActive));
+                    OnPropertyChanged(nameof(FlyoutBackgroundOpacityHeader));
+                    // A full-strength tint covers the glass completely, so start somewhere it shows
+                    if (value && flyoutBackgroundOpacity >= 100)
+                    {
+                        FlyoutBackgroundOpacity = 50;
+                    }
+                }
+            }
+        }
+
+        public bool IsGlassActive => useGlass && IsGlassSupported;
+
+        public string FlyoutBackgroundOpacityHeader =>
+            IsGlassActive ? Properties.Strings.Settings_GlassTint : Properties.Strings.Settings_FlyoutBackgroundOpacity;
+
         private Color customFlyoutBackgroundColor = (Color)ColorConverter.ConvertFromString(DefaultValuesStore.CustomFlyoutBackgroundColor);
 
         public Color CustomFlyoutBackgroundColor
@@ -926,6 +961,7 @@ namespace Flylet.UI
             useCustomAccentColor = AppDataHelper.UseCustomAccentColor;
             customFlyoutBackgroundColor = ParseColorOrDefault(AppDataHelper.CustomFlyoutBackgroundColor, DefaultValuesStore.CustomFlyoutBackgroundColor);
             useCustomFlyoutBackgroundColor = AppDataHelper.UseCustomFlyoutBackgroundColor;
+            useGlass = AppDataHelper.UseGlass;
             useFlyoutBackgroundImage = AppDataHelper.UseFlyoutBackgroundImage;
             flyoutBackgroundImageDim = Math.Clamp(AppDataHelper.FlyoutBackgroundImageDim, MinFlyoutBackgroundImageDim, 100);
             flyoutBackgroundBlur = Math.Clamp(AppDataHelper.FlyoutBackgroundBlur, 0, 100);
