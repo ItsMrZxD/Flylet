@@ -212,8 +212,7 @@ namespace Flylet.UI
                 compositor = new Comp.Compositor();
 
                 IntPtr compositorUnknown = ((IWinRTObject)compositor).NativeObject.ThisPtr;
-                Guid interopId = ICompositorDesktopInteropId;
-                Marshal.ThrowExceptionForHR(Marshal.QueryInterface(compositorUnknown, ref interopId, out IntPtr interop));
+                Marshal.ThrowExceptionForHR(Marshal.QueryInterface(compositorUnknown, in ICompositorDesktopInteropId, out IntPtr interop));
                 try
                 {
                     var createTarget = Marshal.GetDelegateForFunctionPointer<CreateDesktopWindowTargetFn>(
