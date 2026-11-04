@@ -8,6 +8,7 @@
              xmlns:controls="clr-namespace:Flylet.Controls"
              xmlns:resx="clr-namespace:Flylet.Properties"
              xmlns:localui="clr-namespace:Flylet.UI"
+             xmlns:nav="clr-namespace:Flylet.Navigation"
              xmlns:media="clr-namespace:Flylet.Core.Media;assembly=Flylet.Core"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800" DataContext="{x:Static local:FlyoutHandler.Instance}">
@@ -144,18 +145,81 @@
                                          IsOn="{Binding UIManager.UseFlyoutBackgroundImage}"
                                          OnContent="{x:Static resx:Strings.Settings_On}"
                                          OffContent="{x:Static resx:Strings.Settings_Off}" />
-                        <ui:SimpleStackPanel Orientation="Horizontal" Spacing="12">
-                            <!-- Thumbnail of the imported photo, an empty tile until one is picked -->
-                            <Grid Width="120" Height="80">
-                                <Border CornerRadius="4" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}" />
-                                <Border CornerRadius="4">
-                                    <Border.Background>
-                                        <ImageBrush x:Name="ThumbnailBrush" x:FieldModifier="private" ImageSource="{Binding UIManager.FlyoutBackgroundImage}" Stretch="Fill" />
-                                    </Border.Background>
-                                </Border>
-                            </Grid>
-                            <Button Content="{x:Static resx:Strings.Settings_ChooseFlyoutBackgroundImage}"
-                                    VerticalAlignment="Center" Click="ChooseFlyoutBackgroundImage_Click" />
+                        <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImages}" />
+                        <!-- Numbered in play order; drag one to move it, click one to show and frame it -->
+                        <ItemsControl x:Name="BackgroundTilesControl" x:FieldModifier="private" Focusable="False">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.Resources>
+                                <DataTemplate DataType="{x:Type nav:BackgroundTile}">
+                                    <Grid Width="84" Height="56" Margin="0,0,8,8" Background="Transparent" AllowDrop="True"
+                                          PreviewMouseLeftButtonDown="BackgroundTile_PreviewMouseLeftButtonDown"
+                                          MouseMove="BackgroundTile_MouseMove"
+                                          MouseLeftButtonUp="BackgroundTile_MouseLeftButtonUp"
+                                          DragOver="BackgroundTile_DragOver"
+                                          DragLeave="BackgroundTile_DragLeave"
+                                          Drop="BackgroundTile_Drop">
+                                        <Border CornerRadius="4" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}" />
+                                        <Border CornerRadius="4">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding Thumbnail}" Stretch="UniformToFill" />
+                                            </Border.Background>
+                                        </Border>
+                                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="{DynamicResource SystemControlForegroundAccentBrush}"
+                                                Visibility="{Binding IsCurrent, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                        <Border CornerRadius="4" BorderThickness="2" BorderBrush="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                                Visibility="{Binding IsDropTarget, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                        <Border Background="#CC000000" CornerRadius="9" MinWidth="18" Height="18" Margin="4"
+                                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                Visibility="{Binding ShowNumber, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <TextBlock Text="{Binding Number}" Foreground="White" FontSize="11"
+                                                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <Border Background="#CC000000" CornerRadius="3" Padding="5,0" Margin="4"
+                                                HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                                Visibility="{Binding IsAnimated, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <TextBlock Text="GIF" Foreground="White" FontSize="11" />
+                                        </Border>
+                                        <Button Width="20" Height="20" MinWidth="0" MinHeight="0" Padding="0" Margin="3"
+                                                HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="11" Content="✕"
+                                                ToolTip="{x:Static resx:Strings.Settings_RemoveFlyoutBackgroundImage}"
+                                                AutomationProperties.Name="{x:Static resx:Strings.Settings_RemoveFlyoutBackgroundImage}"
+                                                Click="RemoveBackgroundTile_Click" />
+                                    </Grid>
+                                </DataTemplate>
+                                <DataTemplate DataType="{x:Type nav:BackgroundAddTile}">
+                                    <Button Width="84" Height="56" Margin="0,0,8,8" Padding="0"
+                                            Content="{x:Static resx:Strings.Settings_AddFlyoutBackgroundImage}"
+                                            Click="AddFlyoutBackgroundImages_Click" />
+                                </DataTemplate>
+                            </ItemsControl.Resources>
+                        </ItemsControl>
+                        <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImages_DragHint}"
+                                   Visibility="{Binding UIManager.CanReorderFlyoutBackgrounds, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding UIManager.FlyoutBackgroundDiskUsage}"
+                                   Visibility="{Binding UIManager.HasFlyoutBackgrounds, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                   Style="{DynamicResource CaptionTextBlockStyle}"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" TextWrapping="Wrap" />
+                        <ui:SimpleStackPanel Orientation="Horizontal" Spacing="16"
+                                             Visibility="{Binding UIManager.HasSeveralFlyoutBackgrounds, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.Settings_FlyoutBackgroundInterval}" MinWidth="200"
+                                      SelectedIndex="{Binding UIManager.FlyoutBackgroundIntervalIndex}">
+                                <ComboBoxItem Content="{x:Static resx:Strings.Settings_FlyoutBackgroundInterval_EveryOpen}" />
+                                <ComboBoxItem Content="{x:Static resx:Strings.Settings_FlyoutBackgroundInterval_Minutes5}" />
+                                <ComboBoxItem Content="{x:Static resx:Strings.Settings_FlyoutBackgroundInterval_Minutes30}" />
+                                <ComboBoxItem Content="{x:Static resx:Strings.Settings_FlyoutBackgroundInterval_Hour}" />
+                                <ComboBoxItem Content="{x:Static resx:Strings.Settings_FlyoutBackgroundInterval_Day}" />
+                            </ComboBox>
+                            <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.Settings_FlyoutBackgroundOrder}" MinWidth="140"
+                                      SelectedIndex="{Binding UIManager.FlyoutBackgroundOrderIndex}">
+                                <ComboBoxItem Content="{x:Static resx:Strings.Settings_FlyoutBackgroundOrder_InOrder}" />
+                                <ComboBoxItem Content="{x:Static resx:Strings.Settings_FlyoutBackgroundOrder_Shuffle}" />
+                            </ComboBox>
                         </ui:SimpleStackPanel>
                         <TextBlock x:Name="FlyoutBackgroundImageErrorText" x:FieldModifier="private" Visibility="Collapsed"
                                    Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImage_Error}" TextWrapping="Wrap"

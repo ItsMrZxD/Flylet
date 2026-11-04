@@ -21,7 +21,7 @@ namespace Flylet.Core.Tests
             Assert.Null(rotation.Current);
 
             clock.Advance(TimeSpan.FromMinutes(10));
-            Assert.False(rotation.OnFlyoutOpened());
+            Assert.False(rotation.AdvanceIfDue());
 
             rotation.Next();
             Assert.Null(rotation.Current);
@@ -36,7 +36,7 @@ namespace Flylet.Core.Tests
             Assert.Equal("only", rotation.Current);
 
             clock.Advance(TimeSpan.FromHours(1));
-            Assert.False(rotation.OnFlyoutOpened());
+            Assert.False(rotation.AdvanceIfDue());
             rotation.Next();
 
             Assert.Equal("only", rotation.Current);
@@ -67,11 +67,11 @@ namespace Flylet.Core.Tests
             rotation.SetItems(new[] { "a", "b", "c" });
 
             clock.Advance(TimeSpan.FromMinutes(4));
-            Assert.False(rotation.OnFlyoutOpened());
+            Assert.False(rotation.AdvanceIfDue());
             Assert.Equal("a", rotation.Current);
 
             clock.Advance(TimeSpan.FromMinutes(1));
-            Assert.True(rotation.OnFlyoutOpened());
+            Assert.True(rotation.AdvanceIfDue());
             Assert.Equal("b", rotation.Current);
         }
 
@@ -81,11 +81,11 @@ namespace Flylet.Core.Tests
             var rotation = new BackgroundRotation(clock);
             rotation.SetItems(new[] { "a", "b", "c" });
 
-            Assert.True(rotation.OnFlyoutOpened());
+            Assert.True(rotation.AdvanceIfDue());
             Assert.Equal("b", rotation.Current);
-            Assert.True(rotation.OnFlyoutOpened());
+            Assert.True(rotation.AdvanceIfDue());
             Assert.Equal("c", rotation.Current);
-            Assert.True(rotation.OnFlyoutOpened());
+            Assert.True(rotation.AdvanceIfDue());
             Assert.Equal("a", rotation.Current);
         }
 
@@ -166,7 +166,7 @@ namespace Flylet.Core.Tests
             rotation.SetItems(new[] { "a", "b" });
 
             // Without the reset, the 10 minutes already elapsed would have allowed a change.
-            Assert.False(rotation.OnFlyoutOpened());
+            Assert.False(rotation.AdvanceIfDue());
             Assert.Equal("a", rotation.Current);
         }
     }

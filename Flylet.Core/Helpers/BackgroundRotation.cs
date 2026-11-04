@@ -45,7 +45,7 @@ namespace Flylet.Core.Helpers
         public BackgroundRotationOrder Order { get; set; }
 
         /// <summary>
-        /// Shortest gap between automatic changes. When zero, the item changes on every <see cref="OnFlyoutOpened"/>.
+        /// Shortest gap between automatic changes. When zero, the item changes on every <see cref="AdvanceIfDue"/>.
         /// </summary>
         public TimeSpan Interval { get; set; }
 
@@ -82,10 +82,10 @@ namespace Flylet.Core.Helpers
         }
 
         /// <summary>
-        /// Moves to the next item if enough time has passed since the last change, e.g. when the flyout opens.
+        /// Moves to the next item if enough time has passed since the last change.
         /// </summary>
         /// <returns>True only if the current item changed.</returns>
-        public bool OnFlyoutOpened()
+        public bool AdvanceIfDue()
         {
             var now = timeProvider.GetUtcNow();
             bool enoughTime = Interval == TimeSpan.Zero || now - lastChangeTime >= Interval;
@@ -108,7 +108,20 @@ namespace Flylet.Core.Helpers
             SelectNext();
         }
 
-        // Picks the next index and stamps the change time in one place, so Next and OnFlyoutOpened agree.
+        /// <summary>
+        /// Makes <paramref name="item"/> current if it's in the list, as when the user clicks it.
+        /// </summary>
+        public void Select(string item)
+        {
+            int index = Array.IndexOf(items, item);
+            if (index >= 0)
+            {
+                currentIndex = index;
+                lastChangeTime = timeProvider.GetUtcNow();
+            }
+        }
+
+        // Picks the next index and stamps the change time in one place, so Next and AdvanceIfDue agree.
         private void SelectNext()
         {
             currentIndex = Order switch

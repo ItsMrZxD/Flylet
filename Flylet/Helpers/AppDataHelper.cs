@@ -404,6 +404,24 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static int FlyoutBackgroundIntervalMinutes
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundIntervalMinutes);
+            set => SetValue(value);
+        }
+
+        public static bool FlyoutBackgroundShuffle
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundShuffle);
+            set => SetValue(value);
+        }
+
+        public static string FlyoutBackgroundCurrent
+        {
+            get => GetValue(DefaultValuesStore.FlyoutBackgroundCurrent);
+            set => SetValue(value);
+        }
+
         public static bool UseFlyoutBackgroundImage
         {
             get => GetValue(DefaultValuesStore.UseFlyoutBackgroundImage);

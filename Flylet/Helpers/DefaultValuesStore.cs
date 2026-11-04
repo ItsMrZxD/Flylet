@@ -104,6 +104,9 @@ namespace Flylet.Helpers
         public const string CustomFlyoutBackgroundColor = "#222222";
 
         public const bool UseFlyoutBackgroundImage = false;
+        public const int FlyoutBackgroundIntervalMinutes = 0;
+        public const bool FlyoutBackgroundShuffle = false;
+        public const string FlyoutBackgroundCurrent = "";
 
         public const double FlyoutBackgroundImageDim = 45.0;
 

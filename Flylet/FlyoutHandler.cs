@@ -276,6 +276,13 @@ namespace Flylet
 
             OnScreenFlyoutWindow = flyoutWindow;
             onScreenFlyoutGlass = new FlyoutGlass(flyoutWindow, UIManager);
+            flyoutWindow.IsVisibleChanged += (_, e) =>
+            {
+                if (e.NewValue is false)
+                {
+                    UIManager.OnFlyoutHidden();
+                }
+            };
 
             BindingOperations.SetBinding(flyoutWindow, FlyoutWindow.PlacementModeProperty, new Binding()
             {

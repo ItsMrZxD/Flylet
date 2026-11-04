@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Flylet.Controls;
 using Flylet.Core.Helpers;
 using Flylet.Core.Media;
@@ -7,6 +7,8 @@ using Flylet.Core.UI;
 using Flylet.Helpers;
 using ModernWpf;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -290,13 +292,6 @@ namespace Flylet.UI
             }
         }
 
-        private static string FlyoutBackgroundImagePath =>
-            Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "FlyoutBackground.jpg");
-
-        // An animated photo keeps its own file; when it exists it wins over the still one
-        private static string FlyoutBackgroundGifPath =>
-            Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "FlyoutBackground.gif");
-
         private bool useFlyoutBackgroundImage = DefaultValuesStore.UseFlyoutBackgroundImage;
 
         public bool UseFlyoutBackgroundImage
@@ -308,10 +303,10 @@ namespace Flylet.UI
                 {
                     OnPropertyChanged(nameof(IsFlyoutBackgroundImageShown));
                     UpdateTheme();
-                    if (value && animatedBackground == null)
+                    if (value && animatedBackground == null && currentBackgroundItem?.IsAnimated == true)
                     {
-                        // A saved GIF isn't decoded at startup while the photo is off
-                        LoadAnimatedBackground();
+                        // A saved GIF isn't decoded while the photo is off
+                        ShowBackgroundItem(currentBackgroundItem);
                     }
 
                     UpdateBackgroundAnimation();
@@ -323,7 +318,7 @@ namespace Flylet.UI
         private ImageSource flyoutBackgroundImage;
 
         /// <summary>
-        /// The imported copy of the user's photo, or null before one is picked.
+        /// The photo or GIF frame showing now, or null before one is picked.
         /// </summary>
         public ImageSource FlyoutBackgroundImage
         {
@@ -403,7 +398,11 @@ namespace Flylet.UI
                 value = Math.Clamp(value, 100, 300);
                 if (SetProperty(ref flyoutBackgroundImageZoom, value))
                 {
-                    AppDataHelper.FlyoutBackgroundImageZoom = value;
+                    if (currentBackgroundItem != null)
+                    {
+                        currentBackgroundItem.Zoom = value;
+                        SaveBackgroundListSoon();
+                    }
                 }
             }
         }
@@ -421,7 +420,11 @@ namespace Flylet.UI
                 value = Math.Clamp(value, 0, 100);
                 if (SetProperty(ref flyoutBackgroundImagePositionX, value))
                 {
-                    AppDataHelper.FlyoutBackgroundImagePositionX = value;
+                    if (currentBackgroundItem != null)
+                    {
+                        currentBackgroundItem.PositionX = value;
+                        SaveBackgroundListSoon();
+                    }
                 }
             }
         }
@@ -439,7 +442,11 @@ namespace Flylet.UI
                 value = Math.Clamp(value, 0, 100);
                 if (SetProperty(ref flyoutBackgroundImagePositionY, value))
                 {
-                    AppDataHelper.FlyoutBackgroundImagePositionY = value;
+                    if (currentBackgroundItem != null)
+                    {
+                        currentBackgroundItem.PositionY = value;
+                        SaveBackgroundListSoon();
+                    }
                 }
             }
         }
@@ -449,20 +456,24 @@ namespace Flylet.UI
         /// </summary>
         public bool RotateFlyoutBackgroundImage(bool clockwise)
         {
+            if (currentBackgroundItem == null)
+                return false;
+
             if (animatedBackground != null)
             {
-                int turns = AppDataHelper.FlyoutBackgroundAnimationTurns;
-                AppDataHelper.FlyoutBackgroundAnimationTurns = (turns + (clockwise ? 1 : 3)) % 4;
+                currentBackgroundItem.Turns = (currentBackgroundItem.Turns + (clockwise ? 1 : 3)) % 4;
                 ResetFlyoutBackgroundImageFraming();
                 ShowAnimatedBackground(AnimatedBackgroundHelper.Rotate(animatedBackground, clockwise), animationFrame);
+                SaveBackgroundListSoon();
                 return true;
             }
 
-            if (!BackgroundImageHelper.TryRotate(FlyoutBackgroundImagePath, clockwise))
+            string path = GetFlyoutBackgroundItemPath(currentBackgroundItem);
+            if (!BackgroundImageHelper.TryRotate(path, clockwise))
                 return false;
 
             ResetFlyoutBackgroundImageFraming();
-            FlyoutBackgroundImage = BackgroundImageHelper.TryLoad(FlyoutBackgroundImagePath);
+            FlyoutBackgroundImage = BackgroundImageHelper.TryLoad(path);
             return FlyoutBackgroundImage != null;
         }
 
@@ -486,90 +497,420 @@ namespace Flylet.UI
         /// </summary>
         public double FlyoutBackgroundImageOpacity => flyoutBackgroundOpacity / 100;
 
-        /// <summary>
-        /// Imports the picture at <paramref name="path"/> as the flyout background and turns it on.
-        /// </summary>
-        /// <returns>False if the file couldn't be read as a picture; the current photo stays.</returns>
-        public bool SetFlyoutBackgroundImage(string path)
-        {
-            if (!BackgroundImageHelper.TryImport(path, FlyoutBackgroundImagePath))
-                return false;
+        #region Background list
 
-            ClearAnimatedBackground(deleteFile: true);
-            FlyoutBackgroundImage = BackgroundImageHelper.TryLoad(FlyoutBackgroundImagePath);
-            ResetFlyoutBackgroundImageFraming();
-            UseFlyoutBackgroundImage = true;
-            return FlyoutBackgroundImage != null;
+        private static string BackgroundsFolder =>
+            Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "Backgrounds");
+
+        private static string BackgroundListPath => Path.Combine(BackgroundsFolder, "backgrounds.json");
+
+        // The minutes behind each entry of the "Change background" box; 0 is every time the flyout opens
+        private static readonly int[] flyoutBackgroundIntervalMinutes = { 0, 5, 30, 60, 1440 };
+
+        private readonly BackgroundRotation backgroundRotation = new();
+        private BackgroundItem currentBackgroundItem;
+        private DispatcherTimer backgroundListSaveTimer;
+        private int backgroundLoadId;
+
+        /// <summary>
+        /// The user's photos and GIFs, in the order they play. Only the current one is in memory.
+        /// </summary>
+        public ObservableCollection<BackgroundItem> FlyoutBackgroundItems { get; } = new();
+
+        public BackgroundItem CurrentFlyoutBackgroundItem => currentBackgroundItem;
+
+        public bool HasFlyoutBackgrounds => FlyoutBackgroundItems.Count > 0;
+
+        public bool HasSeveralFlyoutBackgrounds => FlyoutBackgroundItems.Count > 1;
+
+        public bool CanReorderFlyoutBackgrounds => HasSeveralFlyoutBackgrounds && !IsFlyoutBackgroundShuffled;
+
+        /// <summary>
+        /// Set while the user is framing a photo, so it doesn't change under them.
+        /// </summary>
+        public bool IsBackgroundRotationPaused { get; set; }
+
+        private int flyoutBackgroundIntervalIndex;
+
+        public int FlyoutBackgroundIntervalIndex
+        {
+            get => flyoutBackgroundIntervalIndex;
+            set
+            {
+                value = Math.Clamp(value, 0, flyoutBackgroundIntervalMinutes.Length - 1);
+                if (SetProperty(ref flyoutBackgroundIntervalIndex, value))
+                {
+                    int minutes = flyoutBackgroundIntervalMinutes[value];
+                    backgroundRotation.Interval = TimeSpan.FromMinutes(minutes);
+                    AppDataHelper.FlyoutBackgroundIntervalMinutes = minutes;
+                }
+            }
+        }
+
+        public bool IsFlyoutBackgroundShuffled => backgroundRotation.Order == BackgroundRotationOrder.Shuffle;
+
+        /// <summary>
+        /// 0 plays in the user's order, 1 shuffles.
+        /// </summary>
+        public int FlyoutBackgroundOrderIndex
+        {
+            get => IsFlyoutBackgroundShuffled ? 1 : 0;
+            set
+            {
+                var order = value == 1 ? BackgroundRotationOrder.Shuffle : BackgroundRotationOrder.InOrder;
+                if (backgroundRotation.Order != order)
+                {
+                    backgroundRotation.Order = order;
+                    AppDataHelper.FlyoutBackgroundShuffle = value == 1;
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(IsFlyoutBackgroundShuffled));
+                    OnPropertyChanged(nameof(CanReorderFlyoutBackgrounds));
+                }
+            }
         }
 
         /// <summary>
-        /// Like <see cref="SetFlyoutBackgroundImage"/>, and an animated GIF is accepted too: it's decoded off
-        /// the UI thread, which can take a few seconds for a big one.
+        /// How much disk space the imported copies take, as text for Settings.
         /// </summary>
-        public async Task<bool> SetFlyoutBackgroundImageAsync(string path)
+        public string FlyoutBackgroundDiskUsage
         {
-            // The saved GIF may still be open for reading (startup, or the photo just turned on); replacing or
-            // deleting it then fails, and a GIF left behind would win over a newly chosen photo after a restart
-            if (pendingAnimatedLoad is Task pending)
+            get
             {
-                try { await pending; } catch { }
+                long bytes = 0;
+                foreach (var item in FlyoutBackgroundItems)
+                {
+                    try { bytes += new FileInfo(GetFlyoutBackgroundItemPath(item)).Length; } catch { }
+                }
+
+                string size = bytes >= 1024 * 1024
+                    ? $"{bytes / (1024.0 * 1024.0):0.#} MB"
+                    : $"{Math.Max(1, bytes / 1024)} KB";
+                return string.Format(Properties.Strings.Settings_FlyoutBackgroundImages_DiskUse, size);
+            }
+        }
+
+        public string GetFlyoutBackgroundItemPath(BackgroundItem item) => Path.Combine(BackgroundsFolder, item.FileName);
+
+        private BackgroundItem FindBackgroundItem(string fileName) =>
+            FlyoutBackgroundItems.FirstOrDefault(item => item.FileName == fileName);
+
+        /// <summary>
+        /// Imports pictures and adds them to the list, one at a time and off the UI thread: a big GIF takes a
+        /// few seconds. The first new one shows right away, so the user sees the result.
+        /// </summary>
+        /// <returns>False if any file couldn't be read as a picture; the others are still added.</returns>
+        public async Task<bool> AddFlyoutBackgroundImagesAsync(IEnumerable<string> paths)
+        {
+            bool allImported = true;
+            BackgroundItem firstNew = null;
+            foreach (string path in paths)
+            {
+                var item = await Task.Run(() => ImportBackgroundFile(path));
+                if (item == null)
+                {
+                    allImported = false;
+                    continue;
+                }
+
+                FlyoutBackgroundItems.Add(item);
+                firstNew ??= item;
             }
 
-            string tempPath = FlyoutBackgroundGifPath + ".tmp";
-
-            // Off the UI thread: counting a big GIF's frames means reading the whole file
-            var (isGif, loaded) = await Task.Run(() =>
+            if (firstNew != null)
             {
-                try
-                {
-                    if (!string.Equals(Path.GetExtension(path), ".gif", StringComparison.OrdinalIgnoreCase)
-                        || !AnimatedBackgroundHelper.IsAnimatedGif(path))
-                    {
-                        return (false, (AnimatedBackground)null);
-                    }
-
-                    if (new FileInfo(path).Length > AnimatedBackgroundHelper.MaxFileSize)
-                        return (true, null);
-
-                    File.Copy(path, tempPath, true);
-                    return (true, LoadAndCleanUp(() => AnimatedBackgroundHelper.TryLoad(tempPath)));
-                }
-                catch
-                {
-                    return (true, null);
-                }
-            });
-
-            if (!isGif)
-            {
-                return SetFlyoutBackgroundImage(path);
+                OnBackgroundListChanged();
+                backgroundRotation.Select(firstNew.FileName);
+                UseFlyoutBackgroundImage = true;
+                ShowBackgroundItem(firstNew);
             }
 
+            return allImported;
+        }
+
+        private static BackgroundItem ImportBackgroundFile(string path)
+        {
+            string name = Guid.NewGuid().ToString("N");
             try
             {
-                if (loaded == null)
-                    return false;
+                Directory.CreateDirectory(BackgroundsFolder);
 
-                File.Move(tempPath, FlyoutBackgroundGifPath, true);
+                if (string.Equals(Path.GetExtension(path), ".gif", StringComparison.OrdinalIgnoreCase)
+                    && AnimatedBackgroundHelper.IsAnimatedGif(path))
+                {
+                    if (new FileInfo(path).Length > AnimatedBackgroundHelper.MaxFileSize)
+                        return null;
+
+                    string destination = Path.Combine(BackgroundsFolder, name + ".gif");
+                    File.Copy(path, destination, true);
+                    if (LoadAndCleanUp(() => AnimatedBackgroundHelper.TryLoad(destination)) != null)
+                        return new BackgroundItem { FileName = name + ".gif" };
+
+                    File.Delete(destination);
+                    return null;
+                }
+
+                return BackgroundImageHelper.TryImport(path, Path.Combine(BackgroundsFolder, name + ".jpg"))
+                    ? new BackgroundItem { FileName = name + ".jpg" }
+                    : null;
             }
             catch
             {
-                return false;
+                return null;
             }
-            finally
-            {
-                try { File.Delete(tempPath); } catch { }
-            }
-
-            try { File.Delete(FlyoutBackgroundImagePath); } catch { }
-
-            ClearAnimatedBackground(deleteFile: false);
-            AppDataHelper.FlyoutBackgroundAnimationTurns = 0;
-            ShowAnimatedBackground(loaded);
-            ResetFlyoutBackgroundImageFraming();
-            UseFlyoutBackgroundImage = true;
-            return true;
         }
+
+        /// <summary>
+        /// Takes a picture off the list and deletes Flylet's copy, which gives the disk space back.
+        /// </summary>
+        public void RemoveFlyoutBackgroundItem(BackgroundItem item)
+        {
+            if (!FlyoutBackgroundItems.Remove(item))
+                return;
+
+            try { File.Delete(GetFlyoutBackgroundItemPath(item)); } catch { }
+
+            OnBackgroundListChanged();
+            if (item == currentBackgroundItem)
+            {
+                ShowBackgroundItem(FindBackgroundItem(backgroundRotation.Current));
+            }
+        }
+
+        public void MoveFlyoutBackgroundItem(BackgroundItem item, int newIndex)
+        {
+            int oldIndex = FlyoutBackgroundItems.IndexOf(item);
+            if (oldIndex < 0 || oldIndex == newIndex || newIndex < 0 || newIndex >= FlyoutBackgroundItems.Count)
+                return;
+
+            FlyoutBackgroundItems.Move(oldIndex, newIndex);
+            OnBackgroundListChanged();
+        }
+
+        public void SelectFlyoutBackgroundItem(BackgroundItem item)
+        {
+            if (item == currentBackgroundItem)
+                return;
+
+            backgroundRotation.Select(item.FileName);
+            ShowBackgroundItem(item);
+        }
+
+        /// <summary>
+        /// The next picture is picked and prepared as the flyout goes away, not when it comes back: it never
+        /// changes while being looked at, a big GIF has time to decode, and only one picture is in memory.
+        /// </summary>
+        public void OnFlyoutHidden()
+        {
+            if (useFlyoutBackgroundImage && !IsBackgroundRotationPaused && backgroundRotation.AdvanceIfDue())
+            {
+                ShowBackgroundItem(FindBackgroundItem(backgroundRotation.Current));
+            }
+        }
+
+        private void OnBackgroundListChanged()
+        {
+            backgroundRotation.SetItems(FlyoutBackgroundItems.Select(item => item.FileName));
+            SaveBackgroundList();
+            OnPropertyChanged(nameof(HasFlyoutBackgrounds));
+            OnPropertyChanged(nameof(HasSeveralFlyoutBackgrounds));
+            OnPropertyChanged(nameof(CanReorderFlyoutBackgrounds));
+            OnPropertyChanged(nameof(FlyoutBackgroundDiskUsage));
+        }
+
+        /// <summary>
+        /// Puts a picture on screen once it's ready; the old one stays up until then. When several are asked
+        /// for in a row, only the last one counts.
+        /// </summary>
+        private async void ShowBackgroundItem(BackgroundItem item)
+        {
+            int loadId = ++backgroundLoadId;
+
+            if (item == null)
+            {
+                ApplyBackground(null, null, null);
+                return;
+            }
+
+            string path = GetFlyoutBackgroundItemPath(item);
+            if (!item.IsAnimated)
+            {
+                ApplyBackground(item, null, BackgroundImageHelper.TryLoad(path));
+                return;
+            }
+
+            AnimatedBackground animation = null;
+            // A GIF isn't decoded while the photo is off
+            if (useFlyoutBackgroundImage)
+            {
+                int turns = item.Turns;
+                animation = await Task.Run(() => LoadAndCleanUp(() => AnimatedBackgroundHelper.TryLoad(path, turns)));
+                if (loadId != backgroundLoadId)
+                    return;
+            }
+
+            ApplyBackground(item, animation, null);
+        }
+
+        private void ApplyBackground(BackgroundItem item, AnimatedBackground animation, ImageSource still)
+        {
+            currentBackgroundItem = item;
+            AppDataHelper.FlyoutBackgroundCurrent = item?.FileName ?? string.Empty;
+            OnPropertyChanged(nameof(CurrentFlyoutBackgroundItem));
+
+            // Straight into the fields: this is the picture's saved framing, not the user changing it
+            flyoutBackgroundImageZoom = item?.Zoom ?? DefaultValuesStore.FlyoutBackgroundImageZoom;
+            flyoutBackgroundImagePositionX = item?.PositionX ?? DefaultValuesStore.FlyoutBackgroundImagePositionX;
+            flyoutBackgroundImagePositionY = item?.PositionY ?? DefaultValuesStore.FlyoutBackgroundImagePositionY;
+            OnPropertyChanged(nameof(FlyoutBackgroundImageZoom));
+            OnPropertyChanged(nameof(FlyoutBackgroundImagePositionX));
+            OnPropertyChanged(nameof(FlyoutBackgroundImagePositionY));
+
+            if (animation != null)
+            {
+                ShowAnimatedBackground(animation);
+            }
+            else
+            {
+                ClearAnimatedBackground();
+                FlyoutBackgroundImage = still;
+            }
+        }
+
+        private void SaveBackgroundList()
+        {
+            backgroundListSaveTimer?.Stop();
+            try
+            {
+                Directory.CreateDirectory(BackgroundsFolder);
+                string temp = BackgroundListPath + ".tmp";
+                File.WriteAllText(temp, BackgroundList.Serialize(FlyoutBackgroundItems));
+                File.Move(temp, BackgroundListPath, true);
+            }
+            catch
+            {
+                // Tried again on the next change; the pictures themselves are safe
+            }
+        }
+
+        // Dragging a framing slider changes the values many times a second
+        private void SaveBackgroundListSoon()
+        {
+            if (backgroundListSaveTimer == null)
+            {
+                backgroundListSaveTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(500) };
+                backgroundListSaveTimer.Tick += (_, _) => SaveBackgroundList();
+            }
+
+            backgroundListSaveTimer.Stop();
+            backgroundListSaveTimer.Start();
+        }
+
+        /// <summary>
+        /// Reads the list at startup without holding it up: only the current picture is loaded, and a saved
+        /// GIF only when the photo is on (so call this after that switch is read).
+        /// </summary>
+        private void LoadFlyoutBackgrounds()
+        {
+            List<BackgroundItem> items;
+            try
+            {
+                Directory.CreateDirectory(BackgroundsFolder);
+                items = File.Exists(BackgroundListPath)
+                    ? BackgroundList.Parse(File.ReadAllText(BackgroundListPath))
+                    : MoveOldPhotoIntoList();
+
+                // A damaged list mustn't cost the user their pictures: start over from what's in the folder
+                if (items.Count == 0)
+                {
+                    items = Directory.EnumerateFiles(BackgroundsFolder)
+                        .Where(file => Path.GetExtension(file) is ".jpg" or ".gif")
+                        .Select(file => new BackgroundItem { FileName = Path.GetFileName(file) })
+                        .ToList();
+                }
+
+                items.RemoveAll(item => !File.Exists(GetFlyoutBackgroundItemPath(item)));
+
+                // Left behind when a file was in use as it was removed, or an import was cut short
+                foreach (string file in Directory.EnumerateFiles(BackgroundsFolder))
+                {
+                    string name = Path.GetFileName(file);
+                    if (file != BackgroundListPath && items.All(item => item.FileName != name))
+                    {
+                        try { File.Delete(file); } catch { }
+                    }
+                }
+            }
+            catch
+            {
+                items = new List<BackgroundItem>();
+            }
+
+            foreach (var item in items)
+            {
+                FlyoutBackgroundItems.Add(item);
+            }
+
+            flyoutBackgroundIntervalIndex = Math.Max(0, Array.IndexOf(flyoutBackgroundIntervalMinutes, AppDataHelper.FlyoutBackgroundIntervalMinutes));
+            backgroundRotation.Interval = TimeSpan.FromMinutes(flyoutBackgroundIntervalMinutes[flyoutBackgroundIntervalIndex]);
+            backgroundRotation.Order = AppDataHelper.FlyoutBackgroundShuffle ? BackgroundRotationOrder.Shuffle : BackgroundRotationOrder.InOrder;
+            backgroundRotation.SetItems(items.Select(item => item.FileName));
+            backgroundRotation.Select(AppDataHelper.FlyoutBackgroundCurrent);
+
+            var current = FindBackgroundItem(backgroundRotation.Current);
+            if (current == null)
+                return;
+
+            currentBackgroundItem = current;
+            flyoutBackgroundImageZoom = current.Zoom;
+            flyoutBackgroundImagePositionX = current.PositionX;
+            flyoutBackgroundImagePositionY = current.PositionY;
+            if (!current.IsAnimated)
+            {
+                flyoutBackgroundImage = BackgroundImageHelper.TryLoad(GetFlyoutBackgroundItemPath(current));
+            }
+            else if (useFlyoutBackgroundImage)
+            {
+                ShowBackgroundItem(current);
+            }
+        }
+
+        /// <summary>
+        /// Up to 0.11 there was one picture, directly in the app's folder, with its framing in the settings.
+        /// </summary>
+        private List<BackgroundItem> MoveOldPhotoIntoList()
+        {
+            var items = new List<BackgroundItem>();
+            string localFolder = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
+            string oldGif = Path.Combine(localFolder, "FlyoutBackground.gif");
+            string oldStill = Path.Combine(localFolder, "FlyoutBackground.jpg");
+            // When both existed, the GIF was the one showing
+            string old = File.Exists(oldGif) ? oldGif : File.Exists(oldStill) ? oldStill : null;
+
+            if (old != null)
+            {
+                string name = Guid.NewGuid().ToString("N") + Path.GetExtension(old);
+                File.Move(old, Path.Combine(BackgroundsFolder, name));
+                items.Add(new BackgroundItem
+                {
+                    FileName = name,
+                    Zoom = Math.Clamp(AppDataHelper.FlyoutBackgroundImageZoom, 100, 300),
+                    PositionX = Math.Clamp(AppDataHelper.FlyoutBackgroundImagePositionX, 0, 100),
+                    PositionY = Math.Clamp(AppDataHelper.FlyoutBackgroundImagePositionY, 0, 100),
+                    Turns = AppDataHelper.FlyoutBackgroundAnimationTurns
+                });
+            }
+
+            File.WriteAllText(BackgroundListPath, BackgroundList.Serialize(items));
+
+            if (old != null)
+            {
+                try { File.Delete(oldStill); } catch { }
+            }
+
+            return items;
+        }
+
+        #endregion
 
         #region Animated background
 
@@ -577,8 +918,6 @@ namespace Flylet.UI
         private DispatcherTimer animationTimer;
         private int animationFrame;
         private int animationViewers;
-        private bool isLoadingAnimatedBackground;
-        private Task pendingAnimatedLoad;
 
         public bool IsFlyoutBackgroundAnimated => animatedBackground != null;
 
@@ -612,44 +951,14 @@ namespace Flylet.UI
             UpdateBackgroundAnimation();
         }
 
-        private void ClearAnimatedBackground(bool deleteFile)
+        private void ClearAnimatedBackground()
         {
             animationTimer?.Stop();
-            if (animatedBackground == null && !deleteFile)
+            if (animatedBackground == null)
                 return;
 
             animatedBackground = null;
             OnPropertyChanged(nameof(IsFlyoutBackgroundAnimated));
-            if (deleteFile)
-            {
-                AppDataHelper.FlyoutBackgroundAnimationTurns = 0;
-                try { File.Delete(FlyoutBackgroundGifPath); } catch { }
-            }
-        }
-
-        /// <summary>
-        /// Reads the saved animated photo, if there is one, without holding up startup.
-        /// </summary>
-        private async void LoadAnimatedBackground()
-        {
-            string path = FlyoutBackgroundGifPath;
-            if (!useFlyoutBackgroundImage || isLoadingAnimatedBackground || !File.Exists(path))
-                return;
-
-            isLoadingAnimatedBackground = true;
-
-            int turns = AppDataHelper.FlyoutBackgroundAnimationTurns;
-            var loading = Task.Run(() => LoadAndCleanUp(() => AnimatedBackgroundHelper.TryLoad(path, turns)));
-            pendingAnimatedLoad = loading;
-            var loaded = await loading;
-            pendingAnimatedLoad = null;
-            isLoadingAnimatedBackground = false;
-
-            // A new photo or GIF may have been picked meanwhile; it wins over this older one
-            if (loaded != null && animatedBackground == null && File.Exists(path) && !File.Exists(FlyoutBackgroundImagePath))
-            {
-                ShowAnimatedBackground(loaded);
-            }
         }
 
         /// <summary>
@@ -965,12 +1274,7 @@ namespace Flylet.UI
             useFlyoutBackgroundImage = AppDataHelper.UseFlyoutBackgroundImage;
             flyoutBackgroundImageDim = Math.Clamp(AppDataHelper.FlyoutBackgroundImageDim, MinFlyoutBackgroundImageDim, 100);
             flyoutBackgroundBlur = Math.Clamp(AppDataHelper.FlyoutBackgroundBlur, 0, 100);
-            flyoutBackgroundImageZoom = Math.Clamp(AppDataHelper.FlyoutBackgroundImageZoom, 100, 300);
-            flyoutBackgroundImagePositionX = Math.Clamp(AppDataHelper.FlyoutBackgroundImagePositionX, 0, 100);
-            flyoutBackgroundImagePositionY = Math.Clamp(AppDataHelper.FlyoutBackgroundImagePositionY, 0, 100);
-            flyoutBackgroundImage = BackgroundImageHelper.TryLoad(FlyoutBackgroundImagePath);
-            // After the photo switch is read: a saved GIF is only decoded when the photo is on
-            LoadAnimatedBackground();
+            LoadFlyoutBackgrounds();
             if (useCustomAccentColor)
             {
                 ApplyAccentColor();
