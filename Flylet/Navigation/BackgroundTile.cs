@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using Flylet.Core.Helpers;
+using System.Windows;
 using System.Windows.Media;
 
 namespace Flylet.Navigation
@@ -17,10 +18,34 @@ namespace Flylet.Navigation
 
         private ImageSource thumbnail;
 
-        public ImageSource Thumbnail
+        public ImageSource Thumbnail => thumbnail;
+
+        private Rect viewbox = new(0, 0, 1, 1);
+
+        /// <summary>
+        /// The part of the picture the tile shows: the same part the flyout does.
+        /// </summary>
+        public Rect Viewbox
         {
-            get => thumbnail;
-            set => SetProperty(ref thumbnail, value);
+            get => viewbox;
+            private set => SetProperty(ref viewbox, value);
+        }
+
+        public void ShowThumbnail(ImageSource image, double tileAspect)
+        {
+            thumbnail = image;
+            // The crop first, so the picture never shows squeezed for a moment
+            UpdateViewbox(tileAspect);
+            OnPropertyChanged(nameof(Thumbnail));
+        }
+
+        public void UpdateViewbox(double tileAspect)
+        {
+            if (thumbnail == null || thumbnail.Height <= 0)
+                return;
+
+            Viewbox = BackgroundImageHelper.GetViewbox(
+                thumbnail.Width / thumbnail.Height, tileAspect, Item.Zoom / 100, Item.PositionX / 100, Item.PositionY / 100);
         }
 
         private int number;

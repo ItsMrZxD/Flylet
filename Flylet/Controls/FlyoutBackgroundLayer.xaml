@@ -10,9 +10,10 @@
               Visibility="{Binding UIManager.IsFlyoutBackgroundImageShown, Converter={StaticResource BooleanToVisibilityConverter}}">
             <Border x:Name="PhotoBorder" x:FieldModifier="private" Margin="-70">
                 <Border.Background>
-                    <!-- Stretch=Fill is safe: the code-behind picks a viewbox with the tile's own shape -->
+                    <!-- The code-behind sets the Viewport to where the whole photo lands, so Stretch=Fill doesn't
+                         distort it. Past the photo's edges it's mirrored, so the blur never fades into nothing -->
                     <ImageBrush x:Name="PhotoBrush" x:FieldModifier="private"
-                                ImageSource="{Binding UIManager.FlyoutBackgroundImage}" Stretch="Fill"
+                                ImageSource="{Binding UIManager.FlyoutBackgroundImage}" Stretch="Fill" TileMode="FlipXY"
                                 RenderOptions.BitmapScalingMode="HighQuality" />
                 </Border.Background>
                 <Border.Effect>

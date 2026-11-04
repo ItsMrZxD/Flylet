@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Flylet.Core.Helpers;
@@ -43,6 +44,51 @@ namespace Flylet.Core.Tests
             Assert.Equal(0.5, view.Height, 6);
             Assert.Equal(1, view.Right, 6);
             Assert.Equal(1, view.Bottom, 6);
+        }
+
+        // Two cards, 360 wide, 50 and 92 tall with 8 between them, painted 70 past their edges for the blur
+        private static readonly Size Stack = new(360, 150);
+
+        private static Rect PaintArea(double cardTop, double cardHeight) => new(-70, cardTop - 70, 360 + 140, cardHeight + 140);
+
+        [Fact]
+        public void GetPhotoViewport_NoZoom_PhotosFullWidthLinesUpWithTheCards()
+        {
+            // A 3:2 photo in a much wider flyout: all of its width has to show, none lost to the blur margin
+            var view = BackgroundImageHelper.GetViewbox(1.5, Stack.Width / Stack.Height, 1, 0.5, 0.5);
+            var paint = PaintArea(0, 50);
+
+            var viewport = BackgroundImageHelper.GetPhotoViewport(view, Stack, paint);
+
+            Assert.Equal(0, paint.X + viewport.X * paint.Width, 6);
+            Assert.Equal(360, paint.X + viewport.Right * paint.Width, 6);
+        }
+
+        [Fact]
+        public void GetPhotoViewport_PannedAllTheWay_ReachesThePhotosEdge()
+        {
+            var view = BackgroundImageHelper.GetViewbox(1.5, Stack.Width / Stack.Height, 2, 1, 1);
+            var paint = PaintArea(0, 50);
+
+            var viewport = BackgroundImageHelper.GetPhotoViewport(view, Stack, paint);
+
+            Assert.Equal(360, paint.X + viewport.Right * paint.Width, 6);
+        }
+
+        [Fact]
+        public void GetPhotoViewport_EveryCardPutsThePhotoInTheSamePlace()
+        {
+            // The picture runs on from one card into the next, so it can't jump between them
+            var view = BackgroundImageHelper.GetViewbox(1.5, Stack.Width / Stack.Height, 1.5, 0.3, 0.7);
+            var top = PaintArea(0, 50);
+            var bottom = PaintArea(58, 92);
+
+            var topViewport = BackgroundImageHelper.GetPhotoViewport(view, Stack, top);
+            var bottomViewport = BackgroundImageHelper.GetPhotoViewport(view, Stack, bottom);
+
+            Assert.Equal(top.Y + topViewport.Y * top.Height, bottom.Y + bottomViewport.Y * bottom.Height, 6);
+            Assert.Equal(topViewport.Height * top.Height, bottomViewport.Height * bottom.Height, 6);
+            Assert.Equal(topViewport.X, bottomViewport.X, 6);
         }
 
         [Fact]

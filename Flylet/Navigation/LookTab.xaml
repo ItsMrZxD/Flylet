@@ -155,7 +155,8 @@
                             </ItemsControl.ItemsPanel>
                             <ItemsControl.Resources>
                                 <DataTemplate DataType="{x:Type nav:BackgroundTile}">
-                                    <Grid Width="84" Height="56" Margin="0,0,8,8" Background="Transparent" AllowDrop="True"
+                                    <Grid Width="{x:Static nav:LookTab.BackgroundTileWidth}" Margin="0,0,8,8" Background="Transparent" AllowDrop="True"
+                                          Height="{Binding BackgroundTileHeight, RelativeSource={RelativeSource AncestorType={x:Type nav:LookTab}}}"
                                           PreviewMouseLeftButtonDown="BackgroundTile_PreviewMouseLeftButtonDown"
                                           MouseMove="BackgroundTile_MouseMove"
                                           MouseLeftButtonUp="BackgroundTile_MouseLeftButtonUp"
@@ -165,7 +166,7 @@
                                         <Border CornerRadius="4" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}" />
                                         <Border CornerRadius="4">
                                             <Border.Background>
-                                                <ImageBrush ImageSource="{Binding Thumbnail}" Stretch="UniformToFill" />
+                                                <ImageBrush ImageSource="{Binding Thumbnail}" Viewbox="{Binding Viewbox}" Stretch="Fill" />
                                             </Border.Background>
                                         </Border>
                                         <Border CornerRadius="4" BorderThickness="2" BorderBrush="{DynamicResource SystemControlForegroundAccentBrush}"
@@ -191,7 +192,8 @@
                                     </Grid>
                                 </DataTemplate>
                                 <DataTemplate DataType="{x:Type nav:BackgroundAddTile}">
-                                    <Button Width="84" Height="56" Margin="0,0,8,8" Padding="0"
+                                    <Button Width="{x:Static nav:LookTab.BackgroundTileWidth}" Margin="0,0,8,8" Padding="0"
+                                            Height="{Binding BackgroundTileHeight, RelativeSource={RelativeSource AncestorType={x:Type nav:LookTab}}}"
                                             Content="{x:Static resx:Strings.Settings_AddFlyoutBackgroundImage}"
                                             Click="AddFlyoutBackgroundImages_Click" />
                                 </DataTemplate>

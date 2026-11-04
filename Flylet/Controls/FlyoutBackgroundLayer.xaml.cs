@@ -110,7 +110,7 @@ namespace Flylet.Controls
         // Space between cards in the stack; the photo runs through it so the picture stays continuous
         private const double CardSpacing = 8;
 
-        private Rect lastViewbox;
+        private Rect lastViewport;
 
         /// <summary>
         /// Shows this card's part of the photo the user picked. With several cards the photo spans them stacked
@@ -126,45 +126,47 @@ namespace Flylet.Controls
             if (!uiManager.IsFlyoutBackgroundImageShown || uiManager.FlyoutBackgroundImage is not ImageSource image || image.Height <= 0)
                 return;
 
-            double imageAspect = image.Width / image.Height;
-            double zoom = uiManager.FlyoutBackgroundImageZoom / 100;
-            double positionX = uiManager.FlyoutBackgroundImagePositionX / 100;
-            double positionY = uiManager.FlyoutBackgroundImagePositionY / 100;
-
-            Rect viewbox;
-            if (TryGetStackLayout(out double stackWidth, out double stackHeight, out double cardTop, out double cardHeight))
+            // The photo is fitted to what can be seen. The blur margin isn't part of that: it would cut the
+            // photo's edges off for good. The brush mirrors the photo past its edges to fill the margin.
+            Size shownSize;
+            double shownTop = 0;
+            if (TryGetStackLayout(out double stackWidth, out double stackHeight, out double cardTop))
             {
-                // The whole stack plus the blur margin around it is the area the photo covers
-                double areaWidth = stackWidth + 2 * BlurMargin;
-                double areaHeight = stackHeight + 2 * BlurMargin;
-                var area = BackgroundImageHelper.GetViewbox(imageAspect, areaWidth / areaHeight, zoom, positionX, positionY);
-                viewbox = new Rect(
-                    area.X,
-                    area.Y + area.Height * (cardTop / areaHeight),
-                    area.Width * (RenderSize.Width + 2 * BlurMargin) / areaWidth,
-                    area.Height * (cardHeight + 2 * BlurMargin) / areaHeight);
+                shownSize = new Size(stackWidth, stackHeight);
+                shownTop = cardTop;
             }
             else
             {
-                viewbox = BackgroundImageHelper.GetViewbox(
-                    imageAspect, PhotoBorder.ActualWidth / PhotoBorder.ActualHeight, zoom, positionX, positionY);
+                shownSize = RenderSize;
             }
 
-            if (viewbox == lastViewbox && PhotoBrush.ViewboxUnits == BrushMappingMode.RelativeToBoundingBox)
+            if (shownSize.Width <= 0 || shownSize.Height <= 0)
                 return;
 
-            lastViewbox = viewbox;
-            PhotoBrush.ViewboxUnits = BrushMappingMode.RelativeToBoundingBox;
-            PhotoBrush.Viewbox = viewbox;
+            var view = BackgroundImageHelper.GetViewbox(
+                image.Width / image.Height,
+                shownSize.Width / shownSize.Height,
+                uiManager.FlyoutBackgroundImageZoom / 100,
+                uiManager.FlyoutBackgroundImagePositionX / 100,
+                uiManager.FlyoutBackgroundImagePositionY / 100);
+
+            var viewport = BackgroundImageHelper.GetPhotoViewport(view, shownSize,
+                new Rect(-BlurMargin, shownTop - BlurMargin, PhotoBorder.ActualWidth, PhotoBorder.ActualHeight));
+
+            if (viewport == lastViewport)
+                return;
+
+            lastViewport = viewport;
+            PhotoBrush.Viewport = viewport;
         }
 
         /// <summary>
         /// Finds the card stack this layer belongs to and where this card sits when all visible cards are stacked
         /// top to bottom (cards side by side, like in the Settings preview, are stacked in the same order).
         /// </summary>
-        private bool TryGetStackLayout(out double stackWidth, out double stackHeight, out double cardTop, out double cardHeight)
+        private bool TryGetStackLayout(out double stackWidth, out double stackHeight, out double cardTop)
         {
-            stackWidth = stackHeight = cardTop = cardHeight = 0;
+            stackWidth = stackHeight = cardTop = 0;
 
             DependencyObject child = this;
             DependencyObject parent = VisualTreeHelper.GetParent(child);
@@ -195,7 +197,6 @@ namespace Flylet.Controls
                 if (item.Element == card)
                 {
                     cardTop = top;
-                    cardHeight = item.Size.Height;
                     found = true;
                 }
 

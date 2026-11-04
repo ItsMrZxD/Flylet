@@ -38,6 +38,10 @@ namespace Flylet.Navigation
             PreviewCards.MouseEnter += (_, _) => previewTopBar.SetPointerOverFlyout(true);
             PreviewCards.MouseLeave += (_, _) => previewTopBar.SetPointerOverFlyout(false);
 
+            PreviewVolumeControl.SizeChanged += (_, _) => UpdateFlyoutShape();
+            PreviewSessionControl.SizeChanged += (_, _) => UpdateFlyoutShape();
+            PreviewTopBarHost.SizeChanged += (_, _) => UpdateFlyoutShape();
+
             BackgroundTilesControl.ItemsSource = backgroundTiles;
 
             Loaded += LookTab_Loaded;
@@ -49,6 +53,7 @@ namespace Flylet.Navigation
             FlyoutHandler.Instance.AudioFlyoutHelper.MediaSessionsUpdated += AudioFlyoutHelper_MediaSessionsUpdated;
             FlyoutHandler.Instance.UIManager.PropertyChanged += UIManager_PropertyChanged;
             FlyoutHandler.Instance.UIManager.FlyoutBackgroundItems.CollectionChanged += FlyoutBackgroundItems_CollectionChanged;
+            UpdateFlyoutShape();
             RebuildBackgroundTiles();
             UpdatePreviewSession();
         }
@@ -83,6 +88,56 @@ namespace Flylet.Navigation
         private readonly Dictionary<string, ImageSource> backgroundThumbnails = new();
         private BackgroundTile pressedTile;
         private Point pressedPosition;
+
+        public const double BackgroundTileWidth = 112;
+
+        // Until the preview has been measured: about what a volume card and a media card come to
+        private const double DefaultFlyoutAspect = 2.4;
+
+        private double flyoutAspect = DefaultFlyoutAspect;
+
+        public static readonly DependencyProperty BackgroundTileHeightProperty =
+            DependencyProperty.Register(
+                nameof(BackgroundTileHeight),
+                typeof(double),
+                typeof(LookTab),
+                new PropertyMetadata(BackgroundTileWidth / DefaultFlyoutAspect));
+
+        public double BackgroundTileHeight
+        {
+            get => (double)GetValue(BackgroundTileHeightProperty);
+            set => SetValue(BackgroundTileHeightProperty, value);
+        }
+
+        /// <summary>
+        /// The thumbnails and the Adjust frame take the flyout's shape with both cards showing, read off the
+        /// preview so it follows the media card's layout. The top bar only counts if it's always there.
+        /// </summary>
+        private void UpdateFlyoutShape()
+        {
+            if (PreviewVolumeControl.ActualHeight <= 0 || PreviewSessionControl.ActualHeight <= 0)
+                return;
+
+            double height = PreviewVolumeControl.ActualHeight + PreviewSessionControl.ActualHeight + UIManager.DefaultVerticalSpacing;
+            if (FlyoutHandler.Instance.UIManager.TopBarVisibility == TopBarVisibility.Visible)
+            {
+                height += PreviewTopBarHost.ActualHeight;
+            }
+
+            double aspect = UIManager.FlyoutWidth / height;
+            if (Math.Abs(aspect - flyoutAspect) < 0.001)
+                return;
+
+            flyoutAspect = aspect;
+            BackgroundTileHeight = BackgroundTileWidth / aspect;
+            foreach (var entry in backgroundTiles)
+            {
+                if (entry is BackgroundTile tile)
+                {
+                    tile.UpdateViewbox(aspect);
+                }
+            }
+        }
 
         private void FlyoutBackgroundItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) => RebuildBackgroundTiles();
 
@@ -123,17 +178,19 @@ namespace Flylet.Navigation
             if (!backgroundThumbnails.TryGetValue(fileName, out var thumbnail))
             {
                 string path = FlyoutHandler.Instance.UIManager.GetFlyoutBackgroundItemPath(tile.Item);
-                thumbnail = await Task.Run(() => TryLoadThumbnail(path));
+                int turns = tile.Item.Turns;
+                thumbnail = await Task.Run(() => TryLoadThumbnail(path, turns));
                 if (thumbnail == null)
                     return;
 
                 backgroundThumbnails[fileName] = thumbnail;
             }
 
-            tile.Thumbnail = thumbnail;
+            tile.ShowThumbnail(thumbnail, flyoutAspect);
         }
 
-        private static ImageSource TryLoadThumbnail(string path)
+        // Turns: a GIF's quarter turns are only saved in the list; a photo's are in the file itself
+        private static ImageSource TryLoadThumbnail(string path, int turns)
         {
             try
             {
@@ -141,11 +198,17 @@ namespace Flylet.Navigation
                 image.BeginInit();
                 image.CacheOption = BitmapCacheOption.OnLoad;
                 image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
-                image.DecodePixelWidth = 168;
+                image.DecodePixelWidth = 240;
                 image.UriSource = new Uri(path);
                 image.EndInit();
                 image.Freeze();
-                return image;
+
+                if (turns == 0)
+                    return image;
+
+                var turned = new TransformedBitmap(image, new RotateTransform(turns * 90));
+                turned.Freeze();
+                return turned;
             }
             catch
             {
@@ -256,14 +319,14 @@ namespace Flylet.Navigation
             uiManager.IsBackgroundRotationPaused = true;
             try
             {
-                new Views.AdjustPhotoWindow { Owner = Window.GetWindow(this) }.ShowDialog();
+                new Views.AdjustPhotoWindow(flyoutAspect) { Owner = Window.GetWindow(this) }.ShowDialog();
             }
             finally
             {
                 uiManager.IsBackgroundRotationPaused = false;
             }
 
-            // It may have been turned
+            // It may have been turned or framed differently
             if (uiManager.CurrentFlyoutBackgroundItem is { } current)
             {
                 backgroundThumbnails.Remove(current.FileName);

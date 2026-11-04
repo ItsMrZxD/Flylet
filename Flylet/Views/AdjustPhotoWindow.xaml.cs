@@ -11,34 +11,40 @@ namespace Flylet.Views
 {
     /// <summary>
     /// Pick which part of the background photo shows: drag to move, scroll to zoom, turn it a quarter turn.
-    /// The frame has the shape of a flyout card, and what's inside it is what the flyouts draw.
+    /// The frame has the shape of the flyout with both cards showing, and what's inside it is what they draw.
     /// </summary>
     public partial class AdjustPhotoWindow : Window
     {
         private const double StageWidth = 440;
         private const double StageHeight = 260;
-        private const double FrameWidth = 320;
-        private const double FrameHeight = FrameWidth * 80 / 120;
+        private const double MaxFrameWidth = 320;
+        private const double MaxFrameHeight = 220;
 
         private readonly UIManager uiManager = FlyoutHandler.Instance.UIManager;
+        private readonly double frameWidth;
+        private readonly double frameHeight;
 
         private Rect view = new Rect(0, 0, 1, 1);
         private Point? dragStart;
 
-        public AdjustPhotoWindow()
+        /// <param name="flyoutAspect">The flyout's width divided by its height, with both cards showing.</param>
+        public AdjustPhotoWindow(double flyoutAspect)
         {
             InitializeComponent();
 
-            double frameLeft = (StageWidth - FrameWidth) / 2;
-            double frameTop = (StageHeight - FrameHeight) / 2;
+            frameWidth = Math.Min(MaxFrameWidth, MaxFrameHeight * flyoutAspect);
+            frameHeight = frameWidth / flyoutAspect;
+
+            double frameLeft = (StageWidth - frameWidth) / 2;
+            double frameTop = (StageHeight - frameHeight) / 2;
             Canvas.SetLeft(FrameBorder, frameLeft);
             Canvas.SetTop(FrameBorder, frameTop);
-            FrameBorder.Width = FrameWidth;
-            FrameBorder.Height = FrameHeight;
+            FrameBorder.Width = frameWidth;
+            FrameBorder.Height = frameHeight;
             Dimmer.Data = new CombinedGeometry(
                 GeometryCombineMode.Exclude,
                 new RectangleGeometry(new Rect(0, 0, StageWidth, StageHeight)),
-                new RectangleGeometry(new Rect(frameLeft, frameTop, FrameWidth, FrameHeight), 8, 8));
+                new RectangleGeometry(new Rect(frameLeft, frameTop, frameWidth, frameHeight), 8, 8));
 
             Loaded += (_, _) =>
             {
@@ -71,15 +77,15 @@ namespace Flylet.Views
 
             view = BackgroundImageHelper.GetViewbox(
                 image.Width / image.Height,
-                FrameWidth / FrameHeight,
+                frameWidth / frameHeight,
                 uiManager.FlyoutBackgroundImageZoom / 100,
                 uiManager.FlyoutBackgroundImagePositionX / 100,
                 uiManager.FlyoutBackgroundImagePositionY / 100);
 
-            Photo.Width = FrameWidth / view.Width;
-            Photo.Height = FrameHeight / view.Height;
-            Canvas.SetLeft(Photo, (StageWidth - FrameWidth) / 2 - view.X * Photo.Width);
-            Canvas.SetTop(Photo, (StageHeight - FrameHeight) / 2 - view.Y * Photo.Height);
+            Photo.Width = frameWidth / view.Width;
+            Photo.Height = frameHeight / view.Height;
+            Canvas.SetLeft(Photo, (StageWidth - frameWidth) / 2 - view.X * Photo.Width);
+            Canvas.SetTop(Photo, (StageHeight - frameHeight) / 2 - view.Y * Photo.Height);
         }
 
         private void Stage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

@@ -158,6 +158,25 @@ namespace Flylet.Core.Helpers
         }
 
         /// <summary>
+        /// Where the whole photo lands on a brush that paints more than what's shown (the blur needs picture
+        /// beyond the card's edges), as a fraction of the painted area.
+        /// </summary>
+        /// <param name="view">The part of the photo that's shown, from <see cref="GetViewbox"/>.</param>
+        /// <param name="shownSize">The size of the area that part fills.</param>
+        /// <param name="paintArea">The painted area, in the same units, with 0,0 at the shown area's top left.</param>
+        public static Rect GetPhotoViewport(Rect view, Size shownSize, Rect paintArea)
+        {
+            double photoWidth = shownSize.Width / view.Width;
+            double photoHeight = shownSize.Height / view.Height;
+
+            return new Rect(
+                (-view.X * photoWidth - paintArea.X) / paintArea.Width,
+                (-view.Y * photoHeight - paintArea.Y) / paintArea.Height,
+                photoWidth / paintArea.Width,
+                photoHeight / paintArea.Height);
+        }
+
+        /// <summary>
         /// Phone photos are often stored sideways with an EXIF tag saying how to turn them.
         /// </summary>
         private static int GetExifOrientation(BitmapSource image)
