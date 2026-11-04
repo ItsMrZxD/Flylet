@@ -58,5 +58,23 @@ namespace Flylet.Core.Tests
         {
             Assert.False(WhatsNewPolicy.ShouldShow("1.2.0", null));
         }
+
+        [Fact]
+        public void NoLastSeenVersion_ButRanBefore_Shows()
+        {
+            Assert.True(WhatsNewPolicy.ShouldShow("", "0.12.0", hasRunBefore: true));
+        }
+
+        [Fact]
+        public void NoLastSeenVersion_FreshInstall_DoesNotShow()
+        {
+            Assert.False(WhatsNewPolicy.ShouldShow("", "0.12.0", hasRunBefore: false));
+        }
+
+        [Fact]
+        public void SavedLastSeenVersion_WinsOverHavingRunBefore()
+        {
+            Assert.False(WhatsNewPolicy.ShouldShow("0.12.0", "0.12.0", hasRunBefore: true));
+        }
     }
 }

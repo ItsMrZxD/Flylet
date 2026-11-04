@@ -725,4 +725,16 @@
   <data name="Settings.FlyoutBackgroundOrder.Shuffle" xml:space="preserve">
     <value>Shuffle</value>
   </data>
+  <data name="WhatsNew.Title" xml:space="preserve">
+    <value>Flylet updated to {0}</value>
+  </data>
+  <data name="WhatsNew.Link" xml:space="preserve">
+    <value>See what's new</value>
+  </data>
+  <data name="About.UpdateAvailable" xml:space="preserve">
+    <value>Update available</value>
+  </data>
+  <data name="About.OpenInStore" xml:space="preserve">
+    <value>Open in Store</value>
+  </data>
 </root>

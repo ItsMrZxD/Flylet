@@ -142,6 +142,42 @@ namespace Flylet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Flylet updated to {0}.
+        /// </summary>
+        public static string WhatsNew_Title {
+            get {
+                return ResourceManager.GetString("WhatsNew.Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See what's new.
+        /// </summary>
+        public static string WhatsNew_Link {
+            get {
+                return ResourceManager.GetString("WhatsNew.Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update available.
+        /// </summary>
+        public static string About_UpdateAvailable {
+            get {
+                return ResourceManager.GetString("About.UpdateAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open in Store.
+        /// </summary>
+        public static string About_OpenInStore {
+            get {
+                return ResourceManager.GetString("About.OpenInStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rate and Review on Microsoft Store.
         /// </summary>
         public static string About_RateAndReview {

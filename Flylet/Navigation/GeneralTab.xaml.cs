@@ -1,3 +1,4 @@
+using Flylet.Helpers;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,23 @@ namespace Flylet.Navigation
         public GeneralTab()
         {
             InitializeComponent();
+            Loaded += GeneralTab_Loaded;
+        }
+
+        // Only asks the Store when someone opens this page, and only once
+        private async void GeneralTab_Loaded(object sender, RoutedEventArgs e)
+        {
+            Loaded -= GeneralTab_Loaded;
+
+            if (await StoreUpdateChecker.IsUpdateAvailableAsync())
+            {
+                UpdatePanel.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void OpenInStoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            StoreUpdateChecker.OpenStorePage();
         }
 
         private void RateAndReviewButton_Click(object sender, RoutedEventArgs e)

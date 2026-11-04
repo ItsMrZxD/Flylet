@@ -10,6 +10,7 @@
              xmlns:input="clr-namespace:Flylet.Input"
              xmlns:utils="clr-namespace:Flylet.Utilities"
              xmlns:media="clr-namespace:Flylet.UI.Fluent.Media"
+             xmlns:resx="clr-namespace:Flylet.Properties"
              mc:Ignorable="d" media:RevealBrushHelper.TrackThisElement="True"
              Foreground="{DynamicResource SystemControlForegroundBaseHighBrush}">
     <!--<Border BorderThickness="2"
@@ -69,6 +70,34 @@
                         BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
                         BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
                         CornerRadius="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.MediaCardCornerRadius}" />
+                </Grid>
+            </ui:ThemeShadowChrome>
+            <!-- The note after an update -->
+            <ui:ThemeShadowChrome Depth="{x:Static localui:UIManager.FlyoutShadowDepth}"
+                CornerRadius="{DynamicResource FlyoutCornerRadius}"
+                Width="{DynamicResource FlyoutWidth}"
+                Visibility="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.ShowWhatsNewCard, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <Grid>
+                    <controls:FlyoutBackgroundLayer CornerRadius="{DynamicResource FlyoutCornerRadius}" />
+                    <Grid Margin="14,8,6,8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel VerticalAlignment="Center">
+                            <TextBlock FontWeight="SemiBold" TextWrapping="Wrap"
+                                       Text="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.WhatsNewTitle}" />
+                            <ui:HyperlinkButton Padding="0,2" Content="{x:Static resx:Strings.WhatsNew_Link}" Click="WhatsNewLink_Click" />
+                        </StackPanel>
+                        <Button Grid.Column="1" VerticalAlignment="Top" Width="32" Height="32" Padding="0"
+                                Background="Transparent" ToolTip="{x:Static resx:Strings.Close}" Click="WhatsNewClose_Click">
+                            <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Close}" FontSize="14" />
+                        </Button>
+                    </Grid>
+                    <Border
+                        BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
+                        BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
+                        CornerRadius="{DynamicResource FlyoutCornerRadius}" />
                 </Grid>
             </ui:ThemeShadowChrome>
         </controls:DirectableStackPanel>

@@ -389,6 +389,15 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        /// <summary>
+        /// The app version the user last saw the "What's new" note for; empty before 0.12 and on a fresh install.
+        /// </summary>
+        public static string LastSeenVersion
+        {
+            get => GetValue(string.Empty);
+            set => SetValue(value);
+        }
+
         public static int FlyoutsShownCount
         {
             get => GetValue(0);

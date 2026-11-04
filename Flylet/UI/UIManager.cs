@@ -705,7 +705,61 @@ namespace Flylet.UI
             {
                 ShowBackgroundItem(FindBackgroundItem(backgroundRotation.Current));
             }
+
+            if (ShowWhatsNewCard)
+            {
+                // It's been on screen now, so restarting the app doesn't bring it back
+                AppDataHelper.LastSeenVersion = Program.AppVersion;
+                if (--whatsNewShowsLeft <= 0)
+                {
+                    ShowWhatsNewCard = false;
+                }
+            }
         }
+
+        #region What's new
+
+        // Goes away by itself after this many flyouts: once is easy to miss, and having to close it would be a chore
+        private const int WhatsNewMaxShows = 5;
+
+        private int whatsNewShowsLeft;
+
+        private bool showWhatsNewCard;
+
+        public bool ShowWhatsNewCard
+        {
+            get => showWhatsNewCard;
+            private set => SetProperty(ref showWhatsNewCard, value);
+        }
+
+        public string WhatsNewTitle => string.Format(Properties.Strings.WhatsNew_Title,
+            Version.TryParse(Program.AppVersion, out var version) ? version.ToString(3) : Program.AppVersion);
+
+        public void DismissWhatsNew()
+        {
+            AppDataHelper.LastSeenVersion = Program.AppVersion;
+            whatsNewShowsLeft = 0;
+            ShowWhatsNewCard = false;
+        }
+
+        // Must run before the first run gets stamped (RatePromptHelper.Initialize): that's how a fresh install is told from an update
+        private void InitializeWhatsNew()
+        {
+            string current = Program.AppVersion;
+            string lastSeen = AppDataHelper.LastSeenVersion;
+
+            if (WhatsNewPolicy.ShouldShow(lastSeen, current, !string.IsNullOrEmpty(AppDataHelper.FirstRunUtc)))
+            {
+                whatsNewShowsLeft = WhatsNewMaxShows;
+                ShowWhatsNewCard = true;
+            }
+            else if (lastSeen != current)
+            {
+                AppDataHelper.LastSeenVersion = current;
+            }
+        }
+
+        #endregion
 
         private void OnBackgroundListChanged()
         {
@@ -1229,6 +1283,8 @@ namespace Flylet.UI
 
         public void Initialize()
         {
+            InitializeWhatsNew();
+
             OnScreenFlyoutWindowPlacementMode = AppDataHelper.OnScreenFlyoutWindowPlacementMode;
             OnScreenFlyoutWindowAlignment = AppDataHelper.OnScreenFlyoutWindowAlignment;
             OnScreenFlyoutWindowMargin = AppDataHelper.OnScreenFlyoutWindowMargin;

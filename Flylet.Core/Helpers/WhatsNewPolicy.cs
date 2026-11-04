@@ -26,5 +26,19 @@ namespace Flylet.Core.Helpers
 
             return current > lastSeen;
         }
+
+        /// <summary>
+        /// Same, for someone updating from a version that didn't save a last seen version yet (before 0.12):
+        /// no last seen version only means a fresh install if Flylet hasn't run on this PC before.
+        /// </summary>
+        public static bool ShouldShow(string lastSeenVersion, string currentVersion, bool hasRunBefore)
+        {
+            if (string.IsNullOrEmpty(lastSeenVersion) && hasRunBefore)
+            {
+                return Version.TryParse(currentVersion, out _);
+            }
+
+            return ShouldShow(lastSeenVersion, currentVersion);
+        }
     }
 }

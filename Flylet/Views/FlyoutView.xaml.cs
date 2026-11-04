@@ -1,4 +1,5 @@
 ﻿using Flylet.Controls;
+using Flylet.Helpers;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -67,6 +68,17 @@ namespace Flylet.Views
             // The top bar's buttons show while the pointer is anywhere over the flyout's cards
             CardsPanel.MouseEnter += (_, _) => FlyoutTopBar?.SetPointerOverFlyout(true);
             CardsPanel.MouseLeave += (_, _) => FlyoutTopBar?.SetPointerOverFlyout(false);
+        }
+
+        private void WhatsNewLink_Click(object sender, RoutedEventArgs e)
+        {
+            StoreUpdateChecker.OpenStorePage();
+            FlyoutHandler.Instance.UIManager.DismissWhatsNew();
+        }
+
+        private void WhatsNewClose_Click(object sender, RoutedEventArgs e)
+        {
+            FlyoutHandler.Instance.UIManager.DismissWhatsNew();
         }
     }
 }

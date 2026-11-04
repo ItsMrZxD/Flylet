@@ -91,6 +91,11 @@
                             </TextBlock>
                         </StackPanel>
                     </ui:SimpleStackPanel>
+                    <ui:SimpleStackPanel x:Name="UpdatePanel" x:FieldModifier="private" Orientation="Horizontal" Spacing="12" Visibility="Collapsed">
+                        <TextBlock VerticalAlignment="Center" FontWeight="SemiBold" Text="{x:Static resx:Strings.About_UpdateAvailable}" />
+                        <Button Style="{DynamicResource ButtonRevealStyle}"
+                                Content="{x:Static resx:Strings.About_OpenInStore}" Click="OpenInStoreButton_Click" />
+                    </ui:SimpleStackPanel>
                     <TextBlock TextWrapping="Wrap" Text="{x:Static resx:Strings.About_AppDescription}" />
                     <TextBlock TextWrapping="Wrap" FontStyle="Italic" Text="{x:Static resx:Strings.About_FileABug}" />
                     <Button Style="{DynamicResource ButtonRevealStyle}"

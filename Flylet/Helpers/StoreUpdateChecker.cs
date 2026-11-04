@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using Windows.Services.Store;
 
@@ -28,6 +29,25 @@ namespace Flylet.Helpers
             {
                 // Never let an update check bother the user
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// Opens Flylet's Store page: the update button and the release notes in the user's language are there.
+        /// </summary>
+        public static void OpenStorePage()
+        {
+            // The app has no global error handler, so a PC without the Store app must not crash it here
+            try
+            {
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = "ms-windows-store://pdp/?ProductId=9npss6nw7t23",
+                    UseShellExecute = true
+                });
+            }
+            catch
+            {
             }
         }
 
