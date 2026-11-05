@@ -197,7 +197,7 @@ namespace Flylet.Controls
             {
                 buttonResources.Clear();
                 timelineResources.Clear();
-                TimelineProgressBar.ClearValue(ForegroundProperty);
+                TimelineBarFill.SetResourceReference(Border.BackgroundProperty, "SystemControlHighlightAccentBrush");
                 ThinTimelineFill.SetResourceReference(Border.BackgroundProperty, "SystemControlHighlightAccentBrush");
                 return;
             }
@@ -223,7 +223,7 @@ namespace Flylet.Controls
             timelineResources["SliderThumbBackgroundPointerOver"] = pointerOver;
             timelineResources["SliderThumbBackgroundPressed"] = pressed;
 
-            TimelineProgressBar.Foreground = normal;
+            TimelineBarFill.Background = normal;
             ThinTimelineFill.Background = normal;
         }
 

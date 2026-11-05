@@ -202,12 +202,24 @@
                                Text="{Binding TimelineEndTime, Converter={StaticResource TimeSpanToStringConverter}}" />
                 </Grid>
 
-                <!-- Sessions that report a timeline but can't seek get a plain progress bar instead of the slider -->
-                <ui:ProgressBar x:Name="TimelineProgressBar" VerticalAlignment="Center"
-                                Visibility="{Binding IsPlaybackPositionEnabled, Converter={StaticResource InvertBooleanToVisibilityConverter}}"
-                                Minimum="{Binding TimelineStartTime, Mode=OneWay, Converter={StaticResource TimeSpanToNumberConverter}}"
-                                Maximum="{Binding TimelineEndTime, Mode=OneWay, Converter={StaticResource TimeSpanToNumberConverter}}"
-                                Value="{Binding PlaybackPosition, Converter={StaticResource TimeSpanToNumberConverter}}" />
+                <!-- Sessions that report a timeline but can't seek get a plain progress bar instead of the slider.
+                     Two borders, not ModernWpf's ProgressBar: that one's template keeps a storyboard running after the
+                     flyout hides, which made WPF redraw nonstop (3-13% CPU while idle) -->
+                <Grid x:Name="TimelineBarGrid" x:FieldModifier="private" Height="4" VerticalAlignment="Center"
+                      Visibility="{Binding IsPlaybackPositionEnabled, Converter={StaticResource InvertBooleanToVisibilityConverter}}">
+                    <Border CornerRadius="2" Background="{DynamicResource SystemControlForegroundBaseLowBrush}" />
+                    <Border x:Name="TimelineBarFill" x:FieldModifier="private" HorizontalAlignment="Left" CornerRadius="2"
+                            Background="{DynamicResource SystemControlHighlightAccentBrush}">
+                        <Border.Width>
+                            <MultiBinding Converter="{StaticResource TimelineFractionConverter}">
+                                <Binding Path="PlaybackPosition" />
+                                <Binding Path="TimelineStartTime" />
+                                <Binding Path="TimelineEndTime" />
+                                <Binding Path="ActualWidth" ElementName="TimelineBarGrid" />
+                            </MultiBinding>
+                        </Border.Width>
+                    </Border>
+                </Grid>
                 </Grid>
             </Grid>
         </Grid>
