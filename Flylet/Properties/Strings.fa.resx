@@ -578,4 +578,67 @@
   <data name="Settings.GlassTint.Description" xml:space="preserve">
     <value>0% شیشهٔ شفاف است و 100% رنگ یکدست شما.</value>
   </data>
+  <data name="About.OpenInStore" xml:space="preserve">
+    <value>باز کردن در فروشگاه</value>
+  </data>
+  <data name="About.UpdateAvailable" xml:space="preserve">
+    <value>به‌روزرسانی موجود است</value>
+  </data>
+  <data name="Settings.AddFlyoutBackgroundImage" xml:space="preserve">
+    <value>افزودن</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages" xml:space="preserve">
+    <value>عکس‌ها و GIFهای شما</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DiskUse" xml:space="preserve">
+    <value>{0} از فضای دیسک استفاده شده است</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DragHint" xml:space="preserve">
+    <value>برای تغییر زمان پخش، تصویر را بکشید.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval" xml:space="preserve">
+    <value>تغییر پس‌زمینه</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Day" xml:space="preserve">
+    <value>هر روز</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.EveryOpen" xml:space="preserve">
+    <value>هر بار که باز می‌شود</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Hour" xml:space="preserve">
+    <value>هر ساعت</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes30" xml:space="preserve">
+    <value>هر ۳۰ دقیقه</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes5" xml:space="preserve">
+    <value>هر ۵ دقیقه</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder" xml:space="preserve">
+    <value>ترتیب</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.InOrder" xml:space="preserve">
+    <value>به ترتیب</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.Shuffle" xml:space="preserve">
+    <value>تصادفی</value>
+  </data>
+  <data name="Settings.RemoveFlyoutBackgroundImage" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="SupportPrompt.Body" xml:space="preserve">
+    <value>یک امتیاز یا ستاره واقعاً کمک می‌کند.</value>
+  </data>
+  <data name="SupportPrompt.Store" xml:space="preserve">
+    <value>فروشگاه</value>
+  </data>
+  <data name="SupportPrompt.Title" xml:space="preserve">
+    <value>از Flylet راضی هستید؟</value>
+  </data>
+  <data name="WhatsNew.Link" xml:space="preserve">
+    <value>تازه‌ها را ببینید</value>
+  </data>
+  <data name="WhatsNew.Title" xml:space="preserve">
+    <value>Flylet به {0} به‌روزرسانی شد</value>
+  </data>
 </root>

@@ -578,4 +578,67 @@
   <data name="Settings.GlassTint.Description" xml:space="preserve">
     <value>0% زجاج شفاف، و100% لونك المصمت.</value>
   </data>
+  <data name="About.OpenInStore" xml:space="preserve">
+    <value>فتح في المتجر</value>
+  </data>
+  <data name="About.UpdateAvailable" xml:space="preserve">
+    <value>يتوفر تحديث</value>
+  </data>
+  <data name="Settings.AddFlyoutBackgroundImage" xml:space="preserve">
+    <value>إضافة</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages" xml:space="preserve">
+    <value>صورك وملفات GIF</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DiskUse" xml:space="preserve">
+    <value>يستخدم {0} من مساحة القرص</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DragHint" xml:space="preserve">
+    <value>اسحب صورة لتغيير موعد عرضها.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval" xml:space="preserve">
+    <value>تغيير الخلفية</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Day" xml:space="preserve">
+    <value>كل يوم</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.EveryOpen" xml:space="preserve">
+    <value>في كل مرة يفتح فيها</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Hour" xml:space="preserve">
+    <value>كل ساعة</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes30" xml:space="preserve">
+    <value>كل 30 دقيقة</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes5" xml:space="preserve">
+    <value>كل 5 دقائق</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder" xml:space="preserve">
+    <value>الترتيب</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.InOrder" xml:space="preserve">
+    <value>بالترتيب</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.Shuffle" xml:space="preserve">
+    <value>عشوائي</value>
+  </data>
+  <data name="Settings.RemoveFlyoutBackgroundImage" xml:space="preserve">
+    <value>إزالة</value>
+  </data>
+  <data name="SupportPrompt.Body" xml:space="preserve">
+    <value>التقييم أو النجمة يساعد كثيرًا.</value>
+  </data>
+  <data name="SupportPrompt.Store" xml:space="preserve">
+    <value>المتجر</value>
+  </data>
+  <data name="SupportPrompt.Title" xml:space="preserve">
+    <value>هل يعجبك Flylet؟</value>
+  </data>
+  <data name="WhatsNew.Link" xml:space="preserve">
+    <value>اطّلع على الجديد</value>
+  </data>
+  <data name="WhatsNew.Title" xml:space="preserve">
+    <value>تم تحديث Flylet إلى {0}</value>
+  </data>
 </root>

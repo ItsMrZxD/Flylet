@@ -578,4 +578,67 @@
   <data name="Settings.GlassTint.Description" xml:space="preserve">
     <value>0% è vetro trasparente, 100% è il tuo colore pieno.</value>
   </data>
+  <data name="About.OpenInStore" xml:space="preserve">
+    <value>Apri nello Store</value>
+  </data>
+  <data name="About.UpdateAvailable" xml:space="preserve">
+    <value>Aggiornamento disponibile</value>
+  </data>
+  <data name="Settings.AddFlyoutBackgroundImage" xml:space="preserve">
+    <value>Aggiungi</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages" xml:space="preserve">
+    <value>Le tue foto e GIF</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DiskUse" xml:space="preserve">
+    <value>Utilizza {0} di spazio su disco</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DragHint" xml:space="preserve">
+    <value>Trascina un'immagine per cambiare quando viene riprodotta.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval" xml:space="preserve">
+    <value>Cambia sfondo</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Day" xml:space="preserve">
+    <value>Ogni giorno</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.EveryOpen" xml:space="preserve">
+    <value>A ogni apertura</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Hour" xml:space="preserve">
+    <value>Ogni ora</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes30" xml:space="preserve">
+    <value>Ogni 30 minuti</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes5" xml:space="preserve">
+    <value>Ogni 5 minuti</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder" xml:space="preserve">
+    <value>Ordine</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.InOrder" xml:space="preserve">
+    <value>In ordine</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.Shuffle" xml:space="preserve">
+    <value>Casuale</value>
+  </data>
+  <data name="Settings.RemoveFlyoutBackgroundImage" xml:space="preserve">
+    <value>Rimuovi</value>
+  </data>
+  <data name="SupportPrompt.Body" xml:space="preserve">
+    <value>Una valutazione o una stella aiuta davvero.</value>
+  </data>
+  <data name="SupportPrompt.Store" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="SupportPrompt.Title" xml:space="preserve">
+    <value>Ti piace Flylet?</value>
+  </data>
+  <data name="WhatsNew.Link" xml:space="preserve">
+    <value>Scopri le novità</value>
+  </data>
+  <data name="WhatsNew.Title" xml:space="preserve">
+    <value>Flylet aggiornato alla versione {0}</value>
+  </data>
 </root>

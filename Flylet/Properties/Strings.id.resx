@@ -578,4 +578,67 @@
   <data name="Settings.GlassTint.Description" xml:space="preserve">
     <value>0% adalah kaca bening, 100% adalah warna solid Anda.</value>
   </data>
+  <data name="About.OpenInStore" xml:space="preserve">
+    <value>Buka di Store</value>
+  </data>
+  <data name="About.UpdateAvailable" xml:space="preserve">
+    <value>Pembaruan tersedia</value>
+  </data>
+  <data name="Settings.AddFlyoutBackgroundImage" xml:space="preserve">
+    <value>Tambah</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages" xml:space="preserve">
+    <value>Foto dan GIF Anda</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DiskUse" xml:space="preserve">
+    <value>Menggunakan {0} ruang disk</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DragHint" xml:space="preserve">
+    <value>Seret gambar untuk mengubah kapan gambar diputar.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval" xml:space="preserve">
+    <value>Ganti latar belakang</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Day" xml:space="preserve">
+    <value>Setiap hari</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.EveryOpen" xml:space="preserve">
+    <value>Setiap kali dibuka</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Hour" xml:space="preserve">
+    <value>Setiap jam</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes30" xml:space="preserve">
+    <value>Setiap 30 menit</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes5" xml:space="preserve">
+    <value>Setiap 5 menit</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder" xml:space="preserve">
+    <value>Urutan</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.InOrder" xml:space="preserve">
+    <value>Berurutan</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.Shuffle" xml:space="preserve">
+    <value>Acak</value>
+  </data>
+  <data name="Settings.RemoveFlyoutBackgroundImage" xml:space="preserve">
+    <value>Hapus</value>
+  </data>
+  <data name="SupportPrompt.Body" xml:space="preserve">
+    <value>Penilaian atau bintang sangat membantu.</value>
+  </data>
+  <data name="SupportPrompt.Store" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="SupportPrompt.Title" xml:space="preserve">
+    <value>Suka dengan Flylet?</value>
+  </data>
+  <data name="WhatsNew.Link" xml:space="preserve">
+    <value>Lihat yang baru</value>
+  </data>
+  <data name="WhatsNew.Title" xml:space="preserve">
+    <value>Flylet diperbarui ke {0}</value>
+  </data>
 </root>

@@ -578,4 +578,67 @@
   <data name="Settings.GlassTint.Description" xml:space="preserve">
     <value>0 % donne un verre clair, 100 % votre couleur unie.</value>
   </data>
+  <data name="About.OpenInStore" xml:space="preserve">
+    <value>Ouvrir dans le Store</value>
+  </data>
+  <data name="About.UpdateAvailable" xml:space="preserve">
+    <value>Mise à jour disponible</value>
+  </data>
+  <data name="Settings.AddFlyoutBackgroundImage" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages" xml:space="preserve">
+    <value>Vos photos et GIF</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DiskUse" xml:space="preserve">
+    <value>Utilise {0} d'espace disque</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DragHint" xml:space="preserve">
+    <value>Faites glisser une image pour changer son ordre de lecture.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval" xml:space="preserve">
+    <value>Changer l'arrière-plan</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Day" xml:space="preserve">
+    <value>Chaque jour</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.EveryOpen" xml:space="preserve">
+    <value>À chaque ouverture</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Hour" xml:space="preserve">
+    <value>Chaque heure</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes30" xml:space="preserve">
+    <value>Toutes les 30 minutes</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes5" xml:space="preserve">
+    <value>Toutes les 5 minutes</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder" xml:space="preserve">
+    <value>Ordre</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.InOrder" xml:space="preserve">
+    <value>Dans l'ordre</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.Shuffle" xml:space="preserve">
+    <value>Aléatoire</value>
+  </data>
+  <data name="Settings.RemoveFlyoutBackgroundImage" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="SupportPrompt.Body" xml:space="preserve">
+    <value>Une note ou une étoile aide vraiment.</value>
+  </data>
+  <data name="SupportPrompt.Store" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="SupportPrompt.Title" xml:space="preserve">
+    <value>Vous aimez Flylet ?</value>
+  </data>
+  <data name="WhatsNew.Link" xml:space="preserve">
+    <value>Voir les nouveautés</value>
+  </data>
+  <data name="WhatsNew.Title" xml:space="preserve">
+    <value>Flylet mis à jour vers la version {0}</value>
+  </data>
 </root>

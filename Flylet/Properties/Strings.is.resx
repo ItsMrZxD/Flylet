@@ -578,4 +578,67 @@
   <data name="Settings.GlassTint.Description" xml:space="preserve">
     <value>0% er glært gler, 100% er heili liturinn þinn.</value>
   </data>
+  <data name="About.OpenInStore" xml:space="preserve">
+    <value>Opna í Store</value>
+  </data>
+  <data name="About.UpdateAvailable" xml:space="preserve">
+    <value>Uppfærsla í boði</value>
+  </data>
+  <data name="Settings.AddFlyoutBackgroundImage" xml:space="preserve">
+    <value>Bæta við</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages" xml:space="preserve">
+    <value>Myndirnar þínar og GIF</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DiskUse" xml:space="preserve">
+    <value>Notar {0} af diskplássi</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DragHint" xml:space="preserve">
+    <value>Dragðu mynd til að breyta hvenær hún birtist.</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval" xml:space="preserve">
+    <value>Skipta um bakgrunn</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Day" xml:space="preserve">
+    <value>Á hverjum degi</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.EveryOpen" xml:space="preserve">
+    <value>Í hvert skipti sem það opnast</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Hour" xml:space="preserve">
+    <value>Á hverri klukkustund</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes30" xml:space="preserve">
+    <value>Á 30 mínútna fresti</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes5" xml:space="preserve">
+    <value>Á 5 mínútna fresti</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder" xml:space="preserve">
+    <value>Röð</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.InOrder" xml:space="preserve">
+    <value>Í röð</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.Shuffle" xml:space="preserve">
+    <value>Stokka</value>
+  </data>
+  <data name="Settings.RemoveFlyoutBackgroundImage" xml:space="preserve">
+    <value>Fjarlægja</value>
+  </data>
+  <data name="SupportPrompt.Body" xml:space="preserve">
+    <value>Einkunn eða stjarna hjálpar virkilega.</value>
+  </data>
+  <data name="SupportPrompt.Store" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="SupportPrompt.Title" xml:space="preserve">
+    <value>Líkar þér Flylet?</value>
+  </data>
+  <data name="WhatsNew.Link" xml:space="preserve">
+    <value>Sjá hvað er nýtt</value>
+  </data>
+  <data name="WhatsNew.Title" xml:space="preserve">
+    <value>Flylet uppfært í {0}</value>
+  </data>
 </root>

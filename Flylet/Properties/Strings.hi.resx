@@ -578,4 +578,67 @@
   <data name="Settings.GlassTint.Description" xml:space="preserve">
     <value>0% साफ़ ग्लास है, 100% आपका ठोस रंग है।</value>
   </data>
+  <data name="About.OpenInStore" xml:space="preserve">
+    <value>Store में खोलें</value>
+  </data>
+  <data name="About.UpdateAvailable" xml:space="preserve">
+    <value>अपडेट उपलब्ध है</value>
+  </data>
+  <data name="Settings.AddFlyoutBackgroundImage" xml:space="preserve">
+    <value>जोड़ें</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages" xml:space="preserve">
+    <value>आपकी तस्वीरें और GIF</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DiskUse" xml:space="preserve">
+    <value>{0} डिस्क स्थान उपयोग में</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundImages.DragHint" xml:space="preserve">
+    <value>यह बदलने के लिए कि तस्वीर कब चले, उसे खींचें।</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval" xml:space="preserve">
+    <value>पृष्ठभूमि बदलें</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Day" xml:space="preserve">
+    <value>हर दिन</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.EveryOpen" xml:space="preserve">
+    <value>हर बार खुलने पर</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Hour" xml:space="preserve">
+    <value>हर घंटे</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes30" xml:space="preserve">
+    <value>हर 30 मिनट</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundInterval.Minutes5" xml:space="preserve">
+    <value>हर 5 मिनट</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder" xml:space="preserve">
+    <value>क्रम</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.InOrder" xml:space="preserve">
+    <value>क्रम से</value>
+  </data>
+  <data name="Settings.FlyoutBackgroundOrder.Shuffle" xml:space="preserve">
+    <value>शफ़ल</value>
+  </data>
+  <data name="Settings.RemoveFlyoutBackgroundImage" xml:space="preserve">
+    <value>हटाएँ</value>
+  </data>
+  <data name="SupportPrompt.Body" xml:space="preserve">
+    <value>एक रेटिंग या स्टार से सचमुच मदद मिलती है।</value>
+  </data>
+  <data name="SupportPrompt.Store" xml:space="preserve">
+    <value>Store</value>
+  </data>
+  <data name="SupportPrompt.Title" xml:space="preserve">
+    <value>क्या Flylet पसंद आ रहा है?</value>
+  </data>
+  <data name="WhatsNew.Link" xml:space="preserve">
+    <value>देखें क्या नया है</value>
+  </data>
+  <data name="WhatsNew.Title" xml:space="preserve">
+    <value>Flylet {0} में अपडेट हुआ</value>
+  </data>
 </root>
