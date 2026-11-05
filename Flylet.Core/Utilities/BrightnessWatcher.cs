@@ -19,7 +19,7 @@ namespace Flylet.Core.Utilities
                 watcher = new ManagementEventWatcher(scope, query);
                 watcher.EventArrived += new EventArrivedEventHandler(HandleEvent);
             }
-            catch (ManagementException managementException)
+            catch (Exception managementException)
             {
                 Debug.WriteLine($"{nameof(BrightnessWatcher)}: " + managementException.Message);
             }
@@ -31,7 +31,7 @@ namespace Flylet.Core.Utilities
             {
                 watcher.Start();
             }
-            catch (ManagementException managementException)
+            catch (Exception managementException)
             {
                 Debug.WriteLine($"{nameof(BrightnessWatcher)}: " + managementException.Message);
             }
@@ -43,7 +43,7 @@ namespace Flylet.Core.Utilities
             {
                 watcher.Stop();
             }
-            catch (ManagementException managementException)
+            catch (Exception managementException)
             {
                 Debug.WriteLine($"{nameof(BrightnessWatcher)}: " + managementException.Message);
             }

@@ -1,5 +1,6 @@
 ﻿using ModernWpf;
 using System;
+using System.Globalization;
 using System.Windows;
 
 namespace Flylet.UI.Media
@@ -77,13 +78,16 @@ namespace Flylet.UI.Media
             result = new();
             if (!string.IsNullOrEmpty(value) && !string.IsNullOrWhiteSpace(value))
             {
-                var values = value.Split(",");
+                // Saved as "x, y". Up to 0.12 the numbers used the user's own format, so a comma-decimal
+                // language wrote "1262,8, 456,8": split on ", " and accept that format too, but never
+                // with thousands separators, which turned 1262.8 into 12628 and put the flyout off-screen
+                var values = value.Split(", ");
                 if (values.Length == 2)
                 {
                     var vX = values[0].Trim();
                     var vY = values[1].Trim();
 
-                    if (double.TryParse(vX, out double x) && double.TryParse(vY, out double y))
+                    if (TryParseNumber(vX, out double x) && TryParseNumber(vY, out double y))
                     {
                         result.X = x;
                         result.Y = y;
@@ -96,6 +100,10 @@ namespace Flylet.UI.Media
             return false;
         }
 
+        private static bool TryParseNumber(string value, out double result) =>
+            double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out result)
+            || double.TryParse(value, NumberStyles.Float, CultureInfo.CurrentCulture, out result);
+
         public Point ToPoint()
         {
             return new(X, Y);
@@ -103,7 +111,7 @@ namespace Flylet.UI.Media
 
         public override string ToString()
         {
-            return $"{X}, {Y}";
+            return string.Create(CultureInfo.InvariantCulture, $"{X}, {Y}");
         }
     }
 }

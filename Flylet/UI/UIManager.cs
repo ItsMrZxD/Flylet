@@ -1425,6 +1425,14 @@ namespace Flylet.UI
 
         private void OnSystemThemeChanged(object sender, SystemThemeChangedEventArgs args)
         {
+            // Called on a WMI worker thread when Windows switches light/dark; the theme update touches WPF objects
+            var dispatcher = Application.Current?.Dispatcher;
+            if (dispatcher != null && !dispatcher.CheckAccess())
+            {
+                dispatcher.BeginInvoke(() => OnSystemThemeChanged(sender, args));
+                return;
+            }
+
             currentSystemTheme = args.IsSystemLightTheme ? ElementTheme.Light : ElementTheme.Dark;
             UpdateTheme();
         }

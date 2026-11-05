@@ -22,20 +22,21 @@ namespace Flylet.Core.Utilities
                 watcher = new ManagementEventWatcher(query);
                 watcher.EventArrived += new EventArrivedEventHandler(HandleEvent);
             }
-            catch (ManagementException managementException)
+            catch (Exception managementException)
             {
                 Debug.WriteLine($"{nameof(AirplaneModeWatcher)}: " + managementException.Message);
             }
         }
 
+        // WMI can be disabled or broken; the airplane flyout just won't follow changes then
         public void Start()
         {
-            watcher.Start();
+            try { watcher?.Start(); } catch (Exception ex) { Debug.WriteLine($"{nameof(AirplaneModeWatcher)}: " + ex.Message); }
         }
 
         public void Stop()
         {
-            watcher.Stop();
+            try { watcher?.Stop(); } catch (Exception ex) { Debug.WriteLine($"{nameof(AirplaneModeWatcher)}: " + ex.Message); }
         }
 
         public static bool GetIsAirplaneModeEnabled()

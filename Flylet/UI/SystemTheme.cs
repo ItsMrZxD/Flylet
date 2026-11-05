@@ -40,7 +40,7 @@ namespace Flylet.UI
 
                 watcher.Start();
             }
-            catch (ManagementException managementException)
+            catch (Exception managementException)
             {
                 Debug.WriteLine($"{nameof(SystemTheme)}: " + managementException.Message);
             }
