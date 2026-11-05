@@ -1,0 +1,41 @@
+<Window x:Class="Flylet.Views.SupportPromptWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.modernwpf.com/2019"
+        xmlns:resx="clr-namespace:Flylet.Properties"
+        xmlns:utils="clr-namespace:Flylet.Utilities"
+        Title="Flylet" Width="340" SizeToContent="Height" WindowStyle="None" AllowsTransparency="True"
+        Background="Transparent" ResizeMode="NoResize" Topmost="True" ShowInTaskbar="False" ShowActivated="False">
+    <Border CornerRadius="8" BorderThickness="1" Padding="14,10,6,8"
+            BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+            Background="{DynamicResource SystemControlPageBackgroundChromeLowBrush}"
+            TextElement.Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <TextBlock FontWeight="SemiBold" TextWrapping="Wrap" Text="{x:Static resx:Strings.SupportPrompt_Title}" />
+                <TextBlock Margin="0,2,0,10" TextWrapping="Wrap" Opacity="0.8" Text="{x:Static resx:Strings.SupportPrompt_Body}" />
+                <WrapPanel>
+                    <WrapPanel.Resources>
+                        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                            <Setter Property="Margin" Value="0,0,6,6" />
+                            <Setter Property="Padding" Value="8,3" />
+                            <Setter Property="FontSize" Value="12" />
+                        </Style>
+                    </WrapPanel.Resources>
+                    <Button Content="{x:Static resx:Strings.SupportPrompt_Store}" Tag="ms-windows-store://review/?ProductId=9npss6nw7t23" Click="Link_Click" />
+                    <Button Content="GitHub" Tag="https://github.com/ItsMrZxD/Flylet" Click="Link_Click" />
+                    <Button Content="AlternativeTo" Tag="https://alternativeto.net/software/flylet/" Click="Link_Click" />
+                    <Button Content="Ko-fi" Tag="https://ko-fi.com/itsmrzxd" Click="Link_Click" />
+                </WrapPanel>
+            </StackPanel>
+            <Button Grid.Column="1" VerticalAlignment="Top" Width="32" Height="32" Padding="0" Background="Transparent"
+                    ToolTip="{x:Static resx:Strings.Close}" Click="Close_Click">
+                <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Close}" FontSize="14" />
+            </Button>
+        </Grid>
+    </Border>
+</Window>

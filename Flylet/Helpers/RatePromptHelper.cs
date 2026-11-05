@@ -16,6 +16,8 @@ namespace Flylet.Helpers
         // The dialog is attempted once per run; a failed attempt (no Store, offline) retries next run
         private static bool attemptedThisRun;
 
+        public static bool AttemptedThisRun => attemptedThisRun;
+
         /// <summary>
         /// Stamps the first run and counts flyouts. Counting stops once the prompt is settled.
         /// </summary>
@@ -44,7 +46,7 @@ namespace Flylet.Helpers
         /// </summary>
         public static async void TryPrompt(Window owner)
         {
-            if (attemptedThisRun || IsDevBuild() || !IsTime())
+            if (attemptedThisRun || SupportPromptHelper.ShownThisRun || IsDevBuild() || !IsTime())
                 return;
 
             attemptedThisRun = true;

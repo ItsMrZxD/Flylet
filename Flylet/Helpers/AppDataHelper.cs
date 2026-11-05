@@ -413,6 +413,15 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        /// <summary>
+        /// True once the support card was shown; it's never shown again.
+        /// </summary>
+        public static bool SupportPromptHandled
+        {
+            get => GetValue(false);
+            set => SetValue(value);
+        }
+
         public static int FlyoutBackgroundIntervalMinutes
         {
             get => GetValue(DefaultValuesStore.FlyoutBackgroundIntervalMinutes);

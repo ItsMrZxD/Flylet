@@ -158,6 +158,24 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("WhatsNew.Link", resourceCulture);
             }
         }
+
+        public static string SupportPrompt_Title {
+            get {
+                return ResourceManager.GetString("SupportPrompt.Title", resourceCulture);
+            }
+        }
+
+        public static string SupportPrompt_Body {
+            get {
+                return ResourceManager.GetString("SupportPrompt.Body", resourceCulture);
+            }
+        }
+
+        public static string SupportPrompt_Store {
+            get {
+                return ResourceManager.GetString("SupportPrompt.Store", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Update available.

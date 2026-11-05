@@ -281,6 +281,7 @@ namespace Flylet
                 if (e.NewValue is false)
                 {
                     UIManager.OnFlyoutHidden();
+                    SupportPromptHelper.OnFlyoutHidden(UIManager.ShowWhatsNewCard);
                 }
             };
 

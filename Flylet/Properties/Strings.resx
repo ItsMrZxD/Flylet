@@ -731,6 +731,15 @@
   <data name="WhatsNew.Link" xml:space="preserve">
     <value>See what's new</value>
   </data>
+  <data name="SupportPrompt.Title" xml:space="preserve">
+    <value>Enjoying Flylet?</value>
+  </data>
+  <data name="SupportPrompt.Body" xml:space="preserve">
+    <value>A rating or a star really helps.</value>
+  </data>
+  <data name="SupportPrompt.Store" xml:space="preserve">
+    <value>Store</value>
+  </data>
   <data name="About.UpdateAvailable" xml:space="preserve">
     <value>Update available</value>
   </data>
