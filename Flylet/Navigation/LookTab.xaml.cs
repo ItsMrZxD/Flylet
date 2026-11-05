@@ -280,8 +280,19 @@ namespace Flylet.Navigation
             }
         }
 
+        private const int BackgroundRemoveGuardMilliseconds = 500;
+
+        private long lastBackgroundRemoveTicks = -BackgroundRemoveGuardMilliseconds;
+        private bool isImportingBackgrounds;
+
         private void RemoveBackgroundTile_Click(object sender, RoutedEventArgs e)
         {
+            // The tiles shift left right away, so a double-click's second click would land on the next picture's x
+            long now = Environment.TickCount64;
+            if (now - lastBackgroundRemoveTicks < BackgroundRemoveGuardMilliseconds)
+                return;
+            lastBackgroundRemoveTicks = now;
+
             var tile = (BackgroundTile)((FrameworkElement)sender).DataContext;
             backgroundThumbnails.Remove(tile.Item.FileName);
             FlyoutHandler.Instance.UIManager.RemoveFlyoutBackgroundItem(tile.Item);
@@ -289,6 +300,9 @@ namespace Flylet.Navigation
 
         private async void AddFlyoutBackgroundImages_Click(object sender, RoutedEventArgs e)
         {
+            if (isImportingBackgrounds)
+                return;
+
             var dialog = new OpenFileDialog
             {
                 Filter = $"{Strings.Settings_FlyoutBackgroundImageFilter}|*.jpg;*.jpeg;*.png;*.bmp;*.gif;*.tif;*.tiff;*.webp;*.heic;*.jxr",
@@ -299,9 +313,9 @@ namespace Flylet.Navigation
             if (dialog.ShowDialog(Window.GetWindow(this)) != true)
                 return;
 
-            // A big GIF takes a few seconds; one import at a time
-            var button = (Button)sender;
-            button.IsEnabled = false;
+            // A big GIF takes a few seconds; one import at a time. The Add tile is rebuilt as pictures arrive,
+            // so this can't be done by disabling the button
+            isImportingBackgrounds = true;
             try
             {
                 bool imported = await FlyoutHandler.Instance.UIManager.AddFlyoutBackgroundImagesAsync(dialog.FileNames);
@@ -309,7 +323,7 @@ namespace Flylet.Navigation
             }
             finally
             {
-                button.IsEnabled = true;
+                isImportingBackgrounds = false;
             }
         }
 

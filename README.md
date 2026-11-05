@@ -135,9 +135,9 @@ Photo and GIF backgrounds use more, depending on the image.
 
 ## Privacy
 
-Flylet has no network code of its own and sends no data. The only exception is the Microsoft
-Store's own rating dialog, shown once, which talks to the Store. Flylet is open source, so anyone
-can check.
+Flylet has no network code of its own and sends no data of its own. When you open Settings →
+General, Windows' Store service checks whether a newer Flylet is available. The Store's rating
+dialog, shown once, also talks to the Store. Flylet is open source, so anyone can check.
 
 ## Known limits
 
@@ -145,7 +145,7 @@ can check.
   sends 120x120. This is on Firefox's side.
 - After seeking in Firefox, the song position stays off until the next pause.
 - Brightness control is untested on Windows 11.
-- x86 and ARM64 builds don't currently build; releases are x64 only for now.
+- Releases are x86 and x64. ARM64 PCs run the x64 version under emulation; a native ARM64 build isn't released yet.
 
 ## Settings
 

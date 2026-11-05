@@ -28,6 +28,21 @@ namespace Flylet.Core.Tests
         }
 
         [Fact]
+        public void RestoredChangeTime_CountsTimeFromBeforeTheRestart()
+        {
+            var rotation = new BackgroundRotation(clock)
+            {
+                Interval = TimeSpan.FromDays(1)
+            };
+            rotation.SetItems(new[] { "a", "b" });
+            rotation.LastChangeTime = Start - TimeSpan.FromDays(2);
+
+            Assert.True(rotation.AdvanceIfDue());
+            Assert.Equal("b", rotation.Current);
+            Assert.Equal(Start, rotation.LastChangeTime);
+        }
+
+        [Fact]
         public void One_Item_NeverChanges()
         {
             var rotation = new BackgroundRotation(clock);

@@ -1,6 +1,8 @@
 using Flylet.Core.Helpers;
 using Flylet.Core.Interop;
 using Flylet.Views;
+using System;
+using System.Globalization;
 
 namespace Flylet.Helpers
 {
@@ -13,14 +15,17 @@ namespace Flylet.Helpers
 
         public static bool ShownThisRun { get; private set; }
 
-        public static void OnFlyoutHidden(bool whatsNewShowing)
+        public static void OnFlyoutHidden(bool whatsNewShownThisRun)
         {
             if (AppDataHelper.SupportPromptHandled)
                 return;
 
             flyoutsThisRun++;
 
-            if (SupportPromptPolicy.ShouldShow(false, flyoutsThisRun, whatsNewShowing,
+            DateTime? firstRun = DateTime.TryParse(AppDataHelper.FirstRunUtc, CultureInfo.InvariantCulture,
+                DateTimeStyles.RoundtripKind, out var parsed) ? parsed : null;
+
+            if (SupportPromptPolicy.ShouldShow(false, firstRun, DateTime.UtcNow, flyoutsThisRun, whatsNewShownThisRun,
                 RatePromptHelper.AttemptedThisRun, NativeMethods.IsWindowFullscreen()))
             {
                 AppDataHelper.SupportPromptHandled = true;

@@ -50,6 +50,15 @@ namespace Flylet.Core.Helpers
         public TimeSpan Interval { get; set; }
 
         /// <summary>
+        /// When the item last changed. Saved and restored by the caller, so a restart doesn't start the wait over.
+        /// </summary>
+        public DateTimeOffset LastChangeTime
+        {
+            get => lastChangeTime;
+            set => lastChangeTime = value;
+        }
+
+        /// <summary>
         /// Replaces the list of items, keeping the current one if it is still there.
         /// </summary>
         /// <param name="items">The new file names. Blank entries and duplicates are ignored.</param>

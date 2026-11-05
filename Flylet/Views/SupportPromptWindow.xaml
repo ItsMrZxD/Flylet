@@ -26,7 +26,7 @@
                             <Setter Property="FontSize" Value="12" />
                         </Style>
                     </WrapPanel.Resources>
-                    <Button Content="{x:Static resx:Strings.SupportPrompt_Store}" Tag="ms-windows-store://review/?ProductId=9npss6nw7t23" Click="Link_Click" />
+                    <Button Content="{x:Static resx:Strings.SupportPrompt_Store}" Tag="ms-windows-store://review/?ProductId=9npss6nw7t23" Click="StoreLink_Click" />
                     <Button Content="GitHub" Tag="https://github.com/ItsMrZxD/Flylet" Click="Link_Click" />
                     <Button Content="AlternativeTo" Tag="https://alternativeto.net/software/flylet/" Click="Link_Click" />
                     <Button Content="Ko-fi" Tag="https://ko-fi.com/itsmrzxd" Click="Link_Click" />

@@ -422,6 +422,15 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        /// <summary>
+        /// When the background last changed, as a round-trip UTC string; empty until set.
+        /// </summary>
+        public static string FlyoutBackgroundLastChangeUtc
+        {
+            get => GetValue(string.Empty);
+            set => SetValue(value);
+        }
+
         public static int FlyoutBackgroundIntervalMinutes
         {
             get => GetValue(DefaultValuesStore.FlyoutBackgroundIntervalMinutes);

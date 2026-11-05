@@ -6,9 +6,9 @@
     <Grid x:Name="RootGrid" x:FieldModifier="private" DataContext="{x:Static root:FlyoutHandler.Instance}">
         <Border x:Name="ColorBorder" x:FieldModifier="private" Background="{DynamicResource FlyoutBackground}" />
         <!-- Blurred and darkened so the light text the flyout switches to stays readable -->
-        <Grid IsHitTestVisible="False" Opacity="{Binding UIManager.FlyoutBackgroundImageOpacity}"
+        <Grid IsHitTestVisible="False"
               Visibility="{Binding UIManager.IsFlyoutBackgroundImageShown, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <Border x:Name="PhotoBorder" x:FieldModifier="private" Margin="-70">
+            <Border x:Name="PhotoBorder" x:FieldModifier="private" Margin="-70" Opacity="{Binding UIManager.FlyoutBackgroundImageOpacity}">
                 <Border.Background>
                     <!-- The code-behind sets the Viewport to where the whole photo lands, so Stretch=Fill doesn't
                          distort it. Past the photo's edges it's mirrored, so the blur never fades into nothing -->

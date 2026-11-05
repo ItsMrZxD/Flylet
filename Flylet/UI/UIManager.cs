@@ -9,6 +9,7 @@ using ModernWpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -468,6 +469,10 @@ namespace Flylet.UI
                 return true;
             }
 
+            // A GIF with no animation loaded failed to decode; TryRotate would write JPEG data into it
+            if (currentBackgroundItem.IsAnimated)
+                return false;
+
             string path = GetFlyoutBackgroundItemPath(currentBackgroundItem);
             if (!BackgroundImageHelper.TryRotate(path, clockwise))
                 return false;
@@ -493,7 +498,7 @@ namespace Flylet.UI
 
         /// <summary>
         /// The background opacity setting also fades the photo, which would otherwise cover the
-        /// see-through color behind it.
+        /// see-through color behind it. The darkening stays, so the light text stays readable.
         /// </summary>
         public double FlyoutBackgroundImageOpacity => flyoutBackgroundOpacity / 100;
 
@@ -511,6 +516,7 @@ namespace Flylet.UI
         private BackgroundItem currentBackgroundItem;
         private DispatcherTimer backgroundListSaveTimer;
         private int backgroundLoadId;
+        private int backgroundDecodes;
 
         /// <summary>
         /// The user's photos and GIFs, in the order they play. Only the current one is in memory.
@@ -692,6 +698,7 @@ namespace Flylet.UI
                 return;
 
             backgroundRotation.Select(item.FileName);
+            SaveBackgroundChangeTime();
             ShowBackgroundItem(item);
         }
 
@@ -701,8 +708,10 @@ namespace Flylet.UI
         /// </summary>
         public void OnFlyoutHidden()
         {
-            if (useFlyoutBackgroundImage && !IsBackgroundRotationPaused && backgroundRotation.AdvanceIfDue())
+            // A GIF still decoding gets to finish first, so quick flyouts don't pile up decodes
+            if (useFlyoutBackgroundImage && !IsBackgroundRotationPaused && backgroundDecodes == 0 && backgroundRotation.AdvanceIfDue())
             {
+                SaveBackgroundChangeTime();
                 ShowBackgroundItem(FindBackgroundItem(backgroundRotation.Current));
             }
 
@@ -732,6 +741,8 @@ namespace Flylet.UI
             private set => SetProperty(ref showWhatsNewCard, value);
         }
 
+        public bool WhatsNewShownThisRun { get; private set; }
+
         public string WhatsNewTitle => string.Format(Properties.Strings.WhatsNew_Title,
             Version.TryParse(Program.AppVersion, out var version) ? version.ToString(3) : Program.AppVersion);
 
@@ -752,6 +763,7 @@ namespace Flylet.UI
             {
                 whatsNewShowsLeft = WhatsNewMaxShows;
                 ShowWhatsNewCard = true;
+                WhatsNewShownThisRun = true;
             }
             else if (lastSeen != current)
             {
@@ -764,6 +776,7 @@ namespace Flylet.UI
         private void OnBackgroundListChanged()
         {
             backgroundRotation.SetItems(FlyoutBackgroundItems.Select(item => item.FileName));
+            SaveBackgroundChangeTime();
             SaveBackgroundList();
             OnPropertyChanged(nameof(HasFlyoutBackgrounds));
             OnPropertyChanged(nameof(HasSeveralFlyoutBackgrounds));
@@ -797,9 +810,25 @@ namespace Flylet.UI
             if (useFlyoutBackgroundImage)
             {
                 int turns = item.Turns;
-                animation = await Task.Run(() => LoadAndCleanUp(() => AnimatedBackgroundHelper.TryLoad(path, turns)));
+                backgroundDecodes++;
+                try
+                {
+                    animation = await Task.Run(() => LoadAndCleanUp(() => AnimatedBackgroundHelper.TryLoad(path, turns)));
+                }
+                finally
+                {
+                    backgroundDecodes--;
+                }
+
                 if (loadId != backgroundLoadId)
                     return;
+
+                // Removed from the list while it was decoding: its file is gone
+                if (!FlyoutBackgroundItems.Contains(item))
+                {
+                    ShowBackgroundItem(FindBackgroundItem(backgroundRotation.Current));
+                    return;
+                }
             }
 
             ApplyBackground(item, animation, null);
@@ -909,6 +938,7 @@ namespace Flylet.UI
             backgroundRotation.Order = AppDataHelper.FlyoutBackgroundShuffle ? BackgroundRotationOrder.Shuffle : BackgroundRotationOrder.InOrder;
             backgroundRotation.SetItems(items.Select(item => item.FileName));
             backgroundRotation.Select(AppDataHelper.FlyoutBackgroundCurrent);
+            RestoreBackgroundChangeTime();
 
             var current = FindBackgroundItem(backgroundRotation.Current);
             if (current == null)
@@ -928,6 +958,24 @@ namespace Flylet.UI
             }
         }
 
+        private void RestoreBackgroundChangeTime()
+        {
+            if (DateTimeOffset.TryParse(AppDataHelper.FlyoutBackgroundLastChangeUtc, CultureInfo.InvariantCulture,
+                DateTimeStyles.RoundtripKind, out var saved) && saved <= DateTimeOffset.UtcNow)
+            {
+                backgroundRotation.LastChangeTime = saved;
+            }
+            else
+            {
+                SaveBackgroundChangeTime();
+            }
+        }
+
+        private void SaveBackgroundChangeTime()
+        {
+            AppDataHelper.FlyoutBackgroundLastChangeUtc = backgroundRotation.LastChangeTime.ToString("o", CultureInfo.InvariantCulture);
+        }
+
         /// <summary>
         /// Up to 0.11 there was one picture, directly in the app's folder, with its framing in the settings.
         /// </summary>
@@ -937,11 +985,18 @@ namespace Flylet.UI
             string localFolder = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
             string oldGif = Path.Combine(localFolder, "FlyoutBackground.gif");
             string oldStill = Path.Combine(localFolder, "FlyoutBackground.jpg");
-            // When both existed, the GIF was the one showing
-            string old = File.Exists(oldGif) ? oldGif : File.Exists(oldStill) ? oldStill : null;
+            // When both existed, 0.11 showed the photo after a restart
+            string old = File.Exists(oldStill) ? oldStill : File.Exists(oldGif) ? oldGif : null;
 
             if (old != null)
             {
+                // Opacity had no effect on a photo up to 0.11, so don't let an old value fade it now
+                if (useFlyoutBackgroundImage && flyoutBackgroundOpacity < 100)
+                {
+                    FlyoutBackgroundOpacity = 100;
+                    AppDataHelper.FlyoutBackgroundOpacity = 100;
+                }
+
                 string name = Guid.NewGuid().ToString("N") + Path.GetExtension(old);
                 File.Move(old, Path.Combine(BackgroundsFolder, name));
                 items.Add(new BackgroundItem
@@ -950,7 +1005,7 @@ namespace Flylet.UI
                     Zoom = Math.Clamp(AppDataHelper.FlyoutBackgroundImageZoom, 100, 300),
                     PositionX = Math.Clamp(AppDataHelper.FlyoutBackgroundImagePositionX, 0, 100),
                     PositionY = Math.Clamp(AppDataHelper.FlyoutBackgroundImagePositionY, 0, 100),
-                    Turns = AppDataHelper.FlyoutBackgroundAnimationTurns
+                    Turns = old == oldGif ? AppDataHelper.FlyoutBackgroundAnimationTurns : 0
                 });
             }
 
@@ -959,6 +1014,7 @@ namespace Flylet.UI
             if (old != null)
             {
                 try { File.Delete(oldStill); } catch { }
+                try { File.Delete(oldGif); } catch { }
             }
 
             return items;

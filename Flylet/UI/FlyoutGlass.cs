@@ -107,6 +107,20 @@ namespace Flylet.UI
 
         private void OnRendering(object sender, EventArgs e)
         {
+            // The app has no global error handler. If the compositor fails (a DWM restart, say), glass just stops
+            try
+            {
+                RenderFrame();
+            }
+            catch
+            {
+                failed = true;
+                try { UpdateRendering(); } catch { }
+            }
+        }
+
+        private void RenderFrame()
+        {
             if (!EnsureLayer())
             {
                 UpdateRendering();

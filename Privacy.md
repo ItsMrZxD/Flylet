@@ -1,6 +1,6 @@
 # Flylet Privacy Policy
 
-Last updated: September 15, 2026
+Last updated: November 4, 2026
 
 Flylet is made by MrzxD. This policy explains what Flylet does with your information.
 
@@ -8,17 +8,19 @@ Flylet is made by MrzxD. This policy explains what Flylet does with your informa
 Nothing. Flylet does not collect, store, or send any personal information.
 
 - Flylet has no accounts, ads, analytics, tracking, or crash reporting.
-- Flylet does not send any data over the internet.
+- Flylet has no network code of its own and sends no data of its own over the internet.
 
 ## Information that stays on your PC
 - **Settings:** your Flylet settings are saved only on your PC and are removed when you uninstall Flylet.
 - **Media info:** song titles, artist names, and album art come from Windows and are only shown in Flylet's popup. They are never saved or shared.
 
 ## Links
-Flylet's About page has links to websites. They open in your web browser, and those websites have their own privacy policies.
+Flylet's About page and its one-time support card have links to websites. They open in your web browser, and those websites have their own privacy policies.
 
 ## Microsoft Store
 If you get Flylet from the Microsoft Store, Microsoft may collect information about your download under the Microsoft Privacy Statement. Flylet has no access to that information.
+
+When you open Settings > General, Windows' Store service checks whether a newer Flylet is available. The Store's rating dialog also talks to the Store. Both are handled by Microsoft under the same statement.
 
 ## Changes
 If this policy changes, the new version will be posted here with a new date.

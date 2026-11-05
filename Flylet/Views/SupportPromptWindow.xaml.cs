@@ -1,3 +1,4 @@
+using Flylet.Helpers;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -30,6 +31,13 @@ namespace Flylet.Views
             var area = SystemParameters.WorkArea;
             Left = area.Right - ActualWidth - ScreenMargin;
             Top = area.Bottom - ActualHeight - ScreenMargin;
+        }
+
+        private void StoreLink_Click(object sender, RoutedEventArgs e)
+        {
+            // They've been sent to rate it, so the Store's own dialog shouldn't ask again later
+            AppDataHelper.RatePromptHandled = true;
+            Link_Click(sender, e);
         }
 
         private void Link_Click(object sender, RoutedEventArgs e)
