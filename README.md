@@ -30,7 +30,7 @@ moving while the music plays.
 - **Glass:** blurs whatever is behind your pop-ups, like frosted glass (Windows 11)
 - **Rotating backgrounds:** add several photos and GIFs and get a new one every time a pop-up opens, or on a timer
 - **Opacity for your own photos and GIFs**, and photos that fit exactly as they look in the Adjust photo window
-- **Media timeline for apps that can't seek**, such as Edge on Windows 10
+- **Media timeline for apps that can't seek:** it now shows whenever an app reports the song length, and apps with no timeline at all, like Edge on Windows 10, get an empty line instead of a gap
 - **Runs on 32-bit (x86) PCs**, and uses almost no CPU when idle
 
 Full notes: [Flylet 0.12.0 release](https://github.com/ItsMrZxD/Flylet/releases/tag/v0.12.0).
@@ -60,7 +60,7 @@ need it.
 - **A redesigned media flyout:** album art on the left, and the play button and timeline take an
   accent color picked from the album art.
 - **Your colors.** The flyouts follow your Windows accent color as it changes, and Settings >
-  Personalization > Colors lets you pick a custom accent and flyout background. Text switches
+  Look > Colors lets you pick a custom accent and flyout background. Text switches
   between light and dark to stay readable on the color you choose.
 - **Translated.** Every string is translated in all 31 languages, with no half-English screens.
 - **Up to date:** .NET 10, current dependencies, built with Visual Studio 2026.
