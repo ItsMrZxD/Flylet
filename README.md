@@ -10,7 +10,7 @@
   <img src="docs/images/tagline.png" width="480" alt="Your pop-ups, your way.">
 </p>
 
-https://github.com/user-attachments/assets/446be29d-8b63-4563-9a5c-3a83ce563bae
+https://github.com/user-attachments/assets/f41658d0-7e60-4930-ac4a-4e72df447fa3
 
 <p align="center"><sub>Song: Jim Yosef - Firefly [NCS Release] · Music provided by NoCopyrightSounds · <a href="http://ncs.io/Firefly">ncs.io/Firefly</a></sub></p>
 
