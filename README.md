@@ -10,11 +10,11 @@
   <img src="docs/images/tagline.png" width="480" alt="Your pop-ups, your way.">
 </p>
 
-https://github.com/user-attachments/assets/3a720fee-069a-4b35-8d25-61ee6c4f805f
+https://github.com/user-attachments/assets/446be29d-8b63-4563-9a5c-3a83ce563bae
 
-<p align="center"><sub>Song: DEAF KEV - Invincible [NCS Release] · Music provided by NoCopyrightSounds · <a href="http://ncs.io/invincible">ncs.io/invincible</a></sub></p>
+<p align="center"><sub>Song: Jim Yosef - Firefly [NCS Release] · Music provided by NoCopyrightSounds · <a href="http://ncs.io/Firefly">ncs.io/Firefly</a></sub></p>
 
-![Flylet's flyouts: media card styles, photo and GIF backgrounds, colors, Caps Lock and brightness](docs/images/flylet-flyouts.png)
+![Flylet's flyouts: glass, media card styles, photo backgrounds, colors, Caps Lock and brightness](docs/images/flylet-flyouts.png)
 
 Press a volume key and Windows shows its own small pop-up. Flylet hides that one and shows its
 own instead: cleaner, with real media controls, and with a song timeline that actually keeps
