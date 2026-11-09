@@ -25,17 +25,15 @@ moving while the music plays.
 > November 2025. Its original authors and contributors built the foundation of this project, and
 > their work is used here under the MIT License. Flylet is not affiliated with them.
 
-## What's new in 0.11
+## What's new in 0.12
 
-https://github.com/user-attachments/assets/6ccc40cd-9d9a-4478-9edf-f60010074bef
+- **Glass:** blurs whatever is behind your pop-ups, like frosted glass (Windows 11)
+- **Rotating backgrounds:** add several photos and GIFs and get a new one every time a pop-up opens, or on a timer
+- **Opacity for your own photos and GIFs**, and photos that fit exactly as they look in the Adjust photo window
+- **Media timeline for apps that can't seek**, such as Edge on Windows 10
+- **Runs on 32-bit (x86) PCs**, and uses almost no CPU when idle
 
-<p align="center"><sub>Song: Elektronomia - Sky High [NCS Release] · Music provided by NoCopyrightSounds · <a href="http://ncs.io/skyhigh">ncs.io/skyhigh</a></sub></p>
-
-- **Your own photo or animated GIF** behind the pop-ups, with a window to drag, zoom and rotate it
-- **Blur and darken** sliders so the text stays readable
-- **Media card styles:** Classic, Minimal, Compact pill and Album background, or mix your own
-- **Redesigned Settings:** three tabs and a live preview of your pop-up
-- **Cleaner pop-ups:** the top bar shows only when you point at the pop-up, and a slimmer lock-key pop-up
+Full notes: [Flylet 0.12.0 release](https://github.com/ItsMrZxD/Flylet/releases/tag/v0.12.0).
 
 ## What Flylet replaces
 
@@ -70,7 +68,7 @@ need it.
 
 ## Requirements
 
-- Windows 10 version 22H2, or Windows 11
+- Windows 10 version 22H2, or Windows 11, on a 64-bit (x64) or 32-bit (x86) PC
 - .NET 10 — bundled with the app, nothing to install separately
 
 ## Installing
