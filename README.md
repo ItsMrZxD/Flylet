@@ -98,7 +98,7 @@ Build, install and launch a local test copy:
 tools\dev-install.ps1
 ```
 
-It installs under a separate identity, "Flylet (Dev)", so it can run next to a Store copy.
+It installs under a separate identity, "Flylet (Dev)", so it can be installed next to a Store copy.
 
 Build only:
 
