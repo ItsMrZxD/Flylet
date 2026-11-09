@@ -142,7 +142,6 @@ dialog, shown once, also talks to the Store. Flylet is open source, so anyone ca
 - Firefox sends Windows a 60x60 album image, so art looks soft for songs played there. Chrome
   sends 120x120. This is on Firefox's side.
 - After seeking in Firefox, the song position stays off until the next pause.
-- Brightness control is untested on Windows 11.
 - Releases are x86 and x64. ARM64 PCs run the x64 version under emulation; a native ARM64 build isn't released yet.
 
 ## Settings
