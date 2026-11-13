@@ -46,20 +46,29 @@ namespace Flylet.AppLifecycle
             }
         }
 
+        // A second launch that breaks off mid-message, or a command that throws, must not take the running
+        // copy down: an exception leaving this async void would end the process
         private static async void CreateRemoteService(string channelName)
         {
-            using NamedPipeServerStream pipeServer = new(channelName, PipeDirection.In);
             while (true)
             {
-                await pipeServer.WaitForConnectionAsync().ConfigureAwait(false);
-                StreamReader reader = new(pipeServer);
-                var rawArgs = await reader.ReadToEndAsync();
+                try
+                {
+                    using NamedPipeServerStream pipeServer = new(channelName, PipeDirection.In);
+                    await pipeServer.WaitForConnectionAsync().ConfigureAwait(false);
+                    using StreamReader reader = new(pipeServer);
+                    var rawArgs = await reader.ReadToEndAsync().ConfigureAwait(false);
 
-                IList<string> args = rawArgs.Split(JumpListHelper.arg_delimiter);
+                    IList<string> args = rawArgs.Split(JumpListHelper.arg_delimiter);
 
-                ProcessCommandLineArgs(args, false);
-
-                pipeServer.Disconnect();
+                    ProcessCommandLineArgs(args, false);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"{nameof(AppLifecycleManager)}: {ex.Message}");
+                    // Don't spin if the pipe can't be created at all
+                    await System.Threading.Tasks.Task.Delay(1000).ConfigureAwait(false);
+                }
             }
         }
 
@@ -107,14 +116,20 @@ namespace Flylet.AppLifecycle
                 rawArgs += arg + JumpListHelper.arg_delimiter;
             }
 
-            using NamedPipeClientStream pipeClient = new(".", channelName, PipeDirection.Out);
-            pipeClient.Connect(0);
+            // The first copy may still be starting, or busy with another launch: give it a moment. If it
+            // never answers, this copy still just exits instead of crashing
+            try
+            {
+                using NamedPipeClientStream pipeClient = new(".", channelName, PipeDirection.Out);
+                pipeClient.Connect(2000);
 
-            StreamWriter writer = new(pipeClient) { AutoFlush = true };
-            writer.Write(rawArgs);
-            writer.Flush();
-            writer.Close();
-            pipeClient.Dispose();
+                using StreamWriter writer = new(pipeClient) { AutoFlush = true };
+                writer.Write(rawArgs);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"{nameof(AppLifecycleManager)}: {ex.Message}");
+            }
 
             Environment.Exit(0);
         }
@@ -127,11 +142,28 @@ namespace Flylet.AppLifecycle
         /// <remarks>
         /// There was an issue where the <see cref="mutex"/> still being held by this instance which prevented the app from restarting after an update.
         /// So, after registering for restart, we also have to release the <see cref="mutex"/>.
+        /// <para>
+        /// Runs on every WM_QUERYENDSESSION, and a shutdown can be cancelled (an app asking to save) and then
+        /// asked for again, so a second call must do nothing instead of throwing on the disposed mutex.
+        /// </para>
         /// </remarks>
         public static void PrepareToDie()
         {
-            mutex.ReleaseMutex();
+            if (Interlocked.Exchange(ref hasPreparedToDie, 1) == 1)
+                return;
+
+            try
+            {
+                mutex.ReleaseMutex();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"{nameof(AppLifecycleManager)}: {ex.Message}");
+            }
+
             mutex.Dispose();
         }
+
+        private static int hasPreparedToDie;
     }
 }

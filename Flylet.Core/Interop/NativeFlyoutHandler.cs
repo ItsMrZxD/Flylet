@@ -188,32 +188,43 @@ namespace Flylet.Core.Interop
         {
             _hasNativeFlyoutCreated = GetAllInfos();
             Debug.WriteLine($"{nameof(NativeFlyoutHandler)}: Native Flyout Host has been created - {_hasNativeFlyoutCreated}");
-            Hook();
-
             rehooktimer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(3), IsEnabled = false };
             rehooktimer.Tick += (_, __) => TryRehook();
+
+            if (!Hook())
+            {
+                rehooktimer.Start();
+            }
         }
 
         #region Native Flyout Hooking
 
-        private void Hook()
+        /// <returns>
+        /// False when there's no explorer to hook yet, or the hook couldn't be set (explorer restarting, for
+        /// example). The caller retries on <see cref="rehooktimer"/>; throwing here used to crash Flylet.
+        /// </returns>
+        private bool Hook()
         {
             if (!_hasNativeFlyoutCreated)
             {
                 ShellProcessId = (uint)GetShellProcessId();
             }
 
-            if (ShellProcessId != 0)
+            if (ShellProcessId == 0)
             {
-                HHookID = SetWinEventHook(EVENT_OBJECT_CREATE, EVENT_OBJECT_STATECHANGE, IntPtr.Zero, _procDelegate, ShellProcessId, 0, WINEVENT_OUTOFCONTEXT);
-
-                if (HHookID == IntPtr.Zero)
-                {
-                    throw new Exception("Could not set Native Flyout hook");
-                }
-
-                Debug.WriteLine(nameof(NativeFlyoutHandler) + ": Hooked!");
+                return false;
             }
+
+            HHookID = SetWinEventHook(EVENT_OBJECT_CREATE, EVENT_OBJECT_STATECHANGE, IntPtr.Zero, _procDelegate, ShellProcessId, 0, WINEVENT_OUTOFCONTEXT);
+
+            if (HHookID == IntPtr.Zero)
+            {
+                Debug.WriteLine(nameof(NativeFlyoutHandler) + ": Could not set the native flyout hook, retrying");
+                return false;
+            }
+
+            Debug.WriteLine(nameof(NativeFlyoutHandler) + ": Hooked!");
+            return true;
         }
 
         private void WinEventProc(IntPtr hWinEventHook, uint eventType, IntPtr hWnd, int idObject, int idChild, uint dwEventThread, uint dwmsEventTime)
@@ -296,12 +307,13 @@ namespace Flylet.Core.Interop
             rehooktimer.Start();
         }
 
-        private void Rehook()
+        private bool Rehook()
         {
             Unhook();
-            Hook();
+            bool hooked = Hook();
 
-            Debug.WriteLine(nameof(NativeFlyoutHandler) + ": Rehooked!");
+            Debug.WriteLine(nameof(NativeFlyoutHandler) + (hooked ? ": Rehooked!" : ": Rehook failed"));
+            return hooked;
         }
 
         private void Unhook()
@@ -309,6 +321,7 @@ namespace Flylet.Core.Interop
             if (!(HHookID == IntPtr.Zero))
             {
                 UnhookWinEvent(HHookID);
+                HHookID = IntPtr.Zero;
                 Debug.WriteLine(nameof(NativeFlyoutHandler) + ": Unhooked!");
             }
         }
@@ -319,7 +332,10 @@ namespace Flylet.Core.Interop
             if (ShellProcessId != 0)
             {
                 rehooktimer.Stop();
-                Rehook();
+                if (!Rehook())
+                {
+                    rehooktimer.Start();
+                }
             }
         }
 
@@ -413,7 +429,10 @@ namespace Flylet.Core.Interop
             if (!_hasNativeFlyoutCreated)
             {
                 GetAllInfos();
-                Rehook();
+                if (!Rehook())
+                {
+                    rehooktimer?.Start();
+                }
             }
         }
 

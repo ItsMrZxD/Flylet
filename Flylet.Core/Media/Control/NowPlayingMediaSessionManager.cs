@@ -14,12 +14,25 @@ namespace Flylet.Core.Media.Control
         public override async void OnEnabled()
         {
             NpsmService.Started += NpsmService_Started;
-            await OnNpsmServiceStarted();
+            await OnNpsmServiceStartedSafe();
         }
 
         private async void NpsmService_Started(object sender, EventArgs e)
         {
-            await OnNpsmServiceStarted();
+            await OnNpsmServiceStartedSafe();
+        }
+
+        // OnNpsmServiceStarted's own catch cleans up again, and that cleanup can throw too
+        private async Task OnNpsmServiceStartedSafe()
+        {
+            try
+            {
+                await OnNpsmServiceStarted();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"{nameof(NowPlayingMediaSessionManager)}: {ex.Message}");
+            }
         }
 
         private async Task OnNpsmServiceStarted()
@@ -46,9 +59,18 @@ namespace Flylet.Core.Media.Control
             }
         }
 
+        // NPSM is a COM service that can go away mid-call (explorer restarting, for example); an exception
+        // leaving this async void would end the process
         private async void NPSessionsChanged(object sender, NowPlayingSessionManagerEventArgs e)
         {
-            await NPSessionsChangedUI(e);
+            try
+            {
+                await NPSessionsChangedUI(e);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"{nameof(NowPlayingMediaSessionManager)}: {ex.Message}");
+            }
         }
 
         private async UiTask NPSessionsChangedUI(NowPlayingSessionManagerEventArgs e)
@@ -159,7 +181,14 @@ namespace Flylet.Core.Media.Control
         public override async void OnDisabled()
         {
             NpsmService.Started -= NpsmService_Started;
-            await CleanupNPSM();
+            try
+            {
+                await CleanupNPSM();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"{nameof(NowPlayingMediaSessionManager)}: {ex.Message}");
+            }
         }
 
         private async Task CleanupNPSM()
