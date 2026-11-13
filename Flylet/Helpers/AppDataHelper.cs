@@ -5,6 +5,7 @@ using Flylet.UI;
 using Flylet.UI.Media;
 using ModernWpf;
 using System;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
@@ -47,7 +48,8 @@ namespace Flylet.Helpers
                         }
                         else if (typeof(T) == typeof(double))
                         {
-                            if (double.TryParse(value, out double result))
+                            if (double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out double result)
+                                || double.TryParse(value, NumberStyles.Float, CultureInfo.CurrentCulture, out result))
                             {
                                 return (T)(object)result;
                             }
@@ -75,7 +77,10 @@ namespace Flylet.Helpers
         {
             try
             {
-                ApplicationData.Current.LocalSettings.Values[propertyName] = value.ToString();
+                string stringValue = value is double
+                    ? ((double)(object)value).ToString("R", CultureInfo.InvariantCulture)
+                    : value.ToString();
+                ApplicationData.Current.LocalSettings.Values[propertyName] = stringValue;
             }
             catch { }
         }

@@ -518,6 +518,9 @@
   <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
     <value>Không mở được tệp đó dưới dạng ảnh. Hãy thử tệp khác.</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage_AlreadyAdded" xml:space="preserve">
+    <value>Đã bỏ qua các ảnh bạn đã thêm trước đó.</value>
+  </data>
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Ảnh</value>
   </data>

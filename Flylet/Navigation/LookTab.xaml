@@ -199,6 +199,10 @@
                                 </DataTemplate>
                             </ItemsControl.Resources>
                         </ItemsControl>
+                        <TextBlock x:Name="FlyoutBackgroundImageDuplicateText" x:FieldModifier="private" Visibility="Collapsed"
+                                   Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImage_AlreadyAdded}" TextWrapping="Wrap"
+                                   Style="{DynamicResource CaptionTextBlockStyle}" Margin="0,0,0,4"
+                                   Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
                         <TextBlock Text="{x:Static resx:Strings.Settings_FlyoutBackgroundImages_DragHint}"
                                    Visibility="{Binding UIManager.CanReorderFlyoutBackgrounds, Converter={StaticResource BooleanToVisibilityConverter}}"
                                    Style="{DynamicResource CaptionTextBlockStyle}"

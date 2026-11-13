@@ -518,6 +518,9 @@
   <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
     <value>无法将该文件作为图片打开。请换一个试试。</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage_AlreadyAdded" xml:space="preserve">
+    <value>已跳过之前添加过的图片。</value>
+  </data>
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>图片</value>
   </data>

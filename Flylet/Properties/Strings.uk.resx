@@ -518,6 +518,9 @@
   <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
     <value>Не вдалося відкрити цей файл як зображення. Спробуйте інший.</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage_AlreadyAdded" xml:space="preserve">
+    <value>Уже додані зображення пропущено.</value>
+  </data>
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Зображення</value>
   </data>

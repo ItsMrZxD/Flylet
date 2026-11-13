@@ -518,6 +518,9 @@
   <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
     <value>Ezt a fájlt nem lehetett képként megnyitni. Próbálj egy másikat.</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage_AlreadyAdded" xml:space="preserve">
+    <value>A már hozzáadott képek kimaradtak.</value>
+  </data>
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Képek</value>
   </data>

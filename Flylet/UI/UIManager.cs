@@ -604,20 +604,39 @@ namespace Flylet.UI
         /// Imports pictures and adds them to the list, one at a time and off the UI thread: a big GIF takes a
         /// few seconds. The first new one shows right away, so the user sees the result.
         /// </summary>
-        /// <returns>False if any file couldn't be read as a picture; the others are still added.</returns>
-        public async Task<bool> AddFlyoutBackgroundImagesAsync(IEnumerable<string> paths)
+        /// <returns>
+        /// AllImported is false if any file couldn't be read as a picture; the others are still added.
+        /// SkippedDuplicates is true if any file was already in the list (picking the whole folder again, for
+        /// example) and so wasn't added a second time.
+        /// </returns>
+        public async Task<(bool AllImported, bool SkippedDuplicates)> AddFlyoutBackgroundImagesAsync(IEnumerable<string> paths)
         {
             bool allImported = true;
+            bool skippedDuplicates = false;
             BackgroundItem firstNew = null;
+
+            var existing = FlyoutBackgroundItems.ToList();
+            var knownHashes = await Task.Run(() => CollectSourceHashes(existing));
+
             foreach (string path in paths)
             {
+                string hash = await Task.Run(() => TryHashFile(path));
+                if (hash != null && !knownHashes.Add(hash))
+                {
+                    skippedDuplicates = true;
+                    continue;
+                }
+
                 var item = await Task.Run(() => ImportBackgroundFile(path));
                 if (item == null)
                 {
                     allImported = false;
+                    if (hash != null)
+                        knownHashes.Remove(hash);
                     continue;
                 }
 
+                item.SourceHash = hash;
                 FlyoutBackgroundItems.Add(item);
                 firstNew ??= item;
             }
@@ -630,7 +649,41 @@ namespace Flylet.UI
                 ShowBackgroundItem(firstNew);
             }
 
-            return allImported;
+            return (allImported, skippedDuplicates);
+        }
+
+        private HashSet<string> CollectSourceHashes(List<BackgroundItem> items)
+        {
+            var hashes = new HashSet<string>(StringComparer.Ordinal);
+            foreach (var item in items)
+            {
+                // Lists saved before 0.12.1 have no hash. A GIF is kept as an exact copy, so its own file still
+                // matches the original; a still photo was re-encoded, so an old one can't be matched
+                if (item.SourceHash == null && item.IsAnimated)
+                {
+                    item.SourceHash = TryHashFile(GetFlyoutBackgroundItemPath(item));
+                }
+
+                if (item.SourceHash != null)
+                {
+                    hashes.Add(item.SourceHash);
+                }
+            }
+
+            return hashes;
+        }
+
+        private static string TryHashFile(string path)
+        {
+            try
+            {
+                using var stream = File.OpenRead(path);
+                return Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(stream));
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private static BackgroundItem ImportBackgroundFile(string path)
@@ -759,7 +812,8 @@ namespace Flylet.UI
             string current = Program.AppVersion;
             string lastSeen = AppDataHelper.LastSeenVersion;
 
-            if (WhatsNewPolicy.ShouldShow(lastSeen, current, !string.IsNullOrEmpty(AppDataHelper.FirstRunUtc)))
+            bool hasRunBefore = !string.IsNullOrEmpty(AppDataHelper.FirstRunUtc) || Program.HadSettingsAtStartup;
+            if (WhatsNewPolicy.ShouldShow(lastSeen, current, hasRunBefore))
             {
                 whatsNewShowsLeft = WhatsNewMaxShows;
                 ShowWhatsNewCard = true;
@@ -898,12 +952,12 @@ namespace Flylet.UI
             try
             {
                 Directory.CreateDirectory(BackgroundsFolder);
-                items = File.Exists(BackgroundListPath)
-                    ? BackgroundList.Parse(File.ReadAllText(BackgroundListPath))
-                    : MoveOldPhotoIntoList();
+                string listText = File.Exists(BackgroundListPath) ? File.ReadAllText(BackgroundListPath) : null;
+                items = listText != null ? BackgroundList.Parse(listText) : MoveOldPhotoIntoList();
 
-                // A damaged list mustn't cost the user their pictures: start over from what's in the folder
-                if (items.Count == 0)
+                // A damaged list mustn't cost the user their pictures: start over from what's in the folder.
+                // An empty list the user made by removing everything stays empty
+                if (items.Count == 0 && !(listText != null && BackgroundList.IsValidList(listText)))
                 {
                     items = Directory.EnumerateFiles(BackgroundsFolder)
                         .Where(file => Path.GetExtension(file) is ".jpg" or ".gif")

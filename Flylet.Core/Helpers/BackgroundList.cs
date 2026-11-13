@@ -27,6 +27,12 @@ namespace Flylet.Core.Helpers
         /// </summary>
         public int Turns { get; set; }
 
+        /// <summary>
+        /// SHA-256 of the file the user picked, so picking it again can be skipped. Lists saved before 0.12.1
+        /// don't have it.
+        /// </summary>
+        public string SourceHash { get; set; }
+
         public bool IsAnimated => string.Equals(Path.GetExtension(FileName), ".gif", StringComparison.OrdinalIgnoreCase);
     }
 
@@ -72,6 +78,22 @@ namespace Flylet.Core.Helpers
             }
 
             return items;
+        }
+
+        /// <summary>True if the text is a readable saved list, even an empty one ("[]").</summary>
+        public static bool IsValidList(string text)
+        {
+            if (string.IsNullOrWhiteSpace(text))
+                return false;
+
+            try
+            {
+                return JsonSerializer.Deserialize<List<BackgroundItem>>(text) != null;
+            }
+            catch (JsonException)
+            {
+                return false;
+            }
         }
     }
 }

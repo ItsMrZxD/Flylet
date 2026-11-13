@@ -518,6 +518,9 @@
   <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
     <value>वह फ़ाइल चित्र के रूप में नहीं खुल सकी। कोई दूसरी आज़माएँ।</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage_AlreadyAdded" xml:space="preserve">
+    <value>पहले से जोड़ी गई तस्वीरें छोड़ दी गईं।</value>
+  </data>
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>चित्र</value>
   </data>

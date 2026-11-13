@@ -28,6 +28,9 @@ namespace Flylet.Navigation
         {
             InitializeComponent();
 
+            // The "already added" note is about the last Add; it's stale once the user leaves the page
+            Unloaded += (_, _) => FlyoutBackgroundImageDuplicateText.Visibility = Visibility.Collapsed;
+
             // A still volume card for the preview; the real one is driven by the audio module
             PreviewVolumeControl.VolumeSlider.Value = 40;
             PreviewVolumeControl.textVal.Text = "40";
@@ -294,6 +297,7 @@ namespace Flylet.Navigation
             lastBackgroundRemoveTicks = now;
 
             var tile = (BackgroundTile)((FrameworkElement)sender).DataContext;
+            FlyoutBackgroundImageDuplicateText.Visibility = Visibility.Collapsed;
             backgroundThumbnails.Remove(tile.Item.FileName);
             FlyoutHandler.Instance.UIManager.RemoveFlyoutBackgroundItem(tile.Item);
         }
@@ -318,8 +322,9 @@ namespace Flylet.Navigation
             isImportingBackgrounds = true;
             try
             {
-                bool imported = await FlyoutHandler.Instance.UIManager.AddFlyoutBackgroundImagesAsync(dialog.FileNames);
+                var (imported, skippedDuplicates) = await FlyoutHandler.Instance.UIManager.AddFlyoutBackgroundImagesAsync(dialog.FileNames);
                 FlyoutBackgroundImageErrorText.Visibility = imported ? Visibility.Collapsed : Visibility.Visible;
+                FlyoutBackgroundImageDuplicateText.Visibility = skippedDuplicates ? Visibility.Visible : Visibility.Collapsed;
             }
             finally
             {

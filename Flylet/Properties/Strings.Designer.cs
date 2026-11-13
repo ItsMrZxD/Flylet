@@ -1823,6 +1823,15 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("Settings.FlyoutBackgroundImage_Error", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Pictures you&apos;d already added were skipped..
+        /// </summary>
+        public static string Settings_FlyoutBackgroundImage_AlreadyAdded {
+            get {
+                return ResourceManager.GetString("Settings.FlyoutBackgroundImage_AlreadyAdded", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Pictures.

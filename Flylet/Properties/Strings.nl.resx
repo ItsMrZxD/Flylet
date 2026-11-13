@@ -518,6 +518,9 @@
   <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
     <value>Dat bestand kon niet als afbeelding worden geopend. Probeer een ander bestand.</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage_AlreadyAdded" xml:space="preserve">
+    <value>Afbeeldingen die je al had toegevoegd, zijn overgeslagen.</value>
+  </data>
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Afbeeldingen</value>
   </data>

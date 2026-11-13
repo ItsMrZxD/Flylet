@@ -518,6 +518,9 @@
   <data name="Settings.FlyoutBackgroundImage_Error" xml:space="preserve">
     <value>Αυτό το αρχείο δεν άνοιξε ως εικόνα. Δοκιμάστε άλλο.</value>
   </data>
+  <data name="Settings.FlyoutBackgroundImage_AlreadyAdded" xml:space="preserve">
+    <value>Οι εικόνες που είχατε ήδη προσθέσει παραλείφθηκαν.</value>
+  </data>
   <data name="Settings.FlyoutBackgroundImageFilter" xml:space="preserve">
     <value>Εικόνες</value>
   </data>

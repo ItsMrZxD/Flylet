@@ -177,5 +177,33 @@ namespace Flylet.Core.Tests
             Assert.True(rotation.AdvanceIfDue());
             Assert.Equal("a", rotation.Current);
         }
+
+        [Fact]
+        public void IsValidList_ReturnsTrueForEmptyJsonArray()
+        {
+            Assert.True(BackgroundList.IsValidList("[]"));
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void IsValidList_ReturnsFalseForBlankOrNull(string text)
+        {
+            Assert.False(BackgroundList.IsValidList(text));
+        }
+
+        [Fact]
+        public void IsValidList_ReturnsFalseForNonJson()
+        {
+            Assert.False(BackgroundList.IsValidList("{not json"));
+        }
+
+        [Fact]
+        public void IsValidList_ReturnsTrueForARealEntry()
+        {
+            string json = @"[{""FileName"":""a.jpg""}]";
+
+            Assert.True(BackgroundList.IsValidList(json));
+        }
     }
 }

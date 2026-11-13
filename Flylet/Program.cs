@@ -18,6 +18,8 @@ namespace Flylet
             Thread thread = new(() => {
                 AppLifecycleManager.StartApplication(args, () =>
                 {
+                    HadSettingsAtStartup = HasAnySettings();
+
                     InitializePrivateUseClasses();
 
                     AppDataMigration.Perform();
@@ -35,6 +37,24 @@ namespace Flylet
             //If you lauch directly from the host bridge it won't be STA.
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
+        }
+
+        /// <summary>
+        /// True if Flylet had saved settings before this run wrote any: an update, not a fresh install. Versions
+        /// before 0.11 didn't save the first-run time, so that alone can't tell them apart.
+        /// </summary>
+        internal static bool HadSettingsAtStartup { get; private set; }
+
+        private static bool HasAnySettings()
+        {
+            try
+            {
+                return Windows.Storage.ApplicationData.Current.LocalSettings.Values.Count > 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         internal static void RunCommand(RunCommandType runCommandType)
