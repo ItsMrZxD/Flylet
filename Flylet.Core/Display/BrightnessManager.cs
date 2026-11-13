@@ -59,6 +59,10 @@ namespace Flylet.Core.Display
             {
                 HasInitialized = true;
 
+                // Suspend stopped it when the module was turned off; the constructor only starts it once.
+                // Starting a watcher that's already running is a no-op
+                brightnessWatcher?.Start();
+
                 foreach (var displayMonitor in DisplayManager.Instance.DisplayMonitors)
                 {
                     MakeBrightnessControllersForDisplayMonitor(displayMonitor);

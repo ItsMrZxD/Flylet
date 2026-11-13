@@ -5,13 +5,30 @@ using static Flylet.Core.Interop.NativeMethods;
 
 namespace Flylet.Core.Interop
 {
+    /// <summary>
+    /// A low-level keyboard hook that's only installed while something listens to it (the lock keys flyout).
+    /// Every key press on the PC waits for this hook, on the thread that installed it, so it shouldn't be
+    /// there when nothing needs it. Subscribe and unsubscribe on the UI thread: the hook needs its message loop.
+    /// </summary>
     public class KeyboardHook
     {
-        public event KeyDownEventHandler KeyDown;
+        private KeyDownEventHandler keyDown;
+
+        public event KeyDownEventHandler KeyDown
+        {
+            add { keyDown += value; UpdateHook(); }
+            remove { keyDown -= value; UpdateHook(); }
+        }
 
         public delegate void KeyDownEventHandler(Key key, int virtualKey);
 
-        public event KeyUpEventHandler KeyUp;
+        private KeyUpEventHandler keyUp;
+
+        public event KeyUpEventHandler KeyUp
+        {
+            add { keyUp += value; UpdateHook(); }
+            remove { keyUp -= value; UpdateHook(); }
+        }
 
         public delegate void KeyUpEventHandler(Key key, int virtualKey);
 
@@ -34,12 +51,29 @@ namespace Flylet.Core.Interop
         public KeyboardHook()
         {
             _procDelegate = new HookProc(KeyboardProc);
-            var module = System.Diagnostics.Process.GetCurrentProcess().MainModule;
-            IntPtr handle = GetModuleHandle(module.ModuleName);
-            HHookID = (IntPtr)SetWindowsHookEx(WH_KEYBOARD_LL, _procDelegate, handle, 0);
-            if (HHookID == IntPtr.Zero)
+        }
+
+        private void UpdateHook()
+        {
+            bool needed = keyDown != null || keyUp != null;
+
+            if (needed && HHookID == IntPtr.Zero)
             {
-                throw new Exception("Could not set keyboard hook");
+                var module = System.Diagnostics.Process.GetCurrentProcess().MainModule;
+                IntPtr handle = GetModuleHandle(module.ModuleName);
+                HHookID = (IntPtr)SetWindowsHookEx(WH_KEYBOARD_LL, _procDelegate, handle, 0);
+
+                // Throwing here used to crash Flylet at startup; without the hook only the lock keys flyout is missing
+                if (HHookID == IntPtr.Zero)
+                {
+                    System.Diagnostics.Debug.WriteLine($"{nameof(KeyboardHook)}: Could not set keyboard hook");
+                }
+            }
+            else if (!needed && HHookID != IntPtr.Zero)
+            {
+                UnhookWindowsHookEx((int)HHookID);
+                HHookID = IntPtr.Zero;
+                CurrentKey = null;
             }
         }
 
@@ -52,14 +86,14 @@ namespace Flylet.Core.Interop
                     var vkcode = (int)((KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(KBDLLHOOKSTRUCT))).vkCode;
                     var key = KeyInterop.KeyFromVirtualKey(vkcode);
                     CurrentKey = key;
-                    KeyDown?.Invoke(key, vkcode);
+                    keyDown?.Invoke(key, vkcode);
                 }
                 if (wParam == (IntPtr)WM_KEYUP || wParam == (IntPtr)WM_SYSKEYUP)
                 {
                     var vkcode = (int)((KBDLLHOOKSTRUCT)Marshal.PtrToStructure(lParam, typeof(KBDLLHOOKSTRUCT))).vkCode;
                     var key = KeyInterop.KeyFromVirtualKey(vkcode);
                     CurrentKey = null;
-                    KeyUp?.Invoke(key, vkcode);
+                    keyUp?.Invoke(key, vkcode);
                 }
             }
 
