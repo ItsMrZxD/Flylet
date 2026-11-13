@@ -15,6 +15,7 @@ namespace Flylet.Controls
     public partial class SessionControl : UserControl
     {
         private static readonly Brush AccentForegroundBrush = CreateBrush(Color.FromRgb(0x1A, 0x1A, 0x1A));
+        private static readonly Brush AccentForegroundLightBrush = CreateBrush(Colors.White);
 
         private MediaSession _mediaSession;
 
@@ -77,6 +78,11 @@ namespace Flylet.Controls
             {
                 Subscribe(_mediaSession);
             }
+
+            // WPF can raise Loaded twice without Unloaded in between; never subscribe twice
+            FlyoutHandler.Instance.UIManager.PropertyChanged -= UIManager_PropertyChanged;
+            FlyoutHandler.Instance.UIManager.PropertyChanged += UIManager_PropertyChanged;
+            UpdateAccentColor();
         }
 
         private void SessionControl_Unloaded(object sender, RoutedEventArgs e)
@@ -84,6 +90,18 @@ namespace Flylet.Controls
             if (_mediaSession != null)
             {
                 Unsubscribe(_mediaSession);
+            }
+
+            FlyoutHandler.Instance.UIManager.PropertyChanged -= UIManager_PropertyChanged;
+        }
+
+        // Switching the custom accent on or off, or picking another color, recolors the card right away
+        // instead of on the next track
+        private void UIManager_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName is nameof(UI.UIManager.UseCustomAccentColor) or nameof(UI.UIManager.CustomAccentColor))
+            {
+                Dispatcher.Invoke(UpdateAccentColor);
             }
         }
 
@@ -185,15 +203,22 @@ namespace Flylet.Controls
         }
 
         /// <summary>
-        /// Colors the play button and timeline with an accent picked from the thumbnail,
-        /// or restores the default look when the thumbnail has no usable color.
+        /// Colors the play button and timeline with the user's custom accent when it's on, otherwise with an
+        /// accent picked from the thumbnail, or restores the default look when the thumbnail has no usable color.
         /// </summary>
         private void UpdateAccentColor()
         {
             var buttonResources = PlayPauseButton.Resources;
             var timelineResources = TimelineGrid.Resources;
+            var uiManager = FlyoutHandler.Instance.UIManager;
 
-            if (_mediaSession?.Thumbnail is not ImageSource thumbnail || !AccentColorHelper.TryGetAccentColor(thumbnail, out var accent))
+            Color accent;
+            if (uiManager.UseCustomAccentColor)
+            {
+                // Painted directly: runtime resource changes don't reach the flyout window
+                accent = uiManager.CustomAccentColor;
+            }
+            else if (_mediaSession?.Thumbnail is not ImageSource thumbnail || !AccentColorHelper.TryGetAccentColor(thumbnail, out accent))
             {
                 buttonResources.Clear();
                 timelineResources.Clear();
@@ -209,9 +234,13 @@ namespace Flylet.Controls
             buttonResources["ButtonBackground"] = normal;
             buttonResources["ButtonBackgroundPointerOver"] = pointerOver;
             buttonResources["ButtonBackgroundPressed"] = pressed;
-            buttonResources["ButtonForeground"] = AccentForegroundBrush;
-            buttonResources["ButtonForegroundPointerOver"] = AccentForegroundBrush;
-            buttonResources["ButtonForegroundPressed"] = AccentForegroundBrush;
+            // A custom accent can be dark (the default is #0078D7), where the dark icon would be hard to see
+            var foreground = uiManager.UseCustomAccentColor && !AccentColorHelper.IsLight(accent)
+                ? AccentForegroundLightBrush
+                : AccentForegroundBrush;
+            buttonResources["ButtonForeground"] = foreground;
+            buttonResources["ButtonForegroundPointerOver"] = foreground;
+            buttonResources["ButtonForegroundPressed"] = foreground;
             buttonResources["ButtonBorderBrush"] = Brushes.Transparent;
             buttonResources["ButtonBorderBrushPointerOver"] = Brushes.Transparent;
             buttonResources["ButtonBorderBrushPressed"] = Brushes.Transparent;
