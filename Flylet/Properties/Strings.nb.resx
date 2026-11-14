@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Toningsanimasjon</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Kortkant</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Velg skjermen undermenyen skal vises på</value>
   </data>

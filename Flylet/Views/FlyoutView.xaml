@@ -47,6 +47,7 @@
                         <controls:CrossFadeContentControl Content="{Binding PrimaryContent}" />
                     </StackPanel>
                     <Border
+                        Visibility="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.ShowCardBorder, Converter={StaticResource BooleanToVisibilityConverter}}"
                         BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
                         BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
                         CornerRadius="{DynamicResource FlyoutCornerRadius}" />
@@ -67,6 +68,7 @@
                     <controls:FlyoutBackgroundLayer CornerRadius="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.MediaCardCornerRadius}" />
                     <controls:CrossFadeContentControl Content="{Binding SecondaryContent}" />
                     <Border
+                        Visibility="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.ShowCardBorder, Converter={StaticResource BooleanToVisibilityConverter}}"
                         BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
                         BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
                         CornerRadius="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.MediaCardCornerRadius}" />
@@ -95,6 +97,7 @@
                         </Button>
                     </Grid>
                     <Border
+                        Visibility="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.ShowCardBorder, Converter={StaticResource BooleanToVisibilityConverter}}"
                         BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
                         BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
                         CornerRadius="{DynamicResource FlyoutCornerRadius}" />

@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>फ़ेड एनिमेशन</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>कार्ड की किनारी</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>फ्लाईआउट दिखाने के लिए पसंदीदा डिस्प्ले मॉनिटर चुनें</value>
   </data>

@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>淡入淡出动画</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>卡片边框</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>选择用于显示浮出控件的首选显示器</value>
   </data>

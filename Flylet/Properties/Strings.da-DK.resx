@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Udtoningsanimation</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Kortkant</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Vælg den foretrukne skærm, som flyout&apos;en skal vises på</value>
   </data>

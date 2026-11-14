@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Animazione a dissolvenza</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Bordo delle schede</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Seleziona il monitor preferito su cui mostrare il riquadro a comparsa</value>
   </data>

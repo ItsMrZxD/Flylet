@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Toningsanimering</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Kortkant</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Välj den bildskärm som utfällningen helst ska visas på</value>
   </data>

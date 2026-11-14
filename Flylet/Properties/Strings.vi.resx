@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Hoạt ảnh mờ dần</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Viền thẻ</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Chọn màn hình ưu tiên để hiển thị cửa sổ bật ra</value>
   </data>

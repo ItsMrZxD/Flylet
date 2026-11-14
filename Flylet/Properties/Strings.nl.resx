@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Vervaganimatie</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Kaartrand</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Selecteer de gewenste monitor om de flyout op weer te geven</value>
   </data>

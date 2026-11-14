@@ -410,6 +410,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>حركة التلاشي</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>حدود البطاقة</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>معاينة</value>
   </data>

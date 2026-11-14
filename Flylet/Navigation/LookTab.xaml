@@ -30,6 +30,7 @@
                             <ContentPresenter />
                             <Border BorderThickness="{DynamicResource FlyoutBorderThemeThickness}"
                                     BorderBrush="{DynamicResource FlyoutBorderThemeBrush}"
+                                    Visibility="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.ShowCardBorder, Converter={StaticResource BooleanToVisibilityConverter}}"
                                     CornerRadius="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Grid>
                     </ControlTemplate>
@@ -82,6 +83,10 @@
                                          SelectedItem="{Binding UIManager.AppTheme}" />
                         <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_FlyoutAnimationEnabled}"
                                          IsOn="{Binding UIManager.FlyoutAnimationEnabled}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_ShowCardBorder}"
+                                         IsOn="{Binding UIManager.ShowCardBorder}"
                                          OnContent="{x:Static resx:Strings.Settings_On}"
                                          OffContent="{x:Static resx:Strings.Settings_Off}" />
                     </ui:SimpleStackPanel>

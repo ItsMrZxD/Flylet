@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Animacja zanikania</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Obramowanie kart</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Wybierz preferowany monitor, na którym ma być wyświetlana nakładka</value>
   </data>

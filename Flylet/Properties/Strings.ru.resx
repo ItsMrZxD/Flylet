@@ -387,6 +387,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Анимация затухания</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Рамка карточек</value>
+  </data>
   <data name="Enums.StackingDirection.Ascending" xml:space="preserve">
     <value>По возрастанию</value>
   </data>

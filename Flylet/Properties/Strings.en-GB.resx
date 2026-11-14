@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Fade animation</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Card border</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Select the preferred display monitor to show the flyout on</value>
   </data>

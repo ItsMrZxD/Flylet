@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Κινούμενη εξαφάνιση</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Περίγραμμα καρτών</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Επιλέξτε την προτιμώμενη οθόνη για την εμφάνιση του αναδυόμενου στοιχείου</value>
   </data>

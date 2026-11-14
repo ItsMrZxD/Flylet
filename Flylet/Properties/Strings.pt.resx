@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Animação fade</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Borda dos cartões</value>
+  </data>
   <data name="About.BasedOn" xml:space="preserve">
     <value>Baseado no Flylet (Licença MIT)</value>
   </data>

@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>انیمیشن محوشدن</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>حاشیه کارت‌ها</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>نمایشگر ترجیحی برای نمایش فلای‌آوت را انتخاب کنید</value>
   </data>

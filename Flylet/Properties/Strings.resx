@@ -425,6 +425,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Fade animation</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Card border</value>
+  </data>
   <data name="SettingsItem" xml:space="preserve">
     <value>Settings</value>
   </data>

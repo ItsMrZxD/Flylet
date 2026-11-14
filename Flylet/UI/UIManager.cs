@@ -175,6 +175,24 @@ namespace Flylet.UI
             }
         }
 
+        private bool showCardBorder = DefaultValuesStore.ShowCardBorder;
+
+        /// <summary>
+        /// Shows the thin border around the flyout cards. The flyout lives outside Application.Windows,
+        /// so its cards bind to this instead of a resource.
+        /// </summary>
+        public bool ShowCardBorder
+        {
+            get => showCardBorder;
+            set
+            {
+                if (SetProperty(ref showCardBorder, value))
+                {
+                    AppDataHelper.ShowCardBorder = value;
+                }
+            }
+        }
+
         private bool useLessMemory = DefaultValuesStore.UseLessMemory;
 
         /// <summary>
@@ -1428,6 +1446,7 @@ namespace Flylet.UI
             TrayIconEnabled = AppDataHelper.TrayIconEnabled;
             UseColoredTrayIcon = AppDataHelper.UseColoredTrayIcon;
             FlyoutAnimationEnabled = AppDataHelper.FlyoutAnimationEnabled;
+            ShowCardBorder = AppDataHelper.ShowCardBorder;
             UseLessMemory = AppDataHelper.UseLessMemory;
 
             // Straight into the fields: the setters would re-save what was just read and rebuild the accent

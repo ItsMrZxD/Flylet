@@ -410,6 +410,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>Solma animasyonu</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>Kart kenarlığı</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>Önizleme</value>
   </data>

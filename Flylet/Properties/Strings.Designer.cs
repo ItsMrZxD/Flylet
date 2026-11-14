@@ -1474,6 +1474,15 @@ namespace Flylet.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Card border.
+        /// </summary>
+        public static string Settings_ShowCardBorder {
+            get {
+                return ResourceManager.GetString("Settings.ShowCardBorder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string SettingsItem {

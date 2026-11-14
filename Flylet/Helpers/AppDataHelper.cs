@@ -301,6 +301,12 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static bool ShowCardBorder
+        {
+            get => GetValue(DefaultValuesStore.ShowCardBorder);
+            set => SetValue(value);
+        }
+
         public static bool UseLessMemory
         {
             get => GetValue(DefaultValuesStore.UseLessMemory);

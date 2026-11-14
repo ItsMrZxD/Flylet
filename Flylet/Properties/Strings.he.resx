@@ -392,6 +392,9 @@
   <data name="Settings.FlyoutAnimationEnabled" xml:space="preserve">
     <value>אנימציית דהייה</value>
   </data>
+  <data name="Settings.ShowCardBorder" xml:space="preserve">
+    <value>גבול הכרטיסים</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>בחר את הצג המועדף להצגת החלון הצף</value>
   </data>
