@@ -131,6 +131,8 @@ Manager shows:
 
 Photo and GIF backgrounds use more, depending on the image.
 
+The day this app isn't optimized to its fullest, shoot me.
+
 ## Privacy
 
 Flylet has no network code of its own and sends no data of its own. When you open Settings →
