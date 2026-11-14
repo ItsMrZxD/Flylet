@@ -498,6 +498,10 @@ namespace Flylet
 
         private void CheckPinnedFullscreen()
         {
+            // Never hide the flyout in the middle of a drag
+            if (OnScreenFlyoutWindow.IsDragMoving)
+                return;
+
             bool fullscreen = IsWindowFullscreen();
             if (fullscreen == pinnedFullscreenActive)
                 return;

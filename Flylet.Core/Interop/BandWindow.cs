@@ -582,6 +582,13 @@ namespace Flylet.Core.Interop
             DragMoved?.Invoke(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// A drag started but the window didn't move.
+        /// </summary>
+        protected virtual void OnDragCanceled()
+        {
+        }
+
         protected virtual void OnShown()
         {
             Shown?.Invoke(this, EventArgs.Empty);
@@ -602,9 +609,26 @@ namespace Flylet.Core.Interop
                 return;
 
             IsDragMoving = true;
+            GetWindowRect(Handle, out var before);
 
             SendMessage(Handle, WindowMessage.WM_SYSCOMMAND, SC_MOUSEMOVE, IntPtr.Zero);
             SendMessage(Handle, WindowMessage.WM_LBUTTONUP, IntPtr.Zero, IntPtr.Zero);
+
+            // The move loop is over once SendMessage returns. Without a WM_EXITSIZEMOVE (a click on the
+            // handle, or a loop cut short) IsDragMoving stayed true and the flyout never hid again
+            if (IsDragMoving)
+            {
+                GetWindowRect(Handle, out var after);
+                if (after.Left != before.Left || after.Top != before.Top)
+                {
+                    HandleDragMoved();
+                }
+                else
+                {
+                    IsDragMoving = false;
+                    OnDragCanceled();
+                }
+            }
         }
 
         public void Activate()

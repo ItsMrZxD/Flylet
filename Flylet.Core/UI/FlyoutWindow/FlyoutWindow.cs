@@ -51,6 +51,13 @@ namespace Flylet.Core.UI
             PositionFlyout();
         }
 
+        protected override void OnDragCanceled()
+        {
+            StartCloseTimer();
+
+            base.OnDragCanceled();
+        }
+
         protected override void OnDragMoved()
         {
             StartCloseTimer();
