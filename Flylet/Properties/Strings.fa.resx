@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>حاشیه کارت‌ها</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>نگه داشتن روی صفحه</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>برداشتن سنجاق</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>نمایشگر ترجیحی برای نمایش فلای‌آوت را انتخاب کنید</value>
   </data>

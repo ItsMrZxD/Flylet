@@ -413,6 +413,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>카드 테두리</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>화면에 고정</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>고정 해제</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>미리 보기</value>
   </data>

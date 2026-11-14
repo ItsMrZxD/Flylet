@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Kartenrahmen</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Auf dem Bildschirm lassen</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Lösen</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Bevorzugten Monitor für die Anzeige des Flyouts auswählen</value>
   </data>

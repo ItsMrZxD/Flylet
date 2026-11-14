@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Sempadan kad</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Kekal pada skrin</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Nyahsemat</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Pilih monitor paparan pilihan untuk memaparkan flyout</value>
   </data>

@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Threading;
 using static Flylet.Core.Interop.NativeMethods;
 
 namespace Flylet
@@ -268,6 +269,12 @@ namespace Flylet
                 IsTimeoutEnabled = true,
             };
 
+            UIManager.PropertyChanged += (_, e) =>
+            {
+                if (e.PropertyName == nameof(UIManager.IsFlyoutPinned))
+                    OnFlyoutPinnedChanged();
+            };
+
             flyoutWindow.DragMoved += (s, e) =>
             {
                 SaveOnScreenFlyoutPosition();
@@ -458,6 +465,67 @@ namespace Flylet
             OnScreenFlyoutWindow.IsOpen = true;
             OnScreenFlyoutWindow.StartCloseTimer();
         }
+
+        #region Pinned flyout
+
+        // While pinned, a 1 s check watches for fullscreen apps: the flyout draws above everything,
+        // so it steps aside (and hides on its timeout again) until the fullscreen app is gone
+        private DispatcherTimer pinnedFullscreenTimer;
+        private bool pinnedFullscreenActive;
+        private bool hiddenForFullscreen;
+
+        private void OnFlyoutPinnedChanged()
+        {
+            if (UIManager.IsFlyoutPinned)
+            {
+                pinnedFullscreenActive = false;
+                hiddenForFullscreen = false;
+                OnScreenFlyoutWindow.IsTimeoutEnabled = false;
+                OnScreenFlyoutWindow.StopCloseTimer();
+
+                pinnedFullscreenTimer ??= new DispatcherTimer(TimeSpan.FromSeconds(1), DispatcherPriority.Background,
+                    (_, __) => CheckPinnedFullscreen(), Dispatcher.CurrentDispatcher);
+                pinnedFullscreenTimer.Start();
+            }
+            else
+            {
+                pinnedFullscreenTimer?.Stop();
+                pinnedFullscreenActive = false;
+                hiddenForFullscreen = false;
+                OnScreenFlyoutWindow.IsTimeoutEnabled = true;
+            }
+        }
+
+        private void CheckPinnedFullscreen()
+        {
+            bool fullscreen = IsWindowFullscreen();
+            if (fullscreen == pinnedFullscreenActive)
+                return;
+
+            pinnedFullscreenActive = fullscreen;
+            if (fullscreen)
+            {
+                // Behave like an unpinned flyout while the fullscreen app runs
+                OnScreenFlyoutWindow.IsTimeoutEnabled = true;
+                if (OnScreenFlyoutWindow.IsOpen)
+                {
+                    hiddenForFullscreen = true;
+                    OnScreenFlyoutWindow.IsOpen = false;
+                }
+            }
+            else
+            {
+                OnScreenFlyoutWindow.IsTimeoutEnabled = false;
+                OnScreenFlyoutWindow.StopCloseTimer();
+                if (hiddenForFullscreen || OnScreenFlyoutWindow.IsOpen)
+                {
+                    hiddenForFullscreen = false;
+                    OnScreenFlyoutWindow.IsOpen = true;
+                }
+            }
+        }
+
+        #endregion
 
         private bool Handled()
         {

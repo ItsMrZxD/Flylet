@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Rammi spjalda</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Halda á skjánum</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Losa</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Veldu skjáinn sem þú vilt nota til að birta sprettigluggann</value>
   </data>

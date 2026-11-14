@@ -1481,6 +1481,24 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("Settings.ShowCardBorder", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Keep on screen.
+        /// </summary>
+        public static string FlyoutPin {
+            get {
+                return ResourceManager.GetString("FlyoutPin", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unpin.
+        /// </summary>
+        public static string FlyoutUnpin {
+            get {
+                return ResourceManager.GetString("FlyoutUnpin", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Settings.

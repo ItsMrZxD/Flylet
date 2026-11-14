@@ -278,7 +278,11 @@ namespace Flylet.Core.UI
             {
                 if ((bool)e.NewValue)
                 {
-                    flyoutWindow.SetupCloseTimer();
+                    // Set up once; turning it back on (unpinning) only restarts the countdown
+                    if (flyoutWindow.timer == null)
+                        flyoutWindow.SetupCloseTimer();
+                    else if (flyoutWindow.IsOpen && !flyoutWindow.IsMouseOver)
+                        flyoutWindow.timer.Start();
                 }
                 else
                 {

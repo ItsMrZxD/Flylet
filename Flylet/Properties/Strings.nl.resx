@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Kaartrand</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Op het scherm houden</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Losmaken</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Selecteer de gewenste monitor om de flyout op weer te geven</value>
   </data>

@@ -353,6 +353,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Borde de las tarjetas</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Mantener en pantalla</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Desanclar</value>
+  </data>
   <data name="Enums.FlyoutWindowAlignments.Bottom" xml:space="preserve">
     <value>Abajo</value>
   </data>

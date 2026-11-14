@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Borda dos cartões</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Manter na tela</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Desafixar</value>
+  </data>
   <data name="About.BasedOn" xml:space="preserve">
     <value>Baseado no Flylet (Licença MIT)</value>
   </data>

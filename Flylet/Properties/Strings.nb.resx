@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Kortkant</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Behold på skjermen</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Løsne</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Velg skjermen undermenyen skal vises på</value>
   </data>

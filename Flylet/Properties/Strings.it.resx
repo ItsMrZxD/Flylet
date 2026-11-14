@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Bordo delle schede</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Mantieni sullo schermo</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Sblocca</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Seleziona il monitor preferito su cui mostrare il riquadro a comparsa</value>
   </data>

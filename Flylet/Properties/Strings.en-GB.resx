@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Card border</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Keep on screen</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Unpin</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Select the preferred display monitor to show the flyout on</value>
   </data>

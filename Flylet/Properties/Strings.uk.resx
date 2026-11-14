@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Рамка карток</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Залишити на екрані</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Відкріпити</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Виберіть бажаний монітор для показу спливаючого меню</value>
   </data>

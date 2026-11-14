@@ -78,6 +78,12 @@ namespace Flylet.Controls
                 OnMouseLeave();
         }
 
+        private void PinButton_Click(object sender, RoutedEventArgs e)
+        {
+            var uiManager = FlyoutHandler.Instance.UIManager;
+            uiManager.IsFlyoutPinned = !uiManager.IsFlyoutPinned;
+        }
+
         private void OnMouseEnter()
         {
             if (isAnimating)
@@ -228,7 +234,7 @@ namespace Flylet.Controls
 
                 ThicknessAnimation g2MarginAnim = new()
                 {
-                    To = new(0, 0, -34, 0),
+                    To = new(0, 0, -68, 0),
                     Duration = duration,
                     EasingFunction = easingFunction
                 };

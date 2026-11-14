@@ -64,6 +64,8 @@
 
         public const string UnPin = "\uE196";
 
+        public const string Pinned = "\uE840";
+
         public const string TimelineInfo = "\uF8A6";
 
         public const string Lock = "\uE72E";

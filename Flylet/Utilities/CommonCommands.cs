@@ -20,6 +20,8 @@ namespace Flylet.Utilities
                 var flyoutWindow = FlyoutWindow.GetFlyoutWindow(x);
                 if (flyoutWindow != null)
                 {
+                    // Close also unpins, so a pinned flyout can't get stuck on screen
+                    FlyoutHandler.Instance.UIManager.IsFlyoutPinned = false;
                     flyoutWindow.IsOpen = false;
                 }
             }, x => FlyoutHandler.HasInitialized && x != null);

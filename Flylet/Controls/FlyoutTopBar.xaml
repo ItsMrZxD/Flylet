@@ -8,6 +8,7 @@
              xmlns:utils="clr-namespace:Flylet.Utilities"
              xmlns:resx="clr-namespace:Flylet.Properties"
              xmlns:behaviors="clr-namespace:Flylet.Behaviors"
+             xmlns:local="clr-namespace:Flylet"
              mc:Ignorable="d" Background="#01FFFFFF"
              d:DesignWidth="400" Padding="0,0,0,10" Margin="0,0,0,-10">
     <UserControl.Resources>
@@ -29,8 +30,8 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <!-- Only Settings, the drag handle and Close (survey, 0.11): moving the flyout back to its
-             default spot lives in Settings, and Always/Never in Settings replace the pin button -->
+        <!-- Settings, the drag handle, Pin and Close: moving the flyout back to its default spot lives in
+             Settings (survey, 0.11). Pin keeps the flyout on screen (0.13) -->
         <Grid x:Name="G1" x:FieldModifier="private"
               Grid.Column="0" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
@@ -59,9 +60,36 @@
               Grid.Column="2" VerticalAlignment="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="34" />
+                <ColumnDefinition Width="34" />
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" HorizontalAlignment="Right"
+                    ui:ControlHelper.CornerRadius="2"
+                    Click="PinButton_Click">
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource TopBarButtonStyle}">
+                        <Setter Property="ToolTip" Value="{x:Static resx:Strings.FlyoutPin}" />
+                        <Setter Property="Content">
+                            <Setter.Value>
+                                <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Pin}" FontSize="15" />
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Source={x:Static local:FlyoutHandler.Instance}, Path=UIManager.IsFlyoutPinned}" Value="True">
+                                <Setter Property="ToolTip" Value="{x:Static resx:Strings.FlyoutUnpin}" />
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Pinned}" FontSize="15"
+                                                     Foreground="{DynamicResource SystemControlForegroundAccentBrush}" />
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Grid.Column="1" HorizontalAlignment="Right"
                     ui:ControlHelper.CornerRadius="2,8,2,2"
                     Command="{x:Static utils:CommonCommands.CloseFlyoutCommand}"
                     CommandParameter="{x:Reference Name=TopBarGrid}"

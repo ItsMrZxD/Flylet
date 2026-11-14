@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Περίγραμμα καρτών</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Διατήρηση στην οθόνη</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Ξεκαρφίτσωμα</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Επιλέξτε την προτιμώμενη οθόνη για την εμφάνιση του αναδυόμενου στοιχείου</value>
   </data>

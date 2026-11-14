@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Viền thẻ</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Giữ trên màn hình</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Bỏ ghim</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Chọn màn hình ưu tiên để hiển thị cửa sổ bật ra</value>
   </data>

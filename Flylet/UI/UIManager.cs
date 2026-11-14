@@ -175,6 +175,18 @@ namespace Flylet.UI
             }
         }
 
+        private bool isFlyoutPinned;
+
+        /// <summary>
+        /// Keeps the flyout on screen instead of hiding after the timeout (pin button on the top bar).
+        /// Not saved: Close unpins, and a restart starts unpinned.
+        /// </summary>
+        public bool IsFlyoutPinned
+        {
+            get => isFlyoutPinned;
+            set => SetProperty(ref isFlyoutPinned, value);
+        }
+
         private bool showCardBorder = DefaultValuesStore.ShowCardBorder;
 
         /// <summary>

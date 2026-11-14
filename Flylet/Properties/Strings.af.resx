@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>Kaartrand</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>Hou op skerm</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>Ontspeld</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Kies die verkose vertoonmonitor waarop die vlieg-uit gewys moet word</value>
   </data>

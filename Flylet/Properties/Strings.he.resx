@@ -395,6 +395,12 @@
   <data name="Settings.ShowCardBorder" xml:space="preserve">
     <value>גבול הכרטיסים</value>
   </data>
+  <data name="FlyoutPin" xml:space="preserve">
+    <value>השאר על המסך</value>
+  </data>
+  <data name="FlyoutUnpin" xml:space="preserve">
+    <value>בטל הצמדה</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>בחר את הצג המועדף להצגת החלון הצף</value>
   </data>
