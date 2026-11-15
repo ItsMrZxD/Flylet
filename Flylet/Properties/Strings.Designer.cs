@@ -1499,6 +1499,42 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("FlyoutUnpin", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Custom color.
+        /// </summary>
+        public static string ColorPicker_Custom {
+            get {
+                return ResourceManager.GetString("ColorPicker.Custom", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a color like #D93636.
+        /// </summary>
+        public static string ColorPicker_Invalid {
+            get {
+                return ResourceManager.GetString("ColorPicker.Invalid", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Change color.
+        /// </summary>
+        public static string ColorPicker_Change {
+            get {
+                return ResourceManager.GetString("ColorPicker.Change", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Settings.

@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>برداشتن سنجاق</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>لغو</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>رنگ دلخواه</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>رنگی مانند #D93636 وارد کنید</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>تغییر رنگ</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>نمایشگر ترجیحی برای نمایش فلای‌آوت را انتخاب کنید</value>
   </data>

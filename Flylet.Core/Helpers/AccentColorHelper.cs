@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -214,6 +216,82 @@ namespace Flylet.Core.Helpers
                 _ => (c, 0.0, x),
             };
             return (r + m, g + m, b + m);
+        }
+
+        /// <summary>
+        /// Color picker math: hue 0-360, saturation and value 0-1. Gray has no hue, so it comes back as 0.
+        /// </summary>
+        public static (double Hue, double Saturation, double Value) ColorToHsv(Color color)
+        {
+            double r = color.R / 255.0, g = color.G / 255.0, b = color.B / 255.0;
+            double max = Math.Max(r, Math.Max(g, b));
+            double min = Math.Min(r, Math.Min(g, b));
+            double delta = max - min;
+
+            double hue = 0;
+            if (delta > 0)
+            {
+                if (max == r)
+                    hue = 60 * ((g - b) / delta % 6);
+                else if (max == g)
+                    hue = 60 * ((b - r) / delta + 2);
+                else
+                    hue = 60 * ((r - g) / delta + 4);
+
+                if (hue < 0)
+                    hue += 360;
+            }
+
+            return (hue, max == 0 ? 0 : delta / max, max);
+        }
+
+        /// <summary>
+        /// The opaque color for a hue (0-360, wraps), saturation and value (0-1).
+        /// </summary>
+        public static Color ColorFromHsv(double hue, double saturation, double value)
+        {
+            hue = ((hue % 360) + 360) % 360;
+            saturation = Math.Clamp(saturation, 0, 1);
+            value = Math.Clamp(value, 0, 1);
+
+            double Channel(double n)
+            {
+                double k = (n + hue / 60) % 6;
+                return value - value * saturation * Math.Max(0, Math.Min(k, Math.Min(4 - k, 1)));
+            }
+
+            return Color.FromRgb(ToByte(Channel(5)), ToByte(Channel(3)), ToByte(Channel(1)));
+        }
+
+        /// <summary>
+        /// The user's saved colors, stored as "#RRGGBB;;#RRGGBB;" (an empty part is an empty slot).
+        /// Always returns exactly <paramref name="count"/> entries; anything that isn't #RRGGBB becomes empty.
+        /// </summary>
+        public static string[] ParseSavedColors(string value, int count)
+        {
+            var slots = new string[count];
+            var parts = (value ?? string.Empty).Split(';');
+            for (int i = 0; i < count; i++)
+            {
+                string part = i < parts.Length ? parts[i].Trim() : string.Empty;
+                slots[i] = IsHexColor(part) ? part.ToUpperInvariant() : null;
+            }
+            return slots;
+        }
+
+        public static string FormatSavedColors(IEnumerable<string> slots)
+            => string.Join(";", slots.Select(s => IsHexColor(s) ? s.ToUpperInvariant() : string.Empty));
+
+        private static bool IsHexColor(string value)
+        {
+            if (value == null || value.Length != 7 || value[0] != '#')
+                return false;
+            for (int i = 1; i < 7; i++)
+            {
+                if (!Uri.IsHexDigit(value[i]))
+                    return false;
+            }
+            return true;
         }
 
         private static byte ToByte(double value) => (byte)Math.Round(Math.Clamp(value, 0, 1) * 255);

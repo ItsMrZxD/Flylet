@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Odepnij</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Kolor niestandardowy</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Wpisz kolor, np. #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Zmień kolor</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Wybierz preferowany monitor, na którym ma być wyświetlana nakładka</value>
   </data>

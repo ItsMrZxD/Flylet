@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Détacher</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Couleur personnalisée</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Saisissez une couleur comme #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Changer la couleur</value>
+  </data>
   <data name="About.BasedOn" xml:space="preserve">
     <value>Basé sur Flylet (licence MIT)</value>
   </data>

@@ -222,6 +222,28 @@ namespace Flylet.UI
             }
         }
 
+        public const int SavedColorCount = 4;
+
+        private string[] savedColors = AccentColorHelper.ParseSavedColors(DefaultValuesStore.SavedColors, SavedColorCount);
+
+        /// <summary>
+        /// The colors the user saved in the color pickers' slots (#RRGGBB, or null for an empty slot).
+        /// Shared by every color picker.
+        /// </summary>
+        public IReadOnlyList<string> SavedColors => savedColors;
+
+        public void SetSavedColor(int index, string hex)
+        {
+            if (index < 0 || index >= SavedColorCount)
+                return;
+
+            var slots = (string[])savedColors.Clone();
+            slots[index] = hex;
+            savedColors = AccentColorHelper.ParseSavedColors(AccentColorHelper.FormatSavedColors(slots), SavedColorCount);
+            AppDataHelper.SavedColors = AccentColorHelper.FormatSavedColors(savedColors);
+            OnPropertyChanged(nameof(SavedColors));
+        }
+
         private bool useCustomAccentColor = DefaultValuesStore.UseCustomAccentColor;
 
         public bool UseCustomAccentColor
@@ -1465,6 +1487,8 @@ namespace Flylet.UI
             // more than once, and the background is applied by the theme update below, once the system theme is known
             customAccentColor = ParseColorOrDefault(AppDataHelper.CustomAccentColor, DefaultValuesStore.CustomAccentColor);
             useCustomAccentColor = AppDataHelper.UseCustomAccentColor;
+            savedColors = AccentColorHelper.ParseSavedColors(AppDataHelper.SavedColors, SavedColorCount);
+            OnPropertyChanged(nameof(SavedColors));
             customFlyoutBackgroundColor = ParseColorOrDefault(AppDataHelper.CustomFlyoutBackgroundColor, DefaultValuesStore.CustomFlyoutBackgroundColor);
             useCustomFlyoutBackgroundColor = AppDataHelper.UseCustomFlyoutBackgroundColor;
             useGlass = AppDataHelper.UseGlass;

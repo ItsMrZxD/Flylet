@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Bỏ ghim</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hủy</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Màu tùy chỉnh</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Nhập màu như #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Đổi màu</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Chọn màn hình ưu tiên để hiển thị cửa sổ bật ra</value>
   </data>

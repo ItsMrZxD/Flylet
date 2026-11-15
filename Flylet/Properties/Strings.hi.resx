@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>अनपिन करें</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>रद्द करें</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>कस्टम रंग</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>#D93636 जैसा रंग दर्ज करें</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>रंग बदलें</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>फ्लाईआउट दिखाने के लिए पसंदीदा डिस्प्ले मॉनिटर चुनें</value>
   </data>

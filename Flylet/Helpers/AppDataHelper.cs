@@ -373,6 +373,12 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static string SavedColors
+        {
+            get => GetValue(DefaultValuesStore.SavedColors);
+            set => SetValue(value);
+        }
+
         public static bool UseCustomFlyoutBackgroundColor
         {
             get => GetValue(DefaultValuesStore.UseCustomFlyoutBackgroundColor);

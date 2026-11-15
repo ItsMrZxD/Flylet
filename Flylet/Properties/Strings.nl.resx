@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Losmaken</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Aangepaste kleur</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Voer een kleur in zoals #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Kleur wijzigen</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Selecteer de gewenste monitor om de flyout op weer te geven</value>
   </data>

@@ -419,6 +419,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>ピン留めを外す</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>カスタム色</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>#D93636 のような色を入力してください</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>色を変更</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>プレビュー</value>
   </data>

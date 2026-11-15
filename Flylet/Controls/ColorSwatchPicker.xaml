@@ -4,29 +4,89 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.modernwpf.com/2019"
+             xmlns:local="clr-namespace:Flylet.Controls"
+             xmlns:utils="clr-namespace:Flylet.Utilities"
+             xmlns:resx="clr-namespace:Flylet.Properties"
              mc:Ignorable="d" x:Name="Root"
              d:DesignWidth="260">
+    <UserControl.Resources>
+        <local:ColorEqualsToVisibilityConverter x:Key="ColorEqualsToVisibilityConverter" />
+    </UserControl.Resources>
+
     <ui:SimpleStackPanel Spacing="10">
-        <ItemsControl ItemsSource="{Binding Swatches, ElementName=Root}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Button Width="28" Height="28" Margin="0,0,6,6" Padding="0"
-                            Background="{Binding Converter={StaticResource ColorToBrushConverter}}"
-                            Click="Swatch_Click" Tag="{Binding}">
-                        <Button.Resources>
-                            <Style TargetType="Border">
-                                <Setter Property="CornerRadius" Value="4" />
-                            </Style>
-                        </Button.Resources>
-                    </Button>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <!-- Ready-made colors, then the user's saved colors (0.13) -->
+        <WrapPanel>
+            <ItemsControl ItemsSource="{Binding Swatches, ElementName=Root}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Width="28" Height="28" Margin="0,0,6,6">
+                            <Button Width="28" Height="28" Padding="0"
+                                    Background="{Binding Converter={StaticResource ColorToBrushConverter}}"
+                                    Click="Swatch_Click" Tag="{Binding}"
+                                    ToolTip="{Binding Converter={x:Static local:ColorSwatchPicker.HexConverter}}">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="4" />
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                            <!-- Ring around the swatch that's in use -->
+                            <Border CornerRadius="4" BorderThickness="2" IsHitTestVisible="False"
+                                    BorderBrush="{DynamicResource SystemControlForegroundBaseHighBrush}">
+                                <Border.Visibility>
+                                    <MultiBinding Converter="{StaticResource ColorEqualsToVisibilityConverter}">
+                                        <Binding />
+                                        <Binding Path="SelectedColor" ElementName="Root" />
+                                    </MultiBinding>
+                                </Border.Visibility>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- The user's own saved colors (shared by every picker). Empty: + opens the picker and saves the
+                 result here. Saved: click to use it, right-click to change or remove it -->
+            <ItemsControl x:Name="SlotsList" x:FieldModifier="private">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type local:SavedColorSlot}">
+                        <Button Width="28" Height="28" Margin="0,0,6,6" Padding="0"
+                                Background="Transparent" BorderThickness="0" Click="Slot_Click"
+                                ToolTip="{Binding ToolTip}" ContextMenuService.IsEnabled="{Binding IsFilled}">
+                            <Button.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="{x:Static resx:Strings.ColorPicker_Change}" Click="SlotChange_Click" />
+                                    <MenuItem Header="{x:Static resx:Strings.Settings_RemoveFlyoutBackgroundImage}" Click="SlotRemove_Click" />
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                            <Grid Width="28" Height="28">
+                                <Rectangle RadiusX="4" RadiusY="4" StrokeThickness="1" StrokeDashArray="3 2"
+                                           Stroke="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                           Visibility="{Binding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <ui:FontIcon Glyph="{x:Static utils:CommonGlyphs.Add}" FontSize="12"
+                                             Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
+                                             Visibility="{Binding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <Border CornerRadius="4" Background="{Binding Brush}"
+                                        Visibility="{Binding IsFilled, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                <Border CornerRadius="4" BorderThickness="2"
+                                        BorderBrush="{DynamicResource SystemControlForegroundBaseHighBrush}"
+                                        Visibility="{Binding IsSelected, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            </Grid>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </WrapPanel>
 
         <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8">
             <Border Width="28" Height="28" CornerRadius="4"
@@ -35,5 +95,95 @@
             <TextBox x:Name="HexBox" Width="100" VerticalAlignment="Center"
                      TextChanged="HexBox_TextChanged" />
         </ui:SimpleStackPanel>
+
+        <!-- The full picker: shade square, hue strip, preview and hex. Nothing changes until Done -->
+        <Popup x:Name="PickerPopup" x:FieldModifier="private"
+               Placement="Bottom" VerticalOffset="4" StaysOpen="False" AllowsTransparency="True"
+               PopupAnimation="Fade">
+            <Border Padding="16" CornerRadius="8" BorderThickness="1"
+                    Background="{DynamicResource SystemControlBackgroundChromeMediumLowBrush}"
+                    BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                    PreviewKeyDown="Picker_PreviewKeyDown">
+                <StackPanel Width="268">
+                    <Grid x:Name="ShadeArea" x:FieldModifier="private" Width="268" Height="150" Background="Transparent"
+                          Cursor="Cross" ClipToBounds="True"
+                          MouseLeftButtonDown="ShadeArea_MouseLeftButtonDown" MouseMove="ShadeArea_MouseMove"
+                          MouseLeftButtonUp="Area_MouseLeftButtonUp">
+                        <Border x:Name="ShadeHue" x:FieldModifier="private" CornerRadius="6" Background="Red" />
+                        <Border CornerRadius="6">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="White" Offset="0" />
+                                    <GradientStop Color="#00FFFFFF" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <Border CornerRadius="6">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Color="#00000000" Offset="0" />
+                                    <GradientStop Color="Black" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <Canvas IsHitTestVisible="False">
+                            <Grid x:Name="ShadeKnob" x:FieldModifier="private" Width="16" Height="16">
+                                <Ellipse Stroke="#80000000" StrokeThickness="1" />
+                                <Ellipse Margin="1" Stroke="White" StrokeThickness="2" />
+                            </Grid>
+                        </Canvas>
+                    </Grid>
+
+                    <Grid x:Name="HueArea" x:FieldModifier="private" Width="268" Height="18" Margin="0,12" Background="Transparent"
+                          Cursor="Hand"
+                          MouseLeftButtonDown="HueArea_MouseLeftButtonDown" MouseMove="HueArea_MouseMove"
+                          MouseLeftButtonUp="Area_MouseLeftButtonUp">
+                        <Border Height="12" CornerRadius="6">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Color="#FF0000" Offset="0" />
+                                    <GradientStop Color="#FFFF00" Offset="0.1667" />
+                                    <GradientStop Color="#00FF00" Offset="0.3333" />
+                                    <GradientStop Color="#00FFFF" Offset="0.5" />
+                                    <GradientStop Color="#0000FF" Offset="0.6667" />
+                                    <GradientStop Color="#FF00FF" Offset="0.8333" />
+                                    <GradientStop Color="#FF0000" Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <Canvas IsHitTestVisible="False">
+                            <Border x:Name="HueKnob" x:FieldModifier="private" Width="10" Height="18" CornerRadius="5"
+                                    BorderThickness="2" BorderBrush="White">
+                                <Border CornerRadius="3" BorderThickness="1" BorderBrush="#80000000" />
+                            </Border>
+                        </Canvas>
+                    </Grid>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="PickerPreview" x:FieldModifier="private" Width="40" Height="40" CornerRadius="6"
+                                VerticalAlignment="Top" BorderThickness="1"
+                                BorderBrush="{DynamicResource SystemControlForegroundBaseLowBrush}" />
+                        <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                            <TextBox x:Name="PickerHexBox" x:FieldModifier="private" MaxLength="7"
+                                     TextChanged="PickerHexBox_TextChanged" />
+                            <TextBlock x:Name="PickerError" x:FieldModifier="private" Margin="0,4,0,0" TextWrapping="Wrap"
+                                       Text="{x:Static resx:Strings.ColorPicker_Invalid}" Visibility="Collapsed"
+                                       Foreground="{DynamicResource SystemControlErrorTextForegroundBrush}"
+                                       Style="{DynamicResource CaptionTextBlockStyle}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <ui:SimpleStackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Right" Margin="0,12,0,0">
+                        <Button Content="{x:Static resx:Strings.Cancel}" Click="PickerCancel_Click" />
+                        <Button Content="{x:Static resx:Strings.Settings_FlyoutBackgroundImageDone}" Click="PickerDone_Click"
+                                Style="{DynamicResource AccentButtonStyle}" />
+                    </ui:SimpleStackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
     </ui:SimpleStackPanel>
 </UserControl>

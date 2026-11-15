@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Løsne</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Avbryt</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Egendefinert farge</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Skriv inn en farge som #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Endre farge</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Velg skjermen undermenyen skal vises på</value>
   </data>

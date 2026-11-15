@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>בטל הצמדה</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>ביטול</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>צבע מותאם אישית</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>הזן צבע כמו #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>שנה צבע</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>בחר את הצג המועדף להצגת החלון הצף</value>
   </data>

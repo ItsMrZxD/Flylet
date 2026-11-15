@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Відкріпити</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Скасувати</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Власний колір</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Введіть колір, наприклад #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Змінити колір</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Виберіть бажаний монітор для показу спливаючого меню</value>
   </data>

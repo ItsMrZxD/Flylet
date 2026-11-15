@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>取消釘選</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>自訂色彩</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>請輸入色彩，例如 #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>變更色彩</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>選擇用於顯示浮動視窗的慣用顯示器</value>
   </data>

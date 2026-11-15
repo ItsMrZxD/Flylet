@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Losa</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Hætta við</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Sérsniðinn litur</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Sláðu inn lit eins og #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Breyta lit</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Veldu skjáinn sem þú vilt nota til að birta sprettigluggann</value>
   </data>

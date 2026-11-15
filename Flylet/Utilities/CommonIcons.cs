@@ -26,6 +26,8 @@
 
         public const string More = "\uE10C";
 
+        public const string Add = "\uE109";
+
         public const string Info = "\uE946";
 
         public const string Airplane = "\uE709";

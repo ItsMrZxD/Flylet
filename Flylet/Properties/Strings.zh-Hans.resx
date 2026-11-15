@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>取消固定</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>自定义颜色</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>请输入颜色，例如 #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>更改颜色</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>选择用于显示浮出控件的首选显示器</value>
   </data>

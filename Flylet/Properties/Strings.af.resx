@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Ontspeld</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Kanselleer</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Pasgemaakte kleur</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Voer 'n kleur soos #D93636 in</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Verander kleur</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Kies die verkose vertoonmonitor waarop die vlieg-uit gewys moet word</value>
   </data>

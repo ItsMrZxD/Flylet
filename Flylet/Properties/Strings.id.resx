@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Lepas sematan</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Batal</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Warna kustom</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Masukkan warna seperti #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Ubah warna</value>
+  </data>
   <data name="About.BasedOn" xml:space="preserve">
     <value>Berdasarkan Flylet (Lisensi MIT)</value>
   </data>

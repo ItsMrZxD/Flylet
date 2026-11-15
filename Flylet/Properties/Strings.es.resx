@@ -359,6 +359,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Desanclar</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Color personalizado</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Escribe un color como #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Cambiar color</value>
+  </data>
   <data name="Enums.FlyoutWindowAlignments.Bottom" xml:space="preserve">
     <value>Abajo</value>
   </data>

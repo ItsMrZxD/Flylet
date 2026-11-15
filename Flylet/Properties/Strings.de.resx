@@ -401,6 +401,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Lösen</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Eigene Farbe</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Gib eine Farbe wie #D93636 ein</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Farbe ändern</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Bevorzugten Monitor für die Anzeige des Flyouts auswählen</value>
   </data>

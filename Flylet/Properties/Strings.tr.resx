@@ -419,6 +419,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Sabitlemeyi kaldır</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Özel renk</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>#D93636 gibi bir renk girin</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Rengi değiştir</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>Önizleme</value>
   </data>

@@ -396,6 +396,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Открепить</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Свой цвет</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Введите цвет, например #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Изменить цвет</value>
+  </data>
   <data name="Enums.StackingDirection.Ascending" xml:space="preserve">
     <value>По возрастанию</value>
   </data>

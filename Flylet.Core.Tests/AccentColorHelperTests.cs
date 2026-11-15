@@ -127,5 +127,62 @@ namespace Flylet.Core.Tests
 
             Assert.Equal(expected, AccentColorHelper.IsLight(color));
         }
+
+        [Theory]
+        [InlineData(0xFF, 0x00, 0x00, 0, 1, 1)]
+        [InlineData(0x00, 0xFF, 0x00, 120, 1, 1)]
+        [InlineData(0x00, 0x00, 0xFF, 240, 1, 1)]
+        [InlineData(0x80, 0x80, 0x80, 0, 0, 0x80 / 255.0)]
+        [InlineData(0x00, 0x00, 0x00, 0, 0, 0)]
+        public void ColorToHsv_KnownColors(byte r, byte g, byte b, double hue, double saturation, double value)
+        {
+            var (h, s, v) = AccentColorHelper.ColorToHsv(Color.FromRgb(r, g, b));
+
+            Assert.Equal(hue, h, 3);
+            Assert.Equal(saturation, s, 3);
+            Assert.Equal(value, v, 3);
+        }
+
+        [Theory]
+        [InlineData(0xD9, 0x36, 0x36)]
+        [InlineData(0x00, 0x78, 0xD7)]
+        [InlineData(0xFF, 0xB9, 0x00)]
+        [InlineData(0x56, 0x7C, 0x73)]
+        [InlineData(0xFF, 0xFF, 0xFF)]
+        [InlineData(0x01, 0x02, 0x03)]
+        public void Hsv_RoundTripsEveryChannelExactly(byte r, byte g, byte b)
+        {
+            var color = Color.FromRgb(r, g, b);
+            var (h, s, v) = AccentColorHelper.ColorToHsv(color);
+
+            Assert.Equal(color, AccentColorHelper.ColorFromHsv(h, s, v));
+        }
+
+        [Theory]
+        [InlineData(null, new string[] { null, null, null, null })]
+        [InlineData("", new string[] { null, null, null, null })]
+        [InlineData("#d93636;;#0078D7", new[] { "#D93636", null, "#0078D7", null })]
+        [InlineData("#123;nope;#GGGGGG;#00FF00;#FFFFFF", new[] { null, null, null, "#00FF00" })]
+        public void ParseSavedColors_AlwaysGivesFourValidSlots(string value, string[] expected)
+        {
+            Assert.Equal(expected, AccentColorHelper.ParseSavedColors(value, 4));
+        }
+
+        [Fact]
+        public void SavedColors_RoundTrip()
+        {
+            var slots = new[] { "#D93636", null, "#0078d7", "bad" };
+            string stored = AccentColorHelper.FormatSavedColors(slots);
+
+            Assert.Equal("#D93636;;#0078D7;", stored);
+            Assert.Equal(new[] { "#D93636", null, "#0078D7", null }, AccentColorHelper.ParseSavedColors(stored, 4));
+        }
+
+        [Fact]
+        public void ColorFromHsv_WrapsHueAndClampsTheRest()
+        {
+            Assert.Equal(Color.FromRgb(0xFF, 0x00, 0x00), AccentColorHelper.ColorFromHsv(360, 1, 1));
+            Assert.Equal(Color.FromRgb(0x00, 0x00, 0xFF), AccentColorHelper.ColorFromHsv(-120, 2, 5));
+        }
     }
 }

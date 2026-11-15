@@ -434,6 +434,18 @@
   <data name="FlyoutUnpin" xml:space="preserve">
     <value>Unpin</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ColorPicker.Custom" xml:space="preserve">
+    <value>Custom color</value>
+  </data>
+  <data name="ColorPicker.Invalid" xml:space="preserve">
+    <value>Enter a color like #D93636</value>
+  </data>
+  <data name="ColorPicker.Change" xml:space="preserve">
+    <value>Change color</value>
+  </data>
   <data name="SettingsItem" xml:space="preserve">
     <value>Settings</value>
   </data>
