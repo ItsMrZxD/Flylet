@@ -88,21 +88,27 @@ namespace Flylet.Core.Media.Control
                 return;
             }
 
+            // Any change: match our sessions to NPSM's list. A reopened app (Firefox) is a new session, and a
+            // missed or failed created/disconnected notification would otherwise leave a dead session behind
+            // or the new one out for good
+            bool changed = SyncSessions();
+
             if (notificationType == NowPlayingSessionManagerNotificationType.SessionCreated)
             {
-                var session = NPSessionManager.FindSession(nowPlayingSessionInfo);
-
-                if (session != null && TryCreateMediaSession(session, out var mediaSession))
+                if (FindMediaSession(nowPlayingSessionInfo) == null)
                 {
-                    MediaSessions.Add(mediaSession);
-                    RaiseMediaSessionsChanged();
+                    var session = NPSessionManager.FindSession(nowPlayingSessionInfo);
+
+                    if (session != null && TryCreateMediaSession(session, out var mediaSession))
+                    {
+                        MediaSessions.Add(mediaSession);
+                        changed = true;
+                    }
                 }
             }
             else if (notificationType == NowPlayingSessionManagerNotificationType.CurrentSessionChanged)
             {
-                var mediaSession = MediaSessions
-                .Cast<NowPlayingMediaSession>()
-                .FirstOrDefault(x => x.NowPlayingSession.GetSessionInfo().Equals(nowPlayingSessionInfo));
+                var mediaSession = FindMediaSession(nowPlayingSessionInfo);
 
                 if (mediaSession != null)
                 {
@@ -118,16 +124,98 @@ namespace Flylet.Core.Media.Control
             }
             else if (notificationType == NowPlayingSessionManagerNotificationType.SessionDisconnected)
             {
-                var mediaSession = MediaSessions
-                .Cast<NowPlayingMediaSession>()
-                .FirstOrDefault(x => x.NowPlayingSession.GetSessionInfo().Equals(nowPlayingSessionInfo));
+                var mediaSession = FindMediaSession(nowPlayingSessionInfo);
 
                 if (mediaSession != null)
                 {
                     mediaSession.Disconnect();
                     MediaSessions.Remove(mediaSession);
-                    RaiseMediaSessionsChanged();
+                    changed = true;
                 }
+            }
+
+            if (changed)
+            {
+                RaiseMediaSessionsChanged();
+            }
+        }
+
+        /// <summary>
+        /// Adds NPSM's sessions we don't have yet and drops the ones NPSM no longer lists.
+        /// </summary>
+        /// <returns>Whether <see cref="MediaSessionManager.MediaSessions"/> changed.</returns>
+        private bool SyncSessions()
+        {
+            NowPlayingSession[] sessions;
+            try
+            {
+                sessions = NPSessionManager.GetSessions();
+            }
+            catch (Exception ex)
+            {
+                // Without the list, leave the sessions as they are
+                System.Diagnostics.Debug.WriteLine($"{nameof(NowPlayingMediaSessionManager)}: no session list: {ex.Message}");
+                return false;
+            }
+
+            var current = sessions
+                .Select(s => (Session: s, Info: TryGetSessionInfo(s)))
+                .Where(s => s.Info != null)
+                .ToList();
+
+            bool changed = false;
+
+            foreach (var mediaSession in MediaSessions.Cast<NowPlayingMediaSession>().ToList())
+            {
+                if (!current.Any(s => SameSession(s.Info, mediaSession.SessionInfo)))
+                {
+                    mediaSession.Disconnect();
+                    MediaSessions.Remove(mediaSession);
+                    changed = true;
+                }
+            }
+
+            foreach (var (session, info) in current)
+            {
+                if (FindMediaSession(info) == null && TryCreateMediaSession(session, out var mediaSession))
+                {
+                    MediaSessions.Add(mediaSession);
+                    changed = true;
+                }
+            }
+
+            return changed;
+        }
+
+        private NowPlayingMediaSession FindMediaSession(NowPlayingSessionInfo info) => MediaSessions
+            .Cast<NowPlayingMediaSession>()
+            .FirstOrDefault(x => SameSession(x.SessionInfo, info));
+
+        // NPSM compares the two itself, and the call fails if it has gone away
+        private static bool SameSession(NowPlayingSessionInfo a, NowPlayingSessionInfo b)
+        {
+            if (a == null || b == null)
+                return false;
+
+            try
+            {
+                return a.Equals(b);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private static NowPlayingSessionInfo TryGetSessionInfo(NowPlayingSession session)
+        {
+            try
+            {
+                return session.GetSessionInfo();
+            }
+            catch
+            {
+                return null;
             }
         }
 

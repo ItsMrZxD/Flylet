@@ -18,7 +18,16 @@ namespace Flylet.Core.Media.Control
         private int currentTrackNumber;
         private string sourceAppId = string.Empty;
 
+        // Firefox reports a new song's length for only ~60 ms, sometimes just before the new title
+        private static readonly TimeSpan TimelineReplayWindow = TimeSpan.FromSeconds(3);
+        private readonly TimelineSnapshotBuffer recentTimelines = new();
+
         public NowPlayingSession NowPlayingSession => NPSession;
+
+        /// <summary>
+        /// Read once at creation, so finding this session later never calls into a session that has gone away.
+        /// </summary>
+        public NowPlayingSessionInfo SessionInfo { get; private set; }
 
         public NowPlayingMediaSession(NowPlayingSession nowPlayingSession)
         {
@@ -34,6 +43,12 @@ namespace Flylet.Core.Media.Control
             try
             {
                 sourceAppId = NPSession.SourceAppId;
+            }
+            catch { }
+
+            try
+            {
+                SessionInfo = NPSession.GetSessionInfo();
             }
             catch { }
 
@@ -64,9 +79,24 @@ namespace Flylet.Core.Media.Control
 
         private void MediaPlaybackDataSource_MediaPlaybackDataChanged(object sender, MediaPlaybackDataChangedArgs e)
         {
-            Application.Current.Dispatcher.Invoke(() =>
+            var dataChangedEvent = e.DataChangedEvent;
+
+            // Read the timeline right here: Firefox's report of a new song's length is gone ~60 ms later,
+            // often before the UI thread would get to it
+            TimelineSnapshot timeline = null;
+            if (dataChangedEvent is MediaPlaybackDataChangedEvent.PlaybackInfoChanged
+                or MediaPlaybackDataChangedEvent.TimelinePropertiesChanged)
             {
-                switch (e.DataChangedEvent)
+                timeline = TryReadTimeline();
+            }
+
+            // BeginInvoke: holding NPSM's thread while the UI is busy would make us miss the next short report
+            Application.Current?.Dispatcher.BeginInvoke(() =>
+            {
+                if (mediaPlaybackDataSource == null)
+                    return;
+
+                switch (dataChangedEvent)
                 {
                     case MediaPlaybackDataChangedEvent.MediaInfoChanged:
                         UpdateSessionInfo();
@@ -74,11 +104,11 @@ namespace Flylet.Core.Media.Control
 
                     case MediaPlaybackDataChangedEvent.PlaybackInfoChanged:
                         UpdatePlaybackInfo();
-                        UpdateTimelineInfo();
+                        ApplyTimeline(timeline);
                         break;
 
                     case MediaPlaybackDataChangedEvent.TimelinePropertiesChanged:
-                        UpdateTimelineInfo();
+                        ApplyTimeline(timeline);
                         break;
 
                     default:
@@ -99,6 +129,7 @@ namespace Flylet.Core.Media.Control
             }
             mediaPlaybackDataSource = null;
             NPSession = null;
+            recentTimelines.Clear();
             StopTimeline();
 
             sourceAppInfo?.Dispose();
@@ -144,30 +175,83 @@ namespace Flylet.Core.Media.Control
         {
             if (mediaPlaybackDataSource != null)
             {
-                // Read the timeline even when the source can't seek: Edge on Windows 10 reports the song's
-                // length and position without the PlaybackPosition capability (the card shows a progress bar then)
-                try
+                var timeline = TryReadTimeline();
+                if (timeline != null)
                 {
-                    var timeline = mediaPlaybackDataSource.GetMediaTimelineProperties();
-                    var playback = mediaPlaybackDataSource.GetMediaPlaybackInfo();
-                    var positionSetTime = timeline.PositionSetFileTime;
-
-                    UpdateTimeline(new TimelineSnapshot
-                    {
-                        StartTime = timeline.StartTime,
-                        EndTime = timeline.EndTime,
-                        Position = timeline.Position,
-                        // Unset times come back as DateTime.MinValue, which can't be converted with a positive UTC offset
-                        LastUpdatedTime = positionSetTime.Year > 2000 ? new DateTimeOffset(positionSetTime) : default,
-                        PlaybackRate = playback.PlaybackRate,
-                        IsPlaying = playback.PlaybackState == MediaPlaybackState.Playing
-                    });
+                    UpdateTimeline(timeline);
                 }
-                catch (Exception ex)
+                else
                 {
-                    System.Diagnostics.Debug.WriteLine($"{nameof(NowPlayingMediaSession)}: no timeline: {ex.Message}");
                     ClearTimeline();
                 }
+            }
+        }
+
+        /// <summary>
+        /// Shows a timeline read on NPSM's thread, or reads it now if that read failed.
+        /// </summary>
+        private void ApplyTimeline(TimelineSnapshot timeline)
+        {
+            if (timeline != null)
+            {
+                UpdateTimeline(timeline);
+            }
+            else
+            {
+                UpdateTimelineInfo();
+            }
+        }
+
+        /// <summary>
+        /// Reads the source's timeline and remembers it for <see cref="ReplayRecentTimelines"/>. Any thread.
+        /// </summary>
+        private TimelineSnapshot TryReadTimeline()
+        {
+            var source = mediaPlaybackDataSource;
+            if (source == null)
+                return null;
+
+            var receivedTime = DateTimeOffset.UtcNow;
+
+            // Read the timeline even when the source can't seek: Edge on Windows 10 reports the song's
+            // length and position without the PlaybackPosition capability (the card shows a progress bar then)
+            try
+            {
+                var timeline = source.GetMediaTimelineProperties();
+                var playback = source.GetMediaPlaybackInfo();
+                var positionSetTime = timeline.PositionSetFileTime;
+
+                var snapshot = new TimelineSnapshot
+                {
+                    StartTime = timeline.StartTime,
+                    EndTime = timeline.EndTime,
+                    Position = timeline.Position,
+                    // Unset times come back as DateTime.MinValue, which can't be converted with a positive UTC offset
+                    LastUpdatedTime = positionSetTime.Year > 2000 ? new DateTimeOffset(positionSetTime) : default,
+                    PlaybackRate = playback.PlaybackRate,
+                    IsPlaying = playback.PlaybackState == MediaPlaybackState.Playing
+                };
+
+                recentTimelines.Add(receivedTime, snapshot);
+                return snapshot;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"{nameof(NowPlayingMediaSession)}: no timeline: {ex.Message}");
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// After a title change, shows the timelines that arrived shortly before it: Firefox sometimes
+        /// reports the new song's length just before its title.
+        /// </summary>
+        private void ReplayRecentTimelines()
+        {
+            foreach (var (receivedTime, snapshot) in recentTimelines.GetRecent(DateTimeOffset.UtcNow, TimelineReplayWindow))
+            {
+                // Without the source's own time, count the position from when the report arrived
+                UpdateTimeline(snapshot.LastUpdatedTime.Year > 2000 ? snapshot : snapshot with { LastUpdatedTime = receivedTime });
             }
         }
 
@@ -180,6 +264,8 @@ namespace Flylet.Core.Media.Control
 
             var mediaInfo = mediaPlaybackDataSource.GetMediaObjectInfo();
 
+            // Setting a new title forgets the old song's timeline (see MediaSession)
+            bool isNewTitle = !string.Equals(Title, mediaInfo.Title);
             Title = mediaInfo.Title;
             Artist = mediaInfo.Artist;
             if (currentTrackNumber != mediaInfo.TrackNumber)
@@ -217,6 +303,11 @@ namespace Flylet.Core.Media.Control
                 MediaPlaybackMode.AudioBook => MediaPlaybackType.Music,
                 _ => throw new NotImplementedException(),
             };
+
+            if (isNewTitle)
+            {
+                ReplayRecentTimelines();
+            }
 
             UpdateTimelineInfo();
 

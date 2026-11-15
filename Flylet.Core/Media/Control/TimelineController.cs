@@ -83,6 +83,12 @@ namespace Flylet.Core.Media.Control
             }
             else
             {
+                // A position without a length: keep the length already known for this track
+                if (HasLength(snapshot) && !HasLength(newSnapshot))
+                {
+                    newSnapshot = newSnapshot with { StartTime = snapshot.StartTime, EndTime = snapshot.EndTime };
+                }
+
                 bool isFresh = snapshot == null
                     || newSnapshot.Position != snapshot.Position
                     || newSnapshot.LastUpdatedTime != snapshot.LastUpdatedTime;
@@ -123,6 +129,9 @@ namespace Flylet.Core.Media.Control
         // Position 0 with no length is what sources send when they have no timeline
         private static bool IsEmpty(TimelineSnapshot timeline) =>
             timeline.Position == TimeSpan.Zero && timeline.EndTime <= timeline.StartTime;
+
+        private static bool HasLength(TimelineSnapshot timeline) =>
+            timeline != null && timeline.EndTime > timeline.StartTime;
 
         private TimeSpan Estimate(DateTimeOffset now)
         {

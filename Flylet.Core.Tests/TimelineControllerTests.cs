@@ -224,6 +224,36 @@ namespace Flylet.Core.Tests
         }
 
         [Fact]
+        public void EmptyTimeline_NeverOverwritesAKnownLength()
+        {
+            var controller = new TimelineController(clock);
+            controller.Update(Playing(10, endSeconds: 200));
+
+            for (int i = 0; i < 3; i++)
+            {
+                clock.Advance(TimeSpan.FromSeconds(1));
+                controller.Update(new TimelineSnapshot { LastUpdatedTime = clock.GetUtcNow(), PlaybackRate = 1, IsPlaying = true });
+            }
+
+            Assert.Equal(TimeSpan.FromSeconds(200), controller.EndTime);
+            Assert.Equal(TimeSpan.FromSeconds(13), controller.Position);
+        }
+
+        [Fact]
+        public void PositionWithoutLength_KeepsTheKnownLength()
+        {
+            var controller = new TimelineController(clock);
+            controller.Update(Playing(10, endSeconds: 200));
+            clock.Advance(TimeSpan.FromSeconds(5));
+
+            controller.Update(Playing(60, endSeconds: 0, lastUpdated: clock.GetUtcNow()));
+
+            Assert.True(controller.HasTimeline);
+            Assert.Equal(TimeSpan.FromSeconds(200), controller.EndTime);
+            Assert.Equal(TimeSpan.FromSeconds(60), controller.Position);
+        }
+
+        [Fact]
         public void Clear_ForgetsTheOldTrack()
         {
             var controller = new TimelineController(clock);
