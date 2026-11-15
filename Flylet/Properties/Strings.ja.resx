@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet が {0} に更新されました</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>アプリを表示</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>アプリを非表示</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>システム音</value>
+  </data>
 </root>

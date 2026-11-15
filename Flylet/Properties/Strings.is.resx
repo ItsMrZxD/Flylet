@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet uppfært í {0}</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>Sýna forrit</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>Fela forrit</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>Kerfishljóð</value>
+  </data>
 </root>

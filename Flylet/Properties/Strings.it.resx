@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet aggiornato alla versione {0}</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>Mostra app</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>Nascondi app</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>Suoni di sistema</value>
+  </data>
 </root>

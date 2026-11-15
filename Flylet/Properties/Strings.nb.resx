@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet oppdatert til {0}</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>Vis apper</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>Skjul apper</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>Systemlyder</value>
+  </data>
 </root>

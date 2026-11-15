@@ -1483,6 +1483,33 @@ namespace Flylet.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Show apps.
+        /// </summary>
+        public static string VolumeMixer_Show {
+            get {
+                return ResourceManager.GetString("VolumeMixer.Show", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hide apps.
+        /// </summary>
+        public static string VolumeMixer_Hide {
+            get {
+                return ResourceManager.GetString("VolumeMixer.Hide", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to System sounds.
+        /// </summary>
+        public static string VolumeMixer_SystemSounds {
+            get {
+                return ResourceManager.GetString("VolumeMixer.SystemSounds", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Keep on screen.
         /// </summary>
         public static string FlyoutPin {

@@ -815,4 +815,13 @@
   <data name="About.OpenInStore" xml:space="preserve">
     <value>Open in Store</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>Show apps</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>Hide apps</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>System sounds</value>
+  </data>
 </root>

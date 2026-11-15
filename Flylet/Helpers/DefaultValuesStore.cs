@@ -88,6 +88,8 @@ namespace Flylet.Helpers
 
         public const bool ShowCardBorder = true;
 
+        public const bool VolumeMixerExpanded = false;
+
         public const bool UseLessMemory = false;
 
         public static MediaCardLayout MediaCardLayout => MediaCardLayout.Classic;

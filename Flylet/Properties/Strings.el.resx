@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Το Flylet ενημερώθηκε στην έκδοση {0}</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>Εμφάνιση εφαρμογών</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>Απόκρυψη εφαρμογών</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>Ήχοι συστήματος</value>
+  </data>
 </root>

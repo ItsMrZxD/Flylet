@@ -1,4 +1,4 @@
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Flylet.Controls;
 using Flylet.Core.Helpers;
 using Flylet.Core.Media;
@@ -185,6 +185,23 @@ namespace Flylet.UI
         {
             get => isFlyoutPinned;
             set => SetProperty(ref isFlyoutPinned, value);
+        }
+
+        private bool volumeMixerExpanded = DefaultValuesStore.VolumeMixerExpanded;
+
+        /// <summary>
+        /// Whether the per-app volume list under the volume slider is open. Remembered across restarts.
+        /// </summary>
+        public bool VolumeMixerExpanded
+        {
+            get => volumeMixerExpanded;
+            set
+            {
+                if (SetProperty(ref volumeMixerExpanded, value))
+                {
+                    AppDataHelper.VolumeMixerExpanded = value;
+                }
+            }
         }
 
         private bool showCardBorder = DefaultValuesStore.ShowCardBorder;
@@ -1587,6 +1604,7 @@ namespace Flylet.UI
             UseColoredTrayIcon = AppDataHelper.UseColoredTrayIcon;
             FlyoutAnimationEnabled = AppDataHelper.FlyoutAnimationEnabled;
             ShowCardBorder = AppDataHelper.ShowCardBorder;
+            VolumeMixerExpanded = AppDataHelper.VolumeMixerExpanded;
             UseLessMemory = AppDataHelper.UseLessMemory;
 
             // Straight into the fields: the setters would re-save what was just read and rebuild the accent

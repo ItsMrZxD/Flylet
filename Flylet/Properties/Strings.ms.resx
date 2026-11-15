@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet dikemas kini ke {0}</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>Tunjukkan apl</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>Sembunyikan apl</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>Bunyi sistem</value>
+  </data>
 </root>

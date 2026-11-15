@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet đã cập nhật lên {0}</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>Hiện ứng dụng</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>Ẩn ứng dụng</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>Âm thanh hệ thống</value>
+  </data>
 </root>

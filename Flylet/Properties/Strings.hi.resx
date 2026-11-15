@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet {0} में अपडेट हुआ</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>ऐप्स दिखाएँ</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>ऐप्स छिपाएँ</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>सिस्टम ध्वनियाँ</value>
+  </data>
 </root>

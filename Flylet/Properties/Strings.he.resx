@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet עודכן לגרסה {0}</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>הצג אפליקציות</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>הסתר אפליקציות</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>צלילי מערכת</value>
+  </data>
 </root>

@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>تم تحديث Flylet إلى {0}</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>إظهار التطبيقات</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>إخفاء التطبيقات</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>أصوات النظام</value>
+  </data>
 </root>

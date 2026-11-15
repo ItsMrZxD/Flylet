@@ -1,4 +1,5 @@
 ﻿using Flylet.Controls;
+using Flylet.Core.Audio;
 using Flylet.Core.Media.Control;
 using Flylet.Core.Utilities;
 using Flylet.Helpers;
@@ -22,6 +23,7 @@ namespace Flylet
         private MMDeviceEnumerator enumerator;
         private MMDevice device;
         private VolumeControl volumeControl;
+        private AppAudioMixer mixer;
         private SessionsPanel sessionsPanel;
         private TextBlock noDeviceMessageBlock;
         private List<MediaSessionManager> mediaSessionManagers = new();
@@ -79,6 +81,11 @@ namespace Flylet
             volumeControl.VolumeButton.Click += VolumeButton_Click;
             volumeControl.VolumeSlider.ValueChanged += VolumeSlider_ValueChanged;
             volumeControl.VolumeSlider.PreviewMouseWheel += VolumeSlider_PreviewMouseWheel;
+
+            // Per-app volume list under the slider; kept live by Windows' events, re-read on show to be safe
+            mixer = new AppAudioMixer(Application.Current.Dispatcher, Properties.Strings.VolumeMixer_SystemSounds);
+            volumeControl.DataContext = mixer;
+            volumeControl.IsVisibleChanged += (_, e) => { if ((bool)e.NewValue && IsEnabled) mixer.Resync(); };
 
             noDeviceMessageBlock = new TextBlock()
             {
@@ -176,6 +183,9 @@ namespace Flylet
             }
 
             device = mmdevice;
+            string deviceId = null;
+            try { deviceId = mmdevice?.ID; } catch { }
+            Application.Current.Dispatcher.BeginInvoke(() => mixer.SetDevice(IsEnabled ? deviceId : null));
             if (device != null)
             {
                 try
@@ -369,6 +379,9 @@ namespace Flylet
             {
                 device.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
                 PrimaryContent = volumeControl;
+                string deviceId = null;
+                try { deviceId = device.ID; } catch { }
+                mixer.SetDevice(deviceId);
             }
             else { PrimaryContent = noDeviceMessageBlock; }
 
@@ -393,6 +406,7 @@ namespace Flylet
 
             PrimaryContent = null;
             PrimaryContentVisible = false;
+            mixer.SetDevice(null);
 
             foreach (var mediaSessionManager in mediaSessionManagers)
             {

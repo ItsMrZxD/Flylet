@@ -307,6 +307,12 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static bool VolumeMixerExpanded
+        {
+            get => GetValue(DefaultValuesStore.VolumeMixerExpanded);
+            set => SetValue(value);
+        }
+
         public static bool UseLessMemory
         {
             get => GetValue(DefaultValuesStore.UseLessMemory);

@@ -710,4 +710,13 @@
   <data name="WhatsNew.Title" xml:space="preserve">
     <value>Flylet به {0} به‌روزرسانی شد</value>
   </data>
+  <data name="VolumeMixer.Show" xml:space="preserve">
+    <value>نمایش برنامه‌ها</value>
+  </data>
+  <data name="VolumeMixer.Hide" xml:space="preserve">
+    <value>پنهان کردن برنامه‌ها</value>
+  </data>
+  <data name="VolumeMixer.SystemSounds" xml:space="preserve">
+    <value>صداهای سیستم</value>
+  </data>
 </root>
