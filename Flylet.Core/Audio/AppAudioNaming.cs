@@ -49,6 +49,21 @@ namespace Flylet.Core.Audio
         }
 
         /// <summary>
+        /// Windows hands back the raw id (often a path like "{GUID}\Steam\steam.exe") when an app has no Start-menu
+        /// entry; only a real name counts.
+        /// </summary>
+        public static bool IsUsableStartMenuName(string name, string appId)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return false;
+            name = name.Trim();
+            return !string.Equals(name, appId?.Trim(), StringComparison.OrdinalIgnoreCase)
+                && name.IndexOfAny(new[] { '\\', '/' }) < 0
+                && !name.StartsWith("{")
+                && !name.EndsWith(".exe", StringComparison.OrdinalIgnoreCase);
+        }
+
+        /// <summary>
         /// The letter shown in a circle when an app has no icon: the first letter or digit of its name, upper case.
         /// </summary>
         public static string InitialOf(string name)

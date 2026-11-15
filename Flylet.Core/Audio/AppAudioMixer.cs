@@ -28,6 +28,9 @@ namespace Flylet.Core.Audio
         // Every stream we listen to, by Windows' instance id, so events are registered once per stream
         private readonly Dictionary<string, (AudioSessionControl Control, SessionEvents Events)> watched = new();
 
+        // Windows doesn't always end a closed app's streams at once, so the processes are watched too
+        private readonly Dictionary<uint, IDisposable> exitWatches = new();
+
         public AppAudioMixer(Dispatcher dispatcher, string systemSoundsName)
         {
             this.dispatcher = dispatcher;
@@ -97,6 +100,7 @@ namespace Flylet.Core.Audio
             var groups = new Dictionary<string, List<AudioSessionControl>>();
             var firstOf = new Dictionary<string, AudioSessionControl>();
             var seenIds = new HashSet<string>();
+            var livePids = new HashSet<uint>();
 
             if (manager != null)
             {
@@ -112,8 +116,10 @@ namespace Flylet.Core.Audio
 
                         uint pid = fresh.GetProcessID;
                         bool system = fresh.IsSystemSoundsSession;
-                        if (!system && pid == ownProcessId)
+                        if (!system && (pid == ownProcessId || !AppAudioIdentity.IsProcessRunning(pid)))
                             continue;
+                        if (!system && pid != 0)
+                            livePids.Add(pid);
 
                         string id = fresh.GetSessionInstanceIdentifier;
                         seenIds.Add(id);
@@ -143,6 +149,7 @@ namespace Flylet.Core.Audio
 
             foreach (var id in watched.Keys.Where(k => !seenIds.Contains(k)).ToList())
                 Unwatch(id);
+            UpdateExitWatches(livePids);
 
             // Drop rows whose app has no streams left
             for (int i = Apps.Count - 1; i >= 0; i--)
@@ -154,8 +161,19 @@ namespace Flylet.Core.Audio
             foreach (var (key, controls) in groups)
             {
                 var entry = Apps.FirstOrDefault(a => a.Key == key);
-                if (entry == null)
+                bool isNew = entry == null;
+                if (isNew)
                     entry = AddEntry(key, firstOf[key]);
+
+                // A muted app stays muted when it starts another stream (an ad, a new tab)
+                var added = controls.Where(c => !entry.Sessions.Contains(c)).ToList();
+                if (!isNew && entry.Muted)
+                {
+                    foreach (var c in added)
+                    {
+                        try { c.SimpleAudioVolume.Mute = true; } catch { }
+                    }
+                }
 
                 entry.Sessions.Clear();
                 entry.Sessions.AddRange(controls);
@@ -175,7 +193,7 @@ namespace Flylet.Core.Audio
             {
                 pid = first.GetProcessID;
                 system = first.IsSystemSoundsSession;
-                display = first.DisplayName;
+                display = AppAudioIdentity.LoadIndirectString(first.DisplayName);
                 iconPath = first.IconPath;
             }
             catch { }
@@ -185,7 +203,8 @@ namespace Flylet.Core.Audio
 
             var entry = new AppAudioEntry(key, pid, path, system, name);
             Apps.Add(entry);
-            AppAudioIcons.Load(entry, iconPath, dispatcher);
+            bool keepName = system || (!string.IsNullOrWhiteSpace(display) && !display.TrimStart().StartsWith("@"));
+            AppAudioIcons.Load(entry, iconPath, keepName, dispatcher);
             return entry;
         }
 
@@ -222,8 +241,24 @@ namespace Flylet.Core.Audio
             try { w.Control.UnRegisterEventClient(w.Events); } catch { }
         }
 
+        private void UpdateExitWatches(HashSet<uint> livePids)
+        {
+            foreach (var pid in exitWatches.Keys.Where(p => !livePids.Contains(p)).ToList())
+            {
+                exitWatches[pid]?.Dispose();
+                exitWatches.Remove(pid);
+            }
+            foreach (var pid in livePids)
+            {
+                if (!exitWatches.ContainsKey(pid))
+                    exitWatches[pid] = AppAudioIdentity.WatchProcessExit(pid, () => dispatcher.BeginInvoke(QueueResync));
+            }
+        }
+
         private void StopWatching()
         {
+            UpdateExitWatches(new HashSet<uint>());
+
             foreach (var id in watched.Keys.ToList())
                 Unwatch(id);
 

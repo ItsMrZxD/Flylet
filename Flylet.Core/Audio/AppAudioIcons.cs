@@ -1,6 +1,3 @@
-using Flylet.Core.AppInformation;
-using Flylet.Core.Helpers;
-using Flylet.Core.Interop;
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -14,77 +11,59 @@ using System.Windows.Threading;
 namespace Flylet.Core.Audio
 {
     /// <summary>
-    /// Finds a mixer row's icon (and, for Store apps, their real name). In order: the icon the stream itself names
-    /// (System sounds does), the Store app's logo, the program file's own icon. No icon at all = null, and the row
-    /// falls back to a letter. Results are kept per app.
+    /// Finds a mixer row's icon and Start-menu name off the UI thread. Icon order: the icon the stream names itself
+    /// (System sounds does), the app's Start-menu icon, the program file's own icon. No icon = null, and the row
+    /// shows a letter. Results are kept per app.
     /// </summary>
     internal static class AppAudioIcons
     {
-        private static readonly Dictionary<string, (ImageSource Icon, string Name)> cache = new();
+        // Drawn at 20 px; 40 px stays sharp up to 200% scaling
+        private const int IconSize = 40;
 
-        public static void Load(AppAudioEntry entry, string sessionIconPath, Dispatcher dispatcher)
+        private static readonly Dictionary<string, (ImageSource Icon, string StartMenuName)> cache = new();
+
+        /// <param name="keepName">The stream named itself; that name wins over the Start-menu one.</param>
+        public static void Load(AppAudioEntry entry, string sessionIconPath, bool keepName, Dispatcher dispatcher)
         {
             if (cache.TryGetValue(entry.Key, out var hit))
             {
-                Apply(entry, hit.Icon, hit.Name);
+                Apply(entry, hit.Icon, keepName ? null : hit.StartMenuName);
                 return;
             }
 
-            // Store apps: the logo and name from their package, like the media card does
-            if (!entry.IsSystemSounds && NativeMethods.IsImmersiveProcess(entry.ProcessId))
-            {
-                var info = SourceAppInfo.FromProcessId(entry.ProcessId);
-                if (info != null)
-                {
-                    info.InfoFetched += (_, _) => dispatcher.BeginInvoke(() =>
-                    {
-                        ImageSource logo = null;
-                        try
-                        {
-                            if (BitmapHelper.TryCreateBitmapImageFromStream(info.LogoStream, out var bitmap))
-                            {
-                                bitmap.Freeze();
-                                logo = bitmap;
-                            }
-                        }
-                        catch { }
-
-                        string name = string.IsNullOrWhiteSpace(info.DisplayName) ? null : info.DisplayName;
-                        info.Dispose();
-
-                        if (logo != null)
-                            Store(entry, logo, name);
-                        else
-                            LoadFromFiles(entry, sessionIconPath, dispatcher, name);
-                    });
-                    info.FetchInfosAsync();
-                    return;
-                }
-            }
-
-            LoadFromFiles(entry, sessionIconPath, dispatcher, null);
-        }
-
-        private static void LoadFromFiles(AppAudioEntry entry, string sessionIconPath, Dispatcher dispatcher, string name)
-        {
+            uint pid = entry.ProcessId;
             string exePath = entry.ExePath;
+            bool system = entry.IsSystemSounds;
+
             Task.Run(() =>
             {
-                ImageSource icon = FromIconResource(sessionIconPath) ?? FromProgramFile(exePath);
-                dispatcher.BeginInvoke(() => Store(entry, icon, name));
-            });
-        }
+                string startMenuName = null;
+                ImageSource icon = FromIconResource(sessionIconPath);
 
-        private static void Store(AppAudioEntry entry, ImageSource icon, string name)
-        {
-            cache[entry.Key] = (icon, name);
-            Apply(entry, icon, name);
+                if (!system)
+                {
+                    string appId = AppAudioIdentity.GetAppId(pid);
+                    string name = AppAudioIdentity.GetStartMenuName(appId);
+                    if (AppAudioNaming.IsUsableStartMenuName(name, appId))
+                    {
+                        startMenuName = name;
+                        icon ??= AppAudioIdentity.GetStartMenuIcon(appId, IconSize);
+                    }
+                    icon ??= AppAudioIdentity.GetFileIcon(exePath, IconSize);
+                }
+
+                dispatcher.BeginInvoke(() =>
+                {
+                    cache[entry.Key] = (icon, startMenuName);
+                    Apply(entry, icon, keepName ? null : startMenuName);
+                });
+            });
         }
 
         private static void Apply(AppAudioEntry entry, ImageSource icon, string name)
         {
             entry.Icon = icon;
-            if (name != null)
+            if (!string.IsNullOrWhiteSpace(name))
                 entry.Name = name;
         }
 
@@ -104,35 +83,17 @@ namespace Flylet.Core.Audio
                 index = parsed;
                 text = text[..comma];
             }
-            return Extract(text, index);
-        }
 
-        /// <summary>
-        /// The program file's own icon; null if the file has none (Windows would show a blank program icon).
-        /// </summary>
-        private static ImageSource FromProgramFile(string exePath)
-        {
-            if (string.IsNullOrWhiteSpace(exePath))
-                return null;
-            return Extract(exePath, 0);
-        }
-
-        private static ImageSource Extract(string file, int index)
-        {
             IntPtr large = IntPtr.Zero;
             try
             {
-                if (ExtractIconEx(file, index, out large, IntPtr.Zero, 1) == 0 || large == IntPtr.Zero)
+                if (ExtractIconEx(text, index, out large, IntPtr.Zero, 1) == 0 || large == IntPtr.Zero)
                     return null;
-
                 var source = Imaging.CreateBitmapSourceFromHIcon(large, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                 source.Freeze();
                 return source;
             }
-            catch
-            {
-                return null;
-            }
+            catch { return null; }
             finally
             {
                 if (large != IntPtr.Zero)

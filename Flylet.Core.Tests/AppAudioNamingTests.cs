@@ -43,6 +43,19 @@ namespace Flylet.Core.Tests
             Assert.Equal(expected, AppAudioNaming.InitialOf(name));
         }
 
+        [Theory]
+        [InlineData("Spotify", "SpotifyAB.SpotifyMusic_zpdnekdrzrea0!Spotify", true)]
+        [InlineData("Google Chrome", "Chrome", true)]
+        [InlineData("Chrome", "Chrome", false)]
+        [InlineData(@"{6D809377-6AF0-444B-8957-A3773F02200E}\Steam\steam.exe", @"{6D809377-6AF0-444B-8957-A3773F02200E}\Steam\steam.exe", false)]
+        [InlineData("steam.exe", "x", false)]
+        [InlineData("  ", "x", false)]
+        [InlineData(null, "x", false)]
+        public void IsUsableStartMenuName_RejectsRawIds(string name, string appId, bool expected)
+        {
+            Assert.Equal(expected, AppAudioNaming.IsUsableStartMenuName(name, appId));
+        }
+
         [Fact]
         public void Compare_PutsSystemSoundsLast()
         {
