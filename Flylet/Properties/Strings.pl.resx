@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Zmień kolor</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Wizualizer muzyki</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Subtelny</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Żywy</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Impreza</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Własny</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Styl wizualizera</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Miękkie wypełnienie między falami</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Poświata</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Suwak pulsuje w rytm</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Iskry w rytm</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Kolor zmienia się wzdłuż paska</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Więcej fal</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Słabe fale za suwakiem</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Jak mocno się porusza</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Porusza się z tym, co odtwarza komputer. Wyłączony, gdy włączone jest „Używaj mniej pamięci”.</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Wybierz preferowany monitor, na którym ma być wyświetlana nakładka</value>
   </data>

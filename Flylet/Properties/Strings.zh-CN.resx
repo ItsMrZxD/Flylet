@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>更改颜色</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>音乐可视化</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>低调</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>活泼</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>派对</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>可视化样式</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>波浪之间柔和填充</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>光晕</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>滑块随节拍跳动</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>随节拍闪出火花</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>颜色沿进度条渐变</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>更多波浪</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>滑块之后的淡淡波浪</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>律动幅度</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>随电脑正在播放的声音律动。开启"使用更少内存"时会关闭。</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>选择用于显示浮出控件的首选显示器</value>
   </data>

@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Kleur wijzigen</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Muziekvisualisatie</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Subtiel</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Levendig</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Feest</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Aangepast</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Visualisatiestijl</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Zachte vulling tussen de golven</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Gloed</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Schuifknop pulseert op de beat</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Vonken op de beat</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Kleur verloopt over de balk</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Meer golven</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Vage golven na de schuifknop</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Hoeveel het beweegt</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Beweegt mee met wat je pc afspeelt. Uit wanneer "Minder geheugen gebruiken" aan staat.</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Selecteer de gewenste monitor om de flyout op weer te geven</value>
   </data>

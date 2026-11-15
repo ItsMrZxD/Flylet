@@ -431,6 +431,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>色を変更</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>ミュージックビジュアライザー</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>控えめ</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>にぎやか</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>パーティー</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>カスタム</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>ビジュアライザーのスタイル</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>波の間をやわらかく塗りつぶす</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>グロー</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>つまみがビートに合わせて脈打つ</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>ビートに合わせて火花</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>バーに沿って色が変わる</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>波を増やす</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>つまみの先にかすかな波</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>動きの大きさ</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>PC で再生中の音に合わせて動きます。「メモリ使用量を減らす」がオンのときはオフになります。</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>プレビュー</value>
   </data>

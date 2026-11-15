@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>रंग बदलें</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>संगीत विज़ुअलाइज़र</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>हल्का</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>जीवंत</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>पार्टी</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>कस्टम</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>विज़ुअलाइज़र शैली</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>लहरों के बीच हल्का भराव</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>चमक</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>थंब बीट पर धड़कता है</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>बीट पर चिंगारियाँ</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>बार के साथ रंग बदलता है</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>ज़्यादा लहरें</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>थंब के बाद हल्की लहरें</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>यह कितना हिलता है</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>आपके PC पर जो भी चल रहा है उसके साथ हिलता है। "कम मेमोरी उपयोग करें" चालू होने पर बंद रहता है।</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>फ्लाईआउट दिखाने के लिए पसंदीदा डिस्प्ले मॉनिटर चुनें</value>
   </data>

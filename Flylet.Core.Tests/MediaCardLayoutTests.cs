@@ -46,6 +46,19 @@ namespace Flylet.Core.Tests
         }
 
         [Fact]
+        public void Visualizer_IsAFullTimeline_ButThinOnThePill()
+        {
+            var card = MediaCardLayout.Classic with { Timeline = MediaCardTimeline.Visualizer };
+            Assert.True(card.HasFullTimeline);
+            Assert.Equal(MediaCardLayout.Classic.Height, card.Height);
+            Assert.Equal(MediaCardPreset.Custom, card.Preset);
+
+            var pill = MediaCardLayout.CompactPill with { Timeline = MediaCardTimeline.Visualizer };
+            Assert.Equal(MediaCardTimeline.Thin, pill.EffectiveTimeline);
+            Assert.False(pill.HasFullTimeline);
+        }
+
+        [Fact]
         public void Pill_HidesSourceAndShrinksFullTimeline()
         {
             var layout = MediaCardLayout.Classic with { Shape = MediaCardShape.Pill };

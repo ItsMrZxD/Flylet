@@ -193,9 +193,13 @@
                     <TextBlock VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}"
                                Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
                                Text="{Binding PlaybackPosition, Converter={StaticResource TimeSpanToStringConverter}}" />
-                    <!-- SPIKE (visualizer-spike): music-reactive waves under the slider's thumb -->
-                    <local:VisualizerWaves Grid.Column="1" Margin="10,0" Height="28" VerticalAlignment="Center"
-                                           Accent="{DynamicResource SystemControlHighlightAccentBrush}">
+                    <!-- Music visualizer timeline: draws the track, waves and thumb itself; the slider stays on
+                         top (see-through) so seeking works the same (SessionControl.UpdateVisualizer) -->
+                    <local:VisualizerWaves x:Name="VisualizerWaves" x:FieldModifier="private" Visibility="Collapsed"
+                                           Grid.Column="1" Margin="10,0" Height="32" VerticalAlignment="Center"
+                                           Accent="{DynamicResource SystemControlHighlightAccentBrush}"
+                                           TrackBrush="{DynamicResource SystemControlForegroundBaseLowBrush}"
+                                           IsHovered="{Binding IsMouseOver, ElementName=TimelineSlider}">
                         <local:VisualizerWaves.Fraction>
                             <MultiBinding Converter="{StaticResource TimelineFractionConverter}">
                                 <Binding Path="PlaybackPosition" />
@@ -205,7 +209,7 @@
                             </MultiBinding>
                         </local:VisualizerWaves.Fraction>
                     </local:VisualizerWaves>
-                    <Slider Grid.Column="1" IsMoveToPointEnabled="True" Margin="10,0"
+                    <Slider x:Name="TimelineSlider" x:FieldModifier="private" Grid.Column="1" IsMoveToPointEnabled="True" Margin="10,0"
                             IsEnabled="{Binding IsPlaybackPositionEnabled}"
                             Minimum="{Binding TimelineStartTime, Mode=OneWay, Converter={StaticResource TimeSpanToNumberConverter}}"
                             Maximum="{Binding TimelineEndTime, Mode=OneWay, Converter={StaticResource TimeSpanToNumberConverter}}"

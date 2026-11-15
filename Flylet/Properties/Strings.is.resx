@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Breyta lit</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Tónlistarmyndgerving</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Látlaust</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Líflegt</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Partí</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Sérsniðið</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Stíll myndgervingar</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Mjúk fylling milli bylgna</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Ljómi</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Hnappurinn slær í takt</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Neistar í takt</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Liturinn breytist eftir stikunni</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Fleiri bylgjur</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Daufar bylgjur eftir hnappinn</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Hversu mikið það hreyfist</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Hreyfist með því sem tölvan þín spilar. Slökkt þegar "Nota minna minni" er á.</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Veldu skjáinn sem þú vilt nota til að birta sprettigluggann</value>
   </data>

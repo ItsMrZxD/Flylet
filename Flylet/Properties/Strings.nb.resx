@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Endre farge</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Musikkvisualisering</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Diskret</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Livlig</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Fest</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Egendefinert</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Visualiseringsstil</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Myk fyll mellom bølgene</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Glød</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Knappen pulserer i takt</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Gnister i takt</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Fargen skifter langs linjen</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Flere bølger</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Svake bølger etter knappen</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Hvor mye den beveger seg</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Beveger seg med det PC-en spiller. Slått av når "Bruk mindre minne" er på.</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Velg skjermen undermenyen skal vises på</value>
   </data>

@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Changer la couleur</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Visualiseur musical</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Discret</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Animé</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Fête</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Personnalisé</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Style du visualiseur</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Remplissage doux entre les vagues</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Lueur</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Le curseur pulse au rythme</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Étincelles au rythme</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>La couleur varie le long de la barre</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Plus de vagues</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Vagues légères après le curseur</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Amplitude du mouvement</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Bouge avec tout ce que joue votre PC. Désactivé quand « Utiliser moins de mémoire » est activé.</value>
+  </data>
   <data name="About.BasedOn" xml:space="preserve">
     <value>Basé sur Flylet (licence MIT)</value>
   </data>

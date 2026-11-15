@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>تغییر رنگ</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>نمایشگر موسیقی</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>ملایم</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>پرجنب‌وجوش</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>مهمانی</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>سفارشی</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>سبک نمایشگر</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>پرشدگی نرم بین موج‌ها</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>درخشش</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>دستگیره با ضرب می‌تپد</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>جرقه با ضرب</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>تغییر رنگ در طول نوار</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>موج‌های بیشتر</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>موج‌های کم‌رنگ بعد از دستگیره</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>میزان حرکت</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>با هر صدایی که رایانه‌تان پخش می‌کند حرکت می‌کند. وقتی "استفاده از حافظه کمتر" روشن است خاموش می‌شود.</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>نمایشگر ترجیحی برای نمایش فلای‌آوت را انتخاب کنید</value>
   </data>

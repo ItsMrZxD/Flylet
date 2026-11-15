@@ -103,6 +103,10 @@ namespace Flylet.Controls
             {
                 Dispatcher.Invoke(UpdateAccentColor);
             }
+            else if (e.PropertyName == nameof(UI.UIManager.UseLessMemory))
+            {
+                Dispatcher.Invoke(UpdateVisualizer);
+            }
         }
 
         private void Subscribe(MediaSession mediaSession)
@@ -280,7 +284,7 @@ namespace Flylet.Controls
                 ? new Thickness(MediaCardLayout.PillPadding, MediaCardLayout.PillPadding, 12, MediaCardLayout.PillPadding)
                 : new Thickness(MediaCardLayout.Padding, MediaCardLayout.Padding, MediaCardLayout.Padding, 0);
             TimelineRow.Height = new GridLength(
-                layout.EffectiveTimeline == MediaCardTimeline.Full ? MediaCardLayout.FullTimelineHeight
+                layout.HasFullTimeline ? MediaCardLayout.FullTimelineHeight
                 : pill ? 0 : MediaCardLayout.Padding);
 
             // Album art tile
@@ -331,11 +335,24 @@ namespace Flylet.Controls
             PlayPauseButton.Margin = playOnly ? new Thickness(0) : new Thickness(8, 0, 8, 0);
 
             // Timeline
-            TimelineGrid.Visibility = layout.EffectiveTimeline == MediaCardTimeline.Full ? Visibility.Visible : Visibility.Collapsed;
+            TimelineGrid.Visibility = layout.HasFullTimeline ? Visibility.Visible : Visibility.Collapsed;
             ThinTimelineGrid.Visibility = layout.EffectiveTimeline == MediaCardTimeline.Thin ? Visibility.Visible : Visibility.Collapsed;
+            UpdateVisualizer();
 
             UpdateBackgroundArt();
             UpdateClip();
+        }
+
+        /// <summary>
+        /// The visualizer replaces the slider's look (the slider stays, see-through, for seeking). It's off in
+        /// "Use less memory" mode, which keeps the plain slider.
+        /// </summary>
+        private void UpdateVisualizer()
+        {
+            bool on = Layout.EffectiveTimeline == MediaCardTimeline.Visualizer
+                && FlyoutHandler.Instance?.UIManager.UseLessMemory != true;
+            VisualizerWaves.Visibility = on ? Visibility.Visible : Visibility.Collapsed;
+            TimelineSlider.Opacity = on ? 0 : 1;
         }
 
         /// <summary>

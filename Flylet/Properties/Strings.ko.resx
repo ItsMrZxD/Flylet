@@ -431,6 +431,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>색 변경</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>음악 비주얼라이저</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>은은하게</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>생동감 있게</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>파티</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>사용자 지정</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>비주얼라이저 스타일</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>물결 사이 부드러운 채우기</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>빛남</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>박자에 맞춰 핸들이 뜀</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>박자에 맞춰 불꽃</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>막대를 따라 색이 변함</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>물결 더 많이</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>핸들 뒤 희미한 물결</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>움직임 정도</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>PC에서 재생 중인 소리에 맞춰 움직입니다. "메모리 적게 사용"이 켜져 있으면 꺼집니다.</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>미리 보기</value>
   </data>

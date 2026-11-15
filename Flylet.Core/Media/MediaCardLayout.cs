@@ -14,7 +14,8 @@ namespace Flylet.Core.Media
     {
         Full,
         Thin,
-        Hidden
+        Hidden,
+        Visualizer
     }
 
     public enum MediaCardControls
@@ -110,10 +111,15 @@ namespace Flylet.Core.Media
         public bool ControlsBelowText => Controls == MediaCardControls.Full && !IsPill;
 
         /// <summary>
-        /// The pill is too short for the slider, so a full timeline shrinks to the thin bar there.
+        /// The pill is too short for the slider, so a full timeline (or the visualizer) shrinks to the thin bar there.
         /// </summary>
         public MediaCardTimeline EffectiveTimeline =>
-            IsPill && Timeline == MediaCardTimeline.Full ? MediaCardTimeline.Thin : Timeline;
+            IsPill && Timeline is MediaCardTimeline.Full or MediaCardTimeline.Visualizer ? MediaCardTimeline.Thin : Timeline;
+
+        /// <summary>
+        /// The slider row: the full timeline, or the music visualizer drawn on it.
+        /// </summary>
+        public bool HasFullTimeline => EffectiveTimeline is MediaCardTimeline.Full or MediaCardTimeline.Visualizer;
 
         /// <summary>
         /// Height of the art and text block, without the padding around it.
@@ -139,7 +145,7 @@ namespace Flylet.Core.Media
 
         public double Height => IsPill
             ? PillHeight
-            : Padding + TopSectionHeight + (EffectiveTimeline == MediaCardTimeline.Full ? FullTimelineHeight : Padding);
+            : Padding + TopSectionHeight + (HasFullTimeline ? FullTimelineHeight : Padding);
 
         public double CornerRadius => Shape switch
         {

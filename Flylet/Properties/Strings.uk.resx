@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Змінити колір</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Музичний візуалізатор</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Спокійний</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Жвавий</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Вечірка</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Власний</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Стиль візуалізатора</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>М'яка заливка між хвилями</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Сяйво</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Повзунок пульсує в такт</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Іскри в такт</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Колір змінюється вздовж смуги</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Більше хвиль</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Слабкі хвилі після повзунка</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Сила руху</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Рухається в такт усьому, що грає на ПК. Вимикається, коли ввімкнено «Використовувати менше пам’яті».</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Виберіть бажаний монітор для показу спливаючого меню</value>
   </data>

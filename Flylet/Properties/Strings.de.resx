@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Farbe ändern</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Musikvisualisierung</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Dezent</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Lebhaft</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Party</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Eigene</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Visualisierungsstil</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Weiche Füllung zwischen den Wellen</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Leuchten</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Regler pulsiert im Takt</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Funken im Takt</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Farbe verläuft entlang der Leiste</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Mehr Wellen</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Schwache Wellen nach dem Regler</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Wie stark es sich bewegt</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Bewegt sich mit allem, was dein PC abspielt. Aus, wenn "Weniger Speicher verwenden" an ist.</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Bevorzugten Monitor für die Anzeige des Flyouts auswählen</value>
   </data>

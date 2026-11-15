@@ -371,6 +371,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Cambiar color</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Visualizador de música</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Sutil</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Animado</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Fiesta</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Personalizado</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Estilo del visualizador</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Relleno suave entre ondas</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Brillo</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>El control late con el ritmo</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Chispas con el ritmo</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>El color cambia a lo largo de la barra</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Más ondas</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Ondas tenues tras el control</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Cuánto se mueve</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Se mueve con lo que suene en tu PC. Se desactiva si "Usar menos memoria" está activado.</value>
+  </data>
   <data name="Enums.FlyoutWindowAlignments.Bottom" xml:space="preserve">
     <value>Abajo</value>
   </data>

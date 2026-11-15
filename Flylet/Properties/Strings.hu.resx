@@ -431,6 +431,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Szín módosítása</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Zenei vizualizáció</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Visszafogott</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Élénk</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Buli</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Egyéni</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Vizualizáció stílusa</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Lágy kitöltés a hullámok között</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Ragyogás</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>A csúszka ütemre lüktet</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Szikrák ütemre</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>A szín változik a sáv mentén</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Több hullám</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Halvány hullámok a csúszka után</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Mennyire mozogjon</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Azzal mozog, amit a géped lejátszik. Kikapcsol, ha a "Kevesebb memória használata" be van kapcsolva.</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>Előnézet</value>
   </data>

@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Đổi màu</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Hiệu ứng nhạc</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Nhẹ nhàng</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Sôi động</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Tiệc tùng</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Tùy chỉnh</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Kiểu hiệu ứng</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Tô mềm giữa các sóng</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Phát sáng</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Nút kéo nhịp theo beat</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Tia lửa theo beat</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Màu đổi dọc thanh</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Thêm sóng</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Sóng mờ sau nút kéo</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Mức chuyển động</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Chuyển động theo mọi âm thanh trên PC của bạn. Tắt khi bật "Dùng ít bộ nhớ hơn".</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Chọn màn hình ưu tiên để hiển thị cửa sổ bật ra</value>
   </data>

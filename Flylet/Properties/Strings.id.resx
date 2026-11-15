@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Ubah warna</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Visualizer musik</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Halus</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Meriah</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Pesta</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Kustom</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Gaya visualizer</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Isian lembut di antara gelombang</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Cahaya</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Tombol berdenyut mengikuti ketukan</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Percikan mengikuti ketukan</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Warna bergeser di sepanjang bilah</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Lebih banyak gelombang</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Gelombang samar setelah tombol</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Seberapa banyak bergerak</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Bergerak mengikuti apa pun yang diputar PC Anda. Mati saat "Gunakan lebih sedikit memori" aktif.</value>
+  </data>
   <data name="About.BasedOn" xml:space="preserve">
     <value>Berdasarkan Flylet (Lisensi MIT)</value>
   </data>

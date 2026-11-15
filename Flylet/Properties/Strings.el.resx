@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Αλλαγή χρώματος</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Οπτικοποίηση μουσικής</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Διακριτικό</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Ζωντανό</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Πάρτι</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Προσαρμοσμένο</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Στυλ οπτικοποίησης</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Απαλό γέμισμα ανάμεσα στα κύματα</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Λάμψη</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Ο δείκτης πάλλεται στον ρυθμό</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Σπίθες στον ρυθμό</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Το χρώμα αλλάζει κατά μήκος της μπάρας</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Περισσότερα κύματα</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Αχνά κύματα μετά τον δείκτη</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Πόσο κινείται</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Κινείται με ό,τι παίζει ο υπολογιστής σας. Απενεργοποιείται όταν είναι ενεργό το "Χρήση λιγότερης μνήμης".</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Επιλέξτε την προτιμώμενη οθόνη για την εμφάνιση του αναδυόμενου στοιχείου</value>
   </data>

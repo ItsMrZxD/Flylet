@@ -431,6 +431,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>تغيير اللون</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>مُصوِّر الموسيقى</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>هادئ</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>حيوي</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>حفلة</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>مخصص</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>نمط المُصوِّر</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>تعبئة ناعمة بين الموجات</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>توهج</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>المؤشر ينبض مع الإيقاع</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>شرارات مع الإيقاع</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>اللون يتدرج على طول الشريط</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>موجات أكثر</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>موجات خافتة بعد المؤشر</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>مقدار الحركة</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>يتحرك مع أي صوت يُشغَّل على جهازك. يتوقف عند تشغيل "استخدام ذاكرة أقل".</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>معاينة</value>
   </data>

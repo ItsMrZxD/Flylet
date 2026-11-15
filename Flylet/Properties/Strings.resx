@@ -446,6 +446,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Change color</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Music visualizer</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Subtle</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Lively</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Party</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Visualizer style</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Soft fill between waves</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Glow</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Thumb pulses on the beat</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Sparkles on the beat</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Color shifts along the bar</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>More waves</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Faint waves past the thumb</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>How much it moves</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Moves with whatever your PC is playing. Turned off when "Use less memory" is on.</value>
+  </data>
   <data name="SettingsItem" xml:space="preserve">
     <value>Settings</value>
   </data>

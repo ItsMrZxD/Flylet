@@ -1535,6 +1535,141 @@ namespace Flylet.Properties {
                 return ResourceManager.GetString("ColorPicker.Change", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Music visualizer.
+        /// </summary>
+        public static string Enums_MediaCardTimeline_Visualizer {
+            get {
+                return ResourceManager.GetString("Enums.MediaCardTimeline.Visualizer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Subtle.
+        /// </summary>
+        public static string Enums_VisualizerPreset_Subtle {
+            get {
+                return ResourceManager.GetString("Enums.VisualizerPreset.Subtle", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Lively.
+        /// </summary>
+        public static string Enums_VisualizerPreset_Lively {
+            get {
+                return ResourceManager.GetString("Enums.VisualizerPreset.Lively", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Party.
+        /// </summary>
+        public static string Enums_VisualizerPreset_Party {
+            get {
+                return ResourceManager.GetString("Enums.VisualizerPreset.Party", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        public static string Enums_VisualizerPreset_Custom {
+            get {
+                return ResourceManager.GetString("Enums.VisualizerPreset.Custom", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Visualizer style.
+        /// </summary>
+        public static string Visualizer_Style {
+            get {
+                return ResourceManager.GetString("Visualizer_Style", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Soft fill between waves.
+        /// </summary>
+        public static string Visualizer_Fill {
+            get {
+                return ResourceManager.GetString("Visualizer_Fill", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Glow.
+        /// </summary>
+        public static string Visualizer_Glow {
+            get {
+                return ResourceManager.GetString("Visualizer_Glow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Thumb pulses on the beat.
+        /// </summary>
+        public static string Visualizer_ThumbPulse {
+            get {
+                return ResourceManager.GetString("Visualizer_ThumbPulse", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sparkles on the beat.
+        /// </summary>
+        public static string Visualizer_Sparkles {
+            get {
+                return ResourceManager.GetString("Visualizer_Sparkles", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Color shifts along the bar.
+        /// </summary>
+        public static string Visualizer_ColorShift {
+            get {
+                return ResourceManager.GetString("Visualizer_ColorShift", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to More waves.
+        /// </summary>
+        public static string Visualizer_MoreWaves {
+            get {
+                return ResourceManager.GetString("Visualizer_MoreWaves", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Faint waves past the thumb.
+        /// </summary>
+        public static string Visualizer_PastThumb {
+            get {
+                return ResourceManager.GetString("Visualizer_PastThumb", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to How much it moves.
+        /// </summary>
+        public static string Visualizer_Amount {
+            get {
+                return ResourceManager.GetString("Visualizer_Amount", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Moves with whatever your PC is playing. Turned off when "Use less memory" is on..
+        /// </summary>
+        public static string Visualizer_Description {
+            get {
+                return ResourceManager.GetString("Visualizer_Description", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Settings.

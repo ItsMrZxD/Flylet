@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Verander kleur</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Musiekvisualiseerder</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Subtiel</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Lewendig</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Partytjie</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Pasgemaak</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Visualiseerderstyl</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Sagte vulsel tussen golwe</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Gloed</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Duim klop op die maat</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Vonkels op die maat</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Kleur verskuif langs die balk</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Meer golwe</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Dowwe golwe ná die duim</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Hoeveel dit beweeg</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Beweeg saam met wat ook al op jou rekenaar speel. Afgeskakel wanneer "Gebruik minder geheue" aan is.</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>Kies die verkose vertoonmonitor waarop die vlieg-uit gewys moet word</value>
   </data>

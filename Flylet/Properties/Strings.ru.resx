@@ -408,6 +408,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Изменить цвет</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Музыкальный визуализатор</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Спокойный</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Живой</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Вечеринка</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Свой</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Стиль визуализатора</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Мягкая заливка между волнами</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Свечение</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Ползунок пульсирует в такт</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Искры в такт</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Цвет меняется вдоль полосы</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Больше волн</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Слабые волны после ползунка</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Сила движения</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Двигается в такт всему, что играет на ПК. Отключается, когда включено «Использовать меньше памяти».</value>
+  </data>
   <data name="Enums.StackingDirection.Ascending" xml:space="preserve">
     <value>По возрастанию</value>
   </data>

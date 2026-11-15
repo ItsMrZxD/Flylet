@@ -431,6 +431,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>Rengi değiştir</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>Müzik görselleştirici</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>Sade</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>Canlı</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>Parti</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>Özel</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>Görselleştirici stili</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>Dalgalar arasında yumuşak dolgu</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>Parıltı</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>Tutamaç ritimle atar</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>Ritimle kıvılcımlar</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>Renk çubuk boyunca değişir</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>Daha fazla dalga</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>Tutamaçtan sonra soluk dalgalar</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>Ne kadar hareket etsin</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>Bilgisayarınızda çalan her şeyle hareket eder. "Daha az bellek kullan" açıkken kapalıdır.</value>
+  </data>
   <data name="MediaCard_Preview" xml:space="preserve">
     <value>Önizleme</value>
   </data>

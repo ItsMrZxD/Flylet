@@ -222,6 +222,112 @@ namespace Flylet.UI
             }
         }
 
+        #region Music visualizer
+
+        private VisualizerPreset visualizerPreset = DefaultValuesStore.VisualizerPreset;
+        private VisualizerStyle visualizerCustomStyle = DefaultValuesStore.VisualizerCustomStyle;
+
+        /// <summary>
+        /// Subtle, Lively, Party or Custom. Custom shows the extras and the amount slider.
+        /// </summary>
+        public VisualizerPreset VisualizerPreset
+        {
+            get => visualizerPreset;
+            set
+            {
+                if (SetProperty(ref visualizerPreset, value))
+                {
+                    AppDataHelper.VisualizerPreset = value;
+                    OnVisualizerStyleChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// What the visualizer draws now (the preset's style, or the user's own mix).
+        /// </summary>
+        public VisualizerStyle VisualizerStyle => VisualizerStyle.FromPreset(visualizerPreset, visualizerCustomStyle);
+
+        public bool IsVisualizerTimeline => mediaCardLayout.Timeline == MediaCardTimeline.Visualizer;
+
+        public bool IsVisualizerCustom => visualizerPreset == VisualizerPreset.Custom;
+
+        public int VisualizerAmount
+        {
+            get => visualizerCustomStyle.Amount;
+            set => SetCustomVisualizerStyle(visualizerCustomStyle with { Amount = VisualizerStyle.ClampAmount(value) });
+        }
+
+        public bool VisualizerFill
+        {
+            get => visualizerCustomStyle.Has(VisualizerExtras.Fill);
+            set => SetCustomVisualizerStyle(visualizerCustomStyle.With(VisualizerExtras.Fill, value));
+        }
+
+        public bool VisualizerGlow
+        {
+            get => visualizerCustomStyle.Has(VisualizerExtras.Glow);
+            set => SetCustomVisualizerStyle(visualizerCustomStyle.With(VisualizerExtras.Glow, value));
+        }
+
+        public bool VisualizerThumbPulse
+        {
+            get => visualizerCustomStyle.Has(VisualizerExtras.ThumbPulse);
+            set => SetCustomVisualizerStyle(visualizerCustomStyle.With(VisualizerExtras.ThumbPulse, value));
+        }
+
+        public bool VisualizerSparkles
+        {
+            get => visualizerCustomStyle.Has(VisualizerExtras.Sparkles);
+            set => SetCustomVisualizerStyle(visualizerCustomStyle.With(VisualizerExtras.Sparkles, value));
+        }
+
+        public bool VisualizerColorShift
+        {
+            get => visualizerCustomStyle.Has(VisualizerExtras.ColorShift);
+            set => SetCustomVisualizerStyle(visualizerCustomStyle.With(VisualizerExtras.ColorShift, value));
+        }
+
+        public bool VisualizerMoreWaves
+        {
+            get => visualizerCustomStyle.Has(VisualizerExtras.MoreWaves);
+            set => SetCustomVisualizerStyle(visualizerCustomStyle.With(VisualizerExtras.MoreWaves, value));
+        }
+
+        public bool VisualizerPastThumb
+        {
+            get => visualizerCustomStyle.Has(VisualizerExtras.PastThumb);
+            set => SetCustomVisualizerStyle(visualizerCustomStyle.With(VisualizerExtras.PastThumb, value));
+        }
+
+        private void SetCustomVisualizerStyle(VisualizerStyle style)
+        {
+            style = style.Normalized();
+            if (style == visualizerCustomStyle)
+                return;
+
+            visualizerCustomStyle = style;
+            AppDataHelper.VisualizerCustomExtras = (int)style.Extras;
+            AppDataHelper.VisualizerCustomAmount = style.Amount;
+            OnVisualizerStyleChanged();
+        }
+
+        private void OnVisualizerStyleChanged()
+        {
+            OnPropertyChanged(nameof(VisualizerStyle));
+            OnPropertyChanged(nameof(IsVisualizerCustom));
+            OnPropertyChanged(nameof(VisualizerAmount));
+            OnPropertyChanged(nameof(VisualizerFill));
+            OnPropertyChanged(nameof(VisualizerGlow));
+            OnPropertyChanged(nameof(VisualizerThumbPulse));
+            OnPropertyChanged(nameof(VisualizerSparkles));
+            OnPropertyChanged(nameof(VisualizerColorShift));
+            OnPropertyChanged(nameof(VisualizerMoreWaves));
+            OnPropertyChanged(nameof(VisualizerPastThumb));
+        }
+
+        #endregion
+
         public const int SavedColorCount = 4;
 
         private string[] savedColors = AccentColorHelper.ParseSavedColors(DefaultValuesStore.SavedColors, SavedColorCount);
@@ -1489,6 +1595,11 @@ namespace Flylet.UI
             useCustomAccentColor = AppDataHelper.UseCustomAccentColor;
             savedColors = AccentColorHelper.ParseSavedColors(AppDataHelper.SavedColors, SavedColorCount);
             OnPropertyChanged(nameof(SavedColors));
+            visualizerPreset = AppDataHelper.VisualizerPreset;
+            visualizerCustomStyle = new VisualizerStyle(
+                (VisualizerExtras)AppDataHelper.VisualizerCustomExtras, AppDataHelper.VisualizerCustomAmount).Normalized();
+            OnPropertyChanged(nameof(VisualizerPreset));
+            OnVisualizerStyleChanged();
             customFlyoutBackgroundColor = ParseColorOrDefault(AppDataHelper.CustomFlyoutBackgroundColor, DefaultValuesStore.CustomFlyoutBackgroundColor);
             useCustomFlyoutBackgroundColor = AppDataHelper.UseCustomFlyoutBackgroundColor;
             useGlass = AppDataHelper.UseGlass;
@@ -1665,6 +1776,7 @@ namespace Flylet.UI
             OnPropertyChanged(nameof(MediaCardShowSource));
             OnPropertyChanged(nameof(MediaCardShowArtist));
             OnPropertyChanged(nameof(MediaCardTimeline));
+            OnPropertyChanged(nameof(IsVisualizerTimeline));
             OnPropertyChanged(nameof(MediaCardControls));
             OnPropertyChanged(nameof(MediaCardShape));
 

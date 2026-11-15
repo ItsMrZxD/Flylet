@@ -102,6 +102,10 @@ namespace Flylet.Helpers
 
         public const string SavedColors = "";
 
+        public const VisualizerPreset VisualizerPreset = Flylet.Core.Media.VisualizerPreset.Lively;
+
+        public static readonly VisualizerStyle VisualizerCustomStyle = VisualizerStyle.Lively;
+
         public const bool UseCustomFlyoutBackgroundColor = false;
         public const bool UseGlass = false;
 

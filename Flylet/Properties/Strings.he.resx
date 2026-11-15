@@ -413,6 +413,51 @@
   <data name="ColorPicker.Change" xml:space="preserve">
     <value>שנה צבע</value>
   </data>
+  <data name="Enums.MediaCardTimeline.Visualizer" xml:space="preserve">
+    <value>ויזואליזציה למוזיקה</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Subtle" xml:space="preserve">
+    <value>עדין</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Lively" xml:space="preserve">
+    <value>תוסס</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Party" xml:space="preserve">
+    <value>מסיבה</value>
+  </data>
+  <data name="Enums.VisualizerPreset.Custom" xml:space="preserve">
+    <value>מותאם אישית</value>
+  </data>
+  <data name="Visualizer_Style" xml:space="preserve">
+    <value>סגנון הוויזואליזציה</value>
+  </data>
+  <data name="Visualizer_Fill" xml:space="preserve">
+    <value>מילוי רך בין הגלים</value>
+  </data>
+  <data name="Visualizer_Glow" xml:space="preserve">
+    <value>זוהר</value>
+  </data>
+  <data name="Visualizer_ThumbPulse" xml:space="preserve">
+    <value>הידית פועמת בקצב</value>
+  </data>
+  <data name="Visualizer_Sparkles" xml:space="preserve">
+    <value>ניצוצות בקצב</value>
+  </data>
+  <data name="Visualizer_ColorShift" xml:space="preserve">
+    <value>הצבע משתנה לאורך הפס</value>
+  </data>
+  <data name="Visualizer_MoreWaves" xml:space="preserve">
+    <value>יותר גלים</value>
+  </data>
+  <data name="Visualizer_PastThumb" xml:space="preserve">
+    <value>גלים חלשים אחרי הידית</value>
+  </data>
+  <data name="Visualizer_Amount" xml:space="preserve">
+    <value>כמה זה זז</value>
+  </data>
+  <data name="Visualizer_Description" xml:space="preserve">
+    <value>זז עם כל מה שהמחשב שלך משמיע. כבוי כש"שימוש בפחות זיכרון" מופעל.</value>
+  </data>
   <data name="Settings.DisplayDescription" xml:space="preserve">
     <value>בחר את הצג המועדף להצגת החלון הצף</value>
   </data>

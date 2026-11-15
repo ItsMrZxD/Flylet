@@ -379,6 +379,24 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static VisualizerPreset VisualizerPreset
+        {
+            get => GetValue(DefaultValuesStore.VisualizerPreset);
+            set => SetValue(value);
+        }
+
+        public static int VisualizerCustomExtras
+        {
+            get => GetValue((int)DefaultValuesStore.VisualizerCustomStyle.Extras);
+            set => SetValue(value);
+        }
+
+        public static int VisualizerCustomAmount
+        {
+            get => GetValue(DefaultValuesStore.VisualizerCustomStyle.Amount);
+            set => SetValue(value);
+        }
+
         public static bool UseCustomFlyoutBackgroundColor
         {
             get => GetValue(DefaultValuesStore.UseCustomFlyoutBackgroundColor);

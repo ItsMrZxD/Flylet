@@ -307,6 +307,31 @@
                                   ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
                                   ItemsSource="{toolkit:EnumValues Type=media:MediaCardTimeline}"
                                   SelectedItem="{Binding UIManager.MediaCardTimeline}" />
+                        <!-- Music visualizer options, only while it's the timeline (0.13) -->
+                        <ui:SimpleStackPanel Spacing="8" Margin="12,0,0,0"
+                                             Visibility="{Binding UIManager.IsVisualizerTimeline, Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <ui:RadioButtons Header="{x:Static resx:Strings.Visualizer_Style}" MaxColumns="4"
+                                             ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
+                                             ItemsSource="{toolkit:EnumValues Type=media:VisualizerPreset}"
+                                             SelectedItem="{Binding UIManager.VisualizerPreset}" />
+                            <ui:SimpleStackPanel Spacing="2"
+                                                 Visibility="{Binding UIManager.IsVisualizerCustom, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <CheckBox Content="{x:Static resx:Strings.Visualizer_Fill}" IsChecked="{Binding UIManager.VisualizerFill}" />
+                                <CheckBox Content="{x:Static resx:Strings.Visualizer_Glow}" IsChecked="{Binding UIManager.VisualizerGlow}" />
+                                <CheckBox Content="{x:Static resx:Strings.Visualizer_ThumbPulse}" IsChecked="{Binding UIManager.VisualizerThumbPulse}" />
+                                <CheckBox Content="{x:Static resx:Strings.Visualizer_Sparkles}" IsChecked="{Binding UIManager.VisualizerSparkles}" />
+                                <CheckBox Content="{x:Static resx:Strings.Visualizer_ColorShift}" IsChecked="{Binding UIManager.VisualizerColorShift}" />
+                                <CheckBox Content="{x:Static resx:Strings.Visualizer_MoreWaves}" IsChecked="{Binding UIManager.VisualizerMoreWaves}" />
+                                <CheckBox Content="{x:Static resx:Strings.Visualizer_PastThumb}" IsChecked="{Binding UIManager.VisualizerPastThumb}" />
+                                <Slider ui:ControlHelper.Header="{x:Static resx:Strings.Visualizer_Amount}" Margin="0,8,0,0"
+                                        Minimum="40" Maximum="160" TickFrequency="10" IsSnapToTickEnabled="True" MaxWidth="320"
+                                        HorizontalAlignment="Left" Width="320"
+                                        AutoToolTipPlacement="TopLeft" Value="{Binding UIManager.VisualizerAmount}" />
+                            </ui:SimpleStackPanel>
+                            <TextBlock Text="{x:Static resx:Strings.Visualizer_Description}" TextWrapping="Wrap"
+                                       Style="{DynamicResource CaptionTextBlockStyle}"
+                                       Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" />
+                        </ui:SimpleStackPanel>
                         <ComboBox ui:ControlHelper.Header="{x:Static resx:Strings.MediaCard_Controls}" MinWidth="240"
                                   ItemTemplate="{StaticResource LocalizedEnumItemTemplate}"
                                   ItemsSource="{toolkit:EnumValues Type=media:MediaCardControls}"
