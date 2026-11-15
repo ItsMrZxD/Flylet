@@ -5,9 +5,9 @@ using System.Diagnostics;
 namespace Flylet.Core.Audio
 {
     /// <summary>
-    /// SPIKE (visualizer-spike branch): listens to what the default playback device is playing (WASAPI loopback
-    /// through NAudio, which Flylet already ships; not the microphone) and turns it into three smoothed levels,
-    /// bass, mid and high, each 0-1. Runs only while at least one viewer holds it.
+    /// Listens to what the default playback device is playing (WASAPI loopback through NAudio, which Flylet already
+    /// ships; not the microphone) and turns it into three smoothed levels, bass, mid and high, each 0-1, for the
+    /// music visualizer. Runs only while at least one viewer holds it. On Windows 10 it hears all system sound.
     /// </summary>
     public sealed class LoopbackAudioCapture
     {
@@ -49,15 +49,6 @@ namespace Flylet.Core.Audio
         public float Mid => Fade(mid);
         public float High => Fade(high);
 
-        /// <summary>
-        /// Why capture failed, for the spike's report (null while fine).
-        /// </summary>
-        public string LastError { get; private set; }
-
-        public bool IsCapturing { get; private set; }
-
-        public string FormatInfo { get; private set; }
-
         public void Acquire()
         {
             lock (gate)
@@ -69,22 +60,18 @@ namespace Flylet.Core.Audio
                 try
                 {
                     capture = new WasapiLoopbackCapture();
-                    var format = capture.WaveFormat;
-                    FormatInfo = $"{format.Encoding} {format.BitsPerSample}bit {format.Channels}ch {format.SampleRate}Hz";
                     capture.DataAvailable += OnDataAvailable;
                     capture.RecordingStopped += (_, e) =>
                     {
-                        IsCapturing = false;
                         if (e.Exception != null)
-                            LastError = e.Exception.GetType().Name + ": " + e.Exception.Message;
+                            Debug.WriteLine($"Loopback capture stopped: {e.Exception.Message}");
                     };
                     capture.StartRecording();
-                    IsCapturing = true;
-                    LastError = null;
                 }
                 catch (Exception ex)
                 {
-                    LastError = ex.GetType().Name + ": " + ex.Message;
+                    // No playback device, or audio blocked: the waves just stay calm
+                    Debug.WriteLine($"Loopback capture failed: {ex.Message}");
                     capture?.Dispose();
                     capture = null;
                 }
@@ -108,7 +95,6 @@ namespace Flylet.Core.Audio
                     capture.Dispose();
                     capture = null;
                 }
-                IsCapturing = false;
                 bass = mid = high = 0;
                 sBass = sMid = sHigh = 0;
             }
