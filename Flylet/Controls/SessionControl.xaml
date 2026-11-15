@@ -1,10 +1,11 @@
-<UserControl x:Class="Flylet.Controls.SessionControl"
+﻿<UserControl x:Class="Flylet.Controls.SessionControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:ui="http://schemas.modernwpf.com/2019"
              xmlns:root="clr-namespace:Flylet"
+             xmlns:local="clr-namespace:Flylet.Controls"
              xmlns:utils="clr-namespace:Flylet.Utilities"
              xmlns:resx="clr-namespace:Flylet.Properties"
              xmlns:input="clr-namespace:Flylet.Input"
@@ -192,6 +193,18 @@
                     <TextBlock VerticalAlignment="Center" Style="{DynamicResource CaptionTextBlockStyle}"
                                Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}"
                                Text="{Binding PlaybackPosition, Converter={StaticResource TimeSpanToStringConverter}}" />
+                    <!-- SPIKE (visualizer-spike): music-reactive waves under the slider's thumb -->
+                    <local:VisualizerWaves Grid.Column="1" Margin="10,0" Height="28" VerticalAlignment="Center"
+                                           Accent="{DynamicResource SystemControlHighlightAccentBrush}">
+                        <local:VisualizerWaves.Fraction>
+                            <MultiBinding Converter="{StaticResource TimelineFractionConverter}">
+                                <Binding Path="PlaybackPosition" />
+                                <Binding Path="TimelineStartTime" />
+                                <Binding Path="TimelineEndTime" />
+                                <Binding Path="ActualWidth" RelativeSource="{RelativeSource Self}" />
+                            </MultiBinding>
+                        </local:VisualizerWaves.Fraction>
+                    </local:VisualizerWaves>
                     <Slider Grid.Column="1" IsMoveToPointEnabled="True" Margin="10,0"
                             IsEnabled="{Binding IsPlaybackPositionEnabled}"
                             Minimum="{Binding TimelineStartTime, Mode=OneWay, Converter={StaticResource TimeSpanToNumberConverter}}"
