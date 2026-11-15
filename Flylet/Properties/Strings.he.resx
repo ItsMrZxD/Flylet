@@ -719,4 +719,7 @@
   <data name="VolumeMixer.SystemSounds" xml:space="preserve">
     <value>צלילי מערכת</value>
   </data>
+  <data name="Settings.ShowCardShine" xml:space="preserve">
+    <value>ברק כרטיסים</value>
+  </data>
 </root>

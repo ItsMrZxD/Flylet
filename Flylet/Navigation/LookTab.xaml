@@ -1,4 +1,4 @@
-<UserControl x:Class="Flylet.Navigation.LookTab"
+﻿<UserControl x:Class="Flylet.Navigation.LookTab"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -87,6 +87,10 @@
                                          OffContent="{x:Static resx:Strings.Settings_Off}" />
                         <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_ShowCardBorder}"
                                          IsOn="{Binding UIManager.ShowCardBorder}"
+                                         OnContent="{x:Static resx:Strings.Settings_On}"
+                                         OffContent="{x:Static resx:Strings.Settings_Off}" />
+                        <ui:ToggleSwitch Header="{x:Static resx:Strings.Settings_ShowCardShine}"
+                                         IsOn="{Binding UIManager.ShowCardShine}"
                                          OnContent="{x:Static resx:Strings.Settings_On}"
                                          OffContent="{x:Static resx:Strings.Settings_Off}" />
                     </ui:SimpleStackPanel>

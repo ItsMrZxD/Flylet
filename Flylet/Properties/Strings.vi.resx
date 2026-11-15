@@ -719,4 +719,7 @@
   <data name="VolumeMixer.SystemSounds" xml:space="preserve">
     <value>Âm thanh hệ thống</value>
   </data>
+  <data name="Settings.ShowCardShine" xml:space="preserve">
+    <value>Độ bóng thẻ</value>
+  </data>
 </root>

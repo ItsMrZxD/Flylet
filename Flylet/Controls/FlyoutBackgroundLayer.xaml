@@ -1,4 +1,4 @@
-<UserControl x:Class="Flylet.Controls.FlyoutBackgroundLayer"
+﻿<UserControl x:Class="Flylet.Controls.FlyoutBackgroundLayer"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:root="clr-namespace:Flylet">
@@ -21,6 +21,31 @@
                 </Border.Effect>
             </Border>
             <Border Background="#000000" Opacity="{Binding UIManager.FlyoutBackgroundImageDimOpacity}" />
+        </Grid>
+        <!-- "Card shine" (0.13): a bright rim along the top, a softer one at the bottom and a light sheen, so a
+             see-through card reads as glass. Drawn once; costs nothing while the flyout sits still -->
+        <Grid IsHitTestVisible="False"
+              Visibility="{Binding UIManager.ShowCardShine, Converter={StaticResource BooleanToVisibilityConverter}}">
+            <Border>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#16FFFFFF" Offset="0" />
+                        <GradientStop Color="#00FFFFFF" Offset="0.5" />
+                        <GradientStop Color="#08FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+            <Border BorderThickness="1" CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=UserControl}}">
+                <Border.BorderBrush>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0.3,1">
+                        <GradientStop Color="#A0FFFFFF" Offset="0" />
+                        <GradientStop Color="#18FFFFFF" Offset="0.45" />
+                        <GradientStop Color="#40FFFFFF" Offset="1" />
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
+            </Border>
+            <Border Margin="1" BorderThickness="1" BorderBrush="#12FFFFFF"
+                    CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource AncestorType=UserControl}}" />
         </Grid>
     </Grid>
 </UserControl>

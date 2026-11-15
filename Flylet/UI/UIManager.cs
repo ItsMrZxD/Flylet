@@ -204,6 +204,24 @@ namespace Flylet.UI
             }
         }
 
+        private bool showCardShine = DefaultValuesStore.ShowCardShine;
+
+        /// <summary>
+        /// Glass-like highlights on the flyout cards (see FlyoutBackgroundLayer). Bound from the flyout, which
+        /// lives outside Application.Windows.
+        /// </summary>
+        public bool ShowCardShine
+        {
+            get => showCardShine;
+            set
+            {
+                if (SetProperty(ref showCardShine, value))
+                {
+                    AppDataHelper.ShowCardShine = value;
+                }
+            }
+        }
+
         private bool showCardBorder = DefaultValuesStore.ShowCardBorder;
 
         /// <summary>
@@ -1604,6 +1622,7 @@ namespace Flylet.UI
             UseColoredTrayIcon = AppDataHelper.UseColoredTrayIcon;
             FlyoutAnimationEnabled = AppDataHelper.FlyoutAnimationEnabled;
             ShowCardBorder = AppDataHelper.ShowCardBorder;
+            ShowCardShine = AppDataHelper.ShowCardShine;
             VolumeMixerExpanded = AppDataHelper.VolumeMixerExpanded;
             UseLessMemory = AppDataHelper.UseLessMemory;
 

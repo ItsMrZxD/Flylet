@@ -719,4 +719,7 @@
   <data name="VolumeMixer.SystemSounds" xml:space="preserve">
     <value>Systemlyder</value>
   </data>
+  <data name="Settings.ShowCardShine" xml:space="preserve">
+    <value>Kortglans</value>
+  </data>
 </root>

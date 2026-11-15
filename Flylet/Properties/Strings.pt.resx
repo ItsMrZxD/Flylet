@@ -719,4 +719,7 @@
   <data name="VolumeMixer.SystemSounds" xml:space="preserve">
     <value>Sons do sistema</value>
   </data>
+  <data name="Settings.ShowCardShine" xml:space="preserve">
+    <value>Brilho dos cartões</value>
+  </data>
 </root>

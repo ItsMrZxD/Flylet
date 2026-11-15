@@ -824,4 +824,7 @@
   <data name="VolumeMixer.SystemSounds" xml:space="preserve">
     <value>System sounds</value>
   </data>
+  <data name="Settings.ShowCardShine" xml:space="preserve">
+    <value>Card shine</value>
+  </data>
 </root>

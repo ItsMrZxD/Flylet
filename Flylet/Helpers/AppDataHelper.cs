@@ -307,6 +307,12 @@ namespace Flylet.Helpers
             set => SetValue(value);
         }
 
+        public static bool ShowCardShine
+        {
+            get => GetValue(DefaultValuesStore.ShowCardShine);
+            set => SetValue(value);
+        }
+
         public static bool VolumeMixerExpanded
         {
             get => GetValue(DefaultValuesStore.VolumeMixerExpanded);

@@ -719,4 +719,7 @@
   <data name="VolumeMixer.SystemSounds" xml:space="preserve">
     <value>Stelselklanke</value>
   </data>
+  <data name="Settings.ShowCardShine" xml:space="preserve">
+    <value>Kaartglans</value>
+  </data>
 </root>

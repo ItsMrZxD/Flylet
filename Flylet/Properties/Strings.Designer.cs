@@ -1510,6 +1510,15 @@ namespace Flylet.Properties {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to Card shine.
+        /// </summary>
+        public static string Settings_ShowCardShine {
+            get {
+                return ResourceManager.GetString("Settings.ShowCardShine", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Keep on screen.
         /// </summary>
         public static string FlyoutPin {

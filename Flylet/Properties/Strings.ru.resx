@@ -720,4 +720,7 @@
   <data name="VolumeMixer.SystemSounds" xml:space="preserve">
     <value>Системные звуки</value>
   </data>
+  <data name="Settings.ShowCardShine" xml:space="preserve">
+    <value>Блеск карточек</value>
+  </data>
 </root>
