@@ -502,6 +502,17 @@ namespace Flylet.UI
                         // A saved GIF isn't decoded while the photo is off
                         ShowBackgroundItem(currentBackgroundItem);
                     }
+                    else if (!value && currentBackgroundItem?.IsAnimated == true)
+                    {
+                        // A GIF's frames can take up to 96 MB: let them go while the photo is off (turning it
+                        // back on decodes the GIF again, above), and drop a decode that's still running
+                        backgroundLoadId++;
+                        if (animatedBackground != null)
+                        {
+                            ClearAnimatedBackground();
+                            FlyoutBackgroundImage = null;
+                        }
+                    }
 
                     UpdateBackgroundAnimation();
                     AppDataHelper.UseFlyoutBackgroundImage = value;
