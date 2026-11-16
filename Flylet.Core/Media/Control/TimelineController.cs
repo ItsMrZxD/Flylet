@@ -50,6 +50,7 @@ namespace Flylet.Core.Media.Control
                 Interval = TimeSpan.FromMilliseconds(500)
             };
             timer.Tick += Timer_Tick;
+            ScreenChanged += OnScreenChanged;
         }
 
         /// <summary>
@@ -108,7 +109,7 @@ namespace Flylet.Core.Media.Control
                 snapshot = newSnapshot;
             }
 
-            timer.IsEnabled = snapshot.IsPlaying && HasTimeline;
+            UpdateTimer();
         }
 
         /// <summary>
@@ -124,6 +125,7 @@ namespace Flylet.Core.Media.Control
         {
             timer.Stop();
             timer.Tick -= Timer_Tick;
+            ScreenChanged -= OnScreenChanged;
         }
 
         // Position 0 with no length is what sources send when they have no timeline
@@ -157,5 +159,33 @@ namespace Flylet.Core.Media.Control
         }
 
         private void Timer_Tick(object sender, EventArgs e) => PositionChanged?.Invoke(this, EventArgs.Empty);
+
+        private void UpdateTimer() => timer.IsEnabled = snapshot != null && snapshot.IsPlaying && HasTimeline && isOnScreen;
+
+        private void OnScreenChanged(object sender, EventArgs e)
+        {
+            UpdateTimer();
+            // Catch up at once: the position didn't move while nobody could see it
+            if (timer.IsEnabled)
+                PositionChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        private static bool isOnScreen = true;
+        private static event EventHandler ScreenChanged;
+
+        /// <summary>
+        /// Whether a timeline can be seen (the flyout is open). While false nothing ticks. Set on the UI thread.
+        /// </summary>
+        public static bool IsOnScreen
+        {
+            get => isOnScreen;
+            set
+            {
+                if (isOnScreen == value)
+                    return;
+                isOnScreen = value;
+                ScreenChanged?.Invoke(null, EventArgs.Empty);
+            }
+        }
     }
 }

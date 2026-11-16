@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Flylet.AppLifecycle;
 using Flylet.Core.Display;
 using Flylet.Core.Interop;
@@ -283,8 +283,11 @@ namespace Flylet
 
             OnScreenFlyoutWindow = flyoutWindow;
             onScreenFlyoutGlass = new FlyoutGlass(flyoutWindow, UIManager);
+            // Media timelines only tick while the flyout can be seen
+            Flylet.Core.Media.Control.TimelineController.IsOnScreen = flyoutWindow.IsVisible;
             flyoutWindow.IsVisibleChanged += (_, e) =>
             {
+                Flylet.Core.Media.Control.TimelineController.IsOnScreen = e.NewValue is true;
                 if (e.NewValue is false)
                 {
                     UIManager.OnFlyoutHidden();
