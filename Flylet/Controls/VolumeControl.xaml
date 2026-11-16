@@ -35,7 +35,7 @@
             <!-- Opens the per-app volume list; only there while some app has sound -->
             <Button x:Name="MixerButton" Grid.Column="3" Width="32" Height="48" Padding="0" Background="Transparent"
                     ui:ControlHelper.CornerRadius="{DynamicResource FlyoutCornerRadius}"
-                    Visibility="{Binding HasApps, Converter={StaticResource BooleanToVisibilityConverter}}"
+                    Visibility="{Binding HasApps, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"
                     Click="MixerButton_Click">
                 <ui:FontIcon x:Name="MixerGlyph" FontSize="12" Glyph="{x:Static utils:CommonGlyphs.ChevronDown}" />
             </Button>
