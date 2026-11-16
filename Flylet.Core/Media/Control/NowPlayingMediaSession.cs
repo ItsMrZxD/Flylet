@@ -96,23 +96,32 @@ namespace Flylet.Core.Media.Control
                 if (mediaPlaybackDataSource == null)
                     return;
 
-                switch (dataChangedEvent)
+                // NPSM can go away mid-call. Invoke handed that exception back to NPSM's thread; from
+                // BeginInvoke it would be unhandled on the UI thread and end the process
+                try
                 {
-                    case MediaPlaybackDataChangedEvent.MediaInfoChanged:
-                        UpdateSessionInfo();
-                        break;
+                    switch (dataChangedEvent)
+                    {
+                        case MediaPlaybackDataChangedEvent.MediaInfoChanged:
+                            UpdateSessionInfo();
+                            break;
 
-                    case MediaPlaybackDataChangedEvent.PlaybackInfoChanged:
-                        UpdatePlaybackInfo();
-                        ApplyTimeline(timeline);
-                        break;
+                        case MediaPlaybackDataChangedEvent.PlaybackInfoChanged:
+                            UpdatePlaybackInfo();
+                            ApplyTimeline(timeline);
+                            break;
 
-                    case MediaPlaybackDataChangedEvent.TimelinePropertiesChanged:
-                        ApplyTimeline(timeline);
-                        break;
+                        case MediaPlaybackDataChangedEvent.TimelinePropertiesChanged:
+                            ApplyTimeline(timeline);
+                            break;
 
-                    default:
-                        break;
+                        default:
+                            break;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"{nameof(NowPlayingMediaSession)}: {ex.Message}");
                 }
             });
         }
