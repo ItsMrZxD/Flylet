@@ -228,6 +228,7 @@ namespace Flylet.Controls
                 timelineResources.Clear();
                 TimelineBarFill.SetResourceReference(Border.BackgroundProperty, "SystemControlHighlightAccentBrush");
                 ThinTimelineFill.SetResourceReference(Border.BackgroundProperty, "SystemControlHighlightAccentBrush");
+                VisualizerWaves.SetResourceReference(VisualizerWaves.AccentProperty, "SystemControlHighlightAccentBrush");
                 return;
             }
 
@@ -258,6 +259,8 @@ namespace Flylet.Controls
 
             TimelineBarFill.Background = normal;
             ThinTimelineFill.Background = normal;
+            // The visualizer draws the timeline itself, so the slider's colors above don't show on it
+            VisualizerWaves.Accent = normal;
         }
 
         private static SolidColorBrush CreateBrush(Color color)
