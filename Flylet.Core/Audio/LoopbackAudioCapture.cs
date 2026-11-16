@@ -100,6 +100,26 @@ namespace Flylet.Core.Audio
             }
         }
 
+        /// <summary>
+        /// Listens to the default playback device as it is now. A capture stays on the device it was opened
+        /// on, so after the default device changes it hears nothing. Does nothing while no viewer holds it.
+        /// </summary>
+        public void Restart()
+        {
+            lock (gate)
+            {
+                if (viewers == 0)
+                    return;
+
+                // Stop as the last viewer and start as the first, then count the other viewers again
+                int held = viewers;
+                viewers = 1;
+                Release();
+                Acquire();
+                viewers = held;
+            }
+        }
+
         private void OnDataAvailable(object sender, WaveInEventArgs e)
         {
             var format = ((WasapiLoopbackCapture)sender).WaveFormat;

@@ -186,6 +186,8 @@ namespace Flylet
             string deviceId = null;
             try { deviceId = mmdevice?.ID; } catch { }
             Application.Current.Dispatcher.BeginInvoke(() => mixer.SetDevice(IsEnabled ? deviceId : null));
+            // The music visualizer's capture stays on the old device, which has gone quiet
+            Application.Current.Dispatcher.BeginInvoke(LoopbackAudioCapture.Shared.Restart);
             if (device != null)
             {
                 try
