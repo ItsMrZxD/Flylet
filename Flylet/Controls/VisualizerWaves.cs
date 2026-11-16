@@ -2,8 +2,11 @@ using Flylet.Core.Audio;
 using Flylet.Core.Media;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace Flylet.Controls
 {
@@ -70,7 +73,7 @@ namespace Flylet.Controls
 
         private bool running;
         private bool usesCapture;
-        private TimeSpan lastFrame;
+        private long lastFrame;
         private double time;
 
         public VisualizerWaves()
@@ -96,12 +99,15 @@ namespace Flylet.Controls
                 usesCapture = !IsPreview;
                 if (usesCapture)
                     LoopbackAudioCapture.Shared.Acquire();
-                lastFrame = TimeSpan.Zero;
-                CompositionTarget.Rendering += OnRendering;
+                lastFrame = 0;
+                viewport = FindViewport();
+                var clock = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromSeconds(1))) { RepeatBehavior = RepeatBehavior.Forever };
+                Timeline.SetDesiredFrameRate(clock, 60);
+                BeginAnimation(FrameClockProperty, clock);
             }
             else
             {
-                CompositionTarget.Rendering -= OnRendering;
+                BeginAnimation(FrameClockProperty, null);
                 if (usesCapture)
                     LoopbackAudioCapture.Shared.Release();
                 usesCapture = false;
@@ -109,18 +115,45 @@ namespace Flylet.Controls
             }
         }
 
-        // Every frame WPF draws, in step with the screen (owner's call: 60 fps; ~14% of one core while pinned,
-        // to be optimized later, see TODO.md)
-        private void OnRendering(object sender, EventArgs e)
+        // The frame clock: an endless animation capped at 60 fps (owner's call). CompositionTarget.Rendering
+        // would run WPF's render loop at the screen's full refresh rate (180 Hz here), and that loop, not the
+        // drawing, was most of the cost
+        private static readonly DependencyProperty FrameClockProperty = DependencyProperty.Register(
+            "FrameClock", typeof(double), typeof(VisualizerWaves),
+            new PropertyMetadata(0.0, (d, _) => ((VisualizerWaves)d).OnFrame()));
+
+        private void OnFrame()
         {
-            var now = ((RenderingEventArgs)e).RenderingTime;
-            if (now == lastFrame)
+            if (!running)
                 return;
-            double dt = lastFrame == TimeSpan.Zero ? 1 / 60.0 : Math.Min(0.1, (now - lastFrame).TotalSeconds);
+            long now = Stopwatch.GetTimestamp();
+            double dt = lastFrame == 0 ? 1 / 60.0 : Math.Min(0.1, (now - lastFrame) / (double)Stopwatch.Frequency);
             lastFrame = now;
             time += dt;
             UpdateSparks(dt);
-            InvalidateVisual();
+            if (IsInViewport())
+                InvalidateVisual();
+        }
+
+        // Media cards scroll inside the sessions panel; a card scrolled out of view stays "visible" to WPF
+        private ScrollViewer viewport;
+
+        private ScrollViewer FindViewport()
+        {
+            for (DependencyObject parent = VisualTreeHelper.GetParent(this); parent != null; parent = VisualTreeHelper.GetParent(parent))
+            {
+                if (parent is ScrollViewer scrollViewer)
+                    return scrollViewer;
+            }
+            return null;
+        }
+
+        private bool IsInViewport()
+        {
+            if (viewport == null || !IsDescendantOf(viewport))
+                return true;
+            var bounds = TransformToAncestor(viewport).TransformBounds(new Rect(RenderSize));
+            return bounds.IntersectsWith(new Rect(viewport.RenderSize));
         }
 
         #region Levels and sparkles
