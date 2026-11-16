@@ -50,21 +50,12 @@ need it.
 
 ## What's different from ModernFlyouts
 
-- **The media timeline moves again.** Upstream only updated the song position when playback was
-  paused, so the time sat frozen. Flylet estimates the position between reports and keeps
-  counting. Sources that stop reporting a real timeline (Firefox, until the first pause) show an
-  empty bar instead of a wrong one.
-- **Windows 11 works again.** Windows 11 creates its flyout host only after the first volume
-  press, and upstream only recognized the Windows 10 window class, so it never hid the new
-  pop-up. Flylet recognizes both.
-- **A redesigned media flyout:** album art on the left, and the play button and timeline take an
-  accent color picked from the album art.
-- **Your colors.** The flyouts follow your Windows accent color as it changes, and Settings >
-  Look > Colors lets you pick a custom accent and flyout background. Text switches
-  between light and dark to stay readable on the color you choose.
-- **Translated.** Every string is translated in all 31 languages, with no half-English screens.
-- **Up to date:** .NET 10, current dependencies, built with Visual Studio 2026.
-- **Its own name and icon.**
+- **Make it yours:** your own photo or GIF behind the flyouts (or several that rotate), glass on Windows 11, and media card styles.
+- **Your colors:** follow your Windows accent color, or pick your own accent and background.
+- **The media timeline moves again.** Upstream froze it between pauses; Flylet keeps counting.
+- **Windows 11 works again.** Upstream never found the Windows 11 flyout host, so it never hid the new pop-up.
+- **Light:** almost no CPU when idle, an optional "Use less memory" switch, and 32-bit PCs too.
+- **Translated** into 31 languages, on **.NET 10**, with its own name and icon.
 
 ## Requirements
 
