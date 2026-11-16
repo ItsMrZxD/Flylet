@@ -378,7 +378,7 @@ namespace Flylet.Core.Interop
                 if ((hWndDUI = FindWindowEx(hWndHost, IntPtr.Zero, innerClass, innerName)) != IntPtr.Zero)
                 {
                     GetWindowThreadProcessId(hWndHost, out int pid);
-                    if (Process.GetProcessById(pid).ProcessName.ToLower() == "explorer")
+                    if (IsExplorerProcess(pid))
                     {
                         UIntPtr pdwBand = UIntPtr.Zero;
                         GetWindowBand(hWndHost, out pdwBand);
@@ -394,6 +394,26 @@ namespace Flylet.Core.Interop
             }
 
             return false;
+        }
+
+        // Runs on every key press. The flyout host belongs to the shell's explorer, so its pid is checked
+        // first; looking a process up by id snapshots every process on the PC, so that's only the fallback
+        private static bool IsExplorerProcess(int pid)
+        {
+            GetWindowThreadProcessId(GetShellWindow(), out int shellPid);
+            if (pid == shellPid)
+                return true;
+
+            try
+            {
+                using var process = Process.GetProcessById(pid);
+                return process.ProcessName.Equals("explorer", StringComparison.OrdinalIgnoreCase);
+            }
+            catch (ArgumentException)
+            {
+                // The process has already exited
+                return false;
+            }
         }
 
         public void HideNativeFlyout()
