@@ -147,13 +147,14 @@ namespace Flylet.Core.Audio
         }
 
         /// <summary>
-        /// False once the process has ended. A process we can't open counts as running.
+        /// False once the process has ended. A process we can't open (access denied) counts as running.
         /// </summary>
         public static bool IsProcessRunning(uint processId)
         {
             IntPtr process = OpenProcess(SYNCHRONIZE, false, processId);
             if (process == IntPtr.Zero)
-                return true;
+                // ERROR_INVALID_PARAMETER: no process has this id any more
+                return Marshal.GetLastWin32Error() != 87;
             try { return WaitForSingleObject(process, 0) == WAIT_TIMEOUT; }
             finally { CloseHandle(process); }
         }
