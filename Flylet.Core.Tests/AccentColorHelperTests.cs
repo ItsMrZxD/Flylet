@@ -70,7 +70,16 @@ namespace Flylet.Core.Tests
         [Fact]
         public void FewColorfulPixels_HaveNoAccent()
         {
-            Assert.Null(AccentColorHelper.PickAccent(Pixels((220, 20, 20, 255, 2), (128, 128, 128, 255, 98))));
+            Assert.Null(AccentColorHelper.PickAccent(Pixels((220, 20, 20, 255, 1), (128, 128, 128, 255, 199))));
+        }
+
+        [Fact]
+        public void RedLetteringOnBlackAndWhite_GivesRed()
+        {
+            var accent = AccentColorHelper.PickAccent(Pixels((230, 20, 30, 255, 3), (10, 10, 10, 255, 60), (245, 245, 245, 255, 37)));
+
+            Assert.NotNull(accent);
+            Assert.True(accent.Value.R > accent.Value.G + 50);
         }
 
         [Fact]

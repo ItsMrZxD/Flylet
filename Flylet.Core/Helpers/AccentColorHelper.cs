@@ -97,8 +97,9 @@ namespace Flylet.Core.Helpers
                 totalWeight += saturation;
             }
 
-            // Mostly colorless images (a small colored logo on gray, for example) get no accent
-            if (opaquePixels == 0 || totalWeight < opaquePixels * 0.05)
+            // Colorless images get no accent. A little strong color is enough, though: black-and-white artwork
+            // with red lettering (about 2-5% of the sampled pixels) should still turn red
+            if (opaquePixels == 0 || totalWeight < opaquePixels * 0.01)
             {
                 return null;
             }
