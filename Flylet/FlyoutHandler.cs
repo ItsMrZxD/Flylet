@@ -464,6 +464,7 @@ namespace Flylet
             OnScreenFlyoutView.FlyoutHelper = helper;
             OnScreenFlyoutWindow.IsOpen = true;
             OnScreenFlyoutWindow.StartCloseTimer();
+            UpdatePinnedReturn(helper);
         }
 
         #region Pinned flyout
@@ -474,8 +475,44 @@ namespace Flylet
         private bool pinnedFullscreenActive;
         private bool hiddenForFullscreen;
 
+        // While pinned, another flyout (lock keys, brightness...) shows for one timeout, then the flyout goes
+        // back to the one that was pinned
+        private FlyoutHelperBase pinnedHelper;
+        private DispatcherTimer pinnedReturnTimer;
+
+        private void UpdatePinnedReturn(FlyoutHelperBase shown)
+        {
+            pinnedReturnTimer?.Stop();
+            if (!UIManager.IsFlyoutPinned || pinnedHelper == null || shown == pinnedHelper)
+                return;
+
+            if (pinnedReturnTimer == null)
+            {
+                pinnedReturnTimer = new DispatcherTimer(DispatcherPriority.Normal, Dispatcher.CurrentDispatcher);
+                pinnedReturnTimer.Tick += (_, __) => ReturnToPinnedFlyout();
+            }
+            pinnedReturnTimer.Interval = TimeSpan.FromMilliseconds(Math.Max(500, UIManager.FlyoutTimeout));
+            pinnedReturnTimer.Start();
+        }
+
+        private void ReturnToPinnedFlyout()
+        {
+            pinnedReturnTimer.Stop();
+            var helper = pinnedHelper;
+            if (!UIManager.IsFlyoutPinned || helper == null || OnScreenFlyoutView.FlyoutHelper == helper
+                || !IsEffectivelyEnabled(helper))
+                return;
+
+            if (OnScreenFlyoutWindow.IsOpen)
+                helper.OnFlyoutOpening();
+            OnScreenFlyoutView.FlyoutHelper = helper;
+        }
+
         private void OnFlyoutPinnedChanged()
         {
+            pinnedReturnTimer?.Stop();
+            pinnedHelper = UIManager.IsFlyoutPinned ? OnScreenFlyoutView.FlyoutHelper : null;
+
             if (UIManager.IsFlyoutPinned)
             {
                 pinnedFullscreenActive = false;
