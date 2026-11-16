@@ -52,9 +52,9 @@ namespace Flylet.Core.Audio
         /// </summary>
         public void SetDevice(string deviceId)
         {
+            var oldManager = manager;
             StopWatching();
-            device?.Dispose();
-            device = null;
+            DisposeDevice(oldManager);
 
             if (!string.IsNullOrEmpty(deviceId))
             {
@@ -238,7 +238,9 @@ namespace Flylet.Core.Audio
         {
             if (!watched.Remove(id, out var w))
                 return;
-            try { w.Control.UnRegisterEventClient(w.Events); } catch { }
+            // On failure NAudio keeps the callback and its finalizer tries again on the finalizer thread,
+            // where an exception ends the app
+            try { w.Control.UnRegisterEventClient(w.Events); } catch { GC.SuppressFinalize(w.Control); }
         }
 
         private void UpdateExitWatches(HashSet<uint> livePids)
@@ -276,11 +278,26 @@ namespace Flylet.Core.Audio
             Apps.FirstOrDefault(a => a.Sessions.Contains(w.Control))?.SyncFromSessions();
         }
 
+        // NAudio throws when Windows refuses to unregister (device gone, audio service restarted), and its
+        // finalizers would try again on the finalizer thread, where an exception ends the app
+        private void DisposeDevice(AudioSessionManager oldManager)
+        {
+            try { device?.Dispose(); }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Volume mixer: closing the device failed: {ex.Message}");
+                GC.SuppressFinalize(device);
+                if (oldManager != null)
+                    GC.SuppressFinalize(oldManager);
+            }
+            device = null;
+        }
+
         public void Dispose()
         {
+            var oldManager = manager;
             StopWatching();
-            device?.Dispose();
-            device = null;
+            DisposeDevice(oldManager);
             Apps.Clear();
             HasApps = false;
         }
