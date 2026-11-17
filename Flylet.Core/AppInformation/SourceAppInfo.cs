@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flylet.Core.Helpers;
+using System;
 using System.IO;
 using static Flylet.Core.Interop.NativeMethods;
 
@@ -97,13 +98,21 @@ namespace Flylet.Core.AppInformation
             return IsImmersiveProcess(data.ProcessId);
         }
 
+        /// <summary>
+        /// Gives the logo's memory back. Call it once the logo has been turned into a picture.
+        /// </summary>
+        public void ReleaseLogoStream()
+        {
+            BitmapHelper.ReleaseStream(LogoStream);
+            LogoStream = null;
+        }
+
         public void Dispose()
         {
             if (!disposedValue)
             {
                 Disconnect();
-                LogoStream?.Dispose();
-                LogoStream = null;
+                ReleaseLogoStream();
                 disposedValue = true;
             }
             GC.SuppressFinalize(this);

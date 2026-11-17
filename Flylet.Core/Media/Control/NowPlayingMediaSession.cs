@@ -4,6 +4,7 @@ using Flylet.Core.Helpers;
 using Flylet.Core.Threading;
 using NPSMLib;
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -152,9 +153,17 @@ namespace Flylet.Core.Media.Control
                 sourceAppInfo.InfoFetched -= SourceAppInfo_InfoFetched;
                 MediaSourceName = sourceAppInfo.DisplayName;
 
-                if (BitmapHelper.TryCreateBitmapImageFromStream(sourceAppInfo.LogoStream, out var bitmap))
+                try
                 {
-                    MediaSourceIcon = bitmap;
+                    if (BitmapHelper.TryCreateBitmapImageFromStream(sourceAppInfo.LogoStream, out var bitmap))
+                    {
+                        MediaSourceIcon = bitmap;
+                    }
+                }
+                finally
+                {
+                    // The icon has its own copy of the picture
+                    sourceAppInfo.ReleaseLogoStream();
                 }
             }
         }
@@ -337,11 +346,12 @@ namespace Flylet.Core.Media.Control
 
         private ImageSource GetThumbnailImageSource()
         {
+            Stream thumbnail = null;
             try
             {
                 if (mediaPlaybackDataSource != null)
                 {
-                    var thumbnail = mediaPlaybackDataSource.GetThumbnailStream();
+                    thumbnail = mediaPlaybackDataSource.GetThumbnailStream();
                     if (BitmapHelper.TryCreateBitmapImageFromStream(thumbnail, out var bitmap))
                     {
                         return GetModifiedThumbnail(bitmap);
@@ -349,6 +359,11 @@ namespace Flylet.Core.Media.Control
                 }
             }
             catch { }
+            finally
+            {
+                // The cover's file, often 1 MB: the bitmap has its own copy of the picture
+                BitmapHelper.ReleaseStream(thumbnail);
+            }
 
             return null;
         }
