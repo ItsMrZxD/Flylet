@@ -21,7 +21,7 @@ namespace Flylet.Core.Tests
             try { Directory.Delete(folder, true); } catch { }
         }
 
-        private string SaveGif(int width, int height, int frames, string name = "test.gif", ushort delayHundredths = 0)
+        private string SaveGif(int width, int height, int frames, string name = "test.gif", ushort delayHundredths = 0, bool manyColors = false)
         {
             var encoder = new GifBitmapEncoder();
             for (int i = 0; i < frames; i++)
@@ -33,6 +33,16 @@ namespace Flylet.Core.Tests
                     pixels[p + 1] = 128;
                     pixels[p + 2] = (byte)(255 - i * 60);
                     pixels[p + 3] = 255;
+
+                    if (manyColors)
+                    {
+                        // Up to 216 colors in a pattern that changes from pixel to pixel and frame to frame
+                        int x = p / 4 % width;
+                        int y = p / 4 / width;
+                        pixels[p] = (byte)((x * 5 + i * 2) % 6 * 51);
+                        pixels[p + 1] = (byte)(y * 7 % 6 * 51);
+                        pixels[p + 2] = (byte)((x + y) / 3 % 6 * 51);
+                    }
                 }
 
                 var bitmap = BitmapSource.Create(width, height, 96, 96, PixelFormats.Bgra32, null, pixels, width * 4);
@@ -87,7 +97,7 @@ namespace Flylet.Core.Tests
             Assert.True(animation.Frames.Count >= 2);
             Assert.Equal(40, animation.PixelWidth);
             Assert.Equal(30, animation.PixelHeight);
-            Assert.All(animation.Frames, f => Assert.Equal(40 * 30 * 4, f.Length));
+            Assert.All(animation.Frames, f => Assert.Equal(40 * 30 * 4, f.ToPixels().Length));
             Assert.True(animation.CreateFrame(0).IsFrozen);
             Assert.All(animation.Delays, d => Assert.True(d > TimeSpan.Zero));
         }
@@ -134,11 +144,12 @@ namespace Flylet.Core.Tests
             var pixels = new byte[8];
             a.CopyTo(pixels, 0);
             b.CopyTo(pixels, 4);
-            var animation = new AnimatedBackground(2, 1, new[] { pixels, pixels }, new[] { TimeSpan.FromMilliseconds(100), TimeSpan.FromMilliseconds(100) });
+            var frame = AnimatedFrame.Pack(pixels);
+            var animation = new AnimatedBackground(2, 1, new[] { frame, frame }, new[] { TimeSpan.FromMilliseconds(100), TimeSpan.FromMilliseconds(100) });
 
             // Clockwise: A ends up on top, B below; counter-clockwise: B on top
-            var clockwise = AnimatedBackgroundHelper.Rotate(animation, true).Frames[0];
-            var counter = AnimatedBackgroundHelper.Rotate(animation, false).Frames[0];
+            var clockwise = AnimatedBackgroundHelper.Rotate(animation, true).Frames[0].ToPixels();
+            var counter = AnimatedBackgroundHelper.Rotate(animation, false).Frames[0].ToPixels();
 
             Assert.Equal(1, clockwise[0]);
             Assert.Equal(2, clockwise[4]);
@@ -152,7 +163,33 @@ namespace Flylet.Core.Tests
             var animation = AnimatedBackgroundHelper.TryLoad(SaveGif(40, 30, 3));
 
             // The test frames differ in color, so composed frames must differ too
-            Assert.NotEqual(animation.Frames[0][0], animation.Frames[1][0]);
+            Assert.NotEqual(animation.Frames[0].ToPixels()[0], animation.Frames[1].ToPixels()[0]);
+        }
+
+        [Fact]
+        public void TryLoad_GifAtItsOwnSize_KeepsFramesAsOneBytePerPixel()
+        {
+            var animation = AnimatedBackgroundHelper.TryLoad(SaveGif(40, 30, 3, manyColors: true));
+
+            // A GIF frame has at most 256 colors. Composing it at its own size mustn't invent any:
+            // that would cost the saving
+            Assert.NotNull(animation);
+            Assert.All(animation.Frames, f => Assert.True(f.IsIndexed));
+            Assert.All(animation.Frames, f => Assert.True(f.StoredBytes < 40 * 30 * 4 / 2));
+        }
+
+        [Fact]
+        public void CreateFrame_ShowsEachFramesOwnPixels()
+        {
+            var animation = AnimatedBackgroundHelper.TryLoad(SaveGif(40, 30, 3, manyColors: true));
+
+            for (int i = 0; i < animation.Frames.Count; i++)
+            {
+                var shown = new byte[40 * 30 * 4];
+                animation.CreateFrame(i).CopyPixels(shown, 40 * 4, 0);
+
+                Assert.Equal(animation.Frames[i].ToPixels(), shown);
+            }
         }
 
         [Fact]

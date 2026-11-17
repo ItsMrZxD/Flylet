@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -13,15 +12,19 @@ namespace Flylet.Core.Helpers
     /// changed part), and thinned out so a long GIF can't use up the PC's memory.
     /// </summary>
     /// <remarks>
-    /// Frames are kept as plain pixels, and every tick shows a new frozen bitmap made by <see cref="CreateFrame"/>.
-    /// WPF keeps a GPU copy of each bitmap it has drawn for as long as that bitmap lives, so keeping one bitmap
-    /// per frame doubled the GIF's memory once it had played through (about 60 MB for a 72-frame GIF).
+    /// Every tick shows a new frozen bitmap made by <see cref="CreateFrame"/>. WPF keeps a GPU copy of each
+    /// bitmap it has drawn for as long as that bitmap lives, so keeping one bitmap per frame doubled the GIF's
+    /// memory once it had played through (about 60 MB for a 72-frame GIF).
     /// Writing new pixels into one shared WriteableBitmap was tried: WPF didn't redraw the flyout cards for it,
     /// so the GIF stood still.
+    /// The frames themselves are kept as small as they can be without changing a pixel (see <see cref="AnimatedFrame"/>).
     /// </remarks>
     public sealed class AnimatedBackground
     {
-        public AnimatedBackground(int pixelWidth, int pixelHeight, IReadOnlyList<byte[]> frames, IReadOnlyList<TimeSpan> delays)
+        // The pixels of the frame being shown: indexed frames are unpacked here, and the bitmap copies them
+        private byte[] unpacked;
+
+        public AnimatedBackground(int pixelWidth, int pixelHeight, IReadOnlyList<AnimatedFrame> frames, IReadOnlyList<TimeSpan> delays)
         {
             PixelWidth = pixelWidth;
             PixelHeight = pixelHeight;
@@ -34,16 +37,25 @@ namespace Flylet.Core.Helpers
         public int PixelHeight { get; }
 
         /// <summary>
-        /// Every frame's Pbgra32 pixels, rows <see cref="PixelWidth"/> * 4 bytes long.
+        /// Every frame, <see cref="PixelWidth"/> by <see cref="PixelHeight"/> pixels.
         /// </summary>
-        public IReadOnlyList<byte[]> Frames { get; }
+        public IReadOnlyList<AnimatedFrame> Frames { get; }
 
         /// <summary>
         /// A new frozen bitmap of frame <paramref name="index"/>. Don't keep it past its turn on screen.
+        /// Call it from one thread at a time.
         /// </summary>
         public BitmapSource CreateFrame(int index)
         {
-            var bitmap = BitmapSource.Create(PixelWidth, PixelHeight, 96, 96, PixelFormats.Pbgra32, null, Frames[index], PixelWidth * 4);
+            var frame = Frames[index];
+            byte[] pixels = frame.UnpackedPixels;
+            if (pixels == null)
+            {
+                pixels = unpacked ??= new byte[PixelWidth * PixelHeight * 4];
+                frame.CopyPixelsTo(pixels);
+            }
+
+            var bitmap = BitmapSource.Create(PixelWidth, PixelHeight, 96, 96, PixelFormats.Pbgra32, null, pixels, PixelWidth * 4);
             bitmap.Freeze();
             return bitmap;
         }
@@ -68,7 +80,8 @@ namespace Flylet.Core.Helpers
         public const int MaxSize = 480;
 
         /// <summary>
-        /// Memory for all kept frames together. Over this, frames are dropped (the delay goes to the frame before).
+        /// Memory for all kept frames together, counted as four bytes per pixel (most frames are kept as one).
+        /// Over this, frames are dropped (the delay goes to the frame before).
         /// </summary>
         public const long MaxFrameMemory = 96L * 1024 * 1024;
 
@@ -129,7 +142,7 @@ namespace Flylet.Core.Helpers
                 long frameBytes = (long)stride * height;
                 int keepEvery = (int)Math.Max(1, (count * frameBytes + MaxFrameMemory - 1) / MaxFrameMemory);
 
-                var frames = new List<byte[]>();
+                var frames = new List<AnimatedFrame>();
                 var delays = new List<TimeSpan>();
 
                 // One drawing surface for every frame, and one bitmap to draw the previous result from
@@ -197,7 +210,7 @@ namespace Flylet.Core.Helpers
                         continue;
                     }
 
-                    frames.Add(composed);
+                    frames.Add(AnimatedFrame.Pack(composed));
                     delays.Add(delay);
                 }
 
@@ -234,27 +247,13 @@ namespace Flylet.Core.Helpers
         {
             int width = animation.PixelWidth;
             int height = animation.PixelHeight;
-            var frames = new List<byte[]>(animation.Frames.Count);
-            foreach (var pixels in animation.Frames)
+            var frames = new List<AnimatedFrame>(animation.Frames.Count);
+            foreach (var frame in animation.Frames)
             {
-                var source = MemoryMarshal.Cast<byte, uint>(pixels.AsSpan());
-                var rotated = new byte[pixels.Length];
-                var target = MemoryMarshal.Cast<byte, uint>(rotated.AsSpan());
-
-                // The turned picture is height wide and width tall
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        int newX = clockwise ? height - 1 - y : y;
-                        int newY = clockwise ? x : width - 1 - x;
-                        target[newY * height + newX] = source[y * width + x];
-                    }
-                }
-
-                frames.Add(rotated);
+                frames.Add(frame.Rotate(width, height, clockwise));
             }
 
+            // The turned picture is height wide and width tall
             return new AnimatedBackground(height, width, frames, animation.Delays);
         }
 
