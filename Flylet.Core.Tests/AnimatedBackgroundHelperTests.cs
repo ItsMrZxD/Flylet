@@ -193,6 +193,25 @@ namespace Flylet.Core.Tests
         }
 
         [Fact]
+        public void TryLoad_UpToTheNoScaleSize_KeepsItsSize()
+        {
+            var animation = AnimatedBackgroundHelper.TryLoad(SaveGif(500, 281, 2));
+
+            Assert.NotNull(animation);
+            Assert.Equal(500, animation.PixelWidth);
+            Assert.Equal(281, animation.PixelHeight);
+        }
+
+        [Fact]
+        public void TryLoad_JustOverTheNoScaleSize_IsShrunkToTheMaxSize()
+        {
+            var animation = AnimatedBackgroundHelper.TryLoad(SaveGif(AnimatedBackgroundHelper.NoScaleSize + 2, 271, 2));
+
+            Assert.NotNull(animation);
+            Assert.Equal(AnimatedBackgroundHelper.MaxSize, animation.PixelWidth);
+        }
+
+        [Fact]
         public void TryLoad_ShortFastGif_StaysAnimatedAtTheCappedSpeed()
         {
             string path = SaveGif(40, 30, 2, "fast.gif", delayHundredths: 3);
