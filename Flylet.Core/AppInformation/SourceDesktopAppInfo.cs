@@ -34,8 +34,6 @@ namespace Flylet.Core.AppInformation
 
         public override async void FetchInfosAsync()
         {
-            Bitmap bitmap = new(16, 16);
-
             await Task.Run(() =>
             {
                 try
@@ -74,15 +72,19 @@ namespace Flylet.Core.AppInformation
                 }
                 catch { }
 
+                // The icon and the bitmap are Windows drawing objects: closed here, not left for the garbage collector
+                Bitmap bitmap = null;
                 try
                 {
                     var ie = new IconExtractor(path);
-                    var icon = ie.GetIcon(0);
+                    using var icon = ie.GetIcon(0);
                     bitmap = icon.ToBitmap();
                 }
                 catch { }
 
-                if (bitmap != null)
+                // A blank picture when the program's icon can't be read
+                bitmap ??= new Bitmap(16, 16);
+                using (bitmap)
                 {
                     MemoryStream memoryStream = new();
                     bitmap.Save(memoryStream, ImageFormat.Png);
