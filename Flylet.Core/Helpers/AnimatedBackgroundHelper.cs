@@ -75,16 +75,9 @@ namespace Flylet.Core.Helpers
         public const long MaxFileSize = 50L * 1024 * 1024;
 
         /// <summary>
-        /// Longest side of a frame of a GIF that gets shrunk; flyouts are 360 px wide and the photo is blurred.
+        /// Longest side of a frame; flyouts are 360 px wide and the photo is blurred.
         /// </summary>
         public const int MaxSize = 480;
-
-        /// <summary>
-        /// A GIF whose longest side is at most this is kept at its own size. Shrinking blends colors, and a
-        /// frame with more than 256 colors can't be kept as one byte per pixel: a 500 px GIF takes less
-        /// memory as it is than shrunk to <see cref="MaxSize"/>.
-        /// </summary>
-        public const int NoScaleSize = 540;
 
         /// <summary>
         /// Memory for all kept frames together, counted as four bytes per pixel (most frames are kept as one).
@@ -140,8 +133,7 @@ namespace Flylet.Core.Helpers
                     return null;
 
                 var (screenWidth, screenHeight) = GetScreenSize(decoder);
-                int longestSide = Math.Max(screenWidth, screenHeight);
-                double scale = longestSide <= NoScaleSize ? 1.0 : (double)MaxSize / longestSide;
+                double scale = Math.Min(1.0, (double)MaxSize / Math.Max(screenWidth, screenHeight));
                 int width = Math.Max(1, (int)Math.Round(screenWidth * scale));
                 int height = Math.Max(1, (int)Math.Round(screenHeight * scale));
                 int stride = width * 4;
