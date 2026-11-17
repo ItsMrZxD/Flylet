@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Flylet.Core.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Threading;
 
@@ -58,26 +62,23 @@ namespace Flylet.Helpers
                 new LanguageInfo(string.Empty)
             };
 
-            var resourceManager = Properties.Strings.ResourceManager;
-            var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
-            foreach (var culture in cultures)
+            // The translations are the "<language>\Flylet.resources.dll" files next to the app; its own texts are English
+            var assembly = typeof(LocalizationHelper).Assembly;
+            string appFolder = Path.GetDirectoryName(assembly.Location);
+            if (string.IsNullOrEmpty(appFolder))
             {
-                try
-                {
-                    if (culture.Equals(CultureInfo.InvariantCulture))
-                    {
-                        continue;
-                    }
+                appFolder = AppContext.BaseDirectory;
+            }
 
-                    var resourceSet = resourceManager.GetResourceSet(culture, true, false);
-                    if (resourceSet != null)
-                    {
-                        supportedLanguages.Add(new LanguageInfo(culture));
-                    }
-                }
-                catch (CultureNotFoundException)
-                {
-                }
+            var names = TranslationList.Find(
+                appFolder,
+                assembly.GetName().Name + ".resources.dll",
+                assembly.GetCustomAttribute<NeutralResourcesLanguageAttribute>()?.CultureName,
+                AppDataHelper.Language);
+
+            foreach (string name in names)
+            {
+                supportedLanguages.Add(new LanguageInfo(CultureInfo.GetCultureInfo(name)));
             }
 
             return supportedLanguages;
