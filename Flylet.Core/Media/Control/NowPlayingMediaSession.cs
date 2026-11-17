@@ -160,6 +160,10 @@ namespace Flylet.Core.Media.Control
                         MediaSourceIcon = bitmap;
                     }
                 }
+                catch
+                {
+                    // A logo that can't be read leaves the card without an icon instead of closing Flylet
+                }
                 finally
                 {
                     // The icon has its own copy of the picture
