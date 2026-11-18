@@ -1,28 +1,28 @@
-:root{--navy:#072D59;--ice:#DBF2FC;--pink:#FD6E88;--card:#0D3B70;--body:#CFE6F7;--pink-soft:#FF9DB0;--ink:#23497A}
+:root{--onyx:#0B0B12;--indigo:#5B3BF5;--mint:#88F9C0;--card:#17172A;--body:#C9C9E0;--soft:#E3DCFF}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--navy);color:var(--body);font:17px/1.6 system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+body{margin:0;background:var(--onyx);color:var(--body);font:17px/1.6 system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 a{color:var(--body)}
-a:hover{color:var(--pink)}
+a:hover{color:var(--mint)}
 .wrap{max-width:960px;margin:0 auto;padding:0 20px}
-.nav{background:var(--ice);font-size:.95rem}
+.nav{background:var(--indigo);font-size:.95rem}
 .nav .wrap{display:flex;gap:20px;padding-top:18px}
-.nav a{color:var(--ink);text-decoration:none}
-.nav a:hover,.nav a[aria-current]{color:var(--navy)}
-.nav a:hover{color:var(--pink)}
-.hero{background:var(--ice);color:var(--navy);text-align:center;padding:40px 0 48px}
+.nav a{color:var(--soft);text-decoration:none}
+.nav a:hover,.nav a[aria-current]{color:#fff}
+.nav a:hover{color:var(--mint)}
+.hero{background:var(--indigo);color:#fff;text-align:center;padding:40px 0 48px}
 .logo{width:96px;height:96px;border-radius:22px}
-h1{font-size:clamp(2.4rem,7vw,3.6rem);margin:12px 0 4px;letter-spacing:-.02em;color:var(--navy)}
-.tagline{font-size:clamp(1.15rem,3.5vw,1.5rem);margin:0 0 16px;color:var(--navy)}
-.intro{max-width:680px;margin:0 auto 28px;color:var(--ink)}
+h1{font-size:clamp(2.4rem,7vw,3.6rem);margin:12px 0 4px;letter-spacing:-.02em;color:#fff}
+.tagline{font-size:clamp(1.15rem,3.5vw,1.5rem);margin:0 0 16px;color:#fff}
+.intro{max-width:680px;margin:0 auto 28px;color:var(--soft)}
 .buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 22px;border-radius:10px;font-weight:600;text-decoration:none;color:var(--ice);background:var(--navy)}
-.btn.primary{background:var(--pink);color:#4A0D1A}
-.btn:hover{filter:brightness(1.12);color:var(--ice)}
-.btn.primary:hover{color:#4A0D1A}
-.winget{margin:18px 0 0;color:var(--ink);font-size:.95rem}
-code{background:var(--navy);border-radius:6px;padding:2px 8px;font:.92em Consolas,"Courier New",monospace;color:var(--body);user-select:all}
-.hero code{background:#C4E6F5;color:var(--navy)}
+.btn{display:inline-block;padding:13px 22px;border-radius:10px;font-weight:600;text-decoration:none;color:#fff;background:var(--onyx)}
+.btn.primary{background:var(--mint);color:#06301C}
+.btn:hover{filter:brightness(1.15);color:#fff}
+.btn.primary:hover{color:#06301C}
+.winget{margin:18px 0 0;color:var(--soft);font-size:.95rem}
+code{background:var(--onyx);border-radius:6px;padding:2px 8px;font:.92em Consolas,"Courier New",monospace;color:var(--body);user-select:all}
+.hero code{background:#4A2DD9;color:var(--soft)}
 .shot{display:block;width:100%;height:auto;border-radius:14px}
 .heroimg{margin:36px 0 0}
 section{padding:36px 0}
@@ -30,7 +30,7 @@ section{padding:36px 0}
 h2{font-size:1.7rem;margin:0 0 20px;letter-spacing:-.01em;color:#fff}
 .features{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
 .features li{background:var(--card);border-radius:12px;padding:16px 18px}
-.features strong{display:block;margin-bottom:4px;color:var(--pink-soft)}
+.features strong{display:block;margin-bottom:4px;color:var(--mint)}
 .features span{color:var(--body);font-size:.97rem}
 .gallery{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 details{background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:10px}
@@ -38,7 +38,7 @@ summary{cursor:pointer;font-weight:600;color:#fff}
 details p{margin:10px 0 0;color:var(--body)}
 footer{padding:28px 0 48px;color:var(--body);font-size:.93rem;text-align:center}
 footer p{margin:6px 0}
-.page-head{background:var(--ice);padding:40px 0 36px}
+.page-head{background:var(--indigo);padding:40px 0 36px}
 .page-head h1{font-size:clamp(2rem,6vw,2.8rem);margin:0 0 8px}
 .page-head .intro{margin:0;max-width:none;text-align:left}
 .releases{padding:36px 0 8px}
