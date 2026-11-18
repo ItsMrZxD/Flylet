@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flylet: Custom volume pop-up for Windows 11 and 10</title>
+<meta name="description" content="Free, open-source app that replaces the Windows volume, media and brightness pop-ups. Put your own photo or GIF behind them. A maintained continuation of ModernFlyouts.">
+<link rel="canonical" href="https://itsmrzxd.github.io/Flylet/">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<meta name="theme-color" content="#0b1220">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Flylet: Custom volume pop-up for Windows 11 and 10">
+<meta property="og:description" content="Free, open-source app that replaces the Windows volume, media and brightness pop-ups. Put your own photo or GIF behind them.">
+<meta property="og:url" content="https://itsmrzxd.github.io/Flylet/">
+<meta property="og:image" content="https://itsmrzxd.github.io/Flylet/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Flylet pop-ups: volume, media cards, brightness and Caps Lock in many styles">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Flylet: Custom volume pop-up for Windows 11 and 10">
+<meta name="twitter:description" content="Free, open-source app that replaces the Windows volume, media and brightness pop-ups. Put your own photo or GIF behind them.">
+<meta name="twitter:image" content="https://itsmrzxd.github.io/Flylet/img/og.jpg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Flylet",
+      "operatingSystem": "Windows 10, Windows 11",
+      "applicationCategory": "UtilitiesApplication",
+      "description": "Free, open-source app that replaces the Windows volume, media, brightness and lock-key pop-ups with cleaner ones you can customize. A maintained continuation of ModernFlyouts.",
+      "image": "https://itsmrzxd.github.io/Flylet/img/og.jpg",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "url": "https://apps.microsoft.com/detail/9NPSS6NW7T23?cid=website",
+      "sameAs": ["https://github.com/ItsMrZxD/Flylet"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Is Flylet free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Free, open source (MIT), no ads, no account, nothing locked." } },
+        { "@type": "Question", "name": "Is there a ModernFlyouts alternative that works on Windows 11?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Flylet is a maintained continuation of ModernFlyouts, which was archived in 2025. It works on Windows 11 again and on Windows 10 22H2, with credit to the original ModernFlyouts authors." } },
+        { "@type": "Question", "name": "Can I put my own picture behind the volume pop-up?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Use any photo or animated GIF, adjust it to fit, and add blur or darkening so the text stays readable." } },
+        { "@type": "Question", "name": "Does it work on Windows 10?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, Windows 10 version 22H2 and Windows 11, on 64-bit and 32-bit PCs." } },
+        { "@type": "Question", "name": "Which music apps work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Any player that shows up in Windows' own media controls, such as Spotify, browsers and YouTube Music." } },
+        { "@type": "Question", "name": "Does it collect data?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Flylet has no analytics and no tracking. Privacy policy: https://gist.github.com/ItsMrZxD/05144edfbbd47f9b323b3d15c1752486" } },
+        { "@type": "Question", "name": "How do I install it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "From the Microsoft Store (it updates automatically), or with winget: winget install 9NPSS6NW7T23 --source msstore" } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+:root{--bg:#0b1220;--card:#131c2e;--text:#e8edf6;--muted:#a3b0c7;--accent:#5b9cff;--accent-text:#06101f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.hero{text-align:center;padding:56px 0 32px}
+.logo{width:96px;height:96px;border-radius:22px}
+h1{font-size:clamp(2.4rem,7vw,3.6rem);margin:12px 0 4px;letter-spacing:-.02em}
+.tagline{font-size:clamp(1.15rem,3.5vw,1.5rem);margin:0 0 16px;color:var(--text)}
+.intro{max-width:680px;margin:0 auto 28px;color:var(--muted)}
+.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:10px;font-weight:600;text-decoration:none;color:var(--text);background:var(--card)}
+.btn.primary{background:var(--accent);color:var(--accent-text)}
+.btn:hover{filter:brightness(1.1)}
+.winget{margin:18px 0 0;color:var(--muted);font-size:.95rem}
+code{background:var(--card);border-radius:6px;padding:2px 8px;font:.92em Consolas,"Courier New",monospace;color:var(--text);user-select:all}
+.shot{display:block;width:100%;height:auto;border-radius:14px}
+.heroimg{margin:36px 0 8px}
+section{padding:36px 0}
+h2{font-size:1.7rem;margin:0 0 20px;letter-spacing:-.01em}
+.features{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.features li{background:var(--card);border-radius:12px;padding:16px 18px}
+.features strong{display:block;margin-bottom:4px}
+.features span{color:var(--muted);font-size:.97rem}
+.gallery{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+details{background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{margin:10px 0 0;color:var(--muted)}
+footer{padding:28px 0 48px;color:var(--muted);font-size:.93rem;text-align:center}
+footer p{margin:6px 0}
+</style>
+</head>
+<body>
+
+<main class="wrap">
+
+  <section class="hero">
+    <img class="logo" src="img/icon.png" width="96" height="96" alt="Flylet app icon">
+    <h1>Flylet</h1>
+    <p class="tagline">Your Windows volume pop-up, redesigned and made yours</p>
+    <p class="intro">Flylet is a free, open-source app that replaces the Windows 11 and Windows 10 volume, media, brightness and lock-key pop-ups with cleaner ones you can customize.</p>
+    <div class="buttons">
+      <a class="btn primary" href="https://apps.microsoft.com/detail/9NPSS6NW7T23?cid=website">Get it free from the Microsoft Store</a>
+      <a class="btn" href="https://github.com/ItsMrZxD/Flylet">View on GitHub</a>
+    </div>
+    <p class="winget">Or: <code>winget install 9NPSS6NW7T23 --source msstore</code></p>
+    <img class="shot heroimg" src="img/hero.webp" width="1280" height="720" alt="Flylet pop-ups in many styles: volume bar, media cards with album art, a pill, a brightness bar and a Caps Lock notice">
+  </section>
+
+  <section aria-labelledby="features">
+    <h2 id="features">Features</h2>
+    <ul class="features">
+      <li><strong>Real media controls</strong><span>Album art, title, artist, play/pause, previous/next, and a timeline you can drag that keeps moving while music plays. Every player that reports to Windows gets its own card.</span></li>
+      <li><strong>Your own picture</strong><span>Put a photo or animated GIF behind the pop-ups, then move, zoom, rotate, blur or darken it. Add several and get a new one each time a pop-up opens.</span></li>
+      <li><strong>Glass</strong><span>Blurs whatever is behind your pop-ups, like frosted glass (Windows 11).</span></li>
+      <li><strong>Your colors</strong><span>Follow your Windows accent color, or pick your own accent and background.</span></li>
+      <li><strong>Media card styles</strong><span>Classic, Minimal, Compact pill, Album background, or mix your own.</span></li>
+      <li><strong>More than volume</strong><span>Brightness (laptop screens and external monitors), Caps Lock, Num Lock and airplane mode.</span></li>
+      <li><strong>Light</strong><span>Almost no CPU when idle, an optional "Use less memory" switch, and it runs on 64-bit and 32-bit PCs.</span></li>
+      <li><strong>31 languages</strong><span>Runs from the system tray and can start with Windows.</span></li>
+    </ul>
+  </section>
+
+  <section aria-label="Screenshots">
+    <div class="gallery">
+      <img class="shot" loading="lazy" src="img/glass.webp" width="960" height="540" alt="Flylet volume bar and media card with a frosted glass look over a colorful wallpaper">
+      <img class="shot" loading="lazy" src="img/rotating.webp" width="960" height="540" alt="Flylet volume bar and media card with three different photo and retro-grid backgrounds behind them">
+      <img class="shot" loading="lazy" src="img/gif.webp" width="960" height="540" alt="Flylet volume bar and media card with an animated GIF of a retro grid behind them">
+      <img class="shot" loading="lazy" src="img/styles.webp" width="960" height="540" alt="Five Flylet media card styles: Classic, Album background, Minimal, Compact pill and a compact card">
+      <img class="shot" loading="lazy" src="img/colors.webp" width="960" height="540" alt="Flylet volume bar and media card in a light purple accent and background color">
+      <img class="shot" loading="lazy" src="img/brightness-capslock.webp" width="960" height="540" alt="Flylet brightness slider and a Caps lock is on notice">
+      <img class="shot" loading="lazy" src="img/settings.webp" width="960" height="540" alt="Flylet settings window with color options and a photo background list">
+    </div>
+  </section>
+
+  <section aria-labelledby="faq">
+    <h2 id="faq">FAQ</h2>
+    <details>
+      <summary>Is Flylet free?</summary>
+      <p>Yes. Free, open source (MIT), no ads, no account, nothing locked.</p>
+    </details>
+    <details>
+      <summary>Is there a ModernFlyouts alternative that works on Windows 11?</summary>
+      <p>Flylet is a maintained continuation of ModernFlyouts, which was archived in 2025. It works on Windows 11 again and on Windows 10 22H2, with credit to the original ModernFlyouts authors.</p>
+    </details>
+    <details>
+      <summary>Can I put my own picture behind the volume pop-up?</summary>
+      <p>Yes. Use any photo or animated GIF, adjust it to fit, and add blur or darkening so the text stays readable.</p>
+    </details>
+    <details>
+      <summary>Does it work on Windows 10?</summary>
+      <p>Yes, Windows 10 version 22H2 and Windows 11, on 64-bit and 32-bit PCs.</p>
+    </details>
+    <details>
+      <summary>Which music apps work?</summary>
+      <p>Any player that shows up in Windows' own media controls, such as Spotify, browsers and YouTube Music.</p>
+    </details>
+    <details>
+      <summary>Does it collect data?</summary>
+      <p>No. Flylet has no analytics and no tracking. <a href="https://gist.github.com/ItsMrZxD/05144edfbbd47f9b323b3d15c1752486">Privacy policy</a></p>
+    </details>
+    <details>
+      <summary>How do I install it?</summary>
+      <p>From the Microsoft Store (it updates automatically), or with winget: <code>winget install 9NPSS6NW7T23 --source msstore</code></p>
+    </details>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Flylet continues ModernFlyouts (MIT). Credit to its original authors and contributors. Not affiliated with them or with Microsoft.</p>
+    <p>Made by Mr.Z · <a href="https://github.com/ItsMrZxD/Flylet">GitHub</a> · <a href="https://gist.github.com/ItsMrZxD/05144edfbbd47f9b323b3d15c1752486">Privacy policy</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
