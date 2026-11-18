@@ -1,0 +1,42 @@
+:root{--bg:#0b1220;--card:#131c2e;--text:#e8edf6;--muted:#a3b0c7;--accent:#5b9cff;--accent-text:#06101f}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.hero{text-align:center;padding:56px 0 32px}
+.logo{width:96px;height:96px;border-radius:22px}
+h1{font-size:clamp(2.4rem,7vw,3.6rem);margin:12px 0 4px;letter-spacing:-.02em}
+.tagline{font-size:clamp(1.15rem,3.5vw,1.5rem);margin:0 0 16px;color:var(--text)}
+.intro{max-width:680px;margin:0 auto 28px;color:var(--muted)}
+.buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:10px;font-weight:600;text-decoration:none;color:var(--text);background:var(--card)}
+.btn.primary{background:var(--accent);color:var(--accent-text)}
+.btn:hover{filter:brightness(1.1)}
+.winget{margin:18px 0 0;color:var(--muted);font-size:.95rem}
+code{background:var(--card);border-radius:6px;padding:2px 8px;font:.92em Consolas,"Courier New",monospace;color:var(--text);user-select:all}
+.shot{display:block;width:100%;height:auto;border-radius:14px}
+.heroimg{margin:36px 0 8px}
+section{padding:36px 0}
+h2{font-size:1.7rem;margin:0 0 20px;letter-spacing:-.01em}
+.features{list-style:none;padding:0;margin:0;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.features li{background:var(--card);border-radius:12px;padding:16px 18px}
+.features strong{display:block;margin-bottom:4px}
+.features span{color:var(--muted);font-size:.97rem}
+.gallery{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+details{background:var(--card);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}
+details p{margin:10px 0 0;color:var(--muted)}
+footer{padding:28px 0 48px;color:var(--muted);font-size:.93rem;text-align:center}
+footer p{margin:6px 0}
+.nav{display:flex;gap:20px;padding-top:18px;padding-bottom:0;font-size:.95rem}
+.nav a{color:var(--muted);text-decoration:none}
+.nav a:hover,.nav a[aria-current]{color:var(--text)}
+.page{padding:40px 0 24px}
+.page h1{font-size:clamp(2rem,6vw,2.8rem);margin:0 0 8px}
+.page .intro{margin:0 0 28px;max-width:none;text-align:left}
+.release{padding:0;margin:0 0 24px}
+.release h2{font-size:1.3rem;margin:0 0 10px}
+.release ul{margin:0;padding-left:1.2em;color:var(--muted)}
+.release li{margin:4px 0}
+.more{color:var(--muted);margin:12px 0 0}
