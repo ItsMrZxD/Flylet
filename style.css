@@ -48,5 +48,5 @@ footer p{margin:6px 0}
 .release ul{margin:0;padding-left:1.2em;color:var(--body)}
 .release li{margin:4px 0}
 .more{color:var(--body);margin:12px 0 0}
-.pill{display:inline-flex;align-items:center;padding:13px 18px;border-radius:999px;background:#FD6E88;color:#4A0D1A;font-weight:600;font-size:.95rem}
-.release .pill{padding:2px 10px;font-size:.75rem;margin-left:10px;vertical-align:middle}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;background:#FD6E88;color:#4A0D1A;font-weight:600;font-size:.75rem;margin-left:8px;vertical-align:middle}
+.release .pill{margin-left:10px}
