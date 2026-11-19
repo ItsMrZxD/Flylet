@@ -25,15 +25,15 @@ moving while the music plays.
 > November 2025. Its original authors and contributors built the foundation of this project, and
 > their work is used here under the MIT License. Flylet is not affiliated with them.
 
-## What's new in 0.12
+## What's new in 0.13
 
-- **Glass:** blurs whatever is behind your pop-ups, like frosted glass (Windows 11)
-- **Rotating backgrounds:** add several photos and GIFs and get a new one every time a pop-up opens, or on a timer
-- **Opacity for your own photos and GIFs**, and photos that fit exactly as they look in the Adjust photo window
-- **Media timeline for apps that can't seek:** it now shows whenever an app reports the song length, and apps with no timeline at all, like Edge on Windows 10, get an empty line instead of a gap
-- **Runs on 32-bit (x86) PCs**, and uses almost no CPU when idle
+- **Volume mixer:** an arrow on the volume row opens every app that's playing sound, each with its own slider
+- **Music visualizer:** a timeline that moves with your music. Pick Subtle, Lively, Party, or make your own
+- **Pin button:** keeps the pop-up on screen
+- **New color picker** with saved colors and a hex code
+- **Card border and card shine switches**
 
-Full notes: [Flylet 0.12.0 release](https://github.com/ItsMrZxD/Flylet/releases/tag/v0.12.0).
+Full notes: [Flylet 0.13.0 release](https://github.com/ItsMrZxD/Flylet/releases/tag/v0.13.0).
 
 ## What Flylet replaces
 
