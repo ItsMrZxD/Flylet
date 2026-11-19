@@ -113,11 +113,9 @@ its own window in its place. Media information comes from Windows' Now Playing s
 
 ## Performance
 
-Measured on Flylet 0.11.2 (x64), as the process's working set, the same kind of number Task
-Manager shows:
+Measured on Flylet 0.13 (x64), as the memory number Task Manager shows:
 
-- About 66 MB right after starting, and about 110 MB once flyouts have shown.
-- About 41–65 MB with **Use less memory** on (Settings → General → Performance).
+- About 104 MB once flyouts have shown.
 - About 0% CPU when idle.
 
 Photo and GIF backgrounds use more, depending on the image.
