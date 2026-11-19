@@ -10,9 +10,9 @@
   <img src="docs/images/tagline.png" width="480" alt="Your pop-ups, your way.">
 </p>
 
-https://github.com/user-attachments/assets/f41658d0-7e60-4930-ac4a-4e72df447fa3
+https://github.com/user-attachments/assets/87ca9898-1f0d-4c38-8bba-e0cc1eed5ea8
 
-<p align="center"><sub>Song: Jim Yosef - Firefly [NCS Release] · Music provided by NoCopyrightSounds · <a href="http://ncs.io/Firefly">ncs.io/Firefly</a></sub></p>
+<p align="center"><sub>Song: Disfigure - Blank [NCS Release] · Music provided by NoCopyrightSounds · <a href="https://ncs.io/blank">ncs.io/blank</a></sub></p>
 
 ![Flylet's flyouts: glass, media card styles, photo backgrounds, colors, Caps Lock and brightness](docs/images/flylet-flyouts.png)
 
