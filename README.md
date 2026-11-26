@@ -6,6 +6,8 @@
 
 <p align="center">Modern, Fluent-style replacements for the Windows volume, brightness, media and lock-key pop-ups.</p>
 
+<p align="center"><b>350 installs</b> from the Microsoft Store (as of November 2026)</p>
+
 <p align="center">
   <img src="docs/images/tagline.png" width="480" alt="Your pop-ups, your way.">
 </p>
