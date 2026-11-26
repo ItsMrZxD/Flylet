@@ -17,8 +17,7 @@ https://github.com/user-attachments/assets/87ca9898-1f0d-4c38-8bba-e0cc1eed5ea8
 ![Flylet's flyouts: glass, media card styles, photo backgrounds, colors, Caps Lock and brightness](docs/images/flylet-flyouts.png)
 
 Press a volume key and Windows shows its own small pop-up. Flylet hides that one and shows its
-own instead: cleaner, with real media controls, and with a song timeline that actually keeps
-moving while the music plays.
+own instead, with media controls and a song timeline that keeps moving while the music plays.
 
 > Flylet is a maintained continuation of
 > [ModernFlyouts](https://github.com/ModernFlyouts-Community/ModernFlyouts), which was archived in
@@ -27,9 +26,9 @@ moving while the music plays.
 
 ## What's new in 0.13
 
-- **Volume mixer:** an arrow on the volume row opens every app that's playing sound, each with its own slider
-- **Music visualizer:** a timeline that moves with your music. Pick Subtle, Lively, Party, or make your own
-- **Pin button:** keeps the pop-up on screen
+- **Volume mixer**: an arrow on the volume row opens every app that's playing sound, each with its own slider
+- **Music visualizer**: a timeline that moves with your music. Pick Subtle, Lively, Party, or make your own
+- **Pin button**: keeps the pop-up on screen
 - **New color picker** with saved colors and a hex code
 - **Card border and card shine switches**
 
@@ -45,22 +44,21 @@ Full notes: [Flylet 0.13.0 release](https://github.com/ItsMrZxD/Flylet/releases/
 | Lock keys | Caps Lock, Num Lock and Scroll Lock state |
 | Airplane mode | Airplane mode on/off, on PCs with wireless radios |
 
-It runs from the system tray, can start with Windows, and gets out of the way when you don't
-need it.
+It runs from the system tray and can start with Windows.
 
 ## What's different from ModernFlyouts
 
-- **Make it yours:** your own photo or GIF behind the flyouts (or several that rotate), glass on Windows 11, and media card styles.
-- **Your colors:** follow your Windows accent color, or pick your own accent and background.
-- **The media timeline moves again.** Upstream froze it between pauses; Flylet keeps counting.
-- **Windows 11 works again.** Upstream never found the Windows 11 flyout host, so it never hid the new pop-up.
-- **Light:** almost no CPU when idle, an optional "Use less memory" switch, and 32-bit PCs too.
-- **Translated** into 31 languages, on **.NET 10**, with its own name and icon.
+- **Backgrounds**: your own photo or GIF behind the flyouts (or several that rotate), glass on Windows 11, and media card styles.
+- **Colors**: follow your Windows accent color, or pick your own accent and background.
+- **Media timeline**: upstream froze it between pauses; Flylet keeps counting.
+- **Windows 11**: upstream never found the Windows 11 flyout host, so it never hid the new pop-up. Flylet does.
+- **Resource use**: almost no CPU when idle, an optional "Use less memory" switch, and 32-bit PCs too.
+- **Translated** into 31 languages, on .NET 10, with its own name and icon.
 
 ## Requirements
 
 - Windows 10 version 22H2, or Windows 11, on a 64-bit (x64) or 32-bit (x86) PC
-- .NET 10 — bundled with the app, nothing to install separately
+- .NET 10 is bundled with the app, so there is nothing to install separately
 
 ## Installing
 
@@ -120,8 +118,6 @@ Measured on Flylet 0.13 (x64), as the memory number Task Manager shows:
 
 Photo and GIF backgrounds use more, depending on the image.
 
-The day this app isn't optimized to its fullest, shoot me.
-
 ## Privacy
 
 Flylet has no network code of its own and sends no data of its own. When you open Settings →
@@ -141,13 +137,13 @@ dialog, shown once, also talks to the Store. Flylet is open source, so anyone ca
 
 ## Credits
 
-Flylet exists because of [ModernFlyouts](https://github.com/ModernFlyouts-Community/ModernFlyouts)
-and everyone who worked on it, and because of
-[ADeltaX](https://github.com/ADeltaX/), whose research made the original possible.
+Flylet is built on [ModernFlyouts](https://github.com/ModernFlyouts-Community/ModernFlyouts)
+and the work of everyone who contributed to it, and on research by
+[ADeltaX](https://github.com/ADeltaX/) that made the original possible.
 Third-party code and its licenses are listed in [NOTICE.md](NOTICE.md).
 
 ## License
 
-[MIT](LICENSE) — the original copyright notice is kept alongside this project's.
+[MIT](LICENSE). The original copyright notice is kept alongside this project's.
 
 The Flylet name and icon aren't covered by the MIT license. Please don't use them for other products or forks in a way that suggests they are the official Flylet.
